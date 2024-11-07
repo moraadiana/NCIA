@@ -1,8 +1,10 @@
-﻿using System;
+﻿using NCIASTaff.NAVWS;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -11,6 +13,10 @@ namespace NCIASTaff.pages
 {
     public partial class LeaveListing : System.Web.UI.Page
     {
+        Staffportall webportals = Components.ObjNav;
+        string[] strLimiters = new string[] { "::" };
+        string[] strLimiters2 = new string[] { "[]" };
+
         SqlConnection connection;
         SqlCommand command;
         SqlDataReader reader;
@@ -39,24 +45,17 @@ namespace NCIASTaff.pages
             try
             {
                 string username = Session["username"].ToString();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spGetMyLeaveApps",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@Employee_No",  username );
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
+                string leaveList = webportals.GetMyleaveApplications(username);
+                if (!string.IsNullOrEmpty(leaveList))
                 {
                     int counter = 0;
-                    while (reader.Read())
+                    string[] leaveListArr = leaveList.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string leavelist in leaveListArr)
                     {
                         counter++;
+                        string[] responseArr = leavelist.Split(strLimiters, StringSplitOptions.None);
                         var statusCls = "default";
-                        string status = reader["MyStatus"].ToString();
+                        string status = responseArr[7];
                         switch (status)
                         {
                             case "Open":
@@ -99,20 +98,23 @@ namespace NCIASTaff.pages
                                     </div>
                                 </td>
                             </tr>
-                            ",
-                            counter,
-                            reader["No_"].ToString(),
-                            reader["Leave Type"].ToString(),
-                            Convert.ToInt32(Convert.ToDouble(reader["Applied Days"])),
-                            Convert.ToDateTime(reader["Date"]).ToShortDateString(),
-                            Convert.ToDateTime(reader["Starting Date"]).ToShortDateString(),
-                            Convert.ToDateTime(reader["end Date"]).ToShortDateString(),
-                            Convert.ToDateTime(reader["Return Date"]).ToShortDateString(),
-                            status,
-                            statusCls
-                            );
+                            "
+                        ,
+                          counter,
+                          responseArr[0],
+                          responseArr[1],
+                          responseArr[2],
+                          responseArr[3],
+                          responseArr[4],
+                          responseArr[5],
+                          responseArr[6],
+                          responseArr[7],
+                       
+                          statusCls
+                          );
                     }
                 }
+               
             }
             catch (Exception ex)
             {

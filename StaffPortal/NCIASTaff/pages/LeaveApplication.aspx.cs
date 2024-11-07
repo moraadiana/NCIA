@@ -16,6 +16,7 @@ namespace NCIASTaff.pages
     {
         Staffportall webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
+        string[] strLimiters2 = new string[] { "[]" };
         SqlConnection connection;
         SqlCommand command;
         SqlDataReader reader;
@@ -69,22 +70,16 @@ namespace NCIASTaff.pages
             try
             {
                 ddlResponsibilityCenter.Items.Clear();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
+                string grouping = "LEAVE";
+                string rescenters = webportals.GetResponsibilityCentres(grouping);
+                if(!string.IsNullOrEmpty(rescenters))
                 {
-                    CommandText = "spGetLeaveReponsibilityCentre",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
+                    string[] resCentersArr = rescenters.Split(strLimiters2,StringSplitOptions.RemoveEmptyEntries);
+                    foreach(string rescent in resCentersArr)
                     {
-                        ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["Code"].ToString());
+                        string[] responseArr = rescent.Split(strLimiters,StringSplitOptions.None);
+                        ListItem li = new ListItem(responseArr[1], responseArr[0]);
                         ddlResponsibilityCenter.Items.Add(li);
-
                     }
                 }
             }
@@ -100,26 +95,17 @@ namespace NCIASTaff.pages
             try
             {
                 ddlReliver.Items.Clear();
-                string username = Session["username"].ToString();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
+                string Relievers = webportals.GetRelievers();
+                if(!string.IsNullOrEmpty(Relievers))
                 {
-                    CommandText = "spGetRelievers",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
+                    string[] relieverArr = Relievers.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string reliever in relieverArr)
                     {
-                        if (reader["No_"].ToString() == username) continue;
-                        ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["No_"].ToString());
+                        string[] responseArr = reliever.Split(strLimiters, StringSplitOptions.None);
+                        ListItem li = new ListItem(responseArr[1], responseArr[0]);
                         ddlReliver.Items.Add(li);
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -202,29 +188,13 @@ namespace NCIASTaff.pages
             try
             {
                 LoadLeaveBalance();
-                using (SqlConnection conn = Components.GetconnToNAV())
+                string leaveType = ddlLeaveType.SelectedValue;
+                string defaultDays = webportals.GetDefaultDays(leaveType);
+                if (!string.IsNullOrEmpty(defaultDays))
                 {
-                    SqlCommand cmd = new SqlCommand()
-                    {
-                        CommandText = "spGetDefaultLeaveDays",
-                        CommandType = CommandType.StoredProcedure,
-                        Connection = conn
-                    };
-                    cmd.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                    cmd.Parameters.AddWithValue("@LeaveType", ddlLeaveType.SelectedValue.ToString());
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            while (reader.Read())
-                            {
-                                string days = reader["Days"].ToString();
-                                lblBalance.Text = days;
-                            }
-                        }
-                    }
-
+                    lblBalance.Text = defaultDays;
                 }
+              
                /* string leaveType = ddlLeaveType.SelectedValue.ToString();
                 var serviceRoot = Components.ServiceRoot;
                 var context = new BC.NAV(new Uri(serviceRoot));
@@ -300,7 +270,7 @@ namespace NCIASTaff.pages
                 else
                 {
                     DefaultDays();
-                    LoadLeaveBalance();
+                    //LoadLeaveBalance();
                 }
             }
             catch (Exception ex)
@@ -476,6 +446,7 @@ namespace NCIASTaff.pages
             }
             catch (Exception ex)
             {
+                
                 ex.Data.Clear();
             }
         }

@@ -46,39 +46,39 @@ namespace NCIASTaff
                 LoadIndividualCourses();
                 LoadCountries();
                 LoadSupervisor();
-                LoadTrainer();
+               // LoadTrainer();
             }
         }
 
-        private void LoadTrainer()
-        {
-            try
-            {
-                ddlTrainer.Items.Clear();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spGetVendors",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        if (reader["Name"].ToString() == "") continue;
-                        ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["No_"].ToString());
-                        ddlTrainer.Items.Add(li);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }
-        }
+        //private void LoadTrainer()
+        //{
+        //    try
+        //    {
+        //        ddlTrainer.Items.Clear();
+        //        connection = Components.GetconnToNAV();
+        //        command = new SqlCommand()
+        //        {
+        //            CommandText = "spGetVendors",
+        //            CommandType = CommandType.StoredProcedure,
+        //            Connection = connection
+        //        };
+        //        command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
+        //        reader = command.ExecuteReader();
+        //        if (reader.HasRows)
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                if (reader["Name"].ToString() == "") continue;
+        //                ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["No_"].ToString());
+        //                ddlTrainer.Items.Add(li);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ex.Data.Clear();
+        //    }
+        //}
 
         private void LoadSupervisor()
         {

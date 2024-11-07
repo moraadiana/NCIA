@@ -581,6 +581,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetDefaultDays">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="leaveType" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetDefaultDays_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetEmployeeLeaves">
         <complexType>
           <sequence>
@@ -691,6 +705,34 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetMyTrainingApplications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyTrainingApplications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyleaveApplications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyleaveApplications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetNextImprestSurrenderNo">
         <complexType>
           <sequence />
@@ -735,6 +777,32 @@
         </complexType>
       </element>
       <element name="GetReceipts_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRelievers">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetRelievers_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetResponsibilityCentres">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="grouping" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetResponsibilityCentres_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1737,6 +1805,12 @@
   <message name="GetAttachmentDetails_Result">
     <part name="parameters" element="tns:GetAttachmentDetails_Result" />
   </message>
+  <message name="GetDefaultDays">
+    <part name="parameters" element="tns:GetDefaultDays" />
+  </message>
+  <message name="GetDefaultDays_Result">
+    <part name="parameters" element="tns:GetDefaultDays_Result" />
+  </message>
   <message name="GetEmployeeLeaves">
     <part name="parameters" element="tns:GetEmployeeLeaves" />
   </message>
@@ -1785,6 +1859,18 @@
   <message name="GetMyApplications_Result">
     <part name="parameters" element="tns:GetMyApplications_Result" />
   </message>
+  <message name="GetMyTrainingApplications">
+    <part name="parameters" element="tns:GetMyTrainingApplications" />
+  </message>
+  <message name="GetMyTrainingApplications_Result">
+    <part name="parameters" element="tns:GetMyTrainingApplications_Result" />
+  </message>
+  <message name="GetMyleaveApplications">
+    <part name="parameters" element="tns:GetMyleaveApplications" />
+  </message>
+  <message name="GetMyleaveApplications_Result">
+    <part name="parameters" element="tns:GetMyleaveApplications_Result" />
+  </message>
   <message name="GetNextImprestSurrenderNo">
     <part name="parameters" element="tns:GetNextImprestSurrenderNo" />
   </message>
@@ -1808,6 +1894,18 @@
   </message>
   <message name="GetReceipts_Result">
     <part name="parameters" element="tns:GetReceipts_Result" />
+  </message>
+  <message name="GetRelievers">
+    <part name="parameters" element="tns:GetRelievers" />
+  </message>
+  <message name="GetRelievers_Result">
+    <part name="parameters" element="tns:GetRelievers_Result" />
+  </message>
+  <message name="GetResponsibilityCentres">
+    <part name="parameters" element="tns:GetResponsibilityCentres" />
+  </message>
+  <message name="GetResponsibilityCentres_Result">
+    <part name="parameters" element="tns:GetResponsibilityCentres_Result" />
   </message>
   <message name="GetStaffCitizenship">
     <part name="parameters" element="tns:GetStaffCitizenship" />
@@ -2266,6 +2364,10 @@
       <input name="GetAttachmentDetails" message="tns:GetAttachmentDetails" />
       <output name="GetAttachmentDetails_Result" message="tns:GetAttachmentDetails_Result" />
     </operation>
+    <operation name="GetDefaultDays">
+      <input name="GetDefaultDays" message="tns:GetDefaultDays" />
+      <output name="GetDefaultDays_Result" message="tns:GetDefaultDays_Result" />
+    </operation>
     <operation name="GetEmployeeLeaves">
       <input name="GetEmployeeLeaves" message="tns:GetEmployeeLeaves" />
       <output name="GetEmployeeLeaves_Result" message="tns:GetEmployeeLeaves_Result" />
@@ -2298,6 +2400,14 @@
       <input name="GetMyApplications" message="tns:GetMyApplications" />
       <output name="GetMyApplications_Result" message="tns:GetMyApplications_Result" />
     </operation>
+    <operation name="GetMyTrainingApplications">
+      <input name="GetMyTrainingApplications" message="tns:GetMyTrainingApplications" />
+      <output name="GetMyTrainingApplications_Result" message="tns:GetMyTrainingApplications_Result" />
+    </operation>
+    <operation name="GetMyleaveApplications">
+      <input name="GetMyleaveApplications" message="tns:GetMyleaveApplications" />
+      <output name="GetMyleaveApplications_Result" message="tns:GetMyleaveApplications_Result" />
+    </operation>
     <operation name="GetNextImprestSurrenderNo">
       <input name="GetNextImprestSurrenderNo" message="tns:GetNextImprestSurrenderNo" />
       <output name="GetNextImprestSurrenderNo_Result" message="tns:GetNextImprestSurrenderNo_Result" />
@@ -2313,6 +2423,14 @@
     <operation name="GetReceipts">
       <input name="GetReceipts" message="tns:GetReceipts" />
       <output name="GetReceipts_Result" message="tns:GetReceipts_Result" />
+    </operation>
+    <operation name="GetRelievers">
+      <input name="GetRelievers" message="tns:GetRelievers" />
+      <output name="GetRelievers_Result" message="tns:GetRelievers_Result" />
+    </operation>
+    <operation name="GetResponsibilityCentres">
+      <input name="GetResponsibilityCentres" message="tns:GetResponsibilityCentres" />
+      <output name="GetResponsibilityCentres_Result" message="tns:GetResponsibilityCentres_Result" />
     </operation>
     <operation name="GetStaffCitizenship">
       <input name="GetStaffCitizenship" message="tns:GetStaffCitizenship" />
@@ -2849,6 +2967,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetDefaultDays">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetDefaultDays" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetDefaultDays">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetDefaultDays_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetEmployeeLeaves">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetEmployeeLeaves" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetEmployeeLeaves">
@@ -2921,6 +3048,24 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetMyTrainingApplications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyTrainingApplications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyTrainingApplications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyTrainingApplications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyleaveApplications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyleaveApplications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyleaveApplications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyleaveApplications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetNextImprestSurrenderNo">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetNextImprestSurrenderNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetNextImprestSurrenderNo">
@@ -2954,6 +3099,24 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetReceipts_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRelievers">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetRelievers" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRelievers">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRelievers_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetResponsibilityCentres">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetResponsibilityCentres" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetResponsibilityCentres">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetResponsibilityCentres_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
