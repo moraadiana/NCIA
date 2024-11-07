@@ -18,6 +18,7 @@ namespace NCIASTaff
         SqlCommand command;
         Staffportall webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
+        string[] strLimiters2 = new string[] { "[]" };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -87,21 +88,14 @@ namespace NCIASTaff
                 ddlSupervisor.Items.Clear();
                 ddlParticipants.Items.Clear();
                 string username = Session["username"].ToString();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
+                string Supervisors = webportals.GetRelievers();
+                if (!string.IsNullOrEmpty(Supervisors))
                 {
-                    CommandText = "spGetRelievers",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
+                    string[] supervisorArr = Supervisors.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string supervisor in supervisorArr)
                     {
-                        //if (reader["No_"].ToString() == username) continue;
-                        ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["No_"].ToString());
+                        string[] responseArr = supervisor.Split(strLimiters, StringSplitOptions.None);
+                        ListItem li = new ListItem(responseArr[1], responseArr[0]);
                         ddlSupervisor.Items.Add(li);
                         ddlParticipants.Items.Add(li);
                     }

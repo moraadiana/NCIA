@@ -80,6 +80,7 @@ namespace NCIASTaff
                 {
                     var sqlConnectionString = ConfigurationManager.AppSettings["SqlConnection"];
 
+                   // connection = new SqlConnection(@"Data Source=102.210.149.230;Initial Catalog=Ncia;MultipleActiveResultSets=true;Async=true;User ID=webportals;Password=login*4");
                     connection = new SqlConnection(sqlConnectionString);
 
                     connection.Open();
