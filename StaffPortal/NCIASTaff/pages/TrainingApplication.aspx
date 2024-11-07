@@ -91,7 +91,8 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Trainer</label>
-                                                <asp:DropDownList ID="ddlTrainer" CssClass="form-control select2" runat="server"></asp:DropDownList>
+<%--                                                <asp:DropDownList ID="ddlTrainer" CssClass="form-control select2" runat="server"></asp:DropDownList>--%>
+                                                <asp:TextBox ID="txtTrainer" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>                                        
                                         <div class="col-md-3">

@@ -114,13 +114,13 @@ namespace NCIASTaff
         protected global::System.Web.UI.WebControls.DropDownList ddlTrainingCategory;
 
         /// <summary>
-        /// ddlTrainer control.
+        /// txtTrainer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTrainer;
+        protected global::System.Web.UI.WebControls.TextBox txtTrainer;
 
         /// <summary>
         /// ddlSponsor control.

@@ -200,7 +200,7 @@ namespace NCIASTaff
                 string country = ddlCountry.SelectedValue;
                 string supervisor = ddlSupervisor.SelectedValue;
                 string trainingCategory = ddlTrainingCategory.SelectedValue;
-                string trainer = ddlTrainer.SelectedValue;
+                string trainer = txtTrainer.Text;
                 string sponsor = ddlSponsor.SelectedValue;
                 string county = ddlCounty.SelectedValue;
                 string purpose = txtPurpose.Text;
