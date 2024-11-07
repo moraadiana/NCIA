@@ -205,20 +205,20 @@ namespace NCIASTaff
                 string county = ddlCounty.SelectedValue;
                 string purpose = txtPurpose.Text;
 
-                string response = webportals.HRMTrainingApplication(staffNo, supervisor, Convert.ToInt32(trainingCategory), individualCourse, purpose, Convert.ToInt32(sponsor), Convert.ToInt32(location), country, county, trainer, directorate,department);
-                if (!string.IsNullOrEmpty(response))
-                {
-                    string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
-                    string returnMsg = responseArr[0];
-                    if (returnMsg == "SUCCESS")
-                    {
-                        string trainingNo = responseArr[1];
-                        MultiView1.SetActiveView(vwLines);
-                        Session["TrainingNo"] = trainingNo;
-                        lblTrainingNo.Text = trainingNo;
-                        BindGridViewData(trainingNo);
-                    }
-                }
+                //string response = webportals.HRMTrainingApplication(staffNo, supervisor, Convert.ToInt32(trainingCategory), individualCourse, purpose, Convert.ToInt32(sponsor), Convert.ToInt32(location), country, county, trainer, directorate,department);
+                //if (!string.IsNullOrEmpty(response))
+                //{
+                //    string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
+                //    string returnMsg = responseArr[0];
+                //    if (returnMsg == "SUCCESS")
+                //    {
+                //        string trainingNo = responseArr[1];
+                //        MultiView1.SetActiveView(vwLines);
+                //        Session["TrainingNo"] = trainingNo;
+                //        lblTrainingNo.Text = trainingNo;
+                //        BindGridViewData(trainingNo);
+                //    }
+                //}
             }
             catch (Exception ex)
             {
@@ -275,20 +275,20 @@ namespace NCIASTaff
                     return;
                 }
 
-                string response = webportals.InsertHRMTrainingParticipants(trainingNo, participant, objective);
-                if(!string.IsNullOrEmpty(response))
-                {
-                    if (response == "SUCCESS")
-                    {
-                        Message("Training participant has been added successfully");
-                        txtObjective.Text = string.Empty;
-                        BindGridViewData(trainingNo);
-                    }
-                    else
-                    {
-                        Message(response);
-                    }
-                }
+                //string response = webportals.InsertHRMTrainingParticipants(trainingNo, participant, objective);
+                //if(!string.IsNullOrEmpty(response))
+                //{
+                //    if (response == "SUCCESS")
+                //    {
+                //        Message("Training participant has been added successfully");
+                //        txtObjective.Text = string.Empty;
+                //        BindGridViewData(trainingNo);
+                //    }
+                //    else
+                //    {
+                //        Message(response);
+                //    }
+                //}
             }
             catch(Exception ex)
             {
@@ -304,20 +304,20 @@ namespace NCIASTaff
                 args = (sender as LinkButton).CommandArgument.ToString().Split(';');
                 string employeeCode = args[0];
                 string trainingNo = lblTrainingNo.Text;
-                string response = webportals.RemoveHRMTrainingParticipant(trainingNo, employeeCode);
-                if(!string.IsNullOrEmpty(response))
-                {
-                    if(response == "SUCCESS")
-                    {
-                        Message("Training participant removed successfully");
-                        BindGridViewData(trainingNo);
-                    }
-                    else
-                    {
-                        Message("An error occured while removing the participant");
-                        return;
-                    }
-                }
+                //string response = webportals.RemoveHRMTrainingParticipant(trainingNo, employeeCode);
+                //if(!string.IsNullOrEmpty(response))
+                //{
+                //    if(response == "SUCCESS")
+                //    {
+                //        Message("Training participant removed successfully");
+                //        BindGridViewData(trainingNo);
+                //    }
+                //    else
+                //    {
+                //        Message("An error occured while removing the participant");
+                //        return;
+                //    }
+                //}
             }
             catch(Exception ex)
             {

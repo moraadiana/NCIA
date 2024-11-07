@@ -109,6 +109,21 @@
           </sequence>
         </complexType>
       </element>
+      <element name="ChangeStaffPassword">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="password" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ChangeStaffPassword_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="CheckStaffPasswordChanged">
         <complexType>
           <sequence>
@@ -131,6 +146,20 @@
         </complexType>
       </element>
       <element name="CheckValidStaffNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckValidVendorNo">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckValidVendorNo_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -296,6 +325,23 @@
           </sequence>
         </complexType>
       </element>
+      <element name="CreateVendorRFQquote">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="rfqNum" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="rfqPath" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="vendor" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateVendorRFQquote_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="DeleteDocumentAttachment">
         <complexType>
           <sequence>
@@ -420,6 +466,77 @@
           <sequence />
         </complexType>
       </element>
+      <element name="GenerateVendorLPO">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="vendorNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="lPONo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateVendorLPO_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateVendorRFQ">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="vendorNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="rFQNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateVendorRFQ_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateVendorRFQs">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="vendorNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="rFQNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateVendorRFQs_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateVendorStatement">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="vendorNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateVendorStatement_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="Generatep9Report">
         <complexType>
           <sequence>
@@ -528,6 +645,32 @@
         </complexType>
       </element>
       <element name="GetLeaveRelieverDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLeaveTypes1">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetLeaveTypes1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLeaveTypes">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="gender" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetLeaveTypes_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -718,31 +861,6 @@
           </sequence>
         </complexType>
       </element>
-      <element name="HRMTrainingApplication">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="supervisor" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="trainingCategory" type="int" />
-            <element minOccurs="1" maxOccurs="1" name="courseCode" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="sponsor" type="int" />
-            <element minOccurs="1" maxOccurs="1" name="location" type="int" />
-            <element minOccurs="1" maxOccurs="1" name="country" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="county" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="trainer" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="HRMTrainingApplication_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
       <element name="HasPendingLeaveApplication">
         <complexType>
           <sequence>
@@ -782,22 +900,6 @@
         </complexType>
       </element>
       <element name="InsertClaimRequisitionLines_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="InsertHRMTrainingParticipants">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="trainingCode" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="employeeCode" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="objective" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="InsertHRMTrainingParticipants_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1189,6 +1291,24 @@
           </sequence>
         </complexType>
       </element>
+      <element name="PurchaseQuoteCreate">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="businessCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="responsibilityCentre" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="userID" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="name" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PurchaseQuoteCreate_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="RegFileUploadAtt">
         <complexType>
           <sequence>
@@ -1215,21 +1335,6 @@
         </complexType>
       </element>
       <element name="RemoveClaimRequisitionLines_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="RemoveHRMTrainingParticipant">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="trainingCode" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="employeeCode" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="RemoveHRMTrainingParticipant_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1308,6 +1413,27 @@
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
           </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitPurchaseQuoteLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentType" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="functionNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="locationID" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="expectedDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="functionDesc" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="unitsOfMeasure" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="quantityz" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="unitcost" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="lineamount" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitPurchaseQuoteLine_Result">
+        <complexType>
+          <sequence />
         </complexType>
       </element>
       <element name="SubmitbacktoOffice">
@@ -1437,6 +1563,12 @@
   <message name="CanViewPaySlip_Result">
     <part name="parameters" element="tns:CanViewPaySlip_Result" />
   </message>
+  <message name="ChangeStaffPassword">
+    <part name="parameters" element="tns:ChangeStaffPassword" />
+  </message>
+  <message name="ChangeStaffPassword_Result">
+    <part name="parameters" element="tns:ChangeStaffPassword_Result" />
+  </message>
   <message name="CheckStaffPasswordChanged">
     <part name="parameters" element="tns:CheckStaffPasswordChanged" />
   </message>
@@ -1448,6 +1580,12 @@
   </message>
   <message name="CheckValidStaffNo_Result">
     <part name="parameters" element="tns:CheckValidStaffNo_Result" />
+  </message>
+  <message name="CheckValidVendorNo">
+    <part name="parameters" element="tns:CheckValidVendorNo" />
+  </message>
+  <message name="CheckValidVendorNo_Result">
+    <part name="parameters" element="tns:CheckValidVendorNo_Result" />
   </message>
   <message name="CreateClaimRequisitionHeader">
     <part name="parameters" element="tns:CreateClaimRequisitionHeader" />
@@ -1503,6 +1641,12 @@
   <message name="CreateStoreRequisitionHeader_Result">
     <part name="parameters" element="tns:CreateStoreRequisitionHeader_Result" />
   </message>
+  <message name="CreateVendorRFQquote">
+    <part name="parameters" element="tns:CreateVendorRFQquote" />
+  </message>
+  <message name="CreateVendorRFQquote_Result">
+    <part name="parameters" element="tns:CreateVendorRFQquote_Result" />
+  </message>
   <message name="DeleteDocumentAttachment">
     <part name="parameters" element="tns:DeleteDocumentAttachment" />
   </message>
@@ -1551,6 +1695,30 @@
   <message name="GenerateStaffLeaveStatement_Result">
     <part name="parameters" element="tns:GenerateStaffLeaveStatement_Result" />
   </message>
+  <message name="GenerateVendorLPO">
+    <part name="parameters" element="tns:GenerateVendorLPO" />
+  </message>
+  <message name="GenerateVendorLPO_Result">
+    <part name="parameters" element="tns:GenerateVendorLPO_Result" />
+  </message>
+  <message name="GenerateVendorRFQ">
+    <part name="parameters" element="tns:GenerateVendorRFQ" />
+  </message>
+  <message name="GenerateVendorRFQ_Result">
+    <part name="parameters" element="tns:GenerateVendorRFQ_Result" />
+  </message>
+  <message name="GenerateVendorRFQs">
+    <part name="parameters" element="tns:GenerateVendorRFQs" />
+  </message>
+  <message name="GenerateVendorRFQs_Result">
+    <part name="parameters" element="tns:GenerateVendorRFQs_Result" />
+  </message>
+  <message name="GenerateVendorStatement">
+    <part name="parameters" element="tns:GenerateVendorStatement" />
+  </message>
+  <message name="GenerateVendorStatement_Result">
+    <part name="parameters" element="tns:GenerateVendorStatement_Result" />
+  </message>
   <message name="Generatep9Report">
     <part name="parameters" element="tns:Generatep9Report" />
   </message>
@@ -1598,6 +1766,18 @@
   </message>
   <message name="GetLeaveRelieverDetails_Result">
     <part name="parameters" element="tns:GetLeaveRelieverDetails_Result" />
+  </message>
+  <message name="GetLeaveTypes1">
+    <part name="parameters" element="tns:GetLeaveTypes1" />
+  </message>
+  <message name="GetLeaveTypes1_Result">
+    <part name="parameters" element="tns:GetLeaveTypes1_Result" />
+  </message>
+  <message name="GetLeaveTypes">
+    <part name="parameters" element="tns:GetLeaveTypes" />
+  </message>
+  <message name="GetLeaveTypes_Result">
+    <part name="parameters" element="tns:GetLeaveTypes_Result" />
   </message>
   <message name="GetMyApplications">
     <part name="parameters" element="tns:GetMyApplications" />
@@ -1677,12 +1857,6 @@
   <message name="HRMLeaveApplication_Result">
     <part name="parameters" element="tns:HRMLeaveApplication_Result" />
   </message>
-  <message name="HRMTrainingApplication">
-    <part name="parameters" element="tns:HRMTrainingApplication" />
-  </message>
-  <message name="HRMTrainingApplication_Result">
-    <part name="parameters" element="tns:HRMTrainingApplication_Result" />
-  </message>
   <message name="HasPendingLeaveApplication">
     <part name="parameters" element="tns:HasPendingLeaveApplication" />
   </message>
@@ -1700,12 +1874,6 @@
   </message>
   <message name="InsertClaimRequisitionLines_Result">
     <part name="parameters" element="tns:InsertClaimRequisitionLines_Result" />
-  </message>
-  <message name="InsertHRMTrainingParticipants">
-    <part name="parameters" element="tns:InsertHRMTrainingParticipants" />
-  </message>
-  <message name="InsertHRMTrainingParticipants_Result">
-    <part name="parameters" element="tns:InsertHRMTrainingParticipants_Result" />
   </message>
   <message name="InsertImprestRequisitonLines">
     <part name="parameters" element="tns:InsertImprestRequisitonLines" />
@@ -1869,6 +2037,12 @@
   <message name="OnsendLeaveRequisitionForApproval_Result">
     <part name="parameters" element="tns:OnsendLeaveRequisitionForApproval_Result" />
   </message>
+  <message name="PurchaseQuoteCreate">
+    <part name="parameters" element="tns:PurchaseQuoteCreate" />
+  </message>
+  <message name="PurchaseQuoteCreate_Result">
+    <part name="parameters" element="tns:PurchaseQuoteCreate_Result" />
+  </message>
   <message name="RegFileUploadAtt">
     <part name="parameters" element="tns:RegFileUploadAtt" />
   </message>
@@ -1880,12 +2054,6 @@
   </message>
   <message name="RemoveClaimRequisitionLines_Result">
     <part name="parameters" element="tns:RemoveClaimRequisitionLines_Result" />
-  </message>
-  <message name="RemoveHRMTrainingParticipant">
-    <part name="parameters" element="tns:RemoveHRMTrainingParticipant" />
-  </message>
-  <message name="RemoveHRMTrainingParticipant_Result">
-    <part name="parameters" element="tns:RemoveHRMTrainingParticipant_Result" />
   </message>
   <message name="RemoveImprestRequisitionLine">
     <part name="parameters" element="tns:RemoveImprestRequisitionLine" />
@@ -1916,6 +2084,12 @@
   </message>
   <message name="StaffLogin_Result">
     <part name="parameters" element="tns:StaffLogin_Result" />
+  </message>
+  <message name="SubmitPurchaseQuoteLine">
+    <part name="parameters" element="tns:SubmitPurchaseQuoteLine" />
+  </message>
+  <message name="SubmitPurchaseQuoteLine_Result">
+    <part name="parameters" element="tns:SubmitPurchaseQuoteLine_Result" />
   </message>
   <message name="SubmitbacktoOffice">
     <part name="parameters" element="tns:SubmitbacktoOffice" />
@@ -1976,6 +2150,10 @@
       <input name="CanViewPaySlip" message="tns:CanViewPaySlip" />
       <output name="CanViewPaySlip_Result" message="tns:CanViewPaySlip_Result" />
     </operation>
+    <operation name="ChangeStaffPassword">
+      <input name="ChangeStaffPassword" message="tns:ChangeStaffPassword" />
+      <output name="ChangeStaffPassword_Result" message="tns:ChangeStaffPassword_Result" />
+    </operation>
     <operation name="CheckStaffPasswordChanged">
       <input name="CheckStaffPasswordChanged" message="tns:CheckStaffPasswordChanged" />
       <output name="CheckStaffPasswordChanged_Result" message="tns:CheckStaffPasswordChanged_Result" />
@@ -1983,6 +2161,10 @@
     <operation name="CheckValidStaffNo">
       <input name="CheckValidStaffNo" message="tns:CheckValidStaffNo" />
       <output name="CheckValidStaffNo_Result" message="tns:CheckValidStaffNo_Result" />
+    </operation>
+    <operation name="CheckValidVendorNo">
+      <input name="CheckValidVendorNo" message="tns:CheckValidVendorNo" />
+      <output name="CheckValidVendorNo_Result" message="tns:CheckValidVendorNo_Result" />
     </operation>
     <operation name="CreateClaimRequisitionHeader">
       <input name="CreateClaimRequisitionHeader" message="tns:CreateClaimRequisitionHeader" />
@@ -2020,6 +2202,10 @@
       <input name="CreateStoreRequisitionHeader" message="tns:CreateStoreRequisitionHeader" />
       <output name="CreateStoreRequisitionHeader_Result" message="tns:CreateStoreRequisitionHeader_Result" />
     </operation>
+    <operation name="CreateVendorRFQquote">
+      <input name="CreateVendorRFQquote" message="tns:CreateVendorRFQquote" />
+      <output name="CreateVendorRFQquote_Result" message="tns:CreateVendorRFQquote_Result" />
+    </operation>
     <operation name="DeleteDocumentAttachment">
       <input name="DeleteDocumentAttachment" message="tns:DeleteDocumentAttachment" />
       <output name="DeleteDocumentAttachment_Result" message="tns:DeleteDocumentAttachment_Result" />
@@ -2052,6 +2238,22 @@
       <input name="GenerateStaffLeaveStatement" message="tns:GenerateStaffLeaveStatement" />
       <output name="GenerateStaffLeaveStatement_Result" message="tns:GenerateStaffLeaveStatement_Result" />
     </operation>
+    <operation name="GenerateVendorLPO">
+      <input name="GenerateVendorLPO" message="tns:GenerateVendorLPO" />
+      <output name="GenerateVendorLPO_Result" message="tns:GenerateVendorLPO_Result" />
+    </operation>
+    <operation name="GenerateVendorRFQ">
+      <input name="GenerateVendorRFQ" message="tns:GenerateVendorRFQ" />
+      <output name="GenerateVendorRFQ_Result" message="tns:GenerateVendorRFQ_Result" />
+    </operation>
+    <operation name="GenerateVendorRFQs">
+      <input name="GenerateVendorRFQs" message="tns:GenerateVendorRFQs" />
+      <output name="GenerateVendorRFQs_Result" message="tns:GenerateVendorRFQs_Result" />
+    </operation>
+    <operation name="GenerateVendorStatement">
+      <input name="GenerateVendorStatement" message="tns:GenerateVendorStatement" />
+      <output name="GenerateVendorStatement_Result" message="tns:GenerateVendorStatement_Result" />
+    </operation>
     <operation name="Generatep9Report">
       <input name="Generatep9Report" message="tns:Generatep9Report" />
       <output name="Generatep9Report_Result" message="tns:Generatep9Report_Result" />
@@ -2083,6 +2285,14 @@
     <operation name="GetLeaveRelieverDetails">
       <input name="GetLeaveRelieverDetails" message="tns:GetLeaveRelieverDetails" />
       <output name="GetLeaveRelieverDetails_Result" message="tns:GetLeaveRelieverDetails_Result" />
+    </operation>
+    <operation name="GetLeaveTypes1">
+      <input name="GetLeaveTypes1" message="tns:GetLeaveTypes1" />
+      <output name="GetLeaveTypes1_Result" message="tns:GetLeaveTypes1_Result" />
+    </operation>
+    <operation name="GetLeaveTypes">
+      <input name="GetLeaveTypes" message="tns:GetLeaveTypes" />
+      <output name="GetLeaveTypes_Result" message="tns:GetLeaveTypes_Result" />
     </operation>
     <operation name="GetMyApplications">
       <input name="GetMyApplications" message="tns:GetMyApplications" />
@@ -2136,10 +2346,6 @@
       <input name="HRMLeaveApplication" message="tns:HRMLeaveApplication" />
       <output name="HRMLeaveApplication_Result" message="tns:HRMLeaveApplication_Result" />
     </operation>
-    <operation name="HRMTrainingApplication">
-      <input name="HRMTrainingApplication" message="tns:HRMTrainingApplication" />
-      <output name="HRMTrainingApplication_Result" message="tns:HRMTrainingApplication_Result" />
-    </operation>
     <operation name="HasPendingLeaveApplication">
       <input name="HasPendingLeaveApplication" message="tns:HasPendingLeaveApplication" />
       <output name="HasPendingLeaveApplication_Result" message="tns:HasPendingLeaveApplication_Result" />
@@ -2151,10 +2357,6 @@
     <operation name="InsertClaimRequisitionLines">
       <input name="InsertClaimRequisitionLines" message="tns:InsertClaimRequisitionLines" />
       <output name="InsertClaimRequisitionLines_Result" message="tns:InsertClaimRequisitionLines_Result" />
-    </operation>
-    <operation name="InsertHRMTrainingParticipants">
-      <input name="InsertHRMTrainingParticipants" message="tns:InsertHRMTrainingParticipants" />
-      <output name="InsertHRMTrainingParticipants_Result" message="tns:InsertHRMTrainingParticipants_Result" />
     </operation>
     <operation name="InsertImprestRequisitonLines">
       <input name="InsertImprestRequisitonLines" message="tns:InsertImprestRequisitonLines" />
@@ -2264,6 +2466,10 @@
       <input name="OnsendLeaveRequisitionForApproval" message="tns:OnsendLeaveRequisitionForApproval" />
       <output name="OnsendLeaveRequisitionForApproval_Result" message="tns:OnsendLeaveRequisitionForApproval_Result" />
     </operation>
+    <operation name="PurchaseQuoteCreate">
+      <input name="PurchaseQuoteCreate" message="tns:PurchaseQuoteCreate" />
+      <output name="PurchaseQuoteCreate_Result" message="tns:PurchaseQuoteCreate_Result" />
+    </operation>
     <operation name="RegFileUploadAtt">
       <input name="RegFileUploadAtt" message="tns:RegFileUploadAtt" />
       <output name="RegFileUploadAtt_Result" message="tns:RegFileUploadAtt_Result" />
@@ -2271,10 +2477,6 @@
     <operation name="RemoveClaimRequisitionLines">
       <input name="RemoveClaimRequisitionLines" message="tns:RemoveClaimRequisitionLines" />
       <output name="RemoveClaimRequisitionLines_Result" message="tns:RemoveClaimRequisitionLines_Result" />
-    </operation>
-    <operation name="RemoveHRMTrainingParticipant">
-      <input name="RemoveHRMTrainingParticipant" message="tns:RemoveHRMTrainingParticipant" />
-      <output name="RemoveHRMTrainingParticipant_Result" message="tns:RemoveHRMTrainingParticipant_Result" />
     </operation>
     <operation name="RemoveImprestRequisitionLine">
       <input name="RemoveImprestRequisitionLine" message="tns:RemoveImprestRequisitionLine" />
@@ -2295,6 +2497,10 @@
     <operation name="StaffLogin">
       <input name="StaffLogin" message="tns:StaffLogin" />
       <output name="StaffLogin_Result" message="tns:StaffLogin_Result" />
+    </operation>
+    <operation name="SubmitPurchaseQuoteLine">
+      <input name="SubmitPurchaseQuoteLine" message="tns:SubmitPurchaseQuoteLine" />
+      <output name="SubmitPurchaseQuoteLine_Result" message="tns:SubmitPurchaseQuoteLine_Result" />
     </operation>
     <operation name="SubmitbacktoOffice">
       <input name="SubmitbacktoOffice" message="tns:SubmitbacktoOffice" />
@@ -2382,6 +2588,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="ChangeStaffPassword">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:ChangeStaffPassword" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ChangeStaffPassword">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ChangeStaffPassword_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="CheckStaffPasswordChanged">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CheckStaffPasswordChanged" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="CheckStaffPasswordChanged">
@@ -2397,6 +2612,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="CheckValidStaffNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CheckValidVendorNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CheckValidVendorNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckValidVendorNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckValidVendorNo_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -2481,6 +2705,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="CreateVendorRFQquote">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateVendorRFQquote" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateVendorRFQquote">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateVendorRFQquote_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="DeleteDocumentAttachment">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:DeleteDocumentAttachment" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="DeleteDocumentAttachment">
@@ -2553,6 +2786,42 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GenerateVendorLPO">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GenerateVendorLPO" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateVendorLPO">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateVendorLPO_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateVendorRFQ">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GenerateVendorRFQ" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateVendorRFQ">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateVendorRFQ_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateVendorRFQs">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GenerateVendorRFQs" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateVendorRFQs">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateVendorRFQs_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateVendorStatement">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GenerateVendorStatement" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateVendorStatement">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateVendorStatement_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="Generatep9Report">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:Generatep9Report" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="Generatep9Report">
@@ -2622,6 +2891,24 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetLeaveRelieverDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetLeaveTypes1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetLeaveTypes1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLeaveTypes1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLeaveTypes1_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetLeaveTypes">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetLeaveTypes" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLeaveTypes">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLeaveTypes_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -2742,15 +3029,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
-    <operation name="HRMTrainingApplication">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:HRMTrainingApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="HRMTrainingApplication">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="HRMTrainingApplication_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
     <operation name="HasPendingLeaveApplication">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:HasPendingLeaveApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="HasPendingLeaveApplication">
@@ -2775,15 +3053,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="InsertClaimRequisitionLines_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="InsertHRMTrainingParticipants">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertHRMTrainingParticipants" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="InsertHRMTrainingParticipants">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="InsertHRMTrainingParticipants_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3030,6 +3299,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="PurchaseQuoteCreate">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:PurchaseQuoteCreate" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="PurchaseQuoteCreate">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="PurchaseQuoteCreate_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="RegFileUploadAtt">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:RegFileUploadAtt" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="RegFileUploadAtt">
@@ -3045,15 +3323,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="RemoveClaimRequisitionLines_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="RemoveHRMTrainingParticipant">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:RemoveHRMTrainingParticipant" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="RemoveHRMTrainingParticipant">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="RemoveHRMTrainingParticipant_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3099,6 +3368,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="StaffLogin_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SubmitPurchaseQuoteLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:SubmitPurchaseQuoteLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SubmitPurchaseQuoteLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SubmitPurchaseQuoteLine_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3150,7 +3428,7 @@
   </binding>
   <service name="Staffportall">
     <port name="Staffportall_Port" binding="tns:Staffportall_Binding">
-      <address location="http://10.107.8.40:1047/Ncia1/WS/NCIA%20TEST%201/Codeunit/Staffportall" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA%20TEST/Codeunit/Staffportall" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

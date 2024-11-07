@@ -132,23 +132,29 @@ namespace NCIASTaff.pages
             try
             {
                 string gender = Components.EmployeeGender;
-                ddlLeaveType.Items.Clear();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
+                string LeaveTypeList = webportals.GetLeaveTypes(gender);
+
+                if (!string.IsNullOrEmpty(LeaveTypeList))
                 {
-                    CommandText = "spGetLeaveTypes",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@gender", "'" + gender + "'");
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
+
+                    string[] LeaveTypeLines = LeaveTypeList.Split('|');
+
+
+                    ddlLeaveType.Items.Clear();
+
+                    foreach (string LeaveTypeLine in LeaveTypeLines)
                     {
-                        ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["Code"].ToString());
-                        ddlLeaveType.Items.Add(li);
+
+                        string[] details = LeaveTypeLine.Split(new string[] { "::" }, StringSplitOptions.None);
+                        if (details.Length == 2)
+                        {
+                            string Code = details[0];
+                            string Description = details[1];
+
+                            // Add new item to the dropdown list
+                            System.Web.UI.WebControls.ListItem listItem = new System.Web.UI.WebControls.ListItem($"{Code} - {Description}", Code);
+                            ddlLeaveType.Items.Add(listItem);
+                        }
                     }
                 }
             }
@@ -278,6 +284,8 @@ namespace NCIASTaff.pages
             }
             return relieverEmail;
         }
+
+
 
         protected void ddlLeaveType_SelectedIndexChanged(object sender, EventArgs e)
         {

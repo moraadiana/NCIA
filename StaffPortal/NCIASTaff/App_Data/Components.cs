@@ -15,7 +15,7 @@ namespace NCIASTaff
     public class Components
     {
         public static SqlConnection connection;
-        public static string Company_Name = "NCIA TEST 1";
+        public static string Company_Name = "NCIA TEST";
 
         public static string ReportsPath()
         {
@@ -92,7 +92,7 @@ namespace NCIASTaff
             return connection;
         }
 
-        public static string EmployeeGender
+       /* public static string EmployeeGender
         {
             get
             {
@@ -118,6 +118,41 @@ namespace NCIASTaff
                 return s;
             }
         }
+       */
+       public static string EmployeeGender
+{
+    get
+    {
+        string genderValue = "";
+
+        try
+        {
+            // Retrieve username from session
+            var username = HttpContext.Current.Session["username"];
+            if (username == null || string.IsNullOrEmpty(username.ToString()))
+            {
+                throw new Exception("Session variable 'username' is not set or is empty.");
+            }
+
+            // Initialize the web service client for GetStaffGender
+            var client = new Staffportall(); // Replace with actual client name
+                    client.Credentials = new NetworkCredential("webportals", "Webportals@2024");
+                    genderValue = client.GetStaffGender(username.ToString()); // Call the AL procedure via web service
+
+            if (string.IsNullOrEmpty(genderValue))
+            {
+                Console.WriteLine("Gender not returned for user: " + username.ToString());
+            }
+        }
+        catch (Exception ex)
+        {
+            // Log the exception to see what went wrong
+            Console.WriteLine("Error retrieving EmployeeGender: " + ex.Message);
+        }
+
+        return genderValue;
+    }
+}
 
         public static bool IsNumeric(string no)
         {
