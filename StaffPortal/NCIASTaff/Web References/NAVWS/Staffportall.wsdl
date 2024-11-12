@@ -419,7 +419,7 @@
           <sequence />
         </complexType>
       </element>
-      <element name="GeneratePaySlipReport3">
+      <element name="GeneratePaySlipReport31">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
@@ -428,7 +428,7 @@
           </sequence>
         </complexType>
       </element>
-      <element name="GeneratePaySlipReport3_Result">
+      <element name="GeneratePaySlipReport31_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -451,6 +451,20 @@
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
             <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
           </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePayslipReport3">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="period" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="fileNameFromApp" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePayslipReport3_Result">
+        <complexType>
+          <sequence />
         </complexType>
       </element>
       <element name="GenerateStaffLeaveStatement">
@@ -623,6 +637,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetImprestLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="memoNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetImprestLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetItemQuantity">
         <complexType>
           <sequence>
@@ -705,6 +733,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetMyImprests">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyImprests_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetMyTrainingApplications">
         <complexType>
           <sequence>
@@ -751,6 +793,30 @@
         </complexType>
       </element>
       <element name="GetNextPettyCashNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPayslipMonths">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetPayslipMonths_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPayslipYears">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetPayslipYears_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1745,17 +1811,23 @@
   <message name="GenerateMemoReport_Result">
     <part name="parameters" element="tns:GenerateMemoReport_Result" />
   </message>
-  <message name="GeneratePaySlipReport3">
-    <part name="parameters" element="tns:GeneratePaySlipReport3" />
+  <message name="GeneratePaySlipReport31">
+    <part name="parameters" element="tns:GeneratePaySlipReport31" />
   </message>
-  <message name="GeneratePaySlipReport3_Result">
-    <part name="parameters" element="tns:GeneratePaySlipReport3_Result" />
+  <message name="GeneratePaySlipReport31_Result">
+    <part name="parameters" element="tns:GeneratePaySlipReport31_Result" />
   </message>
   <message name="GeneratePaySlipReport">
     <part name="parameters" element="tns:GeneratePaySlipReport" />
   </message>
   <message name="GeneratePaySlipReport_Result">
     <part name="parameters" element="tns:GeneratePaySlipReport_Result" />
+  </message>
+  <message name="GeneratePayslipReport3">
+    <part name="parameters" element="tns:GeneratePayslipReport3" />
+  </message>
+  <message name="GeneratePayslipReport3_Result">
+    <part name="parameters" element="tns:GeneratePayslipReport3_Result" />
   </message>
   <message name="GenerateStaffLeaveStatement">
     <part name="parameters" element="tns:GenerateStaffLeaveStatement" />
@@ -1823,6 +1895,12 @@
   <message name="GetImprestDetails_Result">
     <part name="parameters" element="tns:GetImprestDetails_Result" />
   </message>
+  <message name="GetImprestLines">
+    <part name="parameters" element="tns:GetImprestLines" />
+  </message>
+  <message name="GetImprestLines_Result">
+    <part name="parameters" element="tns:GetImprestLines_Result" />
+  </message>
   <message name="GetItemQuantity">
     <part name="parameters" element="tns:GetItemQuantity" />
   </message>
@@ -1859,6 +1937,12 @@
   <message name="GetMyApplications_Result">
     <part name="parameters" element="tns:GetMyApplications_Result" />
   </message>
+  <message name="GetMyImprests">
+    <part name="parameters" element="tns:GetMyImprests" />
+  </message>
+  <message name="GetMyImprests_Result">
+    <part name="parameters" element="tns:GetMyImprests_Result" />
+  </message>
   <message name="GetMyTrainingApplications">
     <part name="parameters" element="tns:GetMyTrainingApplications" />
   </message>
@@ -1882,6 +1966,18 @@
   </message>
   <message name="GetNextPettyCashNo_Result">
     <part name="parameters" element="tns:GetNextPettyCashNo_Result" />
+  </message>
+  <message name="GetPayslipMonths">
+    <part name="parameters" element="tns:GetPayslipMonths" />
+  </message>
+  <message name="GetPayslipMonths_Result">
+    <part name="parameters" element="tns:GetPayslipMonths_Result" />
+  </message>
+  <message name="GetPayslipYears">
+    <part name="parameters" element="tns:GetPayslipYears" />
+  </message>
+  <message name="GetPayslipYears_Result">
+    <part name="parameters" element="tns:GetPayslipYears_Result" />
   </message>
   <message name="GetPettyCashDetails">
     <part name="parameters" element="tns:GetPettyCashDetails" />
@@ -2324,13 +2420,17 @@
       <input name="GenerateMemoReport" message="tns:GenerateMemoReport" />
       <output name="GenerateMemoReport_Result" message="tns:GenerateMemoReport_Result" />
     </operation>
-    <operation name="GeneratePaySlipReport3">
-      <input name="GeneratePaySlipReport3" message="tns:GeneratePaySlipReport3" />
-      <output name="GeneratePaySlipReport3_Result" message="tns:GeneratePaySlipReport3_Result" />
+    <operation name="GeneratePaySlipReport31">
+      <input name="GeneratePaySlipReport31" message="tns:GeneratePaySlipReport31" />
+      <output name="GeneratePaySlipReport31_Result" message="tns:GeneratePaySlipReport31_Result" />
     </operation>
     <operation name="GeneratePaySlipReport">
       <input name="GeneratePaySlipReport" message="tns:GeneratePaySlipReport" />
       <output name="GeneratePaySlipReport_Result" message="tns:GeneratePaySlipReport_Result" />
+    </operation>
+    <operation name="GeneratePayslipReport3">
+      <input name="GeneratePayslipReport3" message="tns:GeneratePayslipReport3" />
+      <output name="GeneratePayslipReport3_Result" message="tns:GeneratePayslipReport3_Result" />
     </operation>
     <operation name="GenerateStaffLeaveStatement">
       <input name="GenerateStaffLeaveStatement" message="tns:GenerateStaffLeaveStatement" />
@@ -2376,6 +2476,10 @@
       <input name="GetImprestDetails" message="tns:GetImprestDetails" />
       <output name="GetImprestDetails_Result" message="tns:GetImprestDetails_Result" />
     </operation>
+    <operation name="GetImprestLines">
+      <input name="GetImprestLines" message="tns:GetImprestLines" />
+      <output name="GetImprestLines_Result" message="tns:GetImprestLines_Result" />
+    </operation>
     <operation name="GetItemQuantity">
       <input name="GetItemQuantity" message="tns:GetItemQuantity" />
       <output name="GetItemQuantity_Result" message="tns:GetItemQuantity_Result" />
@@ -2400,6 +2504,10 @@
       <input name="GetMyApplications" message="tns:GetMyApplications" />
       <output name="GetMyApplications_Result" message="tns:GetMyApplications_Result" />
     </operation>
+    <operation name="GetMyImprests">
+      <input name="GetMyImprests" message="tns:GetMyImprests" />
+      <output name="GetMyImprests_Result" message="tns:GetMyImprests_Result" />
+    </operation>
     <operation name="GetMyTrainingApplications">
       <input name="GetMyTrainingApplications" message="tns:GetMyTrainingApplications" />
       <output name="GetMyTrainingApplications_Result" message="tns:GetMyTrainingApplications_Result" />
@@ -2415,6 +2523,14 @@
     <operation name="GetNextPettyCashNo">
       <input name="GetNextPettyCashNo" message="tns:GetNextPettyCashNo" />
       <output name="GetNextPettyCashNo_Result" message="tns:GetNextPettyCashNo_Result" />
+    </operation>
+    <operation name="GetPayslipMonths">
+      <input name="GetPayslipMonths" message="tns:GetPayslipMonths" />
+      <output name="GetPayslipMonths_Result" message="tns:GetPayslipMonths_Result" />
+    </operation>
+    <operation name="GetPayslipYears">
+      <input name="GetPayslipYears" message="tns:GetPayslipYears" />
+      <output name="GetPayslipYears_Result" message="tns:GetPayslipYears_Result" />
     </operation>
     <operation name="GetPettyCashDetails">
       <input name="GetPettyCashDetails" message="tns:GetPettyCashDetails" />
@@ -2877,12 +2993,12 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
-    <operation name="GeneratePaySlipReport3">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePaySlipReport3" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="GeneratePaySlipReport3">
+    <operation name="GeneratePaySlipReport31">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePaySlipReport31" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePaySlipReport31">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
-      <output name="GeneratePaySlipReport3_Result">
+      <output name="GeneratePaySlipReport31_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -2892,6 +3008,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GeneratePaySlipReport_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GeneratePayslipReport3">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePayslipReport3" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePayslipReport3">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GeneratePayslipReport3_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -2994,6 +3119,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetImprestLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetImprestLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetImprestLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetImprestLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetItemQuantity">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetItemQuantity" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetItemQuantity">
@@ -3048,6 +3182,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetMyImprests">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyImprests" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyImprests">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyImprests_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetMyTrainingApplications">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyTrainingApplications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetMyTrainingApplications">
@@ -3081,6 +3224,24 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetNextPettyCashNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPayslipMonths">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPayslipMonths" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPayslipMonths">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPayslipMonths_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPayslipYears">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPayslipYears" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPayslipYears">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPayslipYears_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

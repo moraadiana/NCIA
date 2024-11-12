@@ -15,24 +15,6 @@ namespace NCIASTaff.pages
     {
 
         /// <summary>
-        /// ddlApprovedMemos control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlApprovedMemos;
-
-        /// <summary>
-        /// ddlResponsibilityCenter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlResponsibilityCenter;
-
-        /// <summary>
         /// imprestDetails control.
         /// </summary>
         /// <remarks>
@@ -130,6 +112,15 @@ namespace NCIASTaff.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblStatus;
+
+        /// <summary>
+        /// lblResCenter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblResCenter;
 
         /// <summary>
         /// txtPurpose control.

@@ -7010,6 +7010,10 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Downloads\Leave-Statement-NCIA00002.pdf" />
+    <Content Include="Downloads\Leave-Statement-NCIA00009.pdf" />
+    <Content Include="Downloads\MemoReport-NCIA00001.pdf" />
+    <Content Include="Downloads\MemoReport-NCIA00009.pdf" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />

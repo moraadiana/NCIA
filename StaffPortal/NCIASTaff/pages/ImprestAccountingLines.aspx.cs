@@ -96,38 +96,75 @@ namespace NCIASTaff.pages
             }
         }
 
+        /*  private void LoadResponsibilityCenter()
+          {
+              try
+              {
+                      ddlResponsibilityCenter.Items.Clear();
+                          connection = Components.GetconnToNAV();
+                          command = new SqlCommand()
+                          {
+                              CommandText = "spdocumentResponsibilityCentre",
+                              CommandType = CommandType.StoredProcedure,
+                              Connection = connection
+                          };
+                          command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
+                          reader = command.ExecuteReader();
+                          if (reader.HasRows)
+                          {
+                              while (reader.Read())
+                              {
+                                  ListItem li = new ListItem( reader["Code"].ToString());
+                                  ddlResponsibilityCenter.Items.Add(li);
+
+                              }
+                          }
+              }
+              catch (Exception ex)
+              {
+                  ex.Data.Clear();
+              }
+
+          }*/
         private void LoadResponsibilityCenter()
         {
             try
             {
-        
-                ddlResponsibilityCenter.Items.Clear();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spGetImprestSurrReponsibilityCentre",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["Code"].ToString());
-                        ddlResponsibilityCenter.Items.Add(li);
+                // Define the grouping parameter to fetch responsibility centers
+                string grouping = "imprest";
 
+                // Call the GetResponsibilityCentres function and retrieve the responsibility centers string
+                string responsibilityCenters = webportals.GetResponsibilityCentres(grouping);
+
+                // Clear existing items from the dropdown list
+                ddlResponsibilityCenter.Items.Clear();
+
+                if (!string.IsNullOrEmpty(responsibilityCenters))
+                {
+                    // Split the responsibility centers using '[]' as a delimiter for each center
+                    string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    // Iterate over each center, parse the Code and Name, and add to dropdown
+                    foreach (string center in centers)
+                    {
+                        string[] fields = center.Split(new string[] { "::" }, StringSplitOptions.None);
+                        if (fields.Length == 2)  // Ensure both Code and Name are present
+                        {
+                            // Create a new list item with Code as the value and Name as the text
+                            ListItem li = new ListItem(fields[0], fields[1]);
+                            ddlResponsibilityCenter.Items.Add(li);
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
+                // Log exception or handle it as required
                 ex.Data.Clear();
             }
-           
         }
-      
+
+
         private void BindGridViewData()
         {
             try
@@ -324,10 +361,10 @@ namespace NCIASTaff.pages
                 if (fuImprestDocs.PostedFile != null)
                 {
                     string username = Session["username"].ToString();
-                    string filePath = fuImprestDocs.PostedFile.FileName.Replace(" ", "-");
-                    string fileName = fuImprestDocs.FileName.Replace(" ", "-");
+                    string filePath = fuImprestDocs.PostedFile.FileName.Replace(" ", "-").Replace("/", "-");
+                    string fileName = fuImprestDocs.FileName.Replace(" ", "-").Replace("/", "-");
                     string fileExtension = Path.GetExtension(fileName).Split('.')[1].ToLower();
-                    string DocumentNo = Session["DocumentNo"].ToString();
+                    string DocumentNo = Session["DocumentNo"].ToString().Replace("/", "-");
                     if (fileExtension == "pdf" || fileExtension == "jpg" || fileExtension == "png" || fileExtension == "jpeg" || fileExtension == "docx" || fileExtension == "doc")
                     {
                         string strPath = Server.MapPath("~/Uploads");

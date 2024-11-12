@@ -20,6 +20,7 @@ namespace NCIASTaff.pages
         SqlDataAdapter adapter;
         Staffportall webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
+        string[] strLimiters2 = new string[] { "[]" };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -29,13 +30,13 @@ namespace NCIASTaff.pages
                     Response.Redirect("~/Default.aspx");
                     return;
                 }
-                LoadApprovedMemos();
-                LoadResponsibilityCenters();
+              ///  LoadApprovedMemos();
+              //  LoadResponsibilityCenters();
 
                 if (Request.QueryString["ImprestNo"] != null)
                 {
                     string imprestNo = Request.QueryString["ImprestNo"].ToString();
-                    ddlApprovedMemos.SelectedValue = imprestNo;
+                    //ddlApprovedMemos.SelectedValue = imprestNo;
                 }
                 LoadImprestDetails();
                 BindGridViewData();
@@ -57,49 +58,76 @@ namespace NCIASTaff.pages
             }
         }
 
+        
+ 
         private void BindGridViewData()
         {
-            try
+            string imprestNo = Request.QueryString["ImprestNo"].ToString();
+            string imprestReqLines = webportals.GetImprestLines(imprestNo);
+
+            if (!string.IsNullOrEmpty(imprestReqLines))
             {
-                string username = Session["username"].ToString();
-                string imprestNo = ddlApprovedMemos.SelectedValue.ToString();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spMemoImprestLines",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@ImprestNo", "'" + imprestNo + "'");
-                command.Parameters.AddWithValue("@username", "'" + username + "'");
-                adapter = new SqlDataAdapter();
-                adapter.SelectCommand = command;
+                // Assuming the data is separated by '[]' for each line and '::' for each field within a line.
                 DataTable dt = new DataTable();
-                adapter.Fill(dt);
+                dt.Columns.Add("No");
+                dt.Columns.Add("Advance Type");
+                dt.Columns.Add("Account No:");
+                dt.Columns.Add("Account Name");
+                dt.Columns.Add("Amount", typeof(decimal));
+
+                string[] lines = imprestReqLines.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+
+                foreach (string line in lines)
+                {
+                    string[] fields = line.Split(strLimiters, StringSplitOptions.None);
+                    if (fields.Length == 5)  // Ensure all fields are present
+                    {
+                        DataRow row = dt.NewRow();
+                        row["No"] = fields[0];
+                        row["Advance Type"] = fields[1];
+                        row["Account No:"] = fields[2];
+                        row["Account Name"] = fields[3];
+                        decimal amount;
+                        if (decimal.TryParse(fields[4], out amount))
+                        {
+                            row["Amount"] = amount;
+                        }
+                        else
+                        {
+                            row["Amount"] = 0;  // Set to 0 if parsing fails, or handle as needed
+                        }
+                        dt.Rows.Add(row);
+                    }
+                }
+
                 gvLines.DataSource = dt;
                 gvLines.DataBind();
-                connection.Close();
-                decimal totalAmount = 0;
 
-                foreach (GridViewRow row in gvLines.Rows)
+                // Calculate total amount and format each row
+                decimal totalAmount = 0;
+                
+                foreach (DataRow row in dt.Rows)
                 {
-                    totalAmount += Convert.ToDecimal(row.Cells[5].Text);
-                    lblTotalNetAmount.Text = String.Format("{0:#,##0.00}", totalAmount);
-                    row.Cells[5].Text = String.Format("{0:#,##0.00}", Convert.ToDecimal(row.Cells[5].Text));
+                    totalAmount += Convert.ToDecimal(row["Amount"]);
                 }
+
+                // Display total amount in lblTotalNetAmount
+                lblTotalNetAmount.Text = String.Format("{0:#,##0.00}", totalAmount);
             }
-            catch (Exception ex)
+            else
             {
-                ex.Data.Clear();
+                lblTotalNetAmount.Text = "0.00";
             }
         }
+
+
 
         private void BindAttachedDocuments()
         {
             try
             {
-                string imprestNo = ddlApprovedMemos.SelectedValue.ToString();
+                // string imprestNo = ddlApprovedMemos.SelectedValue.ToString();
+                string imprestNo = Request.QueryString["ImprestNo"].ToString();
                 connection = Components.GetconnToNAV();
                 command = new SqlCommand()
                 {
@@ -128,73 +156,74 @@ namespace NCIASTaff.pages
             }
         }
 
-        private void LoadApprovedMemos()
-        {
-            try
-            {
-                string username = Session["username"].ToString();
-                ddlApprovedMemos.Items.Clear();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spGetMyPendingImprests",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@userID", username );
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        ListItem li = new ListItem(reader["No_"].ToString() + " => " + reader["Purpose"].ToString().ToUpper(), reader["No_"].ToString());
-                        ddlApprovedMemos.Items.Add(li);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }
-        }
+        //private void LoadApprovedMemos()
+        //{
+        //    try
+        //    {
+        //        string username = Session["username"].ToString();
+        //        ddlApprovedMemos.Items.Clear();
+        //        connection = Components.GetconnToNAV();
+        //        command = new SqlCommand()
+        //        {
+        //            CommandText = "spGetMyPendingImprests",
+        //            CommandType = CommandType.StoredProcedure,
+        //            Connection = connection
+        //        };
+        //        command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
+        //        command.Parameters.AddWithValue("@userID", username );
+        //        reader = command.ExecuteReader();
+        //        if (reader.HasRows)
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                ListItem li = new ListItem(reader["No_"].ToString() + " => " + reader["Purpose"].ToString().ToUpper(), reader["No_"].ToString());
+        //                ddlApprovedMemos.Items.Add(li);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ex.Data.Clear();
+        //    }
+        //}
 
-        private void LoadResponsibilityCenters()
-        {
-            try
-            {
-                ddlResponsibilityCenter.Items.Clear();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spGetImprestReponsibilityCentre",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["Code"].ToString());
-                        ddlResponsibilityCenter.Items.Add(li);
+        //private void LoadResponsibilityCenters()
+        //{
+        //    try
+        //    {
+        //        ddlResponsibilityCenter.Items.Clear();
+        //        connection = Components.GetconnToNAV();
+        //        command = new SqlCommand()
+        //        {
+        //            CommandText = "spGetImprestReponsibilityCentre",
+        //            CommandType = CommandType.StoredProcedure,
+        //            Connection = connection
+        //        };
+        //        command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
+        //        reader = command.ExecuteReader();
+        //        if (reader.HasRows)
+        //        {
+        //            while (reader.Read())
+        //            {
+        //                ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["Code"].ToString());
+        //                ddlResponsibilityCenter.Items.Add(li);
 
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }
-        }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ex.Data.Clear();
+        //    }
+        //}
 
         private void LoadImprestDetails()
         {
             try
             {
                 imprestDetails.Visible = true;
-                string imprestNo = ddlApprovedMemos.Text.Trim();
+                string imprestNo = Request.QueryString["ImprestNo"].ToString();
+               // string imprestNo = ddlApprovedMemos.Text.Trim();
                 connection = Components.GetconnToNAV();
                 command = new SqlCommand()
                 {
@@ -228,6 +257,7 @@ namespace NCIASTaff.pages
                     string payeeBankaccount = reader["payees bank account"].ToString();
                     string paymentReleaseDate = Convert.ToDateTime(reader["Payment Release Date"]).ToShortDateString();
                     string chequeNo = reader["Cheque No_"].ToString();
+                    string resCenter = reader["Responsibility Center"].ToString();
 
                     lblDate.Text = date;
                     lblDirectorate.Text = directorate;
@@ -247,6 +277,7 @@ namespace NCIASTaff.pages
                     lblPaymentReleaseDate.Text = paymentReleaseDate;
                     lblPayMode.Text = payMode == "" ? "None" : payMode;
                     lblChequeNo.Text = chequeNo;
+                    lblResCenter.Text = resCenter;
                 }
             }
             catch (Exception ex)
@@ -274,8 +305,9 @@ namespace NCIASTaff.pages
 
                 string username = Session["username"].ToString();
                 //string userId = MyComponents.UserID;
-                string responsibilityCenter = ddlResponsibilityCenter.SelectedValue.ToString();
-                string imprestNo = ddlApprovedMemos.SelectedValue.ToString();
+                string responsibilityCenter = lblResCenter.Text;
+                // string imprestNo = ddlApprovedMemos.SelectedValue.ToString();
+                string imprestNo = Request.QueryString["ImprestNo"].ToString();
                 decimal totalAmount = Convert.ToDecimal(lblTotalNetAmount.Text);
 
                 if (responsibilityCenter == "")
@@ -321,7 +353,7 @@ namespace NCIASTaff.pages
             {
                 if (fuImprestDocs.PostedFile != null)
                 {
-                    string DocumentNo = ddlApprovedMemos.SelectedValue.ToString();
+                    string DocumentNo = Request.QueryString["ImprestNo"].ToString();
                     string username = Session["username"].ToString();
                     string filePath = fuImprestDocs.PostedFile.FileName.Replace(" ", "-");
                     string fileName = fuImprestDocs.FileName.Replace(" ", "-");
@@ -389,7 +421,7 @@ namespace NCIASTaff.pages
                     string[] args = new string[2];
                     args = (sender as LinkButton).CommandArgument.ToString().Split(';');
                     string systemId = args[0];
-                    string documentNo = ddlApprovedMemos.SelectedValue.ToString();
+                    string documentNo = Request.QueryString["ImprestNo"].ToString();
                     string fileName = string.Empty;
                     string documentDetails = webportals.GetAttachmentDetails(systemId);
                     if (documentDetails != null)

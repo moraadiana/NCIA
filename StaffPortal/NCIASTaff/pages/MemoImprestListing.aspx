@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="box-body">
-                            <p class="text-center"><a class="btn btn-pill btn-danger u-posRelative" href="MemoImprestLines.aspx">New Memo Imprest<span class="waves"></span> </a></p>
+                          <%--  <p class="text-center"><a class="btn btn-pill btn-danger u-posRelative" href="MemoImprestLines.aspx">New Memo Imprest<span class="waves"></span> </a></p>--%>
                             <br />
                             <div class="table-responsive">
                                 <table id="example1" class="table no-margin">

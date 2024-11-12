@@ -19,6 +19,7 @@ namespace NCIASTaff.pages
         SqlCommand command;
         SqlDataReader reader;
         SqlDataAdapter adapter;
+        string[] strLimiters2 = new string[] { "[]" };
         Staffportall webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
         protected void Page_Load(object sender, EventArgs e)
@@ -40,22 +41,21 @@ namespace NCIASTaff.pages
         {
             try
             {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
+                
+                ddlYear.Items.Clear();
+                string payslipYears = webportals.GetPayslipYears();
+                if (!string.IsNullOrEmpty(payslipYears))
                 {
-                    CommandText = "spGetPayslipYears",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-               reader=command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    ddlYear.DataSource = reader;
-                    ddlYear.DataTextField = "Period Year";
-                    ddlYear.DataValueField = "Period Year";
-                    ddlYear.DataBind();
+                    string[] yearsArr = payslipYears.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string years in yearsArr)
+                    {
+                        string[] responseArr = years.Split(strLimiters, StringSplitOptions.None);
+                        ListItem li = new ListItem(responseArr[0]);
+                        ddlYear.Items.Add(li);
+                    }
                 }
+               
+                
             }
             catch (Exception ex)
             {
@@ -67,23 +67,38 @@ namespace NCIASTaff.pages
         {
             try
             {
-                string year = ddlYear.SelectedValue;
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
+                /*ddlMonth.Items.Clear();
+                string payslipMonths = webportals.GetPayslipMonths();
+               
+                if (!string.IsNullOrEmpty(payslipMonths))
                 {
-                    CommandText = "spGetPayslipMonths",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@current", "'" + year + "'");
-                reader=command.ExecuteReader();
-                if(reader.HasRows)
+                    string[] monthsArr = payslipMonths.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+
+                    foreach (string month in monthsArr)
+                    {
+                        // Convert the numeric month string to an integer
+                        if (int.TryParse(month, out int monthNumber) && monthNumber >= 1 && monthNumber <= 12)
+                        {
+                            // Get the full month name
+                            string monthName = new DateTime(1, monthNumber, 1).ToString("MMMM");
+                            ListItem li = new ListItem(monthName);
+                            ddlMonth.Items.Add(li);
+                        }
+                    }
+                   
+                }*/
+
+                ddlMonth.Items.Clear();
+                string payslipMonths = webportals.GetPayslipMonths();
+                if (!string.IsNullOrEmpty(payslipMonths))
                 {
-                    ddlMonth.DataSource = reader;
-                    ddlMonth.DataTextField = "Period Name";
-                    ddlMonth.DataValueField = "Period Month";
-                    ddlMonth.DataBind();
+                    string[] monthsArr = payslipMonths.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string months in monthsArr)
+                    {
+                        string[] responseArr = months.Split(strLimiters, StringSplitOptions.None);
+                        ListItem li = new ListItem(responseArr[0]);
+                        ddlMonth.Items.Add(li);
+                    }
                 }
             }
             catch (Exception ex)
@@ -125,9 +140,31 @@ namespace NCIASTaff.pages
                 var myDate = month + "/01/" + ddlYear.SelectedValue;
                 var period = DateTime.ParseExact(myDate, "M/dd/yyyy", CultureInfo.InvariantCulture);
 
+
+
+                var filePath = Server.MapPath("~/Downloads/") + String.Format("PAYSLIP-{0}.pdf", filename);
+
+                // Check if directory exists, if not create it
+                if (!Directory.Exists(Server.MapPath("~/Downloads/")))
+                {
+                    Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
+                }
+                webportals.GeneratePayslipReport3(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
+
+                // myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format(@"PAYSLIP-{0}.pdf", filename)));
+                if (File.Exists(filePath))
+                {
+                    System.Diagnostics.Debug.WriteLine("Payslip generated successfully.");
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("PAYSLIP-{0}.pdf", filename)));
+                }
+                else
+                {
+                    throw new FileNotFoundException("Payslip PDF was not found after generation.");
+                }
+
                 /*if (webportals.CanViewPaySlip(username))
                 {*/
-                    webportals.GeneratePaySlipReport3(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
+                /*    webportals.GeneratePaySlipReport3(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
 
                     string networkPath = @"\\10.107.8.40\Downloads\" + pdfFileName;
 
@@ -154,7 +191,7 @@ namespace NCIASTaff.pages
                     Message("This period has not been enabled for viewing");
                 }
                */
-                
+
             }
             catch (Exception ex)
             {
