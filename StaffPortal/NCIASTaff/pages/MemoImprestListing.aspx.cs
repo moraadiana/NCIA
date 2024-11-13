@@ -58,11 +58,11 @@ namespace NCIASTaff.pages
                 string imprestList = webportals.GetMyImprests(username);
                 if (!string.IsNullOrEmpty(imprestList))
                 {
-                    int counter = 0;
+                    //int counter = 0;
                     string[] ImprestListArr = imprestList.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string ImprestList in ImprestListArr)
                     {
-                        counter++;
+                        //counter++;
                         string[] responseArr = ImprestList.Split(strLimiters, StringSplitOptions.None);
                         var statusCls = "default";
                         string status = responseArr[4];
@@ -94,13 +94,13 @@ namespace NCIASTaff.pages
                                     <div class='options btn-group' >
                          <a class='label label-success dropdown-toggle btn-success' data-toggle='dropdown' href='#' style='padding:4px;margin-top:3px'><i class='fa fa-gears'></i> Options</a>
                          <ul class='dropdown-menu'>
-                                            <li><a href='MemoImprestLines.aspx?ImprestNo={1}'><i class='fa fa-plus-circle text-success'></i><span class='text-danger'>Details</span></a></li>
-                                            <li><a href='ApprovalTracking.aspx?DocNum={1}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Approval Tracking</span></a></li>
+                                            <li><a href='MemoImprestLines.aspx?ImprestNo={0}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></li>
+                                            <li><a href='ApprovalTracking.aspx?DocNum={0}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Approval Tracking</span></a></li>
                                         </ul>	
                                     </div>
                                 </td>
                             </tr>",
-                          counter,
+                         
                           responseArr[0],
                           responseArr[1],
                           responseArr[2],

@@ -99,11 +99,15 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback Generatep9ReportOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAdvancetypeOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAllEmployeesOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAttachmentDetailsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetDefaultDaysOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetDocResponsibilityCentresOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetEmployeeLeavesOperationCompleted;
         
@@ -122,6 +126,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback GetLeaveTypesOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyApplicationsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetMyClaimsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyImprestsOperationCompleted;
         
@@ -142,8 +148,6 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback GetReceiptsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetRelieversOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback GetResponsibilityCentresOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetStaffCitizenshipOperationCompleted;
         
@@ -246,6 +250,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback UpdateStaffPasswordOperationCompleted;
         
         private System.Threading.SendOrPostCallback ValidateStartDateOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getEmployeeNameOperationCompleted;
         
         private System.Threading.SendOrPostCallback updateleaveOperationCompleted;
         
@@ -393,6 +399,9 @@ namespace NCIASTaff.NAVWS {
         public event Generatep9ReportCompletedEventHandler Generatep9ReportCompleted;
         
         /// <remarks/>
+        public event GetAdvancetypeCompletedEventHandler GetAdvancetypeCompleted;
+        
+        /// <remarks/>
         public event GetAllEmployeesCompletedEventHandler GetAllEmployeesCompleted;
         
         /// <remarks/>
@@ -400,6 +409,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetDefaultDaysCompletedEventHandler GetDefaultDaysCompleted;
+        
+        /// <remarks/>
+        public event GetDocResponsibilityCentresCompletedEventHandler GetDocResponsibilityCentresCompleted;
         
         /// <remarks/>
         public event GetEmployeeLeavesCompletedEventHandler GetEmployeeLeavesCompleted;
@@ -427,6 +439,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetMyApplicationsCompletedEventHandler GetMyApplicationsCompleted;
+        
+        /// <remarks/>
+        public event GetMyClaimsCompletedEventHandler GetMyClaimsCompleted;
         
         /// <remarks/>
         public event GetMyImprestsCompletedEventHandler GetMyImprestsCompleted;
@@ -457,9 +472,6 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetRelieversCompletedEventHandler GetRelieversCompleted;
-        
-        /// <remarks/>
-        public event GetResponsibilityCentresCompletedEventHandler GetResponsibilityCentresCompleted;
         
         /// <remarks/>
         public event GetStaffCitizenshipCompletedEventHandler GetStaffCitizenshipCompleted;
@@ -613,6 +625,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event ValidateStartDateCompletedEventHandler ValidateStartDateCompleted;
+        
+        /// <remarks/>
+        public event getEmployeeNameCompletedEventHandler getEmployeeNameCompleted;
         
         /// <remarks/>
         public event updateleaveCompletedEventHandler updateleaveCompleted;
@@ -1829,6 +1844,36 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAdvancetype", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetAdvancetype_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetAdvancetype(int type) {
+            object[] results = this.Invoke("GetAdvancetype", new object[] {
+                        type});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAdvancetypeAsync(int type) {
+            this.GetAdvancetypeAsync(type, null);
+        }
+        
+        /// <remarks/>
+        public void GetAdvancetypeAsync(int type, object userState) {
+            if ((this.GetAdvancetypeOperationCompleted == null)) {
+                this.GetAdvancetypeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAdvancetypeOperationCompleted);
+            }
+            this.InvokeAsync("GetAdvancetype", new object[] {
+                        type}, this.GetAdvancetypeOperationCompleted, userState);
+        }
+        
+        private void OnGetAdvancetypeOperationCompleted(object arg) {
+            if ((this.GetAdvancetypeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAdvancetypeCompleted(this, new GetAdvancetypeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAllEmployees", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetAllEmployees_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetAllEmployees() {
@@ -1913,6 +1958,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetDefaultDaysCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetDefaultDaysCompleted(this, new GetDefaultDaysCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetDocResponsibilityCentres", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetDocResponsibilityCentres_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetDocResponsibilityCentres(string grouping) {
+            object[] results = this.Invoke("GetDocResponsibilityCentres", new object[] {
+                        grouping});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetDocResponsibilityCentresAsync(string grouping) {
+            this.GetDocResponsibilityCentresAsync(grouping, null);
+        }
+        
+        /// <remarks/>
+        public void GetDocResponsibilityCentresAsync(string grouping, object userState) {
+            if ((this.GetDocResponsibilityCentresOperationCompleted == null)) {
+                this.GetDocResponsibilityCentresOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDocResponsibilityCentresOperationCompleted);
+            }
+            this.InvokeAsync("GetDocResponsibilityCentres", new object[] {
+                        grouping}, this.GetDocResponsibilityCentresOperationCompleted, userState);
+        }
+        
+        private void OnGetDocResponsibilityCentresOperationCompleted(object arg) {
+            if ((this.GetDocResponsibilityCentresCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetDocResponsibilityCentresCompleted(this, new GetDocResponsibilityCentresCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2181,6 +2256,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetMyApplicationsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetMyApplicationsCompleted(this, new GetMyApplicationsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyClaims", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetMyClaims_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetMyClaims(string username) {
+            object[] results = this.Invoke("GetMyClaims", new object[] {
+                        username});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMyClaimsAsync(string username) {
+            this.GetMyClaimsAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void GetMyClaimsAsync(string username, object userState) {
+            if ((this.GetMyClaimsOperationCompleted == null)) {
+                this.GetMyClaimsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyClaimsOperationCompleted);
+            }
+            this.InvokeAsync("GetMyClaims", new object[] {
+                        username}, this.GetMyClaimsOperationCompleted, userState);
+        }
+        
+        private void OnGetMyClaimsOperationCompleted(object arg) {
+            if ((this.GetMyClaimsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMyClaimsCompleted(this, new GetMyClaimsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2469,36 +2574,6 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetRelieversCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetRelieversCompleted(this, new GetRelieversCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetResponsibilityCentres", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetResponsibilityCentres_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string GetResponsibilityCentres(string grouping) {
-            object[] results = this.Invoke("GetResponsibilityCentres", new object[] {
-                        grouping});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetResponsibilityCentresAsync(string grouping) {
-            this.GetResponsibilityCentresAsync(grouping, null);
-        }
-        
-        /// <remarks/>
-        public void GetResponsibilityCentresAsync(string grouping, object userState) {
-            if ((this.GetResponsibilityCentresOperationCompleted == null)) {
-                this.GetResponsibilityCentresOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetResponsibilityCentresOperationCompleted);
-            }
-            this.InvokeAsync("GetResponsibilityCentres", new object[] {
-                        grouping}, this.GetResponsibilityCentresOperationCompleted, userState);
-        }
-        
-        private void OnGetResponsibilityCentresOperationCompleted(object arg) {
-            if ((this.GetResponsibilityCentresCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetResponsibilityCentresCompleted(this, new GetResponsibilityCentresCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4173,6 +4248,36 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:getEmployeeName", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="getEmployeeName_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string getEmployeeName(string staffNum) {
+            object[] results = this.Invoke("getEmployeeName", new object[] {
+                        staffNum});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getEmployeeNameAsync(string staffNum) {
+            this.getEmployeeNameAsync(staffNum, null);
+        }
+        
+        /// <remarks/>
+        public void getEmployeeNameAsync(string staffNum, object userState) {
+            if ((this.getEmployeeNameOperationCompleted == null)) {
+                this.getEmployeeNameOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetEmployeeNameOperationCompleted);
+            }
+            this.InvokeAsync("getEmployeeName", new object[] {
+                        staffNum}, this.getEmployeeNameOperationCompleted, userState);
+        }
+        
+        private void OngetEmployeeNameOperationCompleted(object arg) {
+            if ((this.getEmployeeNameCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getEmployeeNameCompleted(this, new getEmployeeNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:updateleave", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="updateleave_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void updateleave(string leaveApplicationNo, int remark) {
             this.Invoke("updateleave", new object[] {
@@ -5139,6 +5244,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetAdvancetypeCompletedEventHandler(object sender, GetAdvancetypeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAdvancetypeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAdvancetypeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetAllEmployeesCompletedEventHandler(object sender, GetAllEmployeesCompletedEventArgs e);
     
     /// <remarks/>
@@ -5202,6 +5333,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetDefaultDaysCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetDocResponsibilityCentresCompletedEventHandler(object sender, GetDocResponsibilityCentresCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetDocResponsibilityCentresCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetDocResponsibilityCentresCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -5436,6 +5593,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetMyApplicationsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetMyClaimsCompletedEventHandler(object sender, GetMyClaimsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMyClaimsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMyClaimsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -5696,32 +5879,6 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetRelieversCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void GetResponsibilityCentresCompletedEventHandler(object sender, GetResponsibilityCentresCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetResponsibilityCentresCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetResponsibilityCentresCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -6840,6 +6997,32 @@ namespace NCIASTaff.NAVWS {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void ValidateStartDateCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void getEmployeeNameCompletedEventHandler(object sender, getEmployeeNameCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getEmployeeNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getEmployeeNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]

@@ -569,6 +569,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetAdvancetype">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="type" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAdvancetype_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetAllEmployees">
         <complexType>
           <sequence />
@@ -603,6 +617,20 @@
         </complexType>
       </element>
       <element name="GetDefaultDays_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetDocResponsibilityCentres">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="grouping" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetDocResponsibilityCentres_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -733,6 +761,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetMyClaims">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyClaims_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetMyImprests">
         <complexType>
           <sequence>
@@ -855,20 +897,6 @@
         </complexType>
       </element>
       <element name="GetRelievers_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="GetResponsibilityCentres">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="grouping" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="GetResponsibilityCentres_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1640,6 +1668,20 @@
           <sequence />
         </complexType>
       </element>
+      <element name="getEmployeeName">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="staffNum" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getEmployeeName_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="updateleave">
         <complexType>
           <sequence>
@@ -1865,6 +1907,12 @@
   <message name="Generatep9Report_Result">
     <part name="parameters" element="tns:Generatep9Report_Result" />
   </message>
+  <message name="GetAdvancetype">
+    <part name="parameters" element="tns:GetAdvancetype" />
+  </message>
+  <message name="GetAdvancetype_Result">
+    <part name="parameters" element="tns:GetAdvancetype_Result" />
+  </message>
   <message name="GetAllEmployees">
     <part name="parameters" element="tns:GetAllEmployees" />
   </message>
@@ -1882,6 +1930,12 @@
   </message>
   <message name="GetDefaultDays_Result">
     <part name="parameters" element="tns:GetDefaultDays_Result" />
+  </message>
+  <message name="GetDocResponsibilityCentres">
+    <part name="parameters" element="tns:GetDocResponsibilityCentres" />
+  </message>
+  <message name="GetDocResponsibilityCentres_Result">
+    <part name="parameters" element="tns:GetDocResponsibilityCentres_Result" />
   </message>
   <message name="GetEmployeeLeaves">
     <part name="parameters" element="tns:GetEmployeeLeaves" />
@@ -1936,6 +1990,12 @@
   </message>
   <message name="GetMyApplications_Result">
     <part name="parameters" element="tns:GetMyApplications_Result" />
+  </message>
+  <message name="GetMyClaims">
+    <part name="parameters" element="tns:GetMyClaims" />
+  </message>
+  <message name="GetMyClaims_Result">
+    <part name="parameters" element="tns:GetMyClaims_Result" />
   </message>
   <message name="GetMyImprests">
     <part name="parameters" element="tns:GetMyImprests" />
@@ -1996,12 +2056,6 @@
   </message>
   <message name="GetRelievers_Result">
     <part name="parameters" element="tns:GetRelievers_Result" />
-  </message>
-  <message name="GetResponsibilityCentres">
-    <part name="parameters" element="tns:GetResponsibilityCentres" />
-  </message>
-  <message name="GetResponsibilityCentres_Result">
-    <part name="parameters" element="tns:GetResponsibilityCentres_Result" />
   </message>
   <message name="GetStaffCitizenship">
     <part name="parameters" element="tns:GetStaffCitizenship" />
@@ -2309,6 +2363,12 @@
   <message name="ValidateStartDate_Result">
     <part name="parameters" element="tns:ValidateStartDate_Result" />
   </message>
+  <message name="getEmployeeName">
+    <part name="parameters" element="tns:getEmployeeName" />
+  </message>
+  <message name="getEmployeeName_Result">
+    <part name="parameters" element="tns:getEmployeeName_Result" />
+  </message>
   <message name="updateleave">
     <part name="parameters" element="tns:updateleave" />
   </message>
@@ -2456,6 +2516,10 @@
       <input name="Generatep9Report" message="tns:Generatep9Report" />
       <output name="Generatep9Report_Result" message="tns:Generatep9Report_Result" />
     </operation>
+    <operation name="GetAdvancetype">
+      <input name="GetAdvancetype" message="tns:GetAdvancetype" />
+      <output name="GetAdvancetype_Result" message="tns:GetAdvancetype_Result" />
+    </operation>
     <operation name="GetAllEmployees">
       <input name="GetAllEmployees" message="tns:GetAllEmployees" />
       <output name="GetAllEmployees_Result" message="tns:GetAllEmployees_Result" />
@@ -2467,6 +2531,10 @@
     <operation name="GetDefaultDays">
       <input name="GetDefaultDays" message="tns:GetDefaultDays" />
       <output name="GetDefaultDays_Result" message="tns:GetDefaultDays_Result" />
+    </operation>
+    <operation name="GetDocResponsibilityCentres">
+      <input name="GetDocResponsibilityCentres" message="tns:GetDocResponsibilityCentres" />
+      <output name="GetDocResponsibilityCentres_Result" message="tns:GetDocResponsibilityCentres_Result" />
     </operation>
     <operation name="GetEmployeeLeaves">
       <input name="GetEmployeeLeaves" message="tns:GetEmployeeLeaves" />
@@ -2503,6 +2571,10 @@
     <operation name="GetMyApplications">
       <input name="GetMyApplications" message="tns:GetMyApplications" />
       <output name="GetMyApplications_Result" message="tns:GetMyApplications_Result" />
+    </operation>
+    <operation name="GetMyClaims">
+      <input name="GetMyClaims" message="tns:GetMyClaims" />
+      <output name="GetMyClaims_Result" message="tns:GetMyClaims_Result" />
     </operation>
     <operation name="GetMyImprests">
       <input name="GetMyImprests" message="tns:GetMyImprests" />
@@ -2543,10 +2615,6 @@
     <operation name="GetRelievers">
       <input name="GetRelievers" message="tns:GetRelievers" />
       <output name="GetRelievers_Result" message="tns:GetRelievers_Result" />
-    </operation>
-    <operation name="GetResponsibilityCentres">
-      <input name="GetResponsibilityCentres" message="tns:GetResponsibilityCentres" />
-      <output name="GetResponsibilityCentres_Result" message="tns:GetResponsibilityCentres_Result" />
     </operation>
     <operation name="GetStaffCitizenship">
       <input name="GetStaffCitizenship" message="tns:GetStaffCitizenship" />
@@ -2751,6 +2819,10 @@
     <operation name="ValidateStartDate">
       <input name="ValidateStartDate" message="tns:ValidateStartDate" />
       <output name="ValidateStartDate_Result" message="tns:ValidateStartDate_Result" />
+    </operation>
+    <operation name="getEmployeeName">
+      <input name="getEmployeeName" message="tns:getEmployeeName" />
+      <output name="getEmployeeName_Result" message="tns:getEmployeeName_Result" />
     </operation>
     <operation name="updateleave">
       <input name="updateleave" message="tns:updateleave" />
@@ -3074,6 +3146,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetAdvancetype">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAdvancetype" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAdvancetype">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAdvancetype_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetAllEmployees">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAllEmployees" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetAllEmployees">
@@ -3098,6 +3179,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetDefaultDays_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetDocResponsibilityCentres">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetDocResponsibilityCentres" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetDocResponsibilityCentres">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetDocResponsibilityCentres_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3179,6 +3269,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetMyApplications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyClaims">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyClaims" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyClaims">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyClaims_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3269,15 +3368,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetRelievers_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="GetResponsibilityCentres">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetResponsibilityCentres" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="GetResponsibilityCentres">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="GetResponsibilityCentres_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3737,6 +3827,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="ValidateStartDate_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="getEmployeeName">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:getEmployeeName" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="getEmployeeName">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="getEmployeeName_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

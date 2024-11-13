@@ -51,11 +51,17 @@
                                                 <asp:Label ID="lblDepartment" runat="server" Text="" ForeColor="Blue"></asp:Label>
                                             </div>
                                         </div>                                      
-                                        <div class="col-md-4">
+                                      <%--  <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Responsibility Center</label>
                                                 <asp:DropDownList ID="ddlResponsibilityCenter" CssClass="form-control select2" runat="server"></asp:DropDownList>
                                             </div>
+                                        </div>--%>
+                                         <div class="col-md-4">
+                                             <div class="form-group">
+                                                 <label>Responsibility Center: </label>
+                                                 <asp:Label ID="lblResCenter" runat="server" Text="" ForeColor="Blue" Font-Bold="true"></asp:Label>
+                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -99,7 +105,8 @@
                                                             <th>
                                                                 <asp:Label ID="lblLNo" runat="server" Text="Label"></asp:Label></th>
                                                             <td>
-                                                                <asp:DropDownList ID="ddlAdvancType" runat="server" CssClass="form-control select2"></asp:DropDownList></td>
+                                                                <%--<asp:DropDownList ID="ddlAdvancType" runat="server" CssClass="form-control select2"></asp:DropDownList></td>--%>
+                                                                 <asp:Label ID="lblAdvanceType" runat="server" Text="Label"></asp:Label></td>
                                                             <td>
                                                                 <asp:TextBox ID="txtAmnt" CssClass="form-control" runat="server"></asp:TextBox>
                                                             </td>

@@ -102,40 +102,55 @@ namespace NCIASTaff.pages
             }
         }
 
+      
+       
         private void LoadResponsibilityCenter()
         {
             try
             {
-                ddlResponsibilityCenter.Items.Clear();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spGetClaimReponsibilityCentre",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["Code"].ToString());
-                        ddlResponsibilityCenter.Items.Add(li);
+                string grouping = "S-CLAIMS"; 
+                string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
 
+                if (!string.IsNullOrEmpty(responsibilityCenters))
+                {
+                    string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (centers.Length > 0)
+                    {
+                        lblResCenter.Text = centers[0];
                     }
+                }
+                else
+                {
+                    lblResCenter.Text = "No responsibility centers found.";
                 }
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
+                lblResCenter.Text = "Error loading responsibility centers.";
             }
         }
+
 
 
         private void LoadAdvanceTypes()
         {
             try
+            {
+                string advancetype = webportals.GetAdvancetype(4);
+                if(!string.IsNullOrEmpty(advancetype) )
+                {
+                    string[] type = advancetype.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (type.Length > 0)
+                    {
+                        lblAdvanceType.Text = type[0];
+                    }
+                }
+
+            }
+         /*   try
             {
                 ddlAdvancType.Items.Clear();
                 connection =  Components.GetconnToNAV();
@@ -154,8 +169,8 @@ namespace NCIASTaff.pages
                         ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["Code"].ToString());
                         ddlAdvancType.Items.Add(li);
                     }
-                }
-            }
+                }*/
+            
             catch (Exception ex)
             {
                 ex.Data.Clear();
@@ -169,7 +184,7 @@ namespace NCIASTaff.pages
                 string username = Session["username"].ToString();
                 string department = lblDepartment.Text;
                 string directorate = lblDirectorate.Text;
-                string responsibilityCenter = ddlResponsibilityCenter.SelectedValue;
+                string responsibilityCenter = lblResCenter.Text;
                 string purpose = txtPurpose.Text;
 
                /* if (string.IsNullOrEmpty(department))
@@ -326,7 +341,7 @@ namespace NCIASTaff.pages
             {
                 string claimNo = lblClaimNo.Text;
                 string employeeNo = Session["username"].ToString();
-                string advanceType = ddlAdvancType.SelectedValue;
+                string advanceType = lblAdvanceType.Text;
                 string amount = txtAmnt.Text;
                 if (advanceType == "0")
                 {

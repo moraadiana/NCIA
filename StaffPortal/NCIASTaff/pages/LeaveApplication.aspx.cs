@@ -65,29 +65,56 @@ namespace NCIASTaff.pages
             }
         }
 
+        /*  private void LoadResponsibilityCenter()
+          {
+              try
+              {
+                  ddlResponsibilityCenter.Items.Clear();
+                  string grouping = "LEAVE";
+                  string rescenters = webportals.GetDocResponsibilityCentres(grouping);
+                  if(!string.IsNullOrEmpty(rescenters))
+                  {
+                      string[] resCentersArr = rescenters.Split(strLimiters2,StringSplitOptions.RemoveEmptyEntries);
+                      foreach(string rescent in resCentersArr)
+                      {
+                          string[] responseArr = rescent.Split(strLimiters,StringSplitOptions.None);
+                          ListItem li = new ListItem(responseArr[1], responseArr[0]);
+                          ddlResponsibilityCenter.Items.Add(li);
+                      }
+                  }
+              }
+              catch (Exception ex)
+              {
+                  ex.Data.Clear();
+              }
+
+          }*/
         private void LoadResponsibilityCenter()
         {
             try
             {
-                ddlResponsibilityCenter.Items.Clear();
                 string grouping = "LEAVE";
-                string rescenters = webportals.GetResponsibilityCentres(grouping);
-                if(!string.IsNullOrEmpty(rescenters))
+                string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
+
+                if (!string.IsNullOrEmpty(responsibilityCenters))
                 {
-                    string[] resCentersArr = rescenters.Split(strLimiters2,StringSplitOptions.RemoveEmptyEntries);
-                    foreach(string rescent in resCentersArr)
+                    string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (centers.Length > 0)
                     {
-                        string[] responseArr = rescent.Split(strLimiters,StringSplitOptions.None);
-                        ListItem li = new ListItem(responseArr[1], responseArr[0]);
-                        ddlResponsibilityCenter.Items.Add(li);
+                        lblResCenter.Text = centers[0];
                     }
+                }
+                else
+                {
+                    lblResCenter.Text = "No responsibility centers found.";
                 }
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
+                lblResCenter.Text = "Error loading responsibility centers.";
             }
-         
         }
 
         private void LoadReliever()
@@ -321,7 +348,7 @@ namespace NCIASTaff.pages
                 string username = Session["username"].ToString();
                 string leaveType = ddlLeaveType.SelectedValue;
                 string reliever = ddlReliver.SelectedValue;
-                string resCenter = ddlResponsibilityCenter.SelectedValue;
+                string resCenter = lblResCenter.Text;
                 string appliedDays = txtAppliedDays.Text;
                 string startDate = txtStartDate.Text;
                 string directorate = lblDirectorate.Text;

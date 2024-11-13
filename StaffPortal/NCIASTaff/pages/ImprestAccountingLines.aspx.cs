@@ -53,7 +53,7 @@ namespace NCIASTaff.pages
                         string responsibilityCenter = responseArr[2];
                         ListItem li = new ListItem(imprestNumber + " => " + imprestDescription, imprestNumber);
                         ddlPostedImprest.Items.Add(li);
-                        ddlResponsibilityCenter.SelectedValue = responsibilityCenter;
+                        lblResCenter.Text = responsibilityCenter;
                     }                    
                 }
 
@@ -74,7 +74,7 @@ namespace NCIASTaff.pages
                 connection = Components.GetconnToNAV();
                 command = new SqlCommand()
                 {
-                    CommandText = "spImprestToSurrender",
+                    CommandText = "spGetMyImprestsPosted",
                     CommandType = CommandType.StoredProcedure,
                     Connection = connection
                 };
@@ -96,71 +96,32 @@ namespace NCIASTaff.pages
             }
         }
 
-        /*  private void LoadResponsibilityCenter()
-          {
-              try
-              {
-                      ddlResponsibilityCenter.Items.Clear();
-                          connection = Components.GetconnToNAV();
-                          command = new SqlCommand()
-                          {
-                              CommandText = "spdocumentResponsibilityCentre",
-                              CommandType = CommandType.StoredProcedure,
-                              Connection = connection
-                          };
-                          command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                          reader = command.ExecuteReader();
-                          if (reader.HasRows)
-                          {
-                              while (reader.Read())
-                              {
-                                  ListItem li = new ListItem( reader["Code"].ToString());
-                                  ddlResponsibilityCenter.Items.Add(li);
 
-                              }
-                          }
-              }
-              catch (Exception ex)
-              {
-                  ex.Data.Clear();
-              }
-
-          }*/
         private void LoadResponsibilityCenter()
         {
             try
             {
-                // Define the grouping parameter to fetch responsibility centers
-                string grouping = "imprest";
-
-                // Call the GetResponsibilityCentres function and retrieve the responsibility centers string
-                string responsibilityCenters = webportals.GetResponsibilityCentres(grouping);
-
-                // Clear existing items from the dropdown list
-                ddlResponsibilityCenter.Items.Clear();
+                string grouping = "IMPSURR"; 
+                string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
 
                 if (!string.IsNullOrEmpty(responsibilityCenters))
                 {
-                    // Split the responsibility centers using '[]' as a delimiter for each center
                     string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
 
-                    // Iterate over each center, parse the Code and Name, and add to dropdown
-                    foreach (string center in centers)
+                    if (centers.Length > 0)
                     {
-                        string[] fields = center.Split(new string[] { "::" }, StringSplitOptions.None);
-                        if (fields.Length == 2)  // Ensure both Code and Name are present
-                        {
-                            // Create a new list item with Code as the value and Name as the text
-                            ListItem li = new ListItem(fields[0], fields[1]);
-                            ddlResponsibilityCenter.Items.Add(li);
-                        }
+                        lblResCenter.Text = centers[0];
                     }
+                }
+                else
+                {
+                    lblResCenter.Text = "No responsibility centers found.";
                 }
             }
             catch (Exception ex)
             {
-                // Log exception or handle it as required
                 ex.Data.Clear();
+                lblResCenter.Text = "Error loading responsibility centers.";
             }
         }
 
@@ -257,7 +218,7 @@ namespace NCIASTaff.pages
 
                 foreach (GridViewRow row in gvAttachments.Rows)
                 {
-                    row.Cells[3].Text = row.Cells[5].Text.Split(' ')[0];                    
+                    row.Cells[3].Text = row.Cells[3].Text.Split(' ')[0];                    
                 }
             }
             catch (Exception ex)
@@ -276,7 +237,7 @@ namespace NCIASTaff.pages
             try
             {
                 string imprestNo = ddlPostedImprest.SelectedValue.ToString();
-                string responsibilityCenter = ddlResponsibilityCenter.SelectedValue.ToString();
+                string responsibilityCenter = lblResCenter.Text.ToString();
                 string username = Session["username"].ToString();
                 string documentNo = string.Empty;
 
@@ -421,21 +382,16 @@ namespace NCIASTaff.pages
                 }
 
                 string response = webportals.DeleteDocumentAttachment(systemId, fileName, documentNo);
-                if (response != null)
+                if (response == "SUCCESS")
                 {
-                    string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
-                    string returnMsg1 = responseArr[0];
-                    string returnMsg2 = responseArr[1];
-                    if (returnMsg1 == "SUCCESS" && returnMsg2 == "SUCCESS")
-                    {
-                        Message("Document deleted successfully.");
-                        BindAttachedDocuments(documentNo);
-                    }
-                    else
-                    {
-                        Message("An error has occured. Please try again later.");
-                        return;
-                    }
+                    BindAttachedDocuments(documentNo);
+                    Message("Document deleted successfully.");
+                   
+                }
+                else
+                {
+                    Message("An error has occured. Please try again later.");
+                    return;
                 }
             }
             catch (Exception ex)

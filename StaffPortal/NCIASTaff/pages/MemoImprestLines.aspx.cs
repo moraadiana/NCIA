@@ -304,9 +304,7 @@ namespace NCIASTaff.pages
                 }
 
                 string username = Session["username"].ToString();
-                //string userId = MyComponents.UserID;
                 string responsibilityCenter = lblResCenter.Text;
-                // string imprestNo = ddlApprovedMemos.SelectedValue.ToString();
                 string imprestNo = Request.QueryString["ImprestNo"].ToString();
                 decimal totalAmount = Convert.ToDecimal(lblTotalNetAmount.Text);
 
