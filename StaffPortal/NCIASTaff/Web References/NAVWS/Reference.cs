@@ -65,7 +65,7 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback CreatePurchaseRequisitionLineOperationCompleted;
         
-        private System.Threading.SendOrPostCallback CreateStoreRequisitionHeader_1852324135OperationCompleted;
+        private System.Threading.SendOrPostCallback CreateStoreRequisitionHeader1OperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateStoreRequisitionHeaderOperationCompleted;
         
@@ -131,6 +131,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetMyImprestsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetMyPettyCashApplicationsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetMyTrainingApplicationsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyleaveApplicationsOperationCompleted;
@@ -144,6 +146,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback GetPayslipYearsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetPettyCashDetailsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetPettyCashLinesOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetReceiptsOperationCompleted;
         
@@ -348,7 +352,7 @@ namespace NCIASTaff.NAVWS {
         public event CreatePurchaseRequisitionLineCompletedEventHandler CreatePurchaseRequisitionLineCompleted;
         
         /// <remarks/>
-        public event CreateStoreRequisitionHeader_1852324135CompletedEventHandler CreateStoreRequisitionHeader_1852324135Completed;
+        public event CreateStoreRequisitionHeader1CompletedEventHandler CreateStoreRequisitionHeader1Completed;
         
         /// <remarks/>
         public event CreateStoreRequisitionHeaderCompletedEventHandler CreateStoreRequisitionHeaderCompleted;
@@ -447,6 +451,9 @@ namespace NCIASTaff.NAVWS {
         public event GetMyImprestsCompletedEventHandler GetMyImprestsCompleted;
         
         /// <remarks/>
+        public event GetMyPettyCashApplicationsCompletedEventHandler GetMyPettyCashApplicationsCompleted;
+        
+        /// <remarks/>
         public event GetMyTrainingApplicationsCompletedEventHandler GetMyTrainingApplicationsCompleted;
         
         /// <remarks/>
@@ -466,6 +473,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetPettyCashDetailsCompletedEventHandler GetPettyCashDetailsCompleted;
+        
+        /// <remarks/>
+        public event GetPettyCashLinesCompletedEventHandler GetPettyCashLinesCompleted;
         
         /// <remarks/>
         public event GetReceiptsCompletedEventHandler GetReceiptsCompleted;
@@ -1239,55 +1249,10 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateStoreRequisitionHeader" +
-            "_1852324135", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CreateStoreRequisitionHeader_1852324135_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+            "1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CreateStoreRequisitionHeader1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string CreateStoreRequisitionHeader_1852324135(string username, int requisitionType, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime requiredDate, string department, string unit, string resCenter, string issuingStore, string description) {
-            object[] results = this.Invoke("CreateStoreRequisitionHeader_1852324135", new object[] {
-                        username,
-                        requisitionType,
-                        requiredDate,
-                        department,
-                        unit,
-                        resCenter,
-                        issuingStore,
-                        description});
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void CreateStoreRequisitionHeader_1852324135Async(string username, int requisitionType, System.DateTime requiredDate, string department, string unit, string resCenter, string issuingStore, string description) {
-            this.CreateStoreRequisitionHeader_1852324135Async(username, requisitionType, requiredDate, department, unit, resCenter, issuingStore, description, null);
-        }
-        
-        /// <remarks/>
-        public void CreateStoreRequisitionHeader_1852324135Async(string username, int requisitionType, System.DateTime requiredDate, string department, string unit, string resCenter, string issuingStore, string description, object userState) {
-            if ((this.CreateStoreRequisitionHeader_1852324135OperationCompleted == null)) {
-                this.CreateStoreRequisitionHeader_1852324135OperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateStoreRequisitionHeader_1852324135OperationCompleted);
-            }
-            this.InvokeAsync("CreateStoreRequisitionHeader_1852324135", new object[] {
-                        username,
-                        requisitionType,
-                        requiredDate,
-                        department,
-                        unit,
-                        resCenter,
-                        issuingStore,
-                        description}, this.CreateStoreRequisitionHeader_1852324135OperationCompleted, userState);
-        }
-        
-        private void OnCreateStoreRequisitionHeader_1852324135OperationCompleted(object arg) {
-            if ((this.CreateStoreRequisitionHeader_1852324135Completed != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CreateStoreRequisitionHeader_1852324135Completed(this, new CreateStoreRequisitionHeader_1852324135CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateStoreRequisitionHeader" +
-            "", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CreateStoreRequisitionHeader_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string CreateStoreRequisitionHeader(string staffNumber, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime requiredDate, string requestDescription, string unit, string department, int requisitionType, string issuingStore, string responsibilityCentre) {
-            object[] results = this.Invoke("CreateStoreRequisitionHeader", new object[] {
+        public string CreateStoreRequisitionHeader1(string staffNumber, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime requiredDate, string requestDescription, string unit, string department, int requisitionType, string issuingStore, string responsibilityCentre) {
+            object[] results = this.Invoke("CreateStoreRequisitionHeader1", new object[] {
                         staffNumber,
                         requiredDate,
                         requestDescription,
@@ -1300,16 +1265,16 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
-        public void CreateStoreRequisitionHeaderAsync(string staffNumber, System.DateTime requiredDate, string requestDescription, string unit, string department, int requisitionType, string issuingStore, string responsibilityCentre) {
-            this.CreateStoreRequisitionHeaderAsync(staffNumber, requiredDate, requestDescription, unit, department, requisitionType, issuingStore, responsibilityCentre, null);
+        public void CreateStoreRequisitionHeader1Async(string staffNumber, System.DateTime requiredDate, string requestDescription, string unit, string department, int requisitionType, string issuingStore, string responsibilityCentre) {
+            this.CreateStoreRequisitionHeader1Async(staffNumber, requiredDate, requestDescription, unit, department, requisitionType, issuingStore, responsibilityCentre, null);
         }
         
         /// <remarks/>
-        public void CreateStoreRequisitionHeaderAsync(string staffNumber, System.DateTime requiredDate, string requestDescription, string unit, string department, int requisitionType, string issuingStore, string responsibilityCentre, object userState) {
-            if ((this.CreateStoreRequisitionHeaderOperationCompleted == null)) {
-                this.CreateStoreRequisitionHeaderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateStoreRequisitionHeaderOperationCompleted);
+        public void CreateStoreRequisitionHeader1Async(string staffNumber, System.DateTime requiredDate, string requestDescription, string unit, string department, int requisitionType, string issuingStore, string responsibilityCentre, object userState) {
+            if ((this.CreateStoreRequisitionHeader1OperationCompleted == null)) {
+                this.CreateStoreRequisitionHeader1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateStoreRequisitionHeader1OperationCompleted);
             }
-            this.InvokeAsync("CreateStoreRequisitionHeader", new object[] {
+            this.InvokeAsync("CreateStoreRequisitionHeader1", new object[] {
                         staffNumber,
                         requiredDate,
                         requestDescription,
@@ -1317,7 +1282,52 @@ namespace NCIASTaff.NAVWS {
                         department,
                         requisitionType,
                         issuingStore,
-                        responsibilityCentre}, this.CreateStoreRequisitionHeaderOperationCompleted, userState);
+                        responsibilityCentre}, this.CreateStoreRequisitionHeader1OperationCompleted, userState);
+        }
+        
+        private void OnCreateStoreRequisitionHeader1OperationCompleted(object arg) {
+            if ((this.CreateStoreRequisitionHeader1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateStoreRequisitionHeader1Completed(this, new CreateStoreRequisitionHeader1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateStoreRequisitionHeader" +
+            "", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CreateStoreRequisitionHeader_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string CreateStoreRequisitionHeader(string username, int requisitionType, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime requiredDate, string directorate, string department, string resCenter, string issuingStore, string description) {
+            object[] results = this.Invoke("CreateStoreRequisitionHeader", new object[] {
+                        username,
+                        requisitionType,
+                        requiredDate,
+                        directorate,
+                        department,
+                        resCenter,
+                        issuingStore,
+                        description});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CreateStoreRequisitionHeaderAsync(string username, int requisitionType, System.DateTime requiredDate, string directorate, string department, string resCenter, string issuingStore, string description) {
+            this.CreateStoreRequisitionHeaderAsync(username, requisitionType, requiredDate, directorate, department, resCenter, issuingStore, description, null);
+        }
+        
+        /// <remarks/>
+        public void CreateStoreRequisitionHeaderAsync(string username, int requisitionType, System.DateTime requiredDate, string directorate, string department, string resCenter, string issuingStore, string description, object userState) {
+            if ((this.CreateStoreRequisitionHeaderOperationCompleted == null)) {
+                this.CreateStoreRequisitionHeaderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateStoreRequisitionHeaderOperationCompleted);
+            }
+            this.InvokeAsync("CreateStoreRequisitionHeader", new object[] {
+                        username,
+                        requisitionType,
+                        requiredDate,
+                        directorate,
+                        department,
+                        resCenter,
+                        issuingStore,
+                        description}, this.CreateStoreRequisitionHeaderOperationCompleted, userState);
         }
         
         private void OnCreateStoreRequisitionHeaderOperationCompleted(object arg) {
@@ -2320,6 +2330,36 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyPettyCashApplications", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetMyPettyCashApplications_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetMyPettyCashApplications(string username) {
+            object[] results = this.Invoke("GetMyPettyCashApplications", new object[] {
+                        username});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMyPettyCashApplicationsAsync(string username) {
+            this.GetMyPettyCashApplicationsAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void GetMyPettyCashApplicationsAsync(string username, object userState) {
+            if ((this.GetMyPettyCashApplicationsOperationCompleted == null)) {
+                this.GetMyPettyCashApplicationsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyPettyCashApplicationsOperationCompleted);
+            }
+            this.InvokeAsync("GetMyPettyCashApplications", new object[] {
+                        username}, this.GetMyPettyCashApplicationsOperationCompleted, userState);
+        }
+        
+        private void OnGetMyPettyCashApplicationsOperationCompleted(object arg) {
+            if ((this.GetMyPettyCashApplicationsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMyPettyCashApplicationsCompleted(this, new GetMyPettyCashApplicationsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyTrainingApplications", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetMyTrainingApplications_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetMyTrainingApplications(string username) {
@@ -2518,6 +2558,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetPettyCashDetailsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetPettyCashDetailsCompleted(this, new GetPettyCashDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPettyCashLines", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetPettyCashLines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetPettyCashLines(string documentNo) {
+            object[] results = this.Invoke("GetPettyCashLines", new object[] {
+                        documentNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPettyCashLinesAsync(string documentNo) {
+            this.GetPettyCashLinesAsync(documentNo, null);
+        }
+        
+        /// <remarks/>
+        public void GetPettyCashLinesAsync(string documentNo, object userState) {
+            if ((this.GetPettyCashLinesOperationCompleted == null)) {
+                this.GetPettyCashLinesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPettyCashLinesOperationCompleted);
+            }
+            this.InvokeAsync("GetPettyCashLines", new object[] {
+                        documentNo}, this.GetPettyCashLinesOperationCompleted, userState);
+        }
+        
+        private void OnGetPettyCashLinesOperationCompleted(object arg) {
+            if ((this.GetPettyCashLinesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPettyCashLinesCompleted(this, new GetPettyCashLinesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4796,17 +4866,17 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void CreateStoreRequisitionHeader_1852324135CompletedEventHandler(object sender, CreateStoreRequisitionHeader_1852324135CompletedEventArgs e);
+    public delegate void CreateStoreRequisitionHeader1CompletedEventHandler(object sender, CreateStoreRequisitionHeader1CompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class CreateStoreRequisitionHeader_1852324135CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class CreateStoreRequisitionHeader1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal CreateStoreRequisitionHeader_1852324135CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal CreateStoreRequisitionHeader1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -5660,6 +5730,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetMyPettyCashApplicationsCompletedEventHandler(object sender, GetMyPettyCashApplicationsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMyPettyCashApplicationsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMyPettyCashApplicationsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetMyTrainingApplicationsCompletedEventHandler(object sender, GetMyTrainingApplicationsCompletedEventArgs e);
     
     /// <remarks/>
@@ -5827,6 +5923,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetPettyCashDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetPettyCashLinesCompletedEventHandler(object sender, GetPettyCashLinesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPettyCashLinesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPettyCashLinesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

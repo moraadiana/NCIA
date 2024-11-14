@@ -283,28 +283,7 @@
           </sequence>
         </complexType>
       </element>
-      <element name="CreateStoreRequisitionHeader_1852324135">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="requisitionType" type="int" />
-            <element minOccurs="1" maxOccurs="1" name="requiredDate" type="date" />
-            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="unit" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="resCenter" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="issuingStore" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="CreateStoreRequisitionHeader_1852324135_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="CreateStoreRequisitionHeader">
+      <element name="CreateStoreRequisitionHeader1">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="staffNumber" type="string" />
@@ -315,6 +294,27 @@
             <element minOccurs="1" maxOccurs="1" name="requisitionType" type="int" />
             <element minOccurs="1" maxOccurs="1" name="issuingStore" type="string" />
             <element minOccurs="1" maxOccurs="1" name="responsibilityCentre" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateStoreRequisitionHeader1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateStoreRequisitionHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="requisitionType" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="requiredDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="directorate" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="resCenter" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="issuingStore" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -789,6 +789,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetMyPettyCashApplications">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyPettyCashApplications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetMyTrainingApplications">
         <complexType>
           <sequence>
@@ -873,6 +887,20 @@
         </complexType>
       </element>
       <element name="GetPettyCashDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashLines_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1805,11 +1833,11 @@
   <message name="CreatePurchaseRequisitionLine_Result">
     <part name="parameters" element="tns:CreatePurchaseRequisitionLine_Result" />
   </message>
-  <message name="CreateStoreRequisitionHeader_1852324135">
-    <part name="parameters" element="tns:CreateStoreRequisitionHeader_1852324135" />
+  <message name="CreateStoreRequisitionHeader1">
+    <part name="parameters" element="tns:CreateStoreRequisitionHeader1" />
   </message>
-  <message name="CreateStoreRequisitionHeader_1852324135_Result">
-    <part name="parameters" element="tns:CreateStoreRequisitionHeader_1852324135_Result" />
+  <message name="CreateStoreRequisitionHeader1_Result">
+    <part name="parameters" element="tns:CreateStoreRequisitionHeader1_Result" />
   </message>
   <message name="CreateStoreRequisitionHeader">
     <part name="parameters" element="tns:CreateStoreRequisitionHeader" />
@@ -2003,6 +2031,12 @@
   <message name="GetMyImprests_Result">
     <part name="parameters" element="tns:GetMyImprests_Result" />
   </message>
+  <message name="GetMyPettyCashApplications">
+    <part name="parameters" element="tns:GetMyPettyCashApplications" />
+  </message>
+  <message name="GetMyPettyCashApplications_Result">
+    <part name="parameters" element="tns:GetMyPettyCashApplications_Result" />
+  </message>
   <message name="GetMyTrainingApplications">
     <part name="parameters" element="tns:GetMyTrainingApplications" />
   </message>
@@ -2044,6 +2078,12 @@
   </message>
   <message name="GetPettyCashDetails_Result">
     <part name="parameters" element="tns:GetPettyCashDetails_Result" />
+  </message>
+  <message name="GetPettyCashLines">
+    <part name="parameters" element="tns:GetPettyCashLines" />
+  </message>
+  <message name="GetPettyCashLines_Result">
+    <part name="parameters" element="tns:GetPettyCashLines_Result" />
   </message>
   <message name="GetReceipts">
     <part name="parameters" element="tns:GetReceipts" />
@@ -2448,9 +2488,9 @@
       <input name="CreatePurchaseRequisitionLine" message="tns:CreatePurchaseRequisitionLine" />
       <output name="CreatePurchaseRequisitionLine_Result" message="tns:CreatePurchaseRequisitionLine_Result" />
     </operation>
-    <operation name="CreateStoreRequisitionHeader_1852324135">
-      <input name="CreateStoreRequisitionHeader_1852324135" message="tns:CreateStoreRequisitionHeader_1852324135" />
-      <output name="CreateStoreRequisitionHeader_1852324135_Result" message="tns:CreateStoreRequisitionHeader_1852324135_Result" />
+    <operation name="CreateStoreRequisitionHeader1">
+      <input name="CreateStoreRequisitionHeader1" message="tns:CreateStoreRequisitionHeader1" />
+      <output name="CreateStoreRequisitionHeader1_Result" message="tns:CreateStoreRequisitionHeader1_Result" />
     </operation>
     <operation name="CreateStoreRequisitionHeader">
       <input name="CreateStoreRequisitionHeader" message="tns:CreateStoreRequisitionHeader" />
@@ -2580,6 +2620,10 @@
       <input name="GetMyImprests" message="tns:GetMyImprests" />
       <output name="GetMyImprests_Result" message="tns:GetMyImprests_Result" />
     </operation>
+    <operation name="GetMyPettyCashApplications">
+      <input name="GetMyPettyCashApplications" message="tns:GetMyPettyCashApplications" />
+      <output name="GetMyPettyCashApplications_Result" message="tns:GetMyPettyCashApplications_Result" />
+    </operation>
     <operation name="GetMyTrainingApplications">
       <input name="GetMyTrainingApplications" message="tns:GetMyTrainingApplications" />
       <output name="GetMyTrainingApplications_Result" message="tns:GetMyTrainingApplications_Result" />
@@ -2607,6 +2651,10 @@
     <operation name="GetPettyCashDetails">
       <input name="GetPettyCashDetails" message="tns:GetPettyCashDetails" />
       <output name="GetPettyCashDetails_Result" message="tns:GetPettyCashDetails_Result" />
+    </operation>
+    <operation name="GetPettyCashLines">
+      <input name="GetPettyCashLines" message="tns:GetPettyCashLines" />
+      <output name="GetPettyCashLines_Result" message="tns:GetPettyCashLines_Result" />
     </operation>
     <operation name="GetReceipts">
       <input name="GetReceipts" message="tns:GetReceipts" />
@@ -2993,12 +3041,12 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
-    <operation name="CreateStoreRequisitionHeader_1852324135">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateStoreRequisitionHeader_1852324135" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="CreateStoreRequisitionHeader_1852324135">
+    <operation name="CreateStoreRequisitionHeader1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateStoreRequisitionHeader1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateStoreRequisitionHeader1">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
-      <output name="CreateStoreRequisitionHeader_1852324135_Result">
+      <output name="CreateStoreRequisitionHeader1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3290,6 +3338,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetMyPettyCashApplications">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyPettyCashApplications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyPettyCashApplications">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyPettyCashApplications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetMyTrainingApplications">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyTrainingApplications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetMyTrainingApplications">
@@ -3350,6 +3407,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetPettyCashDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPettyCashLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashLines_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

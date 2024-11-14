@@ -19,6 +19,7 @@ namespace NCIASTaff.pages
         SqlDataAdapter adapter;
         Staffportall webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
+        string[] strLimiters2 = new string[] { "[]" };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -304,36 +305,93 @@ namespace NCIASTaff.pages
             }
         }
 
+        //private void BindGridViewData(string imprestNo)
+        //{
+        //    try
+        //    {
+        //        connection = Components.GetconnToNAV();
+        //        command = new SqlCommand()
+        //        {
+        //            CommandText = "spImprestLines",
+        //            CommandType = CommandType.StoredProcedure,
+        //            Connection = connection,
+        //        };
+        //        command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
+        //        command.Parameters.AddWithValue("@ImpNo", "'" + imprestNo + "'");
+        //        adapter = new SqlDataAdapter();
+        //        adapter.SelectCommand = command;
+        //        DataTable dt = new DataTable();
+        //        adapter.Fill(dt);
+        //        gvLines.DataSource = dt;
+        //        gvLines.DataBind();
+        //        connection.Close();
+
+        //        foreach (GridViewRow row in gvLines.Rows)
+        //        {
+        //            row.Cells[6].Text = Convert.ToDateTime(row.Cells[6].Text).ToShortDateString();
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ex.Data.Clear();
+        //    }
+        //}
         private void BindGridViewData(string imprestNo)
         {
             try
             {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spImprestLines",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection,
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@ImpNo", "'" + imprestNo + "'");
-                adapter = new SqlDataAdapter();
-                adapter.SelectCommand = command;
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                gvLines.DataSource = dt;
-                gvLines.DataBind();
-                connection.Close();
+                // Call the AL web service method
+                string imprestLines = webportals.GetImprestLines(imprestNo);
 
-                foreach (GridViewRow row in gvLines.Rows)
+                // Check if the response is not empty or null
+                if (!string.IsNullOrEmpty(imprestLines) && imprestLines != "No Imprests lines")
                 {
-                    row.Cells[6].Text = Convert.ToDateTime(row.Cells[6].Text).ToShortDateString();
+                    // Split the response by '[]' to separate each line
+                    string[] lineItems = imprestLines.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+
+                    // Create a DataTable to hold the parsed data for binding
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("No");
+                    dt.Columns.Add("Advance Type");
+                    dt.Columns.Add("Account No");
+                    dt.Columns.Add("Account Name");
+                    dt.Columns.Add("Amount");
+
+                    // Loop through each line item
+                    foreach (string item in lineItems)
+                    {
+                        // Split each line by '::' to get individual fields
+                        string[] fields = item.Split(strLimiters, StringSplitOptions.None);
+
+                        // Check if we have the correct number of fields to avoid errors
+                        if (fields.Length == 5)
+                        {
+                            DataRow row = dt.NewRow();
+                            row["No"] = fields[0];
+                            row["Advance Type"] = fields[1];
+                            row["Account No"] = fields[2];
+                            row["Account Name"] = fields[3];
+                            row["Amount"] = fields[4];
+                            dt.Rows.Add(row);
+                        }
+                    }
+
+                    // Bind the DataTable to the GridView
+                    gvLines.DataSource = dt;
+                    gvLines.DataBind();
                 }
-
+                else
+                {
+                    // Handle the case where there are no imprest lines
+                    gvLines.DataSource = null;
+                    gvLines.DataBind();
+                }
             }
             catch (Exception ex)
             {
-                ex.Data.Clear();
+                // Handle exception (log or show an error message as needed)
+                Console.WriteLine("Error: " + ex.Message);
             }
         }
 

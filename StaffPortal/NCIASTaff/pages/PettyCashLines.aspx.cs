@@ -19,6 +19,7 @@ namespace NCIASTaff.pages
         SqlDataAdapter adapter;
         Staffportall webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
+        string[] strLimiters2 = new string[] { "[]" };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -101,36 +102,34 @@ namespace NCIASTaff.pages
             }
         }
 
+      
         private void LoadResponsibilityCenter()
         {
             try
             {
-                ddlResponsibilityCenter.Items.Clear();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spGetResponsilityCenter",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["Code"].ToString());
-                        ddlResponsibilityCenter.Items.Add(li);
+                string grouping = "P-CASH";
+                string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
 
+                if (!string.IsNullOrEmpty(responsibilityCenters))
+                {
+                    string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (centers.Length > 0)
+                    {
+                        lblResCenter.Text = centers[0];
                     }
+                }
+                else
+                {
+                    lblResCenter.Text = "No responsibility centers found.";
                 }
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
+                lblResCenter.Text = "Error loading responsibility centers.";
             }
         }
-
         private void LoadAdvanceTypes()
         {
             try
@@ -167,7 +166,7 @@ namespace NCIASTaff.pages
                 string username = Session["username"].ToString();
                 string department = lblDepartment.Text;
                 string directorate = lblDirectorate.Text;
-                string responsibilityCenter = ddlResponsibilityCenter.SelectedValue;
+                string responsibilityCenter = lblResCenter.Text;
                 string purpose = txtPurpose.Text;
 
                 if (string.IsNullOrEmpty(department))
@@ -273,36 +272,48 @@ namespace NCIASTaff.pages
 
         private void BindGridViewData(string pettyCashNo)
         {
-            try
-            {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spPettyCashLines",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection,
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@PettyCashNo", "'" + pettyCashNo + "'");
-                adapter = new SqlDataAdapter();
-                adapter.SelectCommand = command;
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                gvLines.DataSource = dt;
-                gvLines.DataBind();
-                connection.Close();
+            string pettyCashLines = webportals.GetPettyCashLines(pettyCashNo);
 
-                foreach (GridViewRow row in gvLines.Rows)
+            if (!string.IsNullOrEmpty(pettyCashLines))
+            {
+                
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Document No_");
+                dt.Columns.Add("Advance Type");
+                dt.Columns.Add("Account No_");
+                dt.Columns.Add("Account Name");
+                dt.Columns.Add("Amount");
+                dt.Columns.Add("Line No_");
+
+               
+                string[] lines = pettyCashLines.Split(new[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                
+                foreach (string line in lines)
                 {
-                    row.Cells[6].Text = Convert.ToDateTime(row.Cells[6].Text).ToShortDateString();
+                    string[] fields = line.Split(new[] { "::" }, StringSplitOptions.None);
+                    if (fields.Length == 6) 
+                    {
+                        DataRow row = dt.NewRow();
+                        row["Document No_"] = fields[0];
+                        row["Advance Type"] = fields[1];
+                        row["Account No_"] = fields[2];
+                        row["Account Name"] = fields[3];
+                        row["Amount"] = fields[4];
+                        row["Line No_"] = fields[5];
+
+                        dt.Rows.Add(row); 
+                    }
                 }
 
+                gvLines.DataSource = dt;
+                gvLines.DataBind();
+
+              
             }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }
+            
         }
+
 
         private void Message(string message)
         {
@@ -531,7 +542,7 @@ namespace NCIASTaff.pages
                 if (documentDetails != null)
                 {
                     string[] documentsDetailsArr = documentDetails.Split(strLimiters, StringSplitOptions.None);
-                    fileName = documentsDetailsArr[1].Split('.')[0];
+                    fileName = documentsDetailsArr[0].Split('.')[0];
                 }
 
                 string response = webportals.DeleteDocumentAttachment(systemId, fileName, documentNo);

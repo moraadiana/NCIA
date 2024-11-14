@@ -125,6 +125,65 @@ namespace NCIASTaff.pages
             }
         }
 
+        //private void BindGridViewData()
+        //{
+        //    string imprestNo = Request.QueryString["ImprestNo"].ToString();
+        //    string imprestReqLines = webportals.GetImprestLines(imprestNo);
+
+        //    if (!string.IsNullOrEmpty(imprestReqLines))
+        //    {
+        //        // Assuming the data is separated by '[]' for each line and '::' for each field within a line.
+        //        DataTable dt = new DataTable();
+        //        dt.Columns.Add("No");
+        //        dt.Columns.Add("Advance Type");
+        //        dt.Columns.Add("Account No:");
+        //        dt.Columns.Add("Account Name");
+        //        dt.Columns.Add("Amount", typeof(decimal));
+
+        //        string[] lines = imprestReqLines.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+
+        //        foreach (string line in lines)
+        //        {
+        //            string[] fields = line.Split(strLimiters, StringSplitOptions.None);
+        //            if (fields.Length == 5)  // Ensure all fields are present
+        //            {
+        //                DataRow row = dt.NewRow();
+        //                row["No"] = fields[0];
+        //                row["Advance Type"] = fields[1];
+        //                row["Account No:"] = fields[2];
+        //                row["Account Name"] = fields[3];
+        //                decimal amount;
+        //                if (decimal.TryParse(fields[4], out amount))
+        //                {
+        //                    row["Amount"] = amount;
+        //                }
+        //                else
+        //                {
+        //                    row["Amount"] = 0;  // Set to 0 if parsing fails, or handle as needed
+        //                }
+        //                dt.Rows.Add(row);
+        //            }
+        //        }
+
+        //        gvLines.DataSource = dt;
+        //        gvLines.DataBind();
+
+        //        // Calculate total amount and format each row
+        //        decimal totalAmount = 0;
+
+        //        foreach (DataRow row in dt.Rows)
+        //        {
+        //            totalAmount += Convert.ToDecimal(row["Amount"]);
+        //        }
+
+        //        // Display total amount in lblTotalNetAmount
+        //        lblTotalNetAmount.Text = String.Format("{0:#,##0.00}", totalAmount);
+        //    }
+        //    else
+        //    {
+        //        lblTotalNetAmount.Text = "0.00";
+        //    }
+        //}
 
         private void BindGridViewData()
         {

@@ -50,11 +50,17 @@
                                             <asp:Label ID="lblDepartment" runat="server" Text="" ForeColor="Blue"></asp:Label>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <%--<div class="col-md-4">
                                         <div class="form-group">
                                             <label>Responsibility Center</label>
                                             <asp:DropDownList ID="ddlResponsibilityCenter" CssClass="form-control select2" runat="server"></asp:DropDownList>
                                         </div>
+                                    </div>--%>
+                                    <div class="col-md-4">
+                                         <div class="form-group">
+                                             <label>Responsibility Center: </label>
+                                             <asp:Label ID="lblResCenter" runat="server" Text="" ForeColor="Blue" Font-Bold="true"></asp:Label>
+                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -142,7 +148,7 @@
                                                 <asp:BoundField DataField="Advance Type" HeaderText="Advance Type" />
                                                 <asp:BoundField DataField="Account No_" HeaderText="Account No" />
                                                 <asp:BoundField DataField="Account Name" HeaderText="Account Name" />
-                                                <asp:BoundField DataField="varAmount" HeaderText="Amount" />
+                                                <asp:BoundField DataField="Amount" HeaderText="Amount" />
                                                 <asp:TemplateField HeaderText="Action" SortExpression="" HeaderStyle-HorizontalAlign="Left">
                                                     <ItemStyle Width="110px" HorizontalAlign="Left" />
                                                     <ItemTemplate>

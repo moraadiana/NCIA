@@ -127,8 +127,11 @@ namespace NCIASTaff.pages
                     string returnMsg = departmentDetailsArr[0];
                     if (returnMsg == "SUCCESS")
                     {
-                        lblDirectorate.Text = departmentDetailsArr[1];
-                        lblDepartment.Text = departmentDetailsArr[2];
+                        lblDepartment.Text = departmentDetailsArr[1];
+                        lblDirectorate.Text = departmentDetailsArr[2];
+                        
+                        
+                       
                         lblTitle.Text = departmentDetailsArr[3];
                     }
                 }
@@ -337,8 +340,10 @@ namespace NCIASTaff.pages
             MultiView1.SetActiveView(vwLines);
         }
 
+
         protected void lbtnSubmit_Click(object sender, EventArgs e)
         {
+            LoadStaffDetails();
             try
             {
                 string username = Session["username"].ToString();
@@ -350,11 +355,11 @@ namespace NCIASTaff.pages
                 string requisitionType = ddlRequisitionType.SelectedValue.ToString();
                 string issuingStore = ddlissuingStore.SelectedValue.ToString();
 
-               /* if (string.IsNullOrEmpty(directorate) || string.IsNullOrEmpty(department))
+                if (string.IsNullOrEmpty(directorate) || string.IsNullOrEmpty(department))
                 {
                     Message("Please ensure that you have the directorate and department defined.");
                     return;
-                }*/
+                }
                 if (string.IsNullOrEmpty(requiredDate))
                 {
                     Message("Required date cannot be empty.");
@@ -381,8 +386,7 @@ namespace NCIASTaff.pages
                     return;
                 }
 
-                //string response = webportals.CreateStoreRequisitionHeader(username, Convert.ToInt32(requisitionType), Convert.ToDateTime(requiredDate),directorate, department, responsibilityCenter, issuingStore, description);
-                var response = webportals.CreateStoreRequisitionHeader(username, Convert.ToDateTime(requiredDate), description, department, directorate, Convert.ToInt32(requisitionType), issuingStore, responsibilityCenter);
+                string response = webportals.CreateStoreRequisitionHeader(username, Convert.ToInt32(requisitionType), Convert.ToDateTime(requiredDate), directorate, department, responsibilityCenter, issuingStore, description);
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
@@ -406,7 +410,6 @@ namespace NCIASTaff.pages
                 ex.Data.Clear();
             }
         }
-
         protected void ddlType_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
