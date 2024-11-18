@@ -17,6 +17,7 @@ namespace NCIASupplier.Controllers
         public ActionResult Index()
         {
             return View();
+            
         }
 
         [HttpPost]
@@ -24,13 +25,14 @@ namespace NCIASupplier.Controllers
         {
             try
             {
+                string VATno = account.VATno;   
                 string emailAddress = account.EmailAddress;
                 string password = account.Password;
-                if (webportals.ValidEmailAddress(emailAddress))
+                if (webportals.ValidVATno(VATno))
                 {
                     //if (webportals.AccountActivated(emailAddress))
                     //{
-                        string bidderLogin = webportals.CheckBidderLogin(emailAddress, password);
+                        string bidderLogin = webportals.CheckBidderLogin(VATno, password);
                         if (!string.IsNullOrEmpty(bidderLogin))
                         {
                             string[] bidderLoginArr = bidderLogin.Split(strLimiters, StringSplitOptions.None);
@@ -53,8 +55,9 @@ namespace NCIASupplier.Controllers
                                 string subject = "NCIA E-Tender Portal OTP";
                                 string body = $"{otp} is your OTP Code for NCIA eTendering Portal. Use it to verify login.";
                                 Components.SentEmailAlerts(bidderEmail, subject, body);
-                                return RedirectToAction("verifyotp");
-                            }
+                            //  return RedirectToAction("verifyotp");
+                            return RedirectToAction("index", "dashboard");
+                        }
                             else
                             {
                                 TempData["Error"] = returnMsg;
@@ -69,7 +72,7 @@ namespace NCIASupplier.Controllers
                 }
                 else
                 {
-                    TempData["Error"] = "Invalid email address";
+                    TempData["Error"] = "Invalid VAT No.";
                 }
             }
             catch (Exception ex)
@@ -112,7 +115,7 @@ namespace NCIASupplier.Controllers
             {
                 string username = reset.UserName;
                 SendPasswordResetLink(username);
-                TempData["Success"] = "Please Follow the link send to your email to set a password for your account.";
+                TempData["Success"] = "Please Follow the link sent to your email to set a password for your account.";
             }
             catch (Exception ex)
             {

@@ -167,7 +167,9 @@ namespace NCIASupplier.Controllers
                         string[] productArr = category.Split(strLimiters, StringSplitOptions.None);
                         string itemNo = productArr[0].Trim();
                         decimal quotedAmnt = Convert.ToDecimal(productArr[1].Trim());
-                        webportals.InsertTenderSubmissionLine(bidderNo, tenderNo, bidNo,itemNo,quotedAmnt);
+                        int lineNo = 0;
+                        //update line no here this is just constant
+                        webportals.InsertTenderSubmissionLine(bidderNo, tenderNo, bidNo,itemNo,quotedAmnt,lineNo);
                     }
                     if (webportals.SubmitBid(bidderNo, bidNo))
                     {

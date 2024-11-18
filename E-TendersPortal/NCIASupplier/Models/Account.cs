@@ -7,6 +7,7 @@ namespace NCIASupplier.Models
 {
     public class Account
     {
+        public string VATno { get; set; }
         public string EmailAddress { get; set; }
         public string Password { get; set; }
     }
