@@ -4,8 +4,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>C:\inetpub\wwwroot\NciaStaff</_PublishTargetUrl>
-    <History>True|2024-11-18T14:27:47.0207970Z||;</History>
+    <_PublishTargetUrl>C:\inetpub\wwwroot\Portals\StaffPortal</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="About.aspx">
@@ -36,13 +35,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2024 21:06:33</publishTime>
     </File>
     <File Include="bin/NCIASTaff.dll">
-      <publishTime>11/18/2024 17:27:32</publishTime>
+      <publishTime>11/18/2024 19:47:13</publishTime>
     </File>
     <File Include="bin/NCIASTaff.pdb">
-      <publishTime>11/18/2024 17:27:32</publishTime>
+      <publishTime>11/18/2024 19:47:13</publishTime>
     </File>
     <File Include="bin/NCIASTaff.XmlSerializers.dll">
-      <publishTime>11/18/2024 17:27:33</publishTime>
+      <publishTime>11/18/2024 19:47:14</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/14/2024 21:06:33</publishTime>
