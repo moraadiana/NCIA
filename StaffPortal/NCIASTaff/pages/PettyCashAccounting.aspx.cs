@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using NCIASTaff;
-namespace NCIASTaffaff.pages
+namespace NCIASTaff.pages
 {
     public partial class PettyCashAccounting : System.Web.UI.Page
     {

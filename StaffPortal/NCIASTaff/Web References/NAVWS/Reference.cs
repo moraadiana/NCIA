@@ -153,6 +153,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetRelieversOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetResponsibilityCentresOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetStaffCitizenshipOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetStaffDepartmentDetailsOperationCompleted;
@@ -166,6 +168,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback GetStaffPasswordOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetStoreItemQuantityOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback HRMLeaveApplication1OperationCompleted;
         
         private System.Threading.SendOrPostCallback HRMLeaveApplicationOperationCompleted;
         
@@ -484,6 +488,9 @@ namespace NCIASTaff.NAVWS {
         public event GetRelieversCompletedEventHandler GetRelieversCompleted;
         
         /// <remarks/>
+        public event GetResponsibilityCentresCompletedEventHandler GetResponsibilityCentresCompleted;
+        
+        /// <remarks/>
         public event GetStaffCitizenshipCompletedEventHandler GetStaffCitizenshipCompleted;
         
         /// <remarks/>
@@ -503,6 +510,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetStoreItemQuantityCompletedEventHandler GetStoreItemQuantityCompleted;
+        
+        /// <remarks/>
+        public event HRMLeaveApplication1CompletedEventHandler HRMLeaveApplication1Completed;
         
         /// <remarks/>
         public event HRMLeaveApplicationCompletedEventHandler HRMLeaveApplicationCompleted;
@@ -1974,24 +1984,26 @@ namespace NCIASTaff.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetDocResponsibilityCentres", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetDocResponsibilityCentres_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string GetDocResponsibilityCentres(string grouping) {
+        public string GetDocResponsibilityCentres(string grouping, string username) {
             object[] results = this.Invoke("GetDocResponsibilityCentres", new object[] {
-                        grouping});
+                        grouping,
+                        username});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetDocResponsibilityCentresAsync(string grouping) {
-            this.GetDocResponsibilityCentresAsync(grouping, null);
+        public void GetDocResponsibilityCentresAsync(string grouping, string username) {
+            this.GetDocResponsibilityCentresAsync(grouping, username, null);
         }
         
         /// <remarks/>
-        public void GetDocResponsibilityCentresAsync(string grouping, object userState) {
+        public void GetDocResponsibilityCentresAsync(string grouping, string username, object userState) {
             if ((this.GetDocResponsibilityCentresOperationCompleted == null)) {
                 this.GetDocResponsibilityCentresOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDocResponsibilityCentresOperationCompleted);
             }
             this.InvokeAsync("GetDocResponsibilityCentres", new object[] {
-                        grouping}, this.GetDocResponsibilityCentresOperationCompleted, userState);
+                        grouping,
+                        username}, this.GetDocResponsibilityCentresOperationCompleted, userState);
         }
         
         private void OnGetDocResponsibilityCentresOperationCompleted(object arg) {
@@ -2648,6 +2660,36 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetResponsibilityCentres", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetResponsibilityCentres_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetResponsibilityCentres(string grouping) {
+            object[] results = this.Invoke("GetResponsibilityCentres", new object[] {
+                        grouping});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetResponsibilityCentresAsync(string grouping) {
+            this.GetResponsibilityCentresAsync(grouping, null);
+        }
+        
+        /// <remarks/>
+        public void GetResponsibilityCentresAsync(string grouping, object userState) {
+            if ((this.GetResponsibilityCentresOperationCompleted == null)) {
+                this.GetResponsibilityCentresOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetResponsibilityCentresOperationCompleted);
+            }
+            this.InvokeAsync("GetResponsibilityCentres", new object[] {
+                        grouping}, this.GetResponsibilityCentresOperationCompleted, userState);
+        }
+        
+        private void OnGetResponsibilityCentresOperationCompleted(object arg) {
+            if ((this.GetResponsibilityCentresCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetResponsibilityCentresCompleted(this, new GetResponsibilityCentresCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetStaffCitizenship", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetStaffCitizenship_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetStaffCitizenship(string code) {
@@ -2854,6 +2896,52 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetStoreItemQuantityCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetStoreItemQuantityCompleted(this, new GetStoreItemQuantityCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:HRMLeaveApplication1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="HRMLeaveApplication1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string HRMLeaveApplication1(string username, string reliever, string leaveType, decimal appliedDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime startDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime endDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime returnDate, string purpose, string responsibilityCenter) {
+            object[] results = this.Invoke("HRMLeaveApplication1", new object[] {
+                        username,
+                        reliever,
+                        leaveType,
+                        appliedDays,
+                        startDate,
+                        endDate,
+                        returnDate,
+                        purpose,
+                        responsibilityCenter});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void HRMLeaveApplication1Async(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter) {
+            this.HRMLeaveApplication1Async(username, reliever, leaveType, appliedDays, startDate, endDate, returnDate, purpose, responsibilityCenter, null);
+        }
+        
+        /// <remarks/>
+        public void HRMLeaveApplication1Async(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, object userState) {
+            if ((this.HRMLeaveApplication1OperationCompleted == null)) {
+                this.HRMLeaveApplication1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnHRMLeaveApplication1OperationCompleted);
+            }
+            this.InvokeAsync("HRMLeaveApplication1", new object[] {
+                        username,
+                        reliever,
+                        leaveType,
+                        appliedDays,
+                        startDate,
+                        endDate,
+                        returnDate,
+                        purpose,
+                        responsibilityCenter}, this.HRMLeaveApplication1OperationCompleted, userState);
+        }
+        
+        private void OnHRMLeaveApplication1OperationCompleted(object arg) {
+            if ((this.HRMLeaveApplication1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.HRMLeaveApplication1Completed(this, new HRMLeaveApplication1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6016,6 +6104,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetResponsibilityCentresCompletedEventHandler(object sender, GetResponsibilityCentresCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetResponsibilityCentresCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetResponsibilityCentresCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetStaffCitizenshipCompletedEventHandler(object sender, GetStaffCitizenshipCompletedEventArgs e);
     
     /// <remarks/>
@@ -6183,6 +6297,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetStoreItemQuantityCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void HRMLeaveApplication1CompletedEventHandler(object sender, HRMLeaveApplication1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class HRMLeaveApplication1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal HRMLeaveApplication1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -102,35 +102,37 @@ namespace NCIASTaff.pages
             }
         }
 
-      
-       
+
+
         private void LoadResponsibilityCenter()
         {
             try
             {
-                string grouping = "S-CLAIMS"; 
-                string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
+                ddlResponsibilityCenter.Items.Clear();
 
-                if (!string.IsNullOrEmpty(responsibilityCenters))
+                string grouping = "IMPSURR";
+                string resCenters = webportals.GetResponsibilityCentres(grouping);
+                if (!string.IsNullOrEmpty(resCenters))
                 {
-                    string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] resCenterArr = resCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
 
-                    if (centers.Length > 0)
+                    foreach (string rescenter in resCenterArr)
                     {
-                        lblResCenter.Text = centers[0];
+                        ddlResponsibilityCenter.Items.Add(new ListItem(rescenter));
                     }
                 }
                 else
                 {
-                    lblResCenter.Text = "No responsibility centers found.";
+                    ddlResponsibilityCenter.Items.Add(new ListItem("No responsibility centers available"));
                 }
             }
             catch (Exception ex)
             {
-                ex.Data.Clear();
-                lblResCenter.Text = "Error loading responsibility centers.";
+                Console.WriteLine("Error: " + ex.Message);
+                ddlResponsibilityCenter.Items.Add(new ListItem("Error loading responsibility centers"));
             }
         }
+
 
 
 
@@ -150,26 +152,7 @@ namespace NCIASTaff.pages
                 }
 
             }
-         /*   try
-            {
-                ddlAdvancType.Items.Clear();
-                connection =  Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spLoadClaimAdvancedTypes",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["Code"].ToString());
-                        ddlAdvancType.Items.Add(li);
-                    }
-                }*/
+       
             
             catch (Exception ex)
             {
@@ -184,7 +167,7 @@ namespace NCIASTaff.pages
                 string username = Session["username"].ToString();
                 string department = lblDepartment.Text;
                 string directorate = lblDirectorate.Text;
-                string responsibilityCenter = lblResCenter.Text;
+                string responsibilityCenter = ddlResponsibilityCenter.SelectedValue;
                 string purpose = txtPurpose.Text;
 
                /* if (string.IsNullOrEmpty(department))

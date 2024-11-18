@@ -180,27 +180,28 @@ namespace NCIASTaff.pages
         {
             try
             {
+                ddlResponsibilityCenter.Items.Clear();
+
                 string grouping = "SRN";
-                string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
-
-                if (!string.IsNullOrEmpty(responsibilityCenters))
+                string resCenters = webportals.GetResponsibilityCentres(grouping);
+                if (!string.IsNullOrEmpty(resCenters))
                 {
-                    string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] resCenterArr = resCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
 
-                    if (centers.Length > 0)
+                    foreach (string rescenter in resCenterArr)
                     {
-                        lblResCenter.Text = centers[0];
+                        ddlResponsibilityCenter.Items.Add(new ListItem(rescenter));
                     }
                 }
                 else
                 {
-                    lblResCenter.Text = "No responsibility centers found.";
+                    ddlResponsibilityCenter.Items.Add(new ListItem("No responsibility centers available"));
                 }
             }
             catch (Exception ex)
             {
-                ex.Data.Clear();
-                lblResCenter.Text = "Error loading responsibility centers.";
+                Console.WriteLine("Error: " + ex.Message);
+                ddlResponsibilityCenter.Items.Add(new ListItem("Error loading responsibility centers"));
             }
         }
 
@@ -350,7 +351,7 @@ namespace NCIASTaff.pages
                 string directorate = lblDirectorate.Text;
                 string department = lblDepartment.Text;
                 string requiredDate = txtRequiredDate.Text;
-                string responsibilityCenter = lblResCenter.Text.ToString();
+                string responsibilityCenter = ddlResponsibilityCenter.SelectedValue.ToString();
                 string description = txtDescription.Text;
                 string requisitionType = ddlRequisitionType.SelectedValue.ToString();
                 string issuingStore = ddlissuingStore.SelectedValue.ToString();

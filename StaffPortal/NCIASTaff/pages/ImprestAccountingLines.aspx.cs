@@ -17,6 +17,7 @@ namespace NCIASTaff.pages
         SqlCommand command;
         SqlDataReader reader;
         SqlDataAdapter adapter;
+        string[] strLimiters2 = new string[] { "[]" };
         private Staffportall webportals = Components.ObjNav;
         readonly string[] strLimiters = new string[] { "::" };
         protected void Page_Load(object sender, EventArgs e)
@@ -53,7 +54,7 @@ namespace NCIASTaff.pages
                         string responsibilityCenter = responseArr[2];
                         ListItem li = new ListItem(imprestNumber + " => " + imprestDescription, imprestNumber);
                         ddlPostedImprest.Items.Add(li);
-                        lblResCenter.Text = responsibilityCenter;
+                        ddlResponsibilityCenter.SelectedValue = responsibilityCenter;
                     }                    
                 }
 
@@ -96,95 +97,38 @@ namespace NCIASTaff.pages
             }
         }
 
-
         private void LoadResponsibilityCenter()
         {
             try
             {
-                string grouping = "IMPSURR"; 
-                string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping);
+                ddlResponsibilityCenter.Items.Clear(); 
 
-                if (!string.IsNullOrEmpty(responsibilityCenters))
+                string grouping = "IMPSURR";
+                string resCenters = webportals.GetResponsibilityCentres(grouping);
+                if (!string.IsNullOrEmpty(resCenters))
                 {
-                    string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] resCenterArr = resCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
 
-                    if (centers.Length > 0)
+                    foreach (string rescenter in resCenterArr)
                     {
-                        lblResCenter.Text = centers[0];
+                        ddlResponsibilityCenter.Items.Add(new ListItem(rescenter));
                     }
                 }
                 else
                 {
-                    lblResCenter.Text = "No responsibility centers found.";
+                    ddlResponsibilityCenter.Items.Add(new ListItem("No responsibility centers available"));
                 }
             }
             catch (Exception ex)
             {
-                ex.Data.Clear();
-                lblResCenter.Text = "Error loading responsibility centers.";
+                Console.WriteLine("Error: " + ex.Message);
+                ddlResponsibilityCenter.Items.Add(new ListItem("Error loading responsibility centers"));
             }
         }
 
-        //private void BindGridViewData()
-        //{
-        //    string imprestNo = Request.QueryString["ImprestNo"].ToString();
-        //    string imprestReqLines = webportals.GetImprestLines(imprestNo);
 
-        //    if (!string.IsNullOrEmpty(imprestReqLines))
-        //    {
-        //        // Assuming the data is separated by '[]' for each line and '::' for each field within a line.
-        //        DataTable dt = new DataTable();
-        //        dt.Columns.Add("No");
-        //        dt.Columns.Add("Advance Type");
-        //        dt.Columns.Add("Account No:");
-        //        dt.Columns.Add("Account Name");
-        //        dt.Columns.Add("Amount", typeof(decimal));
 
-        //        string[] lines = imprestReqLines.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
-
-        //        foreach (string line in lines)
-        //        {
-        //            string[] fields = line.Split(strLimiters, StringSplitOptions.None);
-        //            if (fields.Length == 5)  // Ensure all fields are present
-        //            {
-        //                DataRow row = dt.NewRow();
-        //                row["No"] = fields[0];
-        //                row["Advance Type"] = fields[1];
-        //                row["Account No:"] = fields[2];
-        //                row["Account Name"] = fields[3];
-        //                decimal amount;
-        //                if (decimal.TryParse(fields[4], out amount))
-        //                {
-        //                    row["Amount"] = amount;
-        //                }
-        //                else
-        //                {
-        //                    row["Amount"] = 0;  // Set to 0 if parsing fails, or handle as needed
-        //                }
-        //                dt.Rows.Add(row);
-        //            }
-        //        }
-
-        //        gvLines.DataSource = dt;
-        //        gvLines.DataBind();
-
-        //        // Calculate total amount and format each row
-        //        decimal totalAmount = 0;
-
-        //        foreach (DataRow row in dt.Rows)
-        //        {
-        //            totalAmount += Convert.ToDecimal(row["Amount"]);
-        //        }
-
-        //        // Display total amount in lblTotalNetAmount
-        //        lblTotalNetAmount.Text = String.Format("{0:#,##0.00}", totalAmount);
-        //    }
-        //    else
-        //    {
-        //        lblTotalNetAmount.Text = "0.00";
-        //    }
-        //}
-
+        
         private void BindGridViewData()
         {
             try
@@ -296,7 +240,7 @@ namespace NCIASTaff.pages
             try
             {
                 string imprestNo = ddlPostedImprest.SelectedValue.ToString();
-                string responsibilityCenter = lblResCenter.Text.ToString();
+                string responsibilityCenter = ddlResponsibilityCenter.SelectedValue.ToString();
                 string username = Session["username"].ToString();
                 string documentNo = string.Empty;
 

@@ -147,7 +147,6 @@ namespace NCIASTaff
         }
         catch (Exception ex)
         {
-            // Log the exception to see what went wrong
             Console.WriteLine("Error retrieving EmployeeGender: " + ex.Message);
         }
 

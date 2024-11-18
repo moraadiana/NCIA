@@ -95,27 +95,30 @@ namespace NCIASTaff.pages
         {
             try
             {
-                /*ddlResponsibilityCenter.Items.Clear();
                 ddlResponsibilityCenter.Items.Clear();
-                var serviceRoot = Components.ServiceRoot;
-                var context = new BC.NAV(new Uri(serviceRoot));
-                context.BuildingRequest += Components.Context_BuildingRequest;
-                var responsibilityCenters = context.ResponsibilityCenters.Execute();
-                if (responsibilityCenters != null)
+
+                string grouping = "SURP-CASH";
+                string resCenters = webportals.GetResponsibilityCentres(grouping);
+                if (!string.IsNullOrEmpty(resCenters))
                 {
-                    foreach (var responsibilityCenter in responsibilityCenters)
+                    string[] resCenterArr = resCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    foreach (string rescenter in resCenterArr)
                     {
-                        ListItem li = new ListItem(responsibilityCenter.Name.ToUpper(), responsibilityCenter.Code);
-                        ddlResponsibilityCenter.Items.Add(li);
+                        ddlResponsibilityCenter.Items.Add(new ListItem(rescenter));
                     }
-                }*/
+                }
+                else
+                {
+                    ddlResponsibilityCenter.Items.Add(new ListItem("No responsibility centers available"));
+                }
             }
             catch (Exception ex)
             {
-                ex.Data.Clear();
+                Console.WriteLine("Error: " + ex.Message);
+                ddlResponsibilityCenter.Items.Add(new ListItem("Error loading responsibility centers"));
             }
         }
-
         private void BindGridViewData()
         {
             try
