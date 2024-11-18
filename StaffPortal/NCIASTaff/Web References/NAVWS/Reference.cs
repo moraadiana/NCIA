@@ -6103,12 +6103,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-<<<<<<< HEAD
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void GetResponsibilityCentresCompletedEventHandler(object sender, GetResponsibilityCentresCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetResponsibilityCentresCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -6130,10 +6129,7 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-=======
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
->>>>>>> 6600e75665726ac3535039acc1195b2bd79c175c
     public delegate void GetStaffCitizenshipCompletedEventHandler(object sender, GetStaffCitizenshipCompletedEventArgs e);
     
     /// <remarks/>
@@ -6315,12 +6311,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-<<<<<<< HEAD
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void HRMLeaveApplication1CompletedEventHandler(object sender, HRMLeaveApplication1CompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class HRMLeaveApplication1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -6342,10 +6337,7 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-=======
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
->>>>>>> 6600e75665726ac3535039acc1195b2bd79c175c
     public delegate void HRMLeaveApplicationCompletedEventHandler(object sender, HRMLeaveApplicationCompletedEventArgs e);
     
     /// <remarks/>
