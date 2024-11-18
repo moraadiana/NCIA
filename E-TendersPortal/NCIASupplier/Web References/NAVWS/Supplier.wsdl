@@ -63,12 +63,27 @@
       <element name="CheckBidderLogin">
         <complexType>
           <sequence>
-            <element minOccurs="1" maxOccurs="1" name="email" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="vATno" type="string" />
             <element minOccurs="1" maxOccurs="1" name="password" type="string" />
           </sequence>
         </complexType>
       </element>
       <element name="CheckBidderLogin_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckExistingRFQ">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="bidderNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tenderNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckExistingRFQ_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -125,6 +140,21 @@
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateTenderSubmissionHeader1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="bidderNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tenderNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateTenderSubmissionHeader1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -258,6 +288,33 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetLastPrnNo">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetLastPrnNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyBidLines1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="bidderNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tenderNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyBidLines1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetMyBidLines">
         <complexType>
           <sequence>
@@ -381,7 +438,7 @@
           </sequence>
         </complexType>
       </element>
-      <element name="InsertTenderSubmissionLine">
+      <element name="InsertTenderSubmissionLine1">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="bidderNo" type="string" />
@@ -389,6 +446,25 @@
             <element minOccurs="1" maxOccurs="1" name="bidNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="itemNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="quotedAmnt" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertTenderSubmissionLine1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertTenderSubmissionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="bidderNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tenderNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bidNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="itemNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="quotedAmt" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
           </sequence>
         </complexType>
       </element>
@@ -423,6 +499,21 @@
         </complexType>
       </element>
       <element name="PrequalificationApplied_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitBid1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="bidderNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bidNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitBid1_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
@@ -488,6 +579,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="ValidVATno">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="vATno" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidVATno_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="ValidateEmail">
         <complexType>
           <sequence>
@@ -496,6 +601,20 @@
         </complexType>
       </element>
       <element name="ValidateEmail_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateVATno">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="vATno" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ValidateVATno_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
@@ -534,6 +653,12 @@
   <message name="CheckBidderLogin_Result">
     <part name="parameters" element="tns:CheckBidderLogin_Result" />
   </message>
+  <message name="CheckExistingRFQ">
+    <part name="parameters" element="tns:CheckExistingRFQ" />
+  </message>
+  <message name="CheckExistingRFQ_Result">
+    <part name="parameters" element="tns:CheckExistingRFQ_Result" />
+  </message>
   <message name="CreateBidderAccount">
     <part name="parameters" element="tns:CreateBidderAccount" />
   </message>
@@ -551,6 +676,12 @@
   </message>
   <message name="CreatePrequalificationLine_Result">
     <part name="parameters" element="tns:CreatePrequalificationLine_Result" />
+  </message>
+  <message name="CreateTenderSubmissionHeader1">
+    <part name="parameters" element="tns:CreateTenderSubmissionHeader1" />
+  </message>
+  <message name="CreateTenderSubmissionHeader1_Result">
+    <part name="parameters" element="tns:CreateTenderSubmissionHeader1_Result" />
   </message>
   <message name="CreateTenderSubmissionHeader">
     <part name="parameters" element="tns:CreateTenderSubmissionHeader" />
@@ -606,6 +737,18 @@
   <message name="GetCurrentPrequalificationPeriod_Result">
     <part name="parameters" element="tns:GetCurrentPrequalificationPeriod_Result" />
   </message>
+  <message name="GetLastPrnNo">
+    <part name="parameters" element="tns:GetLastPrnNo" />
+  </message>
+  <message name="GetLastPrnNo_Result">
+    <part name="parameters" element="tns:GetLastPrnNo_Result" />
+  </message>
+  <message name="GetMyBidLines1">
+    <part name="parameters" element="tns:GetMyBidLines1" />
+  </message>
+  <message name="GetMyBidLines1_Result">
+    <part name="parameters" element="tns:GetMyBidLines1_Result" />
+  </message>
   <message name="GetMyBidLines">
     <part name="parameters" element="tns:GetMyBidLines" />
   </message>
@@ -660,6 +803,12 @@
   <message name="GetUnappliedPrequalificationCategories_Result">
     <part name="parameters" element="tns:GetUnappliedPrequalificationCategories_Result" />
   </message>
+  <message name="InsertTenderSubmissionLine1">
+    <part name="parameters" element="tns:InsertTenderSubmissionLine1" />
+  </message>
+  <message name="InsertTenderSubmissionLine1_Result">
+    <part name="parameters" element="tns:InsertTenderSubmissionLine1_Result" />
+  </message>
   <message name="InsertTenderSubmissionLine">
     <part name="parameters" element="tns:InsertTenderSubmissionLine" />
   </message>
@@ -677,6 +826,12 @@
   </message>
   <message name="PrequalificationApplied_Result">
     <part name="parameters" element="tns:PrequalificationApplied_Result" />
+  </message>
+  <message name="SubmitBid1">
+    <part name="parameters" element="tns:SubmitBid1" />
+  </message>
+  <message name="SubmitBid1_Result">
+    <part name="parameters" element="tns:SubmitBid1_Result" />
   </message>
   <message name="SubmitBid">
     <part name="parameters" element="tns:SubmitBid" />
@@ -702,11 +857,23 @@
   <message name="ValidEmailAddress_Result">
     <part name="parameters" element="tns:ValidEmailAddress_Result" />
   </message>
+  <message name="ValidVATno">
+    <part name="parameters" element="tns:ValidVATno" />
+  </message>
+  <message name="ValidVATno_Result">
+    <part name="parameters" element="tns:ValidVATno_Result" />
+  </message>
   <message name="ValidateEmail">
     <part name="parameters" element="tns:ValidateEmail" />
   </message>
   <message name="ValidateEmail_Result">
     <part name="parameters" element="tns:ValidateEmail_Result" />
+  </message>
+  <message name="ValidateVATno">
+    <part name="parameters" element="tns:ValidateVATno" />
+  </message>
+  <message name="ValidateVATno_Result">
+    <part name="parameters" element="tns:ValidateVATno_Result" />
   </message>
   <portType name="Supplier_Port">
     <operation name="AccountActivated">
@@ -729,6 +896,10 @@
       <input name="CheckBidderLogin" message="tns:CheckBidderLogin" />
       <output name="CheckBidderLogin_Result" message="tns:CheckBidderLogin_Result" />
     </operation>
+    <operation name="CheckExistingRFQ">
+      <input name="CheckExistingRFQ" message="tns:CheckExistingRFQ" />
+      <output name="CheckExistingRFQ_Result" message="tns:CheckExistingRFQ_Result" />
+    </operation>
     <operation name="CreateBidderAccount">
       <input name="CreateBidderAccount" message="tns:CreateBidderAccount" />
       <output name="CreateBidderAccount_Result" message="tns:CreateBidderAccount_Result" />
@@ -740,6 +911,10 @@
     <operation name="CreatePrequalificationLine">
       <input name="CreatePrequalificationLine" message="tns:CreatePrequalificationLine" />
       <output name="CreatePrequalificationLine_Result" message="tns:CreatePrequalificationLine_Result" />
+    </operation>
+    <operation name="CreateTenderSubmissionHeader1">
+      <input name="CreateTenderSubmissionHeader1" message="tns:CreateTenderSubmissionHeader1" />
+      <output name="CreateTenderSubmissionHeader1_Result" message="tns:CreateTenderSubmissionHeader1_Result" />
     </operation>
     <operation name="CreateTenderSubmissionHeader">
       <input name="CreateTenderSubmissionHeader" message="tns:CreateTenderSubmissionHeader" />
@@ -777,6 +952,14 @@
       <input name="GetCurrentPrequalificationPeriod" message="tns:GetCurrentPrequalificationPeriod" />
       <output name="GetCurrentPrequalificationPeriod_Result" message="tns:GetCurrentPrequalificationPeriod_Result" />
     </operation>
+    <operation name="GetLastPrnNo">
+      <input name="GetLastPrnNo" message="tns:GetLastPrnNo" />
+      <output name="GetLastPrnNo_Result" message="tns:GetLastPrnNo_Result" />
+    </operation>
+    <operation name="GetMyBidLines1">
+      <input name="GetMyBidLines1" message="tns:GetMyBidLines1" />
+      <output name="GetMyBidLines1_Result" message="tns:GetMyBidLines1_Result" />
+    </operation>
     <operation name="GetMyBidLines">
       <input name="GetMyBidLines" message="tns:GetMyBidLines" />
       <output name="GetMyBidLines_Result" message="tns:GetMyBidLines_Result" />
@@ -813,6 +996,10 @@
       <input name="GetUnappliedPrequalificationCategories" message="tns:GetUnappliedPrequalificationCategories" />
       <output name="GetUnappliedPrequalificationCategories_Result" message="tns:GetUnappliedPrequalificationCategories_Result" />
     </operation>
+    <operation name="InsertTenderSubmissionLine1">
+      <input name="InsertTenderSubmissionLine1" message="tns:InsertTenderSubmissionLine1" />
+      <output name="InsertTenderSubmissionLine1_Result" message="tns:InsertTenderSubmissionLine1_Result" />
+    </operation>
     <operation name="InsertTenderSubmissionLine">
       <input name="InsertTenderSubmissionLine" message="tns:InsertTenderSubmissionLine" />
       <output name="InsertTenderSubmissionLine_Result" message="tns:InsertTenderSubmissionLine_Result" />
@@ -824,6 +1011,10 @@
     <operation name="PrequalificationApplied">
       <input name="PrequalificationApplied" message="tns:PrequalificationApplied" />
       <output name="PrequalificationApplied_Result" message="tns:PrequalificationApplied_Result" />
+    </operation>
+    <operation name="SubmitBid1">
+      <input name="SubmitBid1" message="tns:SubmitBid1" />
+      <output name="SubmitBid1_Result" message="tns:SubmitBid1_Result" />
     </operation>
     <operation name="SubmitBid">
       <input name="SubmitBid" message="tns:SubmitBid" />
@@ -841,9 +1032,17 @@
       <input name="ValidEmailAddress" message="tns:ValidEmailAddress" />
       <output name="ValidEmailAddress_Result" message="tns:ValidEmailAddress_Result" />
     </operation>
+    <operation name="ValidVATno">
+      <input name="ValidVATno" message="tns:ValidVATno" />
+      <output name="ValidVATno_Result" message="tns:ValidVATno_Result" />
+    </operation>
     <operation name="ValidateEmail">
       <input name="ValidateEmail" message="tns:ValidateEmail" />
       <output name="ValidateEmail_Result" message="tns:ValidateEmail_Result" />
+    </operation>
+    <operation name="ValidateVATno">
+      <input name="ValidateVATno" message="tns:ValidateVATno" />
+      <output name="ValidateVATno_Result" message="tns:ValidateVATno_Result" />
     </operation>
   </portType>
   <binding name="Supplier_Binding" type="tns:Supplier_Port">
@@ -893,6 +1092,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="CheckExistingRFQ">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:CheckExistingRFQ" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckExistingRFQ">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckExistingRFQ_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="CreateBidderAccount">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:CreateBidderAccount" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="CreateBidderAccount">
@@ -917,6 +1125,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="CreatePrequalificationLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CreateTenderSubmissionHeader1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:CreateTenderSubmissionHeader1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateTenderSubmissionHeader1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateTenderSubmissionHeader1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -1001,6 +1218,24 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetLastPrnNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:GetLastPrnNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetLastPrnNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetLastPrnNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyBidLines1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:GetMyBidLines1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyBidLines1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyBidLines1_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetMyBidLines">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:GetMyBidLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetMyBidLines">
@@ -1082,6 +1317,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="InsertTenderSubmissionLine1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:InsertTenderSubmissionLine1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertTenderSubmissionLine1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertTenderSubmissionLine1_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="InsertTenderSubmissionLine">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:InsertTenderSubmissionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="InsertTenderSubmissionLine">
@@ -1106,6 +1350,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="PrequalificationApplied_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SubmitBid1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:SubmitBid1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SubmitBid1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SubmitBid1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -1145,6 +1398,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="ValidVATno">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:ValidVATno" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ValidVATno">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ValidVATno_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="ValidateEmail">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:ValidateEmail" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="ValidateEmail">
@@ -1154,10 +1416,19 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="ValidateVATno">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:ValidateVATno" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ValidateVATno">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ValidateVATno_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
   </binding>
   <service name="Supplier">
     <port name="Supplier_Port" binding="tns:Supplier_Binding">
-      <address location="http://10.107.8.40:1047/Ncia1/WS/NCIA%20TEST%201/Codeunit/Supplier" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA%20TEST/Codeunit/Supplier" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

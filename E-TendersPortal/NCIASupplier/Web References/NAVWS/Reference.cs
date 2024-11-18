@@ -23,7 +23,7 @@ namespace NCIASupplier.NAVWS {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="Supplier_Binding", Namespace="urn:microsoft-dynamics-schemas/codeunit/Supplier")]
@@ -39,11 +39,15 @@ namespace NCIASupplier.NAVWS {
         
         private System.Threading.SendOrPostCallback CheckBidderLoginOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CheckExistingRFQOperationCompleted;
+        
         private System.Threading.SendOrPostCallback CreateBidderAccountOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreatePrequalificationHeaderOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreatePrequalificationLineOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CreateTenderSubmissionHeader1OperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateTenderSubmissionHeaderOperationCompleted;
         
@@ -63,6 +67,10 @@ namespace NCIASupplier.NAVWS {
         
         private System.Threading.SendOrPostCallback GetCurrentPrequalificationPeriodOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetLastPrnNoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetMyBidLines1OperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetMyBidLinesOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyBidsOperationCompleted;
@@ -81,11 +89,15 @@ namespace NCIASupplier.NAVWS {
         
         private System.Threading.SendOrPostCallback GetUnappliedPrequalificationCategoriesOperationCompleted;
         
+        private System.Threading.SendOrPostCallback InsertTenderSubmissionLine1OperationCompleted;
+        
         private System.Threading.SendOrPostCallback InsertTenderSubmissionLineOperationCompleted;
         
         private System.Threading.SendOrPostCallback NotAllMandatoryDocumentsAttachedOperationCompleted;
         
         private System.Threading.SendOrPostCallback PrequalificationAppliedOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback SubmitBid1OperationCompleted;
         
         private System.Threading.SendOrPostCallback SubmitBidOperationCompleted;
         
@@ -95,7 +107,11 @@ namespace NCIASupplier.NAVWS {
         
         private System.Threading.SendOrPostCallback ValidEmailAddressOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ValidVATnoOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ValidateEmailOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ValidateVATnoOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -151,6 +167,9 @@ namespace NCIASupplier.NAVWS {
         public event CheckBidderLoginCompletedEventHandler CheckBidderLoginCompleted;
         
         /// <remarks/>
+        public event CheckExistingRFQCompletedEventHandler CheckExistingRFQCompleted;
+        
+        /// <remarks/>
         public event CreateBidderAccountCompletedEventHandler CreateBidderAccountCompleted;
         
         /// <remarks/>
@@ -158,6 +177,9 @@ namespace NCIASupplier.NAVWS {
         
         /// <remarks/>
         public event CreatePrequalificationLineCompletedEventHandler CreatePrequalificationLineCompleted;
+        
+        /// <remarks/>
+        public event CreateTenderSubmissionHeader1CompletedEventHandler CreateTenderSubmissionHeader1Completed;
         
         /// <remarks/>
         public event CreateTenderSubmissionHeaderCompletedEventHandler CreateTenderSubmissionHeaderCompleted;
@@ -187,6 +209,12 @@ namespace NCIASupplier.NAVWS {
         public event GetCurrentPrequalificationPeriodCompletedEventHandler GetCurrentPrequalificationPeriodCompleted;
         
         /// <remarks/>
+        public event GetLastPrnNoCompletedEventHandler GetLastPrnNoCompleted;
+        
+        /// <remarks/>
+        public event GetMyBidLines1CompletedEventHandler GetMyBidLines1Completed;
+        
+        /// <remarks/>
         public event GetMyBidLinesCompletedEventHandler GetMyBidLinesCompleted;
         
         /// <remarks/>
@@ -214,6 +242,9 @@ namespace NCIASupplier.NAVWS {
         public event GetUnappliedPrequalificationCategoriesCompletedEventHandler GetUnappliedPrequalificationCategoriesCompleted;
         
         /// <remarks/>
+        public event InsertTenderSubmissionLine1CompletedEventHandler InsertTenderSubmissionLine1Completed;
+        
+        /// <remarks/>
         public event InsertTenderSubmissionLineCompletedEventHandler InsertTenderSubmissionLineCompleted;
         
         /// <remarks/>
@@ -221,6 +252,9 @@ namespace NCIASupplier.NAVWS {
         
         /// <remarks/>
         public event PrequalificationAppliedCompletedEventHandler PrequalificationAppliedCompleted;
+        
+        /// <remarks/>
+        public event SubmitBid1CompletedEventHandler SubmitBid1Completed;
         
         /// <remarks/>
         public event SubmitBidCompletedEventHandler SubmitBidCompleted;
@@ -235,7 +269,13 @@ namespace NCIASupplier.NAVWS {
         public event ValidEmailAddressCompletedEventHandler ValidEmailAddressCompleted;
         
         /// <remarks/>
+        public event ValidVATnoCompletedEventHandler ValidVATnoCompleted;
+        
+        /// <remarks/>
         public event ValidateEmailCompletedEventHandler ValidateEmailCompleted;
+        
+        /// <remarks/>
+        public event ValidateVATnoCompletedEventHandler ValidateVATnoCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:AccountActivated", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="AccountActivated_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -364,25 +404,25 @@ namespace NCIASupplier.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:CheckBidderLogin", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="CheckBidderLogin_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string CheckBidderLogin(string email, string password) {
+        public string CheckBidderLogin(string vATno, string password) {
             object[] results = this.Invoke("CheckBidderLogin", new object[] {
-                        email,
+                        vATno,
                         password});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void CheckBidderLoginAsync(string email, string password) {
-            this.CheckBidderLoginAsync(email, password, null);
+        public void CheckBidderLoginAsync(string vATno, string password) {
+            this.CheckBidderLoginAsync(vATno, password, null);
         }
         
         /// <remarks/>
-        public void CheckBidderLoginAsync(string email, string password, object userState) {
+        public void CheckBidderLoginAsync(string vATno, string password, object userState) {
             if ((this.CheckBidderLoginOperationCompleted == null)) {
                 this.CheckBidderLoginOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCheckBidderLoginOperationCompleted);
             }
             this.InvokeAsync("CheckBidderLogin", new object[] {
-                        email,
+                        vATno,
                         password}, this.CheckBidderLoginOperationCompleted, userState);
         }
         
@@ -390,6 +430,38 @@ namespace NCIASupplier.NAVWS {
             if ((this.CheckBidderLoginCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CheckBidderLoginCompleted(this, new CheckBidderLoginCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:CheckExistingRFQ", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="CheckExistingRFQ_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string CheckExistingRFQ(string bidderNo, string tenderNo) {
+            object[] results = this.Invoke("CheckExistingRFQ", new object[] {
+                        bidderNo,
+                        tenderNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CheckExistingRFQAsync(string bidderNo, string tenderNo) {
+            this.CheckExistingRFQAsync(bidderNo, tenderNo, null);
+        }
+        
+        /// <remarks/>
+        public void CheckExistingRFQAsync(string bidderNo, string tenderNo, object userState) {
+            if ((this.CheckExistingRFQOperationCompleted == null)) {
+                this.CheckExistingRFQOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCheckExistingRFQOperationCompleted);
+            }
+            this.InvokeAsync("CheckExistingRFQ", new object[] {
+                        bidderNo,
+                        tenderNo}, this.CheckExistingRFQOperationCompleted, userState);
+        }
+        
+        private void OnCheckExistingRFQOperationCompleted(object arg) {
+            if ((this.CheckExistingRFQCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CheckExistingRFQCompleted(this, new CheckExistingRFQCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -502,6 +574,38 @@ namespace NCIASupplier.NAVWS {
             if ((this.CreatePrequalificationLineCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CreatePrequalificationLineCompleted(this, new CreatePrequalificationLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:CreateTenderSubmissionHeader1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="CreateTenderSubmissionHeader1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string CreateTenderSubmissionHeader1(string bidderNo, string tenderNo) {
+            object[] results = this.Invoke("CreateTenderSubmissionHeader1", new object[] {
+                        bidderNo,
+                        tenderNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CreateTenderSubmissionHeader1Async(string bidderNo, string tenderNo) {
+            this.CreateTenderSubmissionHeader1Async(bidderNo, tenderNo, null);
+        }
+        
+        /// <remarks/>
+        public void CreateTenderSubmissionHeader1Async(string bidderNo, string tenderNo, object userState) {
+            if ((this.CreateTenderSubmissionHeader1OperationCompleted == null)) {
+                this.CreateTenderSubmissionHeader1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateTenderSubmissionHeader1OperationCompleted);
+            }
+            this.InvokeAsync("CreateTenderSubmissionHeader1", new object[] {
+                        bidderNo,
+                        tenderNo}, this.CreateTenderSubmissionHeader1OperationCompleted, userState);
+        }
+        
+        private void OnCreateTenderSubmissionHeader1OperationCompleted(object arg) {
+            if ((this.CreateTenderSubmissionHeader1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateTenderSubmissionHeader1Completed(this, new CreateTenderSubmissionHeader1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -788,6 +892,66 @@ namespace NCIASupplier.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:GetLastPrnNo", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="GetLastPrnNo_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public int GetLastPrnNo() {
+            object[] results = this.Invoke("GetLastPrnNo", new object[0]);
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetLastPrnNoAsync() {
+            this.GetLastPrnNoAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetLastPrnNoAsync(object userState) {
+            if ((this.GetLastPrnNoOperationCompleted == null)) {
+                this.GetLastPrnNoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetLastPrnNoOperationCompleted);
+            }
+            this.InvokeAsync("GetLastPrnNo", new object[0], this.GetLastPrnNoOperationCompleted, userState);
+        }
+        
+        private void OnGetLastPrnNoOperationCompleted(object arg) {
+            if ((this.GetLastPrnNoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetLastPrnNoCompleted(this, new GetLastPrnNoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:GetMyBidLines1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="GetMyBidLines1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetMyBidLines1(string bidderNo, string tenderNo) {
+            object[] results = this.Invoke("GetMyBidLines1", new object[] {
+                        bidderNo,
+                        tenderNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMyBidLines1Async(string bidderNo, string tenderNo) {
+            this.GetMyBidLines1Async(bidderNo, tenderNo, null);
+        }
+        
+        /// <remarks/>
+        public void GetMyBidLines1Async(string bidderNo, string tenderNo, object userState) {
+            if ((this.GetMyBidLines1OperationCompleted == null)) {
+                this.GetMyBidLines1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyBidLines1OperationCompleted);
+            }
+            this.InvokeAsync("GetMyBidLines1", new object[] {
+                        bidderNo,
+                        tenderNo}, this.GetMyBidLines1OperationCompleted, userState);
+        }
+        
+        private void OnGetMyBidLines1OperationCompleted(object arg) {
+            if ((this.GetMyBidLines1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMyBidLines1Completed(this, new GetMyBidLines1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:GetMyBidLines", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="GetMyBidLines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetMyBidLines(string bidderNo, string tenderNo) {
@@ -1060,10 +1224,10 @@ namespace NCIASupplier.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:InsertTenderSubmissionLine", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="InsertTenderSubmissionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:InsertTenderSubmissionLine1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="InsertTenderSubmissionLine1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool InsertTenderSubmissionLine(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmnt) {
-            object[] results = this.Invoke("InsertTenderSubmissionLine", new object[] {
+        public bool InsertTenderSubmissionLine1(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmnt) {
+            object[] results = this.Invoke("InsertTenderSubmissionLine1", new object[] {
                         bidderNo,
                         tenderNo,
                         bidNo,
@@ -1073,12 +1237,51 @@ namespace NCIASupplier.NAVWS {
         }
         
         /// <remarks/>
-        public void InsertTenderSubmissionLineAsync(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmnt) {
-            this.InsertTenderSubmissionLineAsync(bidderNo, tenderNo, bidNo, itemNo, quotedAmnt, null);
+        public void InsertTenderSubmissionLine1Async(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmnt) {
+            this.InsertTenderSubmissionLine1Async(bidderNo, tenderNo, bidNo, itemNo, quotedAmnt, null);
         }
         
         /// <remarks/>
-        public void InsertTenderSubmissionLineAsync(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmnt, object userState) {
+        public void InsertTenderSubmissionLine1Async(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmnt, object userState) {
+            if ((this.InsertTenderSubmissionLine1OperationCompleted == null)) {
+                this.InsertTenderSubmissionLine1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertTenderSubmissionLine1OperationCompleted);
+            }
+            this.InvokeAsync("InsertTenderSubmissionLine1", new object[] {
+                        bidderNo,
+                        tenderNo,
+                        bidNo,
+                        itemNo,
+                        quotedAmnt}, this.InsertTenderSubmissionLine1OperationCompleted, userState);
+        }
+        
+        private void OnInsertTenderSubmissionLine1OperationCompleted(object arg) {
+            if ((this.InsertTenderSubmissionLine1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertTenderSubmissionLine1Completed(this, new InsertTenderSubmissionLine1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:InsertTenderSubmissionLine", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="InsertTenderSubmissionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool InsertTenderSubmissionLine(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmt, int lineNo) {
+            object[] results = this.Invoke("InsertTenderSubmissionLine", new object[] {
+                        bidderNo,
+                        tenderNo,
+                        bidNo,
+                        itemNo,
+                        quotedAmt,
+                        lineNo});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertTenderSubmissionLineAsync(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmt, int lineNo) {
+            this.InsertTenderSubmissionLineAsync(bidderNo, tenderNo, bidNo, itemNo, quotedAmt, lineNo, null);
+        }
+        
+        /// <remarks/>
+        public void InsertTenderSubmissionLineAsync(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmt, int lineNo, object userState) {
             if ((this.InsertTenderSubmissionLineOperationCompleted == null)) {
                 this.InsertTenderSubmissionLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertTenderSubmissionLineOperationCompleted);
             }
@@ -1087,7 +1290,8 @@ namespace NCIASupplier.NAVWS {
                         tenderNo,
                         bidNo,
                         itemNo,
-                        quotedAmnt}, this.InsertTenderSubmissionLineOperationCompleted, userState);
+                        quotedAmt,
+                        lineNo}, this.InsertTenderSubmissionLineOperationCompleted, userState);
         }
         
         private void OnInsertTenderSubmissionLineOperationCompleted(object arg) {
@@ -1159,6 +1363,38 @@ namespace NCIASupplier.NAVWS {
             if ((this.PrequalificationAppliedCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.PrequalificationAppliedCompleted(this, new PrequalificationAppliedCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:SubmitBid1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="SubmitBid1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool SubmitBid1(string bidderNo, string bidNo) {
+            object[] results = this.Invoke("SubmitBid1", new object[] {
+                        bidderNo,
+                        bidNo});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void SubmitBid1Async(string bidderNo, string bidNo) {
+            this.SubmitBid1Async(bidderNo, bidNo, null);
+        }
+        
+        /// <remarks/>
+        public void SubmitBid1Async(string bidderNo, string bidNo, object userState) {
+            if ((this.SubmitBid1OperationCompleted == null)) {
+                this.SubmitBid1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnSubmitBid1OperationCompleted);
+            }
+            this.InvokeAsync("SubmitBid1", new object[] {
+                        bidderNo,
+                        bidNo}, this.SubmitBid1OperationCompleted, userState);
+        }
+        
+        private void OnSubmitBid1OperationCompleted(object arg) {
+            if ((this.SubmitBid1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.SubmitBid1Completed(this, new SubmitBid1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1290,6 +1526,36 @@ namespace NCIASupplier.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:ValidVATno", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="ValidVATno_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool ValidVATno(string vATno) {
+            object[] results = this.Invoke("ValidVATno", new object[] {
+                        vATno});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ValidVATnoAsync(string vATno) {
+            this.ValidVATnoAsync(vATno, null);
+        }
+        
+        /// <remarks/>
+        public void ValidVATnoAsync(string vATno, object userState) {
+            if ((this.ValidVATnoOperationCompleted == null)) {
+                this.ValidVATnoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnValidVATnoOperationCompleted);
+            }
+            this.InvokeAsync("ValidVATno", new object[] {
+                        vATno}, this.ValidVATnoOperationCompleted, userState);
+        }
+        
+        private void OnValidVATnoOperationCompleted(object arg) {
+            if ((this.ValidVATnoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ValidVATnoCompleted(this, new ValidVATnoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:ValidateEmail", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="ValidateEmail_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public bool ValidateEmail(string email) {
@@ -1320,6 +1586,36 @@ namespace NCIASupplier.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:ValidateVATno", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="ValidateVATno_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool ValidateVATno(string vATno) {
+            object[] results = this.Invoke("ValidateVATno", new object[] {
+                        vATno});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ValidateVATnoAsync(string vATno) {
+            this.ValidateVATnoAsync(vATno, null);
+        }
+        
+        /// <remarks/>
+        public void ValidateVATnoAsync(string vATno, object userState) {
+            if ((this.ValidateVATnoOperationCompleted == null)) {
+                this.ValidateVATnoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnValidateVATnoOperationCompleted);
+            }
+            this.InvokeAsync("ValidateVATno", new object[] {
+                        vATno}, this.ValidateVATnoOperationCompleted, userState);
+        }
+        
+        private void OnValidateVATnoOperationCompleted(object arg) {
+            if ((this.ValidateVATnoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ValidateVATnoCompleted(this, new ValidateVATnoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -1339,11 +1635,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void AccountActivatedCompletedEventHandler(object sender, AccountActivatedCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class AccountActivatedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1365,11 +1661,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void ActivateBidderAccountCompletedEventHandler(object sender, ActivateBidderAccountCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ActivateBidderAccountCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1391,11 +1687,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void AddedCategoryCompletedEventHandler(object sender, AddedCategoryCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class AddedCategoryCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1417,11 +1713,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void ChangeBidderPasswordCompletedEventHandler(object sender, ChangeBidderPasswordCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ChangeBidderPasswordCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1443,11 +1739,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void CheckBidderLoginCompletedEventHandler(object sender, CheckBidderLoginCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class CheckBidderLoginCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1469,11 +1765,37 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void CheckExistingRFQCompletedEventHandler(object sender, CheckExistingRFQCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CheckExistingRFQCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CheckExistingRFQCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void CreateBidderAccountCompletedEventHandler(object sender, CreateBidderAccountCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class CreateBidderAccountCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1495,11 +1817,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void CreatePrequalificationHeaderCompletedEventHandler(object sender, CreatePrequalificationHeaderCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class CreatePrequalificationHeaderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1521,11 +1843,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void CreatePrequalificationLineCompletedEventHandler(object sender, CreatePrequalificationLineCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class CreatePrequalificationLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1547,11 +1869,37 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void CreateTenderSubmissionHeader1CompletedEventHandler(object sender, CreateTenderSubmissionHeader1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreateTenderSubmissionHeader1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreateTenderSubmissionHeader1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void CreateTenderSubmissionHeaderCompletedEventHandler(object sender, CreateTenderSubmissionHeaderCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class CreateTenderSubmissionHeaderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1573,11 +1921,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void DocumentAttachmentCompletedEventHandler(object sender, DocumentAttachmentCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class DocumentAttachmentCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1599,11 +1947,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void FileAttachedCompletedEventHandler(object sender, FileAttachedCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class FileAttachedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1625,11 +1973,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetAppliedPrequalificationCategoriesCompletedEventHandler(object sender, GetAppliedPrequalificationCategoriesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetAppliedPrequalificationCategoriesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1651,11 +1999,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetBidderDetailsCompletedEventHandler(object sender, GetBidderDetailsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetBidderDetailsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1677,11 +2025,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetBidderNameCompletedEventHandler(object sender, GetBidderNameCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetBidderNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1703,11 +2051,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetCategoryNameCompletedEventHandler(object sender, GetCategoryNameCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetCategoryNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1729,11 +2077,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetCategoryRequirementsCompletedEventHandler(object sender, GetCategoryRequirementsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetCategoryRequirementsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1755,11 +2103,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetCurrentPrequalificationPeriodCompletedEventHandler(object sender, GetCurrentPrequalificationPeriodCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetCurrentPrequalificationPeriodCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1781,11 +2129,63 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetLastPrnNoCompletedEventHandler(object sender, GetLastPrnNoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetLastPrnNoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetLastPrnNoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetMyBidLines1CompletedEventHandler(object sender, GetMyBidLines1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMyBidLines1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMyBidLines1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetMyBidLinesCompletedEventHandler(object sender, GetMyBidLinesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetMyBidLinesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1807,11 +2207,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetMyBidsCompletedEventHandler(object sender, GetMyBidsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetMyBidsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1833,11 +2233,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetOpenTenderLinesCompletedEventHandler(object sender, GetOpenTenderLinesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetOpenTenderLinesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1859,11 +2259,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetOpenTenders2CompletedEventHandler(object sender, GetOpenTenders2CompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetOpenTenders2CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1885,11 +2285,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetOpenTendersCompletedEventHandler(object sender, GetOpenTendersCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetOpenTendersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1911,11 +2311,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetPrequalificationApplicationCategoriesCompletedEventHandler(object sender, GetPrequalificationApplicationCategoriesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetPrequalificationApplicationCategoriesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1937,11 +2337,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetPrequalificationApplicationsCompletedEventHandler(object sender, GetPrequalificationApplicationsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetPrequalificationApplicationsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1963,11 +2363,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetPrequalificationCategoriesCompletedEventHandler(object sender, GetPrequalificationCategoriesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetPrequalificationCategoriesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -1989,11 +2389,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetUnappliedPrequalificationCategoriesCompletedEventHandler(object sender, GetUnappliedPrequalificationCategoriesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetUnappliedPrequalificationCategoriesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2015,11 +2415,37 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void InsertTenderSubmissionLine1CompletedEventHandler(object sender, InsertTenderSubmissionLine1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertTenderSubmissionLine1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertTenderSubmissionLine1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void InsertTenderSubmissionLineCompletedEventHandler(object sender, InsertTenderSubmissionLineCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class InsertTenderSubmissionLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2041,11 +2467,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void NotAllMandatoryDocumentsAttachedCompletedEventHandler(object sender, NotAllMandatoryDocumentsAttachedCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class NotAllMandatoryDocumentsAttachedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2067,11 +2493,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void PrequalificationAppliedCompletedEventHandler(object sender, PrequalificationAppliedCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class PrequalificationAppliedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2093,11 +2519,37 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void SubmitBid1CompletedEventHandler(object sender, SubmitBid1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class SubmitBid1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal SubmitBid1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void SubmitBidCompletedEventHandler(object sender, SubmitBidCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class SubmitBidCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2119,11 +2571,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void SubmitPrequalificationApplicationCompletedEventHandler(object sender, SubmitPrequalificationApplicationCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class SubmitPrequalificationApplicationCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2145,11 +2597,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void TenderAppliedCompletedEventHandler(object sender, TenderAppliedCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class TenderAppliedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2171,11 +2623,11 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void ValidEmailAddressCompletedEventHandler(object sender, ValidEmailAddressCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ValidEmailAddressCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2197,11 +2649,37 @@ namespace NCIASupplier.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void ValidVATnoCompletedEventHandler(object sender, ValidVATnoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ValidVATnoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ValidVATnoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void ValidateEmailCompletedEventHandler(object sender, ValidateEmailCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4161.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ValidateEmailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2209,6 +2687,32 @@ namespace NCIASupplier.NAVWS {
         private object[] results;
         
         internal ValidateEmailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void ValidateVATnoCompletedEventHandler(object sender, ValidateVATnoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ValidateVATnoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ValidateVATnoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
