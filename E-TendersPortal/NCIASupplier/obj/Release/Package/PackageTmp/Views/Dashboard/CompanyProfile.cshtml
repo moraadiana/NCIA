@@ -1,0 +1,150 @@
+﻿@model NCIASupplier.Models.BidderDetails
+@{
+    ViewBag.Title = "Company Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <!-- BEGIN PAGE HEADER-->
+    <!-- BEGIN PAGE BAR -->
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <a href="@Url.Action("index", "dashboard")">Home</a>
+                <i class="fa fa-circle"></i>
+            </li>
+            <li>
+                <a href="#">Dashboard</a>
+                <i class="fa fa-circle"></i>
+            </li>
+        </ul>
+    </div>
+    <!-- END PAGE BAR -->
+
+    @if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger">
+            <button class="close" data-close="alert"></button>
+            <span> @ViewBag.Error </span>
+        </div>
+    }
+    @if (ViewBag.Success != null)
+    {
+        <div class="alert alert-success">
+            <button class="close" data-close="alert"></button>
+            <span> @ViewBag.Success </span>
+        </div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">
+            <button class="close" data-close="alert"></button>
+            <span>@TempData["Error"]</span>
+        </div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            <button class="close" data-close="alert"></button>
+            <span>@TempData["Success"]</span>
+        </div>
+    }
+    <!-- BEGIN PAGE TITLE
+    <h1 class="page-title">
+        PCF CONTRIBUTION Portal
+    </h1>
+    <!-- END PAGE TITLE-->
+    <!-- END PAGE HEADER-->
+    <div class="portlet-body" id="divclasses">
+        <br />
+        <br />
+        <!-- BEGIN FORM-->
+        <form action="@Url.Action("companyprofile","dashboard")" method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Company Name" name="CompanyName" value="@Model.CompanyName" readonly />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Address" name="Address" required value="@Model.Address" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>City</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="City" name="City" required value="@Model.City" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Phone Number" name="PhoneNumber" required value="@Model.PhoneNo" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="Email" required value="@Model.Email" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Contact Person</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Contact Person" name="ContactPerson" required value="@Model.ContactPerson" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Contact Person Email</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Contact Person Email" name="ContactPersonEmail" required value="@Model.ContactPersonEmail" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Company Email</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Company Email" name="CompanyEmail" required value="@Model.CompanyEmail" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Certifcate of Incorporation</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Certifcate of Incorporation No" name="COI" required value="@Model.COI" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Pin Registration Certificate</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Pin Registration Certificate No" name="PRC" required value="@Model.PRC" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>VAT Registration Certificate</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="VAT Registration Certificate No" name="VRC" required value="@Model.VRC" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Tax Compliance Certificate</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Tax Compliance Certificate No" name="TCC" required value="@Model.TCC" />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>VAT Registration No</label>
+                        <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Tax Compliance Certificate No" name="VatRegistrationNo" value="@Model.VatRegistrationNo" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary pull-right">Update profile</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
