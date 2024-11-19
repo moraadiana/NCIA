@@ -1,0 +1,19 @@
+﻿﻿
+@{
+    ViewBag.Title = "OTP Verification";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<form class="login-form" autocomplete="off" action="@Url.Action("verifyotp","login")" method="post">
+    <p>Please enter the OTP Code send to your Email to confirm login</p>
+    <div class="form-group">
+        <div class="input-icon">
+            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" placeholder="Enter OTP Code" name="OTPCode" required style="text-transform:uppercase" />
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn green pull-right"> <i class="icon-login"> Login</i></button>
+        <a href="@Url.Action("index", "login")" class="btn green pull-left"><i class="icon-arrow-left"> Back</i></a>
+    </div>
+    <br />
+</form>
