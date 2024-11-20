@@ -2586,10 +2586,10 @@
     <Content Include="Views\Prequalification\PeriodCategories.cshtml" />
     <Content Include="Views\Prequalification\PrequalificationApplication.cshtml" />
     <Content Include="Views\Prequalification\PrequalificationApplications.cshtml" />
-    <Content Include="Web References\NAVWS\Reference.map">
+    <None Include="Web References\NAVWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\NAVWS\Supplier.wsdl" />
   </ItemGroup>
   <ItemGroup>

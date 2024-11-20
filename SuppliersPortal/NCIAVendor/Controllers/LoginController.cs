@@ -49,7 +49,7 @@ namespace NCIAVendor.Controllers
 
                             string subject = "NCIA Vendors Portal OTP";
                             string body = $"{otp} is your OTP Code for NCIA Vendors portal.";
-                            Components.SendEmailAlerts(emailAddress, subject, body);
+                            Components.SendEmailAlerts(vendorEmail, subject, body);
                             return RedirectToAction("verifyotp");
                         }
                         else

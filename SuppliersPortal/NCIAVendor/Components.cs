@@ -15,7 +15,7 @@ namespace NCIAVendor
     public class Components
     {
         public static SqlConnection connection;
-        public static string Company_Name = "NCIA TEST 1";
+        public static string Company_Name = "NCIA TEST";
         public static VendorsPortal ObjNav
         {
             get
