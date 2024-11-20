@@ -149,7 +149,7 @@ namespace NCIASTaff.pages
                 {
                     Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
                 }
-                webportals.GeneratePayslipReport3(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
+                webportals.GeneratePaySlipReport3(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
 
                 // myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format(@"PAYSLIP-{0}.pdf", filename)));
                 if (File.Exists(filePath))
