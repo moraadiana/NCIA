@@ -109,7 +109,7 @@ namespace NCIASTaff.pages
             {
                 ddlResponsibilityCenter.Items.Clear();
 
-                string grouping = "IMPSURR";
+                string grouping = "P-CASH";
                 string resCenters = webportals.GetResponsibilityCentres(grouping);
                 if (!string.IsNullOrEmpty(resCenters))
                 {
