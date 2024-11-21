@@ -82,7 +82,20 @@
                                                     <asp:DropDownList ID="ddlReceipts" CssClass="form-control select2" OnSelectedIndexChanged="ddlReceipts_SelectedIndexChanged" AutoPostBack="true" runat="server">
                                                     </asp:DropDownList>
                                                 </ItemTemplate>
-                                            </asp:TemplateField>                                            
+                                            </asp:TemplateField> 
+                                             <asp:TemplateField HeaderText="Actual Amount Spent" SortExpression="">
+                                             <ItemTemplate>
+                                                 <asp:TextBox ID="txtActualAmount" runat="server" Text="" BorderColor="Blue" BorderStyle="Ridge" BorderWidth="2px" ForeColor="Blue" Width="100px" />
+                                             </ItemTemplate>
+                                             <ItemStyle Font-Bold="True" ForeColor="Green"></ItemStyle>
+                                         </asp:TemplateField>
+                                         <asp:TemplateField HeaderText="Cash Amount Returned">
+                                             <ItemTemplate>
+                                                 <%--<asp:Label ID="lblCashAmountReturned" runat="server" Text="120" ForeColor="Blue" Font-Bold="true"></asp:Label>--%>
+                                                 <asp:TextBox ID="txtAmountReturned" runat="server" Text="" BorderColor="Blue" BorderStyle="Ridge" BorderWidth="2px" ForeColor="Blue" Width="100px" />
+                                             </ItemTemplate>
+                                             <ItemStyle Font-Bold="True" ForeColor="Green"></ItemStyle>
+                                         </asp:TemplateField>
                                         </Columns>
                                         <FooterStyle HorizontalAlign="Center" />
                                         <EmptyDataTemplate>
@@ -96,7 +109,7 @@
                                     <h3>Document Attachments</h3>
                                 </div>
                                 <div class="col-md-12">
-                                    <asp:GridView ID="gvAttachments" AutoGenerateColumns="false" DataKeyNames="Document No" class="table table-responsive no-padding table-bordered table-hover" runat="server"
+                                    <asp:GridView ID="gvAttachments" AutoGenerateColumns="false" DataKeyNames="No_" class="table table-responsive no-padding table-bordered table-hover" runat="server"
                                         AllowSorting="True" AllowPaging="true" ShowFooter="true" PageSize="5">
                                         <Columns>
                                             <asp:TemplateField HeaderStyle-HorizontalAlign="Left" HeaderText="#No" SortExpression="">
@@ -105,8 +118,8 @@
                                                     <%# string.Format("{0}",Container.DataItemIndex + 1 +".") %>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="Document No" HeaderText="Document No" />
-                                            <asp:BoundField DataField="Description" HeaderText="Description" />
+                                            <asp:BoundField DataField="No_" HeaderText="Document No" />
+                                            <asp:BoundField DataField="File Name" HeaderText="File Name" />
                                             <asp:BoundField DataField="$systemCreatedAt" HeaderText="Date Uploaded" />
                                             <asp:TemplateField HeaderText="Action" SortExpression="" HeaderStyle-HorizontalAlign="Left">
                                                 <ItemStyle Width="110px" HorizontalAlign="Left" />
