@@ -9,7 +9,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NameOfLastUsedPublishProfile>C:\NCIA\SuppliersPortal\NCIAVendor\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\NCIA\VendorsPortal\NCIAVendor\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
