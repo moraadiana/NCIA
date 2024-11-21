@@ -73,18 +73,18 @@
                                         <asp:Label ID="lblBalance" runat="server" Text="" Font-Bold="True" ForeColor="Blue"></asp:Label>
                                     </div>
                                 </div>
-                              <!--  <div class="col-md-3">
+                                <div class="col-md-3">
                                     <div class="form-group">
-                                        <label>Directorate: </label>
+                                        <label>Unit: </label>
                                         <asp:Label ID="lblDirectorate" runat="server" Text="" Font-Bold="True" ForeColor="Blue"></asp:Label>
                                     </div>
-                                </div> -->
-                                <!--<div class="col-md-3">
+                                </div> 
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Department: </label>
                                         <asp:Label ID="lblDepartment" runat="server" Text="" Font-Bold="True" ForeColor="Blue"></asp:Label>
                                     </div>
-                                </div> -->
+                                </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>End Date: </label>
