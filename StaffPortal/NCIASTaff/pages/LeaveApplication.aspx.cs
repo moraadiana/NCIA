@@ -397,16 +397,16 @@ namespace NCIASTaff.pages
                     Message("Start date cannot be null");
                     return;
                 }
-                /*if (string.IsNullOrEmpty(directorate))
+                if (string.IsNullOrEmpty(directorate))
                 {
                     Message("Directorate cannot be null");
                     return;
-                }*/
-                /*if (string.IsNullOrEmpty(department))
+                }
+                if (string.IsNullOrEmpty(department))
                 {
                     Message("Department cannot be null");
                     return;
-                }*/
+                }
                 if (string.IsNullOrEmpty(purpose))
                 {
                     Message("Purpose cannot cannot be null");

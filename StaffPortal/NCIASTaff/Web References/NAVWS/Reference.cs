@@ -5325,11 +5325,7 @@ namespace NCIASTaff.NAVWS {
     public delegate void GenerateMemoReportCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-//<<<<<<< HEAD
-//    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-//=======
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GeneratePaySlipReport3CompletedEventHandler(object sender, GeneratePaySlipReport3CompletedEventArgs e);
     
     /// <remarks/>
@@ -5389,11 +5385,7 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-//<<<<<<< HEAD
-//    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-//=======
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GeneratePayslipReport31CompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
