@@ -177,6 +177,7 @@ namespace NCIASupplier.Controllers
                         return RedirectToAction("appliedtenders", "opentenders");
                     }
                 }
+               
             }
             catch(Exception ex)
             {

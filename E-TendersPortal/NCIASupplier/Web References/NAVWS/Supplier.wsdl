@@ -236,7 +236,7 @@
       <element name="GetBidderName">
         <complexType>
           <sequence>
-            <element minOccurs="1" maxOccurs="1" name="email" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bidderNo" type="string" />
           </sequence>
         </complexType>
       </element>

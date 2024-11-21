@@ -143,6 +143,122 @@ namespace NCIASTaff.pages
             string LeaveNo = ddlLeaves.SelectedValue.ToString();
             try
             {
+                // Get Leave Details
+                string getleave = Components.ObjNav.GetLeaveDetails(LeaveNo);
+                if (!String.IsNullOrEmpty(getleave))
+                {
+                    string[] strdelimiters = new string[] { ":" };
+                    string[] leavedata_arr = getleave.Split(strdelimiters, StringSplitOptions.None);
+                    string empno = leavedata_arr[0];
+                    string empname = leavedata_arr[1];
+                    string leavedate = leavedata_arr[2];
+                    string applieddays = leavedata_arr[3];
+                    string startingdate = leavedata_arr[4];
+                    string enddate = leavedata_arr[5];
+                    string purpose = leavedata_arr[6];
+                    string leavetype = leavedata_arr[7];
+                    string returndate = leavedata_arr[8];
+                    string userid = leavedata_arr[9];
+                    string relieverno = leavedata_arr[10];
+                    string relievername = leavedata_arr[11];
+                    string shortcutdim3 = leavedata_arr[12];
+
+                    try
+                    {
+                        // Safely parse the dates using DateTime.TryParseExact
+                        DateTime parsedStartingDate;
+                        if (!DateTime.TryParseExact(startingdate, "MM/dd/yy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedStartingDate))
+                        {
+                            Message("Invalid starting date format.");
+                            return;
+                        }
+
+                        DateTime parsedEndDate;
+                        if (!DateTime.TryParseExact(enddate, "MM/dd/yy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedEndDate))
+                        {
+                            Message("Invalid end date format.");
+                            return;
+                        }
+
+                        DateTime parsedReturnDate;
+                        if (!DateTime.TryParseExact(returndate, "MM/dd/yy", CultureInfo.InvariantCulture, DateTimeStyles.None, out parsedReturnDate))
+                        {
+                            Message("Invalid return date format.");
+                            return;
+                        }
+
+                        // Submit back to office details
+                        string submitBacktoOffice = Components.ObjNav.SubmitbacktoOffice(LeaveNo, empno, empname, Convert.ToInt32(applieddays), parsedStartingDate, parsedEndDate, purpose, leavetype, parsedReturnDate, userid, relieverno, relievername, shortcutdim3);
+                        if (!String.IsNullOrEmpty(submitBacktoOffice))
+                        {
+                            string[] strdelimiterss = new string[] { "::" };
+                            string[] staffLoginInfo_arr = submitBacktoOffice.Split(strdelimiterss, StringSplitOptions.None);
+                            string DocumentNo = staffLoginInfo_arr[0];
+                        }
+
+                        // Process GridView rows
+                        foreach (GridViewRow gvr in this.gvLines.Rows)
+                        {
+                            if (gvr.RowType != DataControlRowType.DataRow)
+                                continue;
+
+                            DateTime Actual, returndt;
+                            TextBox txtActual = gvr.FindControl("txtActual") as TextBox;
+                            TextBox txtreturndt = gvr.FindControl("txtreturndt") as TextBox;
+
+                            if (!string.IsNullOrEmpty(txtActual.Text.ToString()))
+                            {
+                                if (DateTime.TryParseExact(txtActual.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out Actual) &&
+                                    DateTime.TryParseExact(txtreturndt.Text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out returndt))
+                                {
+                                    if (!Components.IsNumeric(Actual.ToString()))
+                                    {
+                                        Message("Invalid Actual Amount!");
+                                        txtActual.Focus();
+                                        return;
+                                    }
+
+                                    if (!Components.IsNumeric(returndt.ToString()))
+                                    {
+                                        Message("Invalid Return Date!");
+                                        txtreturndt.Focus();
+                                        return;
+                                    }
+
+                                    // Process Back2Office details
+                                    string DocumentNo = "";
+                                    Components.ObjNav.Back2officedetails(DocumentNo, Actual, returndt, LeaveNo);
+                                }
+                                else
+                                {
+                                    Message("Invalid date format in Actual or Return Date fields.");
+                                    return;
+                                }
+                            }
+                        }
+
+                        Message("Back to Office Applied Successfully");
+                    }
+                    catch (Exception exception)
+                    {
+                        Message("ERROR: " + exception.Message.ToString());
+                        exception.Data.Clear();
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                Message("ERROR: " + exception.Message.ToString());
+                exception.Data.Clear();
+            }
+        }
+
+
+        protected void lbtnApply_Click1(object sender, EventArgs e)
+        {
+            string LeaveNo = ddlLeaves.SelectedValue.ToString();
+            try
+            {
                 //GetLeaveDetails
                 string getleave = Components.ObjNav.GetLeaveDetails(LeaveNo);
                 if (!String.IsNullOrEmpty(getleave))
@@ -164,8 +280,8 @@ namespace NCIASTaff.pages
                     string shortcutdim3 = leavedata_arr[12];
                     try
                     {
-                        string submitBacktoOffice = Components.ObjNav.SubmitbacktoOffice(LeaveNo, empno, empname, Convert.ToDateTime(leavedate), Convert.ToInt32(applieddays), Convert.ToDateTime(startingdate), Convert.ToDateTime(enddate), purpose, leavetype, Convert.ToDateTime(returndate), userid, relieverno, relievername, shortcutdim3);
-                        if (!String.IsNullOrEmpty(submitBacktoOffice))
+                        string submitBacktoOffice = Components.ObjNav.SubmitbacktoOffice(LeaveNo, empno, empname, Convert.ToInt32(applieddays), Convert.ToDateTime(startingdate), Convert.ToDateTime(enddate), purpose, leavetype, Convert.ToDateTime(returndate), userid, relieverno, relievername, shortcutdim3);
+                       if (!String.IsNullOrEmpty(submitBacktoOffice))
                         {
                             string[] strdelimiterss = new string[] { "::" };
                             string[] staffLoginInfo_arr = submitBacktoOffice.Split(strdelimiters, StringSplitOptions.None);

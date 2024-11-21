@@ -358,6 +358,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="DeleteDocumentAttachments">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="systemId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="DeleteDocumentAttachments_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="DetermineIfIncludesNonWorking">
         <complexType>
           <sequence>
@@ -419,7 +433,7 @@
           <sequence />
         </complexType>
       </element>
-      <element name="GeneratePaySlipReport31">
+      <element name="GeneratePaySlipReport3">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
@@ -428,7 +442,7 @@
           </sequence>
         </complexType>
       </element>
-      <element name="GeneratePaySlipReport31_Result">
+      <element name="GeneratePaySlipReport3_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -453,7 +467,7 @@
           </sequence>
         </complexType>
       </element>
-      <element name="GeneratePayslipReport3">
+      <element name="GeneratePayslipReport31">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
@@ -462,7 +476,7 @@
           </sequence>
         </complexType>
       </element>
-      <element name="GeneratePayslipReport3_Result">
+      <element name="GeneratePayslipReport31_Result">
         <complexType>
           <sequence />
         </complexType>
@@ -1149,13 +1163,31 @@
           </sequence>
         </complexType>
       </element>
-      <element name="InsertImprestSurrenderLines">
+      <element name="InsertImprestSurrenderLines1">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="imprestNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="receiptNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertImprestSurrenderLines1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertImprestSurrenderLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="actualSpent" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="cashAmount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="imprestNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -1663,13 +1695,38 @@
           <sequence />
         </complexType>
       </element>
+      <element name="SubmitbacktoOffice1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="leaveNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="empno" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="empname" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="applieddays" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="startingdate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="enddate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="leavetype" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="returndate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="userid" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="relieverno" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="relievername" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="shortcutdim3" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitbacktoOffice1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="SubmitbacktoOffice">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="leaveNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="empno" type="string" />
             <element minOccurs="1" maxOccurs="1" name="empname" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="leavedate" type="date" />
             <element minOccurs="1" maxOccurs="1" name="applieddays" type="int" />
             <element minOccurs="1" maxOccurs="1" name="startingdate" type="date" />
             <element minOccurs="1" maxOccurs="1" name="enddate" type="date" />
@@ -1894,6 +1951,12 @@
   <message name="DeleteDocumentAttachment_Result">
     <part name="parameters" element="tns:DeleteDocumentAttachment_Result" />
   </message>
+  <message name="DeleteDocumentAttachments">
+    <part name="parameters" element="tns:DeleteDocumentAttachments" />
+  </message>
+  <message name="DeleteDocumentAttachments_Result">
+    <part name="parameters" element="tns:DeleteDocumentAttachments_Result" />
+  </message>
   <message name="DetermineIfIncludesNonWorking">
     <part name="parameters" element="tns:DetermineIfIncludesNonWorking" />
   </message>
@@ -1918,11 +1981,11 @@
   <message name="GenerateMemoReport_Result">
     <part name="parameters" element="tns:GenerateMemoReport_Result" />
   </message>
-  <message name="GeneratePaySlipReport31">
-    <part name="parameters" element="tns:GeneratePaySlipReport31" />
+  <message name="GeneratePaySlipReport3">
+    <part name="parameters" element="tns:GeneratePaySlipReport3" />
   </message>
-  <message name="GeneratePaySlipReport31_Result">
-    <part name="parameters" element="tns:GeneratePaySlipReport31_Result" />
+  <message name="GeneratePaySlipReport3_Result">
+    <part name="parameters" element="tns:GeneratePaySlipReport3_Result" />
   </message>
   <message name="GeneratePaySlipReport">
     <part name="parameters" element="tns:GeneratePaySlipReport" />
@@ -1930,11 +1993,11 @@
   <message name="GeneratePaySlipReport_Result">
     <part name="parameters" element="tns:GeneratePaySlipReport_Result" />
   </message>
-  <message name="GeneratePayslipReport3">
-    <part name="parameters" element="tns:GeneratePayslipReport3" />
+  <message name="GeneratePayslipReport31">
+    <part name="parameters" element="tns:GeneratePayslipReport31" />
   </message>
-  <message name="GeneratePayslipReport3_Result">
-    <part name="parameters" element="tns:GeneratePayslipReport3_Result" />
+  <message name="GeneratePayslipReport31_Result">
+    <part name="parameters" element="tns:GeneratePayslipReport31_Result" />
   </message>
   <message name="GenerateStaffLeaveStatement">
     <part name="parameters" element="tns:GenerateStaffLeaveStatement" />
@@ -2218,6 +2281,12 @@
   <message name="InsertImprestRequisitonLines_Result">
     <part name="parameters" element="tns:InsertImprestRequisitonLines_Result" />
   </message>
+  <message name="InsertImprestSurrenderLines1">
+    <part name="parameters" element="tns:InsertImprestSurrenderLines1" />
+  </message>
+  <message name="InsertImprestSurrenderLines1_Result">
+    <part name="parameters" element="tns:InsertImprestSurrenderLines1_Result" />
+  </message>
   <message name="InsertImprestSurrenderLines">
     <part name="parameters" element="tns:InsertImprestSurrenderLines" />
   </message>
@@ -2428,6 +2497,12 @@
   <message name="SubmitPurchaseQuoteLine_Result">
     <part name="parameters" element="tns:SubmitPurchaseQuoteLine_Result" />
   </message>
+  <message name="SubmitbacktoOffice1">
+    <part name="parameters" element="tns:SubmitbacktoOffice1" />
+  </message>
+  <message name="SubmitbacktoOffice1_Result">
+    <part name="parameters" element="tns:SubmitbacktoOffice1_Result" />
+  </message>
   <message name="SubmitbacktoOffice">
     <part name="parameters" element="tns:SubmitbacktoOffice" />
   </message>
@@ -2553,6 +2628,10 @@
       <input name="DeleteDocumentAttachment" message="tns:DeleteDocumentAttachment" />
       <output name="DeleteDocumentAttachment_Result" message="tns:DeleteDocumentAttachment_Result" />
     </operation>
+    <operation name="DeleteDocumentAttachments">
+      <input name="DeleteDocumentAttachments" message="tns:DeleteDocumentAttachments" />
+      <output name="DeleteDocumentAttachments_Result" message="tns:DeleteDocumentAttachments_Result" />
+    </operation>
     <operation name="DetermineIfIncludesNonWorking">
       <input name="DetermineIfIncludesNonWorking" message="tns:DetermineIfIncludesNonWorking" />
       <output name="DetermineIfIncludesNonWorking_Result" message="tns:DetermineIfIncludesNonWorking_Result" />
@@ -2569,17 +2648,17 @@
       <input name="GenerateMemoReport" message="tns:GenerateMemoReport" />
       <output name="GenerateMemoReport_Result" message="tns:GenerateMemoReport_Result" />
     </operation>
-    <operation name="GeneratePaySlipReport31">
-      <input name="GeneratePaySlipReport31" message="tns:GeneratePaySlipReport31" />
-      <output name="GeneratePaySlipReport31_Result" message="tns:GeneratePaySlipReport31_Result" />
+    <operation name="GeneratePaySlipReport3">
+      <input name="GeneratePaySlipReport3" message="tns:GeneratePaySlipReport3" />
+      <output name="GeneratePaySlipReport3_Result" message="tns:GeneratePaySlipReport3_Result" />
     </operation>
     <operation name="GeneratePaySlipReport">
       <input name="GeneratePaySlipReport" message="tns:GeneratePaySlipReport" />
       <output name="GeneratePaySlipReport_Result" message="tns:GeneratePaySlipReport_Result" />
     </operation>
-    <operation name="GeneratePayslipReport3">
-      <input name="GeneratePayslipReport3" message="tns:GeneratePayslipReport3" />
-      <output name="GeneratePayslipReport3_Result" message="tns:GeneratePayslipReport3_Result" />
+    <operation name="GeneratePayslipReport31">
+      <input name="GeneratePayslipReport31" message="tns:GeneratePayslipReport31" />
+      <output name="GeneratePayslipReport31_Result" message="tns:GeneratePayslipReport31_Result" />
     </operation>
     <operation name="GenerateStaffLeaveStatement">
       <input name="GenerateStaffLeaveStatement" message="tns:GenerateStaffLeaveStatement" />
@@ -2769,6 +2848,10 @@
       <input name="InsertImprestRequisitonLines" message="tns:InsertImprestRequisitonLines" />
       <output name="InsertImprestRequisitonLines_Result" message="tns:InsertImprestRequisitonLines_Result" />
     </operation>
+    <operation name="InsertImprestSurrenderLines1">
+      <input name="InsertImprestSurrenderLines1" message="tns:InsertImprestSurrenderLines1" />
+      <output name="InsertImprestSurrenderLines1_Result" message="tns:InsertImprestSurrenderLines1_Result" />
+    </operation>
     <operation name="InsertImprestSurrenderLines">
       <input name="InsertImprestSurrenderLines" message="tns:InsertImprestSurrenderLines" />
       <output name="InsertImprestSurrenderLines_Result" message="tns:InsertImprestSurrenderLines_Result" />
@@ -2908,6 +2991,10 @@
     <operation name="SubmitPurchaseQuoteLine">
       <input name="SubmitPurchaseQuoteLine" message="tns:SubmitPurchaseQuoteLine" />
       <output name="SubmitPurchaseQuoteLine_Result" message="tns:SubmitPurchaseQuoteLine_Result" />
+    </operation>
+    <operation name="SubmitbacktoOffice1">
+      <input name="SubmitbacktoOffice1" message="tns:SubmitbacktoOffice1" />
+      <output name="SubmitbacktoOffice1_Result" message="tns:SubmitbacktoOffice1_Result" />
     </operation>
     <operation name="SubmitbacktoOffice">
       <input name="SubmitbacktoOffice" message="tns:SubmitbacktoOffice" />
@@ -3134,6 +3221,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="DeleteDocumentAttachments">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:DeleteDocumentAttachments" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="DeleteDocumentAttachments">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="DeleteDocumentAttachments_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="DetermineIfIncludesNonWorking">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:DetermineIfIncludesNonWorking" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="DetermineIfIncludesNonWorking">
@@ -3170,12 +3266,12 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
-    <operation name="GeneratePaySlipReport31">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePaySlipReport31" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="GeneratePaySlipReport31">
+    <operation name="GeneratePaySlipReport3">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePaySlipReport3" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePaySlipReport3">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
-      <output name="GeneratePaySlipReport31_Result">
+      <output name="GeneratePaySlipReport3_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3188,12 +3284,12 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
-    <operation name="GeneratePayslipReport3">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePayslipReport3" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="GeneratePayslipReport3">
+    <operation name="GeneratePayslipReport31">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePayslipReport31" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePayslipReport31">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
-      <output name="GeneratePayslipReport3_Result">
+      <output name="GeneratePayslipReport31_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3620,6 +3716,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="InsertImprestSurrenderLines1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertImprestSurrenderLines1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertImprestSurrenderLines1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertImprestSurrenderLines1_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="InsertImprestSurrenderLines">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertImprestSurrenderLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="InsertImprestSurrenderLines">
@@ -3932,6 +4037,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="SubmitPurchaseQuoteLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="SubmitbacktoOffice1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:SubmitbacktoOffice1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SubmitbacktoOffice1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SubmitbacktoOffice1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

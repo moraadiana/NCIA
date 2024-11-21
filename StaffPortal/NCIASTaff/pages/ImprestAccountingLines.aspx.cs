@@ -61,7 +61,7 @@ namespace NCIASTaff.pages
                 Session["DocumentNo"] = documentNo;
                 BindAttachedDocuments(documentNo);
                 BindGridViewData();
-                LoadResponsibilityCenter();
+                
                 //GetPostedReceipts();
             }
         }
@@ -155,6 +155,9 @@ namespace NCIASTaff.pages
                 {
                     string account = row.Cells[2].Text;
                     string surrenderNo = Session["DocumentNo"].ToString();
+                    TextBox txtActualAmount = row.FindControl("txtActualAmount") as TextBox;
+                    TextBox txtAmountReturned = row.FindControl("txtAmountReturned") as TextBox;
+                    //if (txtActualAmount.Text == "") txtActualAmount.Text = "0";
                     DropDownList ddlReceipts = row.FindControl("ddlReceipts") as DropDownList;
 
                     string receipts = webportals.GetReceipts();
@@ -181,13 +184,19 @@ namespace NCIASTaff.pages
                         string returnMsg = responseArr[0];
                         if (returnMsg == "SUCCESS")
                         {
-                            ListItem li = new ListItem(responseArr[0]);
+                            //ListItem li = new ListItem(responseArr[0]);
                             //ddlReceipts.Items.Add(li);
+                            decimal actualAmount = Convert.ToDecimal(responseArr[1]);
+                            decimal cashReturned = Convert.ToDecimal(responseArr[2]);
+                            txtActualAmount.Text = actualAmount.ToString();
+                            txtAmountReturned.Text = cashReturned.ToString();
                         }
                         else
                         {
-                            ListItem li = new ListItem("--Select receipts--","");
-                            ddlReceipts.Items.Add(li);
+                            //ListItem li = new ListItem("--Select receipts--","");
+                            //ddlReceipts.Items.Add(li);
+                            txtActualAmount.Text = "0";
+                            txtAmountReturned.Text = "0";
                         }
                     }
                 }
@@ -210,7 +219,7 @@ namespace NCIASTaff.pages
                     Connection = connection
                 };
                 command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@ReqNo", "'" + documentNo + "'");
+                command.Parameters.AddWithValue("@DocNo", "'" + documentNo + "'");
                 adapter = new SqlDataAdapter();
                 adapter.SelectCommand = command;
                 DataTable dt = new DataTable();
@@ -221,7 +230,7 @@ namespace NCIASTaff.pages
 
                 foreach (GridViewRow row in gvAttachments.Rows)
                 {
-                    row.Cells[3].Text = row.Cells[3].Text.Split(' ')[0];                    
+                    row.Cells[3].Text = row.Cells[3].Text.Split(' ')[0];
                 }
             }
             catch (Exception ex)
@@ -229,10 +238,11 @@ namespace NCIASTaff.pages
                 ex.Data.Clear();
             }
         }
+     
 
         protected void ddlPostedImprest_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //BindGridViewData();
+            BindGridViewData();
         }
 
         protected void lbtnSubmit_Click(object sender, EventArgs e)
@@ -279,13 +289,42 @@ namespace NCIASTaff.pages
                     }
                 }
 
+                //foreach (GridViewRow row in gvLines.Rows)
+                //{
+                //   DropDownList ddlReceipts = row.FindControl("ddlReceipts") as DropDownList;
+                //    string receiptNo = ddlReceipts.SelectedValue;
+                //    decimal amount = Convert.ToDecimal(row.Cells[5].Text);
+                //    string accountNo = row.Cells[2].Text;
+                //    webportals.InsertImprestSurrenderLines(documentNo, imprestNo, accountNo, receiptNo);
+                //}
                 foreach (GridViewRow row in gvLines.Rows)
                 {
-                   DropDownList ddlReceipts = row.FindControl("ddlReceipts") as DropDownList;
-                    string receiptNo = ddlReceipts.SelectedValue;
+                    TextBox txtActualAmount = row.FindControl("txtActualAmount") as TextBox;
+                    TextBox txtAmountReturned = row.FindControl("txtAmountReturned") as TextBox;
+
+                    if (!Components.IsNumeric(txtActualAmount.Text))
+                    {
+                        Message("Invalid Actual Amount Spent!");
+                        return;
+                    }
+                    if (!Components.IsNumeric(txtAmountReturned.Text))
+                    {
+                        Message("Invalid Cash Amount Returned!");
+                        return;
+                    }
+
+                    decimal actualAmount = Convert.ToDecimal(txtActualAmount.Text);
+                    decimal cashReturned = Convert.ToDecimal(txtAmountReturned.Text);
+                    decimal totalAmount = actualAmount + cashReturned;
                     decimal amount = Convert.ToDecimal(row.Cells[5].Text);
                     string accountNo = row.Cells[2].Text;
-                    webportals.InsertImprestSurrenderLines(documentNo, imprestNo, accountNo, receiptNo);
+
+                    if (totalAmount != amount)
+                    {
+                        Message("The sum of Actual Amount Spent and Cash Amount Returned must ne equal to the amount.");
+                        return;
+                    }
+                    webportals.InsertImprestSurrenderLines(documentNo, actualAmount, cashReturned, imprestNo, accountNo);
                 }
 
                 string approvalResponse = webportals.OnSendImprestSurrenderForApproval(documentNo);
@@ -329,9 +368,10 @@ namespace NCIASTaff.pages
                     string fileName = fuImprestDocs.FileName.Replace(" ", "-").Replace("/", "-");
                     string fileExtension = Path.GetExtension(fileName).Split('.')[1].ToLower();
                     string DocumentNo = Session["DocumentNo"].ToString().Replace("/", "-");
+                    string DocNo = Session["DocumentNo"].ToString();
                     if (fileExtension == "pdf" || fileExtension == "jpg" || fileExtension == "png" || fileExtension == "jpeg" || fileExtension == "docx" || fileExtension == "doc")
                     {
-                        string strPath = Server.MapPath("~/Uploads");
+                        string strPath = Server.MapPath("~/Uploads/");
                         if (!Directory.Exists(strPath))
                         {
                             Directory.CreateDirectory(strPath);
@@ -343,13 +383,12 @@ namespace NCIASTaff.pages
                             File.Delete(pathToUpload);
                         }
                         fuImprestDocs.SaveAs(pathToUpload);
-                        Components.ObjNav.SaveMemoAttchmnts(DocumentNo, pathToUpload, fileName.ToUpper(), username);
                         Stream fs = fuImprestDocs.PostedFile.InputStream;
                         BinaryReader br = new BinaryReader(fs);
                         byte[] bytes = br.ReadBytes((int)fs.Length);
                         string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                        Components.ObjNav.RegFileUploadAtt(DocumentNo, fileName.ToUpper(), base64String, 52178705, "Imprest Surrender");
-                        BindAttachedDocuments(DocumentNo);
+                        Components.ObjNav.RegFileUploadAtt(DocNo, fileName.ToUpper(), base64String, 52178705, "Imprest Surrender");
+                        BindAttachedDocuments(DocNo);
                         Message("Document uploaded successfully");
                     }
                     else
@@ -372,28 +411,19 @@ namespace NCIASTaff.pages
         {
             try
             {
+                string documentNo = Session["DocumentNo"].ToString();
                 string[] args = new string[2];
                 args = (sender as LinkButton).CommandArgument.ToString().Split(';');
                 string systemId = args[0];
-                string documentNo = Session["DocumentNo"].ToString();
-                string fileName = string.Empty;
-                string documentDetails = webportals.GetAttachmentDetails(systemId);
-                if (documentDetails != null)
+                if (Components.ObjNav.DeleteDocumentAttachments(systemId))
                 {
-                    string[] documentsDetailsArr = documentDetails.Split(strLimiters, StringSplitOptions.None);
-                    fileName = documentsDetailsArr[1].Split('.')[0];
-                }
-
-                string response = webportals.DeleteDocumentAttachment(systemId, fileName, documentNo);
-                if (response == "SUCCESS")
-                {
+                    Message("Document deleted successfully!");
                     BindAttachedDocuments(documentNo);
-                    Message("Document deleted successfully.");
-                   
+
                 }
                 else
                 {
-                    Message("An error has occured. Please try again later.");
+                    Message("An error occured while deleting document. Please try again later!");
                     return;
                 }
             }

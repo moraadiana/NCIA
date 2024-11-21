@@ -41,6 +41,7 @@ namespace NCIASTaff.pages
                 LoadImprestDetails();
                 BindGridViewData();
                 BindAttachedDocuments();
+                LoadResponsibilityCenter();
 
                 string status = lblStatus.Text;
                 if (status == "Pending" || status == string.Empty)
@@ -120,13 +121,49 @@ namespace NCIASTaff.pages
             }
         }
 
-
-
         private void BindAttachedDocuments()
         {
             try
             {
+                string imprestNo = Request.QueryString["ImprestNo"];
+                if (string.IsNullOrEmpty(imprestNo))
+                {
+                    Message("Imprest number is missing.");
+                    return;
+                }
+
+                using (connection = Components.GetconnToNAV())
+                {
+                    using (command = new SqlCommand("spDocumentLines", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
+                        command.Parameters.AddWithValue("@DocNo", "'" + imprestNo + "'");
+
+                        DataTable dt = new DataTable();
+                        using (adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(dt);
+                        }
+
+                        gvAttachments.DataSource = dt;
+                        gvAttachments.DataBind();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Message($"Error: {ex.Message}");
+            }
+        }
+
+
+        private void BindAttachedDocuments1()
+        {
+            try
+            {
                 // string imprestNo = ddlApprovedMemos.SelectedValue.ToString();
+                //string DocNo = Session["ImprestNo"].ToString();
                 string imprestNo = Request.QueryString["ImprestNo"].ToString();
                 connection = Components.GetconnToNAV();
                 command = new SqlCommand()
@@ -136,7 +173,7 @@ namespace NCIASTaff.pages
                     Connection = connection
                 };
                 command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@ReqNo", "'" + imprestNo + "'");
+                command.Parameters.AddWithValue("@DocNo", "'" + imprestNo + "'");
                 adapter = new SqlDataAdapter();
                 adapter.SelectCommand = command;
                 DataTable dt = new DataTable();
@@ -187,36 +224,35 @@ namespace NCIASTaff.pages
         //    }
         //}
 
-        //private void LoadResponsibilityCenters()
-        //{
-        //    try
-        //    {
-        //        ddlResponsibilityCenter.Items.Clear();
-        //        connection = Components.GetconnToNAV();
-        //        command = new SqlCommand()
-        //        {
-        //            CommandText = "spGetImprestReponsibilityCentre",
-        //            CommandType = CommandType.StoredProcedure,
-        //            Connection = connection
-        //        };
-        //        command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-        //        reader = command.ExecuteReader();
-        //        if (reader.HasRows)
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["Code"].ToString());
-        //                ddlResponsibilityCenter.Items.Add(li);
+        
+        private void LoadResponsibilityCenter()
+        {
+            try
+            {
+                ddlResponsibilityCenter.Items.Clear();
 
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ex.Data.Clear();
-        //    }
-        //}
+                string grouping = "IMPREST";
+                string resCenters = webportals.GetResponsibilityCentres(grouping);
+                if (!string.IsNullOrEmpty(resCenters))
+                {
+                    string[] resCenterArr = resCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
 
+                    foreach (string rescenter in resCenterArr)
+                    {
+                        ddlResponsibilityCenter.Items.Add(new ListItem(rescenter));
+                    }
+                }
+                else
+                {
+                    ddlResponsibilityCenter.Items.Add(new ListItem("No responsibility centers available"));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                ddlResponsibilityCenter.Items.Add(new ListItem("Error loading responsibility centers"));
+            }
+        }
         private void LoadImprestDetails()
         {
             try
@@ -277,7 +313,7 @@ namespace NCIASTaff.pages
                     lblPaymentReleaseDate.Text = paymentReleaseDate;
                     lblPayMode.Text = payMode == "" ? "None" : payMode;
                     lblChequeNo.Text = chequeNo;
-                    lblResCenter.Text = resCenter;
+                    ddlResponsibilityCenter.Text = resCenter;
                 }
             }
             catch (Exception ex)
@@ -304,7 +340,7 @@ namespace NCIASTaff.pages
                 }
 
                 string username = Session["username"].ToString();
-                string responsibilityCenter = lblResCenter.Text;
+                string responsibilityCenter = ddlResponsibilityCenter.SelectedValue;
                 string imprestNo = Request.QueryString["ImprestNo"].ToString();
                 decimal totalAmount = Convert.ToDecimal(lblTotalNetAmount.Text);
 
@@ -344,56 +380,66 @@ namespace NCIASTaff.pages
                 ex.Data.Clear();
             }
         }
-
         protected void lbtnImprestAttach_Click(object sender, EventArgs e)
         {
             try
             {
-                if (fuImprestDocs.PostedFile != null)
+                if (fuImprestDocs.HasFile)
                 {
-                    string DocumentNo = Request.QueryString["ImprestNo"].ToString();
-                    string username = Session["username"].ToString();
-                    string filePath = fuImprestDocs.PostedFile.FileName.Replace(" ", "-");
-                    string fileName = fuImprestDocs.FileName.Replace(" ", "-");
-                    string fileExtension = Path.GetExtension(fileName).Split('.')[1].ToLower();
-                    if (fileExtension == "pdf" || fileExtension == "jpg" || fileExtension == "png" || fileExtension == "jpeg")
-                    {
-                        string strPath = Server.MapPath("~/Uploads");
-                        if (!Directory.Exists(strPath))
-                        {
-                            Directory.CreateDirectory(strPath);
-                        }
+                    string documentNo = Request.QueryString["ImprestNo"];
+                    string username = Session["username"]?.ToString();
 
-                        string pathToUpload = Path.Combine(strPath, DocumentNo.Replace("/", "-") + fileName.ToUpper());
-                        if (File.Exists(pathToUpload))
-                        {
-                            File.Delete(pathToUpload);
-                        }
-                        fuImprestDocs.SaveAs(pathToUpload);
-                        Components.ObjNav.SaveMemoAttchmnts(DocumentNo, pathToUpload, fileName.ToUpper(), username);
-                        Stream fs = fuImprestDocs.PostedFile.InputStream;
-                        BinaryReader br = new BinaryReader(fs);
-                        byte[] bytes = br.ReadBytes((int)fs.Length);
-                        string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                        Components.ObjNav.RegFileUploadAtt(DocumentNo, fileName.ToUpper(), base64String, 52178708, "Imprest Requisition");
-                        BindAttachedDocuments();
-                        Message("Document uploaded successfully!");
-                    }
-                    else
+                    if (string.IsNullOrEmpty(documentNo) || string.IsNullOrEmpty(username))
                     {
-                        Message("Please upload files with .pdf, .png, .jpg and .jpeg extensions only!");
+                        Message("Imprest number or username is missing.");
                         return;
                     }
+
+                    string fileName = Path.GetFileName(fuImprestDocs.FileName).Replace(" ", "-").ToUpper();
+                    string fileExtension = Path.GetExtension(fileName).ToLower();
+
+                    if (!new[] { ".pdf", ".jpg", ".png", ".jpeg" }.Contains(fileExtension))
+                    {
+                        Message("Please upload files with .pdf, .png, .jpg, or .jpeg extensions only!");
+                        return;
+                    }
+
+                    string uploadPath = Server.MapPath("~/Uploads");
+                    if (!Directory.Exists(uploadPath))
+                    {
+                        Directory.CreateDirectory(uploadPath);
+                    }
+
+                    string filePath = Path.Combine(uploadPath, documentNo.Replace("/", "-") + fileName);
+
+                    // Save the file locally
+                    fuImprestDocs.SaveAs(filePath);
+
+                    // Register the file in the system (base64 is optional based on implementation)
+                    using (Stream fs = fuImprestDocs.PostedFile.InputStream)
+                    {
+                        using (BinaryReader br = new BinaryReader(fs))
+                        {
+                            byte[] fileBytes = br.ReadBytes((int)fs.Length);
+                            string base64String = Convert.ToBase64String(fileBytes);
+
+                            // Update the file registration in the backend
+                            Components.ObjNav.RegFileUploadAtt(documentNo, fileName, base64String, 52178708, "Imprest Requisition");
+                        }
+                    }
+
+                    // Refresh the grid view
+                    BindAttachedDocuments();
+                    Message("Document uploaded successfully!");
                 }
                 else
                 {
-                    Message("Please upload a file!");
-                    return;
+                    Message("Please select a file to upload!");
                 }
             }
             catch (Exception ex)
             {
-                ex.Data.Clear();
+                Message($"Error: {ex.Message}");
             }
         }
 
@@ -410,6 +456,41 @@ namespace NCIASTaff.pages
         }
 
         protected void lbtnRemoveAttach_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string status = lblStatus.Text;
+                if (status == "Open" || status == "Pending")
+                {
+                    string[] args = new string[2];
+                    args = (sender as LinkButton).CommandArgument.ToString().Split(';');
+                    string systemId = args[0];
+                    if (Components.ObjNav.DeleteDocumentAttachments(systemId))
+                    {
+                        Message("Document deleted successfully!");
+                        BindAttachedDocuments();
+
+                    }
+                    else
+                    {
+                        Message("An error occured while deleting document. Please try again later!");
+                        return;
+                    }
+                    
+                }
+                else
+                {
+                    Message("You can only edit an open document!");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
+
+        protected void lbtnRemoveAttach_Click1(object sender, EventArgs e)
         {
             try
             {
