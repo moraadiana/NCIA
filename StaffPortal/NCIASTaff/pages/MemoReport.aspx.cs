@@ -33,6 +33,45 @@ namespace NCIASTaff.pages
         {
             try
             {
+                string memoNo = Request.QueryString["memoNo"].ToString();
+                string username = Session["username"].ToString();
+                string safeUsername = username.Replace("/", "@");
+                string fileName = String.Format("MemoReport-{0}.pdf", safeUsername);
+
+                // Physical file path
+                var filePath = Server.MapPath("~/Downloads/") + fileName;
+
+                // Ensure directory exists
+                if (!Directory.Exists(Server.MapPath("~/Downloads/")))
+                {
+                    Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
+                }
+
+                // Call the AL procedure
+                Components.ObjNav.GenerateMemoReport(memoNo, fileName);
+
+                // Verify the file exists
+                if (!File.Exists(filePath))
+                {
+                    throw new FileNotFoundException($"Memo PDF file '{filePath}' was not found after generation.");
+                }
+
+                // Update iframe src
+                string fileUrl = ResolveUrl("~/Downloads/" + fileName);
+                myPDF.Attributes.Add("src", fileUrl);
+                System.Diagnostics.Debug.WriteLine($"Memo generated successfully at: {fileUrl}");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error generating memo: {ex.Message}");
+                ex.Data.Clear();
+            }
+        }
+
+        private void GenerateMemoReport1()
+        {
+            try
+            {
                 
                 string memoNo = Request.QueryString["memoNo"].ToString();
                 string username = Session["username"].ToString();
@@ -62,9 +101,12 @@ namespace NCIASTaff.pages
                 }
 
 
+                // string fileUrl = ResolveUrl("~/Downloads/" + filename);
                 string fileUrl = ResolveUrl("~/Downloads/" + filename);
 
-                
+
+
+
                 myPDF.Attributes.Add("src", fileUrl);
             }
             catch (Exception ex)
