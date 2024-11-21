@@ -33,30 +33,36 @@ namespace NCIASTaff.pages
         {
             try
             {
+                
                 string memoNo = Request.QueryString["memoNo"].ToString();
                 string username = Session["username"].ToString();
-                string filename = username.Replace("/", "");
-                string pdfFileName = String.Format(@"MemoReport-{0}.pdf", filename);
-
-                Components.ObjNav.GenerateMemoReport(memoNo, pdfFileName);
-
-                string networkPath = @"\\10.107.8.40\Downloads\" + pdfFileName;
-
-               
-                string localFolderPath = Server.MapPath("~/Downloads/");
-                string localFilePath = Path.Combine(localFolderPath, pdfFileName);
+                string filename = username.Replace("/", "@");
+              //  string pdfFileName = String.Format(@"MemoReport-{0}.pdf", filename);
 
                 
-                if (!Directory.Exists(localFolderPath))
+
+                //  string networkPath = @"\\10.107.8.40\Downloads\" + pdfFileName;
+                var filePath = Server.MapPath("~/Downloads/") + String.Format("MemoReport-{0}.pdf", filename);
+
+                // Check if directory exists, if not create it
+                if (!Directory.Exists(Server.MapPath("~/Downloads/")))
                 {
-                    Directory.CreateDirectory(localFolderPath);
+                    Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
+                }
+                Components.ObjNav.GenerateMemoReport(memoNo, filename);
+
+                if (File.Exists(filePath))
+                {
+                    System.Diagnostics.Debug.WriteLine("Memo generated successfully.");
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("MemoReport-{0}.pdf", filename)));
+                }
+                else
+                {
+                    throw new FileNotFoundException("Memo PDF was not found after generation.");
                 }
 
-               
-                System.IO.File.Copy(networkPath, localFilePath, true);
 
-                
-                string fileUrl = ResolveUrl("~/Downloads/" + pdfFileName);
+                string fileUrl = ResolveUrl("~/Downloads/" + filename);
 
                 
                 myPDF.Attributes.Add("src", fileUrl);
