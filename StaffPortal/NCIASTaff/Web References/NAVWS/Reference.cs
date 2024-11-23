@@ -129,6 +129,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetMyApplicationsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetMyAppraisalsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetMyClaimsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyImprestsOperationCompleted;
@@ -456,6 +458,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetMyApplicationsCompletedEventHandler GetMyApplicationsCompleted;
+        
+        /// <remarks/>
+        public event GetMyAppraisalsCompletedEventHandler GetMyAppraisalsCompleted;
         
         /// <remarks/>
         public event GetMyClaimsCompletedEventHandler GetMyClaimsCompleted;
@@ -2323,6 +2328,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetMyApplicationsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetMyApplicationsCompleted(this, new GetMyApplicationsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyAppraisals", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetMyAppraisals_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetMyAppraisals(string username) {
+            object[] results = this.Invoke("GetMyAppraisals", new object[] {
+                        username});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMyAppraisalsAsync(string username) {
+            this.GetMyAppraisalsAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void GetMyAppraisalsAsync(string username, object userState) {
+            if ((this.GetMyAppraisalsOperationCompleted == null)) {
+                this.GetMyAppraisalsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyAppraisalsOperationCompleted);
+            }
+            this.InvokeAsync("GetMyAppraisals", new object[] {
+                        username}, this.GetMyAppraisalsOperationCompleted, userState);
+        }
+        
+        private void OnGetMyAppraisalsOperationCompleted(object arg) {
+            if ((this.GetMyAppraisalsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMyAppraisalsCompleted(this, new GetMyAppraisalsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -5913,6 +5948,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetMyApplicationsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetMyAppraisalsCompletedEventHandler(object sender, GetMyAppraisalsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMyAppraisalsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMyAppraisalsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

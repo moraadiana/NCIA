@@ -776,6 +776,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetMyAppraisals">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyAppraisals_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetMyClaims">
         <complexType>
           <sequence>
@@ -2119,6 +2133,12 @@
   <message name="GetMyApplications_Result">
     <part name="parameters" element="tns:GetMyApplications_Result" />
   </message>
+  <message name="GetMyAppraisals">
+    <part name="parameters" element="tns:GetMyAppraisals" />
+  </message>
+  <message name="GetMyAppraisals_Result">
+    <part name="parameters" element="tns:GetMyAppraisals_Result" />
+  </message>
   <message name="GetMyClaims">
     <part name="parameters" element="tns:GetMyClaims" />
   </message>
@@ -2739,6 +2759,10 @@
     <operation name="GetMyApplications">
       <input name="GetMyApplications" message="tns:GetMyApplications" />
       <output name="GetMyApplications_Result" message="tns:GetMyApplications_Result" />
+    </operation>
+    <operation name="GetMyAppraisals">
+      <input name="GetMyAppraisals" message="tns:GetMyAppraisals" />
+      <output name="GetMyAppraisals_Result" message="tns:GetMyAppraisals_Result" />
     </operation>
     <operation name="GetMyClaims">
       <input name="GetMyClaims" message="tns:GetMyClaims" />
@@ -3470,6 +3494,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetMyApplications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyAppraisals">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyAppraisals" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyAppraisals">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyAppraisals_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
