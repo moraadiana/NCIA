@@ -41,9 +41,9 @@
                                                  <th class="small">Actions</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                           <%= Jobs () %>
-                                        </tbody>
+                                       <tbody>
+    <%= Jobs() %>
+</tbody>
                                     </table>
                                 </div>
                             </div>
