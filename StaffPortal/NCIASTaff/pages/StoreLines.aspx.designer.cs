@@ -51,15 +51,6 @@ namespace NCIASTaff.pages
         protected global::System.Web.UI.WebControls.Label lblStaffName;
 
         /// <summary>
-        /// lblDirectorate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDirectorate;
-
-        /// <summary>
         /// lblDepartment control.
         /// </summary>
         /// <remarks>
@@ -67,6 +58,15 @@ namespace NCIASTaff.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDepartment;
+
+        /// <summary>
+        /// lblDirectorate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDirectorate;
 
         /// <summary>
         /// lblTitle control.

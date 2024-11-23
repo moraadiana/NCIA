@@ -88,8 +88,9 @@ namespace NCIASTaff.pages
                     string returnMsg = responseArr[0];
                     if (returnMsg == "SUCCESS")
                     {
-                        lblDirectorate.Text = responseArr[1];
-                        lblDepartment.Text = responseArr[2];
+                        
+                        lblDepartment.Text = responseArr[1];
+                        lblDirectorate.Text = responseArr[2];
                     }
                 }
 
@@ -178,7 +179,7 @@ namespace NCIASTaff.pages
                 }
                 if (string.IsNullOrEmpty(directorate))
                 {
-                    Message("Division cannot be null!");
+                    Message("Unit cannot be null!");
                     return;
                 }
                 if (string.IsNullOrEmpty(responsibilityCenter))
@@ -239,8 +240,7 @@ namespace NCIASTaff.pages
                 ex.Data.Clear();
             }
         }
-
-        private void BindAttachedDocuments(string pettyCashNo)
+        private void BindAttachedDocuments(string documentNo)
         {
             try
             {
@@ -252,7 +252,39 @@ namespace NCIASTaff.pages
                     Connection = connection
                 };
                 command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@ReqNo", "'" + pettyCashNo + "'");
+                command.Parameters.AddWithValue("@DocNo", "'" + documentNo + "'");
+                adapter = new SqlDataAdapter();
+                adapter.SelectCommand = command;
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                gvAttachments.DataSource = dt;
+                gvAttachments.DataBind();
+                connection.Close();
+
+                foreach (GridViewRow row in gvAttachments.Rows)
+                {
+                    row.Cells[3].Text = row.Cells[3].Text.Split(' ')[0];
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
+
+        private void BindAttachedDocuments1(string pettyCashNo)
+        {
+            try
+            {
+                connection = Components.GetconnToNAV();
+                command = new SqlCommand()
+                {
+                    CommandText = "spDocumentLines",
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = connection
+                };
+                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
+                command.Parameters.AddWithValue("@DocNo", "'" + pettyCashNo + "'");
                 adapter = new SqlDataAdapter();
                 adapter.SelectCommand = command;
                 DataTable dt = new DataTable();
@@ -441,7 +473,7 @@ namespace NCIASTaff.pages
                     Message("Please attach documents before sending for approval!");
                     return;
                 }
-                string msg = webportals.OnSendImprestRequisitionForApproval(pettyCashNo);
+                string msg = webportals.OnSendPettyCashRequisitionForApproval(pettyCashNo);
                 if (msg == "SUCCESS")
                 {
                     SuccessMessage($"Imprest number {pettyCashNo} has been sent for approval successfuly!");
@@ -531,6 +563,33 @@ namespace NCIASTaff.pages
         }
 
         protected void lbtnRemoveAttach_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //string documentNo = Session["PettyCashNo"].ToString();
+                string documentNo = Request.QueryString["PettyCashNo"];
+                // string documentNo = lblLNo.Text;
+                string[] args = new string[2];
+                args = (sender as LinkButton).CommandArgument.ToString().Split(';');
+                string systemId = args[0];
+                if (Components.ObjNav.DeleteDocumentAttachments(systemId))
+                {
+                    Message("Document deleted successfully!");
+                    BindAttachedDocuments(documentNo);
+
+                }
+                else
+                {
+                    Message("An error occured while deleting document. Please try again later!");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
+        protected void lbtnRemoveAttach_Click1(object sender, EventArgs e)
         {
             string status = Request.QueryString["status"].ToString().Replace("%", " ");
             if (status == "Open" || status == "Pending")

@@ -104,13 +104,7 @@ namespace NCIASTaff.pages
                 // string fileUrl = ResolveUrl("~/Downloads/" + filename);
                 string fileUrl = ResolveUrl("~/Downloads/" + filename);
 
-<<<<<<< HEAD
-                ///
-=======
 
-
-
->>>>>>> 8311561453ac7f579cbe13e2044138412237938f
                 myPDF.Attributes.Add("src", fileUrl);
             }
             catch (Exception ex)
