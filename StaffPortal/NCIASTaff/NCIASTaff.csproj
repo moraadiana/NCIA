@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="pages\AppraisalLines.aspx" />
     <Content Include="pages\AppraisalListing.aspx" />
     <Content Include="bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
     <Content Include="bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.min.css" />
@@ -7123,6 +7124,13 @@
     <Content Include="Zebra_Datepicker-master\README.md" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="pages\AppraisalLines.aspx.cs">
+      <DependentUpon>AppraisalLines.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\AppraisalLines.aspx.designer.cs">
+      <DependentUpon>AppraisalLines.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\AppraisalListing.aspx.cs">
       <DependentUpon>AppraisalListing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
