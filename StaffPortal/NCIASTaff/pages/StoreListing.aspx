@@ -32,7 +32,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="small">#No</th>
-                                                        <th class="small">Requisition Type</th>
+                                                        <th class="small">Req No</th>
                                                         <th class="small">Request Date</th>
                                                         <th class="small">Required Date</th>
                                                         <th class="small">Status</th>

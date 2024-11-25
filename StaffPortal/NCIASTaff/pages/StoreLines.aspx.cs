@@ -223,7 +223,7 @@ namespace NCIASTaff.pages
                 {
                     while (reader.Read())
                     {
-                        ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["Code"].ToString());
+                        ListItem li = new ListItem(reader["Description"].ToString().ToUpper(), reader["No_"].ToString());
                         ddlItem.Items.Add(li);
                     }
                 }
@@ -501,6 +501,7 @@ namespace NCIASTaff.pages
             catch(Exception ex)
             {
                 ex.Data.Clear();
+                Message("Requsition Line with this item already exists" );
             }
         }
 

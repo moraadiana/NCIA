@@ -51,6 +51,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback CheckValidVendorNoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CreateAppraisalHeaderOperationCompleted;
+        
         private System.Threading.SendOrPostCallback CreateClaimRequisitionHeaderOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateImprestRequisitionHeaderOperationCompleted;
@@ -105,6 +107,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetAllEmployeesOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAppraisalPeriodOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAttachmentDetailsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetDefaultDaysOperationCompleted;
@@ -136,6 +140,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback GetMyImprestsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyPettyCashApplicationsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetMyStoreRequisitionsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyTrainingApplicationsOperationCompleted;
         
@@ -343,6 +349,9 @@ namespace NCIASTaff.NAVWS {
         public event CheckValidVendorNoCompletedEventHandler CheckValidVendorNoCompleted;
         
         /// <remarks/>
+        public event CreateAppraisalHeaderCompletedEventHandler CreateAppraisalHeaderCompleted;
+        
+        /// <remarks/>
         public event CreateClaimRequisitionHeaderCompletedEventHandler CreateClaimRequisitionHeaderCompleted;
         
         /// <remarks/>
@@ -424,6 +433,9 @@ namespace NCIASTaff.NAVWS {
         public event GetAllEmployeesCompletedEventHandler GetAllEmployeesCompleted;
         
         /// <remarks/>
+        public event GetAppraisalPeriodCompletedEventHandler GetAppraisalPeriodCompleted;
+        
+        /// <remarks/>
         public event GetAttachmentDetailsCompletedEventHandler GetAttachmentDetailsCompleted;
         
         /// <remarks/>
@@ -470,6 +482,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetMyPettyCashApplicationsCompletedEventHandler GetMyPettyCashApplicationsCompleted;
+        
+        /// <remarks/>
+        public event GetMyStoreRequisitionsCompletedEventHandler GetMyStoreRequisitionsCompleted;
         
         /// <remarks/>
         public event GetMyTrainingApplicationsCompletedEventHandler GetMyTrainingApplicationsCompleted;
@@ -1019,6 +1034,40 @@ namespace NCIASTaff.NAVWS {
             if ((this.CheckValidVendorNoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CheckValidVendorNoCompleted(this, new CheckValidVendorNoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateAppraisalHeader", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CreateAppraisalHeader_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string CreateAppraisalHeader(string username, string supervisor, string period) {
+            object[] results = this.Invoke("CreateAppraisalHeader", new object[] {
+                        username,
+                        supervisor,
+                        period});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CreateAppraisalHeaderAsync(string username, string supervisor, string period) {
+            this.CreateAppraisalHeaderAsync(username, supervisor, period, null);
+        }
+        
+        /// <remarks/>
+        public void CreateAppraisalHeaderAsync(string username, string supervisor, string period, object userState) {
+            if ((this.CreateAppraisalHeaderOperationCompleted == null)) {
+                this.CreateAppraisalHeaderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateAppraisalHeaderOperationCompleted);
+            }
+            this.InvokeAsync("CreateAppraisalHeader", new object[] {
+                        username,
+                        supervisor,
+                        period}, this.CreateAppraisalHeaderOperationCompleted, userState);
+        }
+        
+        private void OnCreateAppraisalHeaderOperationCompleted(object arg) {
+            if ((this.CreateAppraisalHeaderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateAppraisalHeaderCompleted(this, new CreateAppraisalHeaderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1972,6 +2021,34 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAppraisalPeriod", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetAppraisalPeriod_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetAppraisalPeriod() {
+            object[] results = this.Invoke("GetAppraisalPeriod", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAppraisalPeriodAsync() {
+            this.GetAppraisalPeriodAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAppraisalPeriodAsync(object userState) {
+            if ((this.GetAppraisalPeriodOperationCompleted == null)) {
+                this.GetAppraisalPeriodOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAppraisalPeriodOperationCompleted);
+            }
+            this.InvokeAsync("GetAppraisalPeriod", new object[0], this.GetAppraisalPeriodOperationCompleted, userState);
+        }
+        
+        private void OnGetAppraisalPeriodOperationCompleted(object arg) {
+            if ((this.GetAppraisalPeriodCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAppraisalPeriodCompleted(this, new GetAppraisalPeriodCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAttachmentDetails", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetAttachmentDetails_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetAttachmentDetails(string systemId) {
@@ -2448,6 +2525,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetMyPettyCashApplicationsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetMyPettyCashApplicationsCompleted(this, new GetMyPettyCashApplicationsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyStoreRequisitions", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetMyStoreRequisitions_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetMyStoreRequisitions(string username) {
+            object[] results = this.Invoke("GetMyStoreRequisitions", new object[] {
+                        username});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMyStoreRequisitionsAsync(string username) {
+            this.GetMyStoreRequisitionsAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void GetMyStoreRequisitionsAsync(string username, object userState) {
+            if ((this.GetMyStoreRequisitionsOperationCompleted == null)) {
+                this.GetMyStoreRequisitionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyStoreRequisitionsOperationCompleted);
+            }
+            this.InvokeAsync("GetMyStoreRequisitions", new object[] {
+                        username}, this.GetMyStoreRequisitionsOperationCompleted, userState);
+        }
+        
+        private void OnGetMyStoreRequisitionsOperationCompleted(object arg) {
+            if ((this.GetMyStoreRequisitionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMyStoreRequisitionsCompleted(this, new GetMyStoreRequisitionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4943,6 +5050,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void CreateAppraisalHeaderCompletedEventHandler(object sender, CreateAppraisalHeaderCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreateAppraisalHeaderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreateAppraisalHeaderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void CreateClaimRequisitionHeaderCompletedEventHandler(object sender, CreateClaimRequisitionHeaderCompletedEventArgs e);
     
     /// <remarks/>
@@ -5651,6 +5784,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetAppraisalPeriodCompletedEventHandler(object sender, GetAppraisalPeriodCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAppraisalPeriodCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAppraisalPeriodCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetAttachmentDetailsCompletedEventHandler(object sender, GetAttachmentDetailsCompletedEventArgs e);
     
     /// <remarks/>
@@ -6052,6 +6211,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetMyPettyCashApplicationsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetMyStoreRequisitionsCompletedEventHandler(object sender, GetMyStoreRequisitionsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMyStoreRequisitionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMyStoreRequisitionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
