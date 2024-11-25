@@ -60,8 +60,8 @@
                                         <li class="divider"></li>
                                         <li><a href="BackToOfficeListsing.aspx"><i class="fa fa-hand-o-right"></i>Back To Office</a></li>
                                         <li class="divider"></li>
-                                          <!-- <li><a href="TransportListing.aspx"><i class="fa fa-hand-o-right"></i>Transport Requisition</a></li>
-                                        <li class="divider"></li> -->
+                                           <li><a href="AppraisalListing.aspx"><i class="fa fa-hand-o-right"></i>Appraisals</a></li>
+                                        <li class="divider"></li> 
                                         <li><a href="pnineform.aspx"><i class="fa fa-hand-o-right"></i>P9 Form</a></li>
                                         <li class="divider"></li>
                                         <li><a href="Payslip.aspx"><i class="fa fa-hand-o-right"></i>Payslip</a></li>

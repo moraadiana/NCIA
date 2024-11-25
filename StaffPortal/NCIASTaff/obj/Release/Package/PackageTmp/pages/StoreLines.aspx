@@ -40,13 +40,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Department: </label>
-                                                <asp:Label ID="lblDirectorate" runat="server" Text="" ForeColor="Blue" Font-Bold="true"></asp:Label>
+                                                <asp:Label ID="lblDepartment" runat="server" Text="" ForeColor="Blue" Font-Bold="true"></asp:Label>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Unit: </label>
-                                                <asp:Label ID="lblDepartment" runat="server" Text="" ForeColor="Blue" Font-Bold="true"></asp:Label>
+                                                <asp:Label ID="lblDirectorate" runat="server" Text="" ForeColor="Blue" Font-Bold="true"></asp:Label>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
