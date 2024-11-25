@@ -166,6 +166,22 @@
           </sequence>
         </complexType>
       </element>
+      <element name="CreateAppraisalHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="supervisor" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="period" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateAppraisalHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="CreateClaimRequisitionHeader">
         <complexType>
           <sequence>
@@ -609,6 +625,18 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetAppraisalPeriod">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetAppraisalPeriod_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetAttachmentDetails">
         <complexType>
           <sequence>
@@ -826,6 +854,20 @@
         </complexType>
       </element>
       <element name="GetMyPettyCashApplications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyStoreRequisitions">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyStoreRequisitions_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1899,6 +1941,12 @@
   <message name="CheckValidVendorNo_Result">
     <part name="parameters" element="tns:CheckValidVendorNo_Result" />
   </message>
+  <message name="CreateAppraisalHeader">
+    <part name="parameters" element="tns:CreateAppraisalHeader" />
+  </message>
+  <message name="CreateAppraisalHeader_Result">
+    <part name="parameters" element="tns:CreateAppraisalHeader_Result" />
+  </message>
   <message name="CreateClaimRequisitionHeader">
     <part name="parameters" element="tns:CreateClaimRequisitionHeader" />
   </message>
@@ -2061,6 +2109,12 @@
   <message name="GetAllEmployees_Result">
     <part name="parameters" element="tns:GetAllEmployees_Result" />
   </message>
+  <message name="GetAppraisalPeriod">
+    <part name="parameters" element="tns:GetAppraisalPeriod" />
+  </message>
+  <message name="GetAppraisalPeriod_Result">
+    <part name="parameters" element="tns:GetAppraisalPeriod_Result" />
+  </message>
   <message name="GetAttachmentDetails">
     <part name="parameters" element="tns:GetAttachmentDetails" />
   </message>
@@ -2156,6 +2210,12 @@
   </message>
   <message name="GetMyPettyCashApplications_Result">
     <part name="parameters" element="tns:GetMyPettyCashApplications_Result" />
+  </message>
+  <message name="GetMyStoreRequisitions">
+    <part name="parameters" element="tns:GetMyStoreRequisitions" />
+  </message>
+  <message name="GetMyStoreRequisitions_Result">
+    <part name="parameters" element="tns:GetMyStoreRequisitions_Result" />
   </message>
   <message name="GetMyTrainingApplications">
     <part name="parameters" element="tns:GetMyTrainingApplications" />
@@ -2604,6 +2664,10 @@
       <input name="CheckValidVendorNo" message="tns:CheckValidVendorNo" />
       <output name="CheckValidVendorNo_Result" message="tns:CheckValidVendorNo_Result" />
     </operation>
+    <operation name="CreateAppraisalHeader">
+      <input name="CreateAppraisalHeader" message="tns:CreateAppraisalHeader" />
+      <output name="CreateAppraisalHeader_Result" message="tns:CreateAppraisalHeader_Result" />
+    </operation>
     <operation name="CreateClaimRequisitionHeader">
       <input name="CreateClaimRequisitionHeader" message="tns:CreateClaimRequisitionHeader" />
       <output name="CreateClaimRequisitionHeader_Result" message="tns:CreateClaimRequisitionHeader_Result" />
@@ -2712,6 +2776,10 @@
       <input name="GetAllEmployees" message="tns:GetAllEmployees" />
       <output name="GetAllEmployees_Result" message="tns:GetAllEmployees_Result" />
     </operation>
+    <operation name="GetAppraisalPeriod">
+      <input name="GetAppraisalPeriod" message="tns:GetAppraisalPeriod" />
+      <output name="GetAppraisalPeriod_Result" message="tns:GetAppraisalPeriod_Result" />
+    </operation>
     <operation name="GetAttachmentDetails">
       <input name="GetAttachmentDetails" message="tns:GetAttachmentDetails" />
       <output name="GetAttachmentDetails_Result" message="tns:GetAttachmentDetails_Result" />
@@ -2775,6 +2843,10 @@
     <operation name="GetMyPettyCashApplications">
       <input name="GetMyPettyCashApplications" message="tns:GetMyPettyCashApplications" />
       <output name="GetMyPettyCashApplications_Result" message="tns:GetMyPettyCashApplications_Result" />
+    </operation>
+    <operation name="GetMyStoreRequisitions">
+      <input name="GetMyStoreRequisitions" message="tns:GetMyStoreRequisitions" />
+      <output name="GetMyStoreRequisitions_Result" message="tns:GetMyStoreRequisitions_Result" />
     </operation>
     <operation name="GetMyTrainingApplications">
       <input name="GetMyTrainingApplications" message="tns:GetMyTrainingApplications" />
@@ -3146,6 +3218,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="CreateAppraisalHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateAppraisalHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateAppraisalHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateAppraisalHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="CreateClaimRequisitionHeader">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateClaimRequisitionHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="CreateClaimRequisitionHeader">
@@ -3389,6 +3470,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetAppraisalPeriod">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAppraisalPeriod" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAppraisalPeriod">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAppraisalPeriod_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetAttachmentDetails">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAttachmentDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetAttachmentDetails">
@@ -3530,6 +3620,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetMyPettyCashApplications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyStoreRequisitions">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyStoreRequisitions" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyStoreRequisitions">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyStoreRequisitions_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

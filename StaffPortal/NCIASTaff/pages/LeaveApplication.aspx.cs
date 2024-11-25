@@ -227,19 +227,7 @@ namespace NCIASTaff.pages
                     lblBalance.Text = defaultDays;
                 }
               
-               /* string leaveType = ddlLeaveType.SelectedValue.ToString();
-                var serviceRoot = Components.ServiceRoot;
-                var context = new BC.NAV(new Uri(serviceRoot));
-                context.BuildingRequest += Components.Context_BuildingRequest;
-                var data = context.LeaveTypes.Where(leave => leave.Code == leaveType).ToList();
-                if (data.Count > 0)
-                {
-                    foreach (var type in data)
-                    {
-                        string days = type.Days.ToString();
-                        lblBalance.Text = days;
-                    }
-                }*/
+               
             }
             catch (Exception ex)
             {

@@ -22,7 +22,9 @@ namespace NCIASTaff.pages
                 Response.Redirect("~/Default.aspx");
                 return;
             }
+            LoadSupervisor();
             LoadStaffDetails();
+            LoadPeriod();
             string query = Request.QueryString["query"];
 
             if (query == "new")
@@ -30,6 +32,45 @@ namespace NCIASTaff.pages
                 MultiView1.SetActiveView(vwHeader);
             }
 
+        }
+        private void LoadSupervisor()
+        {
+            try
+            {
+                ddlSupervisor.Items.Clear();
+                string Relievers = webportals.GetRelievers();
+                if (!string.IsNullOrEmpty(Relievers))
+                {
+                    string[] relieverArr = Relievers.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string reliever in relieverArr)
+                    {
+                        string[] responseArr = reliever.Split(strLimiters, StringSplitOptions.None);
+                        ListItem li = new ListItem(responseArr[1], responseArr[0]);
+                        ddlSupervisor.Items.Add(li);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
+
+        private void LoadPeriod()
+        {
+           // lblPeriod
+           string period = webportals.GetAppraisalPeriod();
+            if (!string.IsNullOrEmpty(period))
+            {
+                string[] periodArr = period.Split(strLimiters2,StringSplitOptions.RemoveEmptyEntries);
+                foreach (string Period in periodArr)
+                {
+                    string[] responseArr = Period.Split(strLimiters, StringSplitOptions.None);
+                    lblPeriod.Text = responseArr[1];
+                }
+               
+
+            }
         }
         private void LoadStaffDetails()
         {
@@ -61,7 +102,54 @@ namespace NCIASTaff.pages
 
         protected void lbtnSubmit_Click(object sender, EventArgs e)
         {
-            MultiView1.SetActiveView(vwLines);
+            string username = Session["username"].ToString();
+            string department = lblDepartment.Text;
+            string unit = lblDirectorate.Text;
+            string period = lblPeriod.Text;
+            string supervisor = ddlSupervisor.SelectedValue;
+            string documentNo = string.Empty;
+
+
+            if (string.IsNullOrEmpty(department))
+            {
+                Message("Department cannot be null");
+                return;
+            }
+            if (string.IsNullOrEmpty(unit))
+            {
+                Message("Unit cannot be null");
+                return;
+            }
+            if (string.IsNullOrEmpty(period))
+            {
+                Message("Period cannot be null");
+                return;
+            }
+            if (string.IsNullOrEmpty(supervisor)) 
+            {
+                Message("Reliever cannot be null");
+                return;
+            }
+            string response = webportals.CreateAppraisalHeader(username, supervisor, period);
+            if (!string.IsNullOrEmpty(response))
+            {
+                string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
+                string returnMsg = responseArr[0];
+                if (returnMsg == "SUCCESS")
+                {
+                    documentNo = responseArr[1];
+                    Session["AppraisalNo"] = documentNo;
+                    Message($"Appraisal with number {documentNo} has been created successfully.");
+                    MultiView1.SetActiveView(vwLines);
+
+                }
+                else
+                {
+                    Message("An error occured while surendering imprest. Please try again later");
+                    return;
+                }
+            }
+            
         }
         protected void lbtnClose_Click(object sender, EventArgs e)
         {
@@ -167,6 +255,11 @@ namespace NCIASTaff.pages
 
             }
 
+        }
+        private void Message(string message)
+        {
+            string strScript = "<script>alert('" + message + "');</script>";
+            ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
         }
 
     }
