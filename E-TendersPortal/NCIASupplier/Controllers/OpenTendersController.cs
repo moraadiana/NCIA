@@ -117,10 +117,11 @@ namespace NCIASupplier.Controllers
             return View(tenderLines);
         }
 
-      /*  public ActionResult SubmitTenderApplication()
+    /*   public ActionResult SubmitTenderApplication()
         {
             return View();
         }*/
+
         [HttpPost]
         public ActionResult SubmitTenderApplication(Tenders tender)
         {
@@ -133,7 +134,7 @@ namespace NCIASupplier.Controllers
 
                 string path = Server.MapPath("~/Attachments");                
 
-                string bidNo = webportals.CreateTenderSubmissionHeader1(bidderNo, tenderNo);
+                string bidNo = webportals.CreateTenderSubmissionHeader(bidderNo, tenderNo);
 
                 if(!string.IsNullOrEmpty(bidNo))
                 {
@@ -169,7 +170,7 @@ namespace NCIASupplier.Controllers
                         decimal quotedAmnt = Convert.ToDecimal(productArr[1].Trim());
                         int lineNo = 0;
                         //update line no here this is just constant
-                        webportals.InsertTenderSubmissionLine1(bidderNo, tenderNo, bidNo,itemNo,quotedAmnt);
+                        webportals.InsertTenderSubmissionLine(bidderNo, tenderNo, bidNo,itemNo,quotedAmnt);
                     }
                     if (webportals.SubmitBid(bidderNo, bidNo))
                     {
@@ -184,7 +185,8 @@ namespace NCIASupplier.Controllers
                 TempData["Error"] = ex.Message;
                 return RedirectToAction("applytender", "opentenders", new { tenderNo = tenderNo });
             }
-            return View(tender);
+            // return View(tender);
+            return RedirectToAction("appliedtenders", "opentenders");
         }
 
         public ActionResult AppliedTenders()

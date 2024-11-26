@@ -445,7 +445,8 @@
             <element minOccurs="1" maxOccurs="1" name="tenderNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="bidNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="itemNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="quotedAmnt" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="quotedAmt" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
           </sequence>
         </complexType>
       </element>
@@ -463,8 +464,7 @@
             <element minOccurs="1" maxOccurs="1" name="tenderNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="bidNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="itemNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="quotedAmt" type="decimal" />
-            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="quotedAmnt" type="decimal" />
           </sequence>
         </complexType>
       </element>
