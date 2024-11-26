@@ -91,7 +91,7 @@
                                         <td>@item.OpeningDate</td>
                                         <td>@item.ClosingDate</td>
                                         <td><a href="@Url.Action("tenderlines", "opentenders", new { tenderNo = item.No})"><i class="fa fa-eye"></i><span class="text-info"> View</span></a></td>
-                                        <td><a href="@Url.Action("download", "opentenders", new { tenderNo = item.No})"><i class="fa fa-download"></i><span class="text-info"> Download</span></a></td>
+                                        @*<td><a href="@Url.Action("download", "opentenders", new { tenderNo = item.No})"><i class="fa fa-download"></i><span class="text-info"> Download</span></a></td>*@
                                         <td><a href="@Url.Action("applytender", "opentenders", new { tenderNo = item.No})"><i class="fa fa-pencil-square-o"></i><span class="text-info"> Apply</span></a></td>
                                     </tr>
                                 }
