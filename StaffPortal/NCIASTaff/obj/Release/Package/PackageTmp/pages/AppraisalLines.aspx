@@ -41,6 +41,12 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
+                                            <label>Period: </label>
+                                            <asp:Label ID="lblPeriod" runat="server" Text="" ForeColor="Blue"></asp:Label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
                                             <label>Supervisor </label>
                                             <asp:DropDownList ID="ddlSupervisor" CssClass="form-control select2" runat="server"></asp:DropDownList>
                                         </div>
