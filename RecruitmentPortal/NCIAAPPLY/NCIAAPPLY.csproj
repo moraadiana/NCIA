@@ -7037,10 +7037,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://10.107.8.40:1047/Ncia1/WS/NCIA%2520TEST%25201/Codeunit/Recruitment">
+    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/NCIA%2520TEST/Codeunit/Recruitment">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\NAVWS\</RelPath>
-      <UpdateFromURL>http://10.107.8.40:1047/Ncia1/WS/NCIA%2520TEST%25201/Codeunit/Recruitment</UpdateFromURL>
+      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/NCIA%2520TEST/Codeunit/Recruitment</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

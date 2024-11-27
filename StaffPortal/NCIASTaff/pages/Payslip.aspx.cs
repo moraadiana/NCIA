@@ -67,27 +67,6 @@ namespace NCIASTaff.pages
         {
             try
             {
-                /*ddlMonth.Items.Clear();
-                string payslipMonths = webportals.GetPayslipMonths();
-               
-                if (!string.IsNullOrEmpty(payslipMonths))
-                {
-                    string[] monthsArr = payslipMonths.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
-
-                    foreach (string month in monthsArr)
-                    {
-                        // Convert the numeric month string to an integer
-                        if (int.TryParse(month, out int monthNumber) && monthNumber >= 1 && monthNumber <= 12)
-                        {
-                            // Get the full month name
-                            string monthName = new DateTime(1, monthNumber, 1).ToString("MMMM");
-                            ListItem li = new ListItem(monthName);
-                            ddlMonth.Items.Add(li);
-                        }
-                    }
-                   
-                }*/
-
                 ddlMonth.Items.Clear();
                 string payslipMonths = webportals.GetPayslipMonths();
                 if (!string.IsNullOrEmpty(payslipMonths))

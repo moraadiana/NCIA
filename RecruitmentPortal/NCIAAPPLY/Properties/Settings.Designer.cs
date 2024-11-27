@@ -26,7 +26,7 @@ namespace NCIAAPPLY.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://10.107.8.40:1047/Ncia1/WS/NCIA%20TEST%201/Codeunit/Recruitment")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://102.210.149.230:7047/Ncia/WS/NCIA%20TEST/Codeunit/Recruitment")]
         public string NCIAAPPLY_NAVWS_Recruitment {
             get {
                 return ((string)(this["NCIAAPPLY_NAVWS_Recruitment"]));

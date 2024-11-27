@@ -1039,7 +1039,7 @@
   </binding>
   <service name="Recruitment">
     <port name="Recruitment_Port" binding="tns:Recruitment_Binding">
-      <address location="http://10.107.8.40:1047/Ncia1/WS/NCIA%20TEST%201/Codeunit/Recruitment" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA%20TEST/Codeunit/Recruitment" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

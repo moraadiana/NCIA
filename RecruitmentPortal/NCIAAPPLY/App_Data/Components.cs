@@ -14,7 +14,7 @@ namespace NCIAAPPLY
     public class Components
     {
         public static SqlConnection connection;
-        public static string CompanyName = "NCIA TEST 1";
+        public static string CompanyName = "NCIA TEST";
         public static Recruitment ObjNav
         {
             get
