@@ -802,6 +802,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetMonthName">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="monthNumber" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMonthName_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetMyApplications">
         <complexType>
           <sequence>
@@ -946,6 +960,18 @@
         </complexType>
       </element>
       <element name="GetNextPettyCashNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPayslipMonths1">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetPayslipMonths1_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1309,25 +1335,6 @@
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="InsertPettyCashSurrenderLines1">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="pettyCashNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="amountSpent" type="decimal" />
-            <element minOccurs="1" maxOccurs="1" name="cashReturned" type="decimal" />
-            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="message" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="InsertPettyCashSurrenderLines1_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="message" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -2264,6 +2271,12 @@
   <message name="GetLeaveTypes_Result">
     <part name="parameters" element="tns:GetLeaveTypes_Result" />
   </message>
+  <message name="GetMonthName">
+    <part name="parameters" element="tns:GetMonthName" />
+  </message>
+  <message name="GetMonthName_Result">
+    <part name="parameters" element="tns:GetMonthName_Result" />
+  </message>
   <message name="GetMyApplications">
     <part name="parameters" element="tns:GetMyApplications" />
   </message>
@@ -2329,6 +2342,12 @@
   </message>
   <message name="GetNextPettyCashNo_Result">
     <part name="parameters" element="tns:GetNextPettyCashNo_Result" />
+  </message>
+  <message name="GetPayslipMonths1">
+    <part name="parameters" element="tns:GetPayslipMonths1" />
+  </message>
+  <message name="GetPayslipMonths1_Result">
+    <part name="parameters" element="tns:GetPayslipMonths1_Result" />
   </message>
   <message name="GetPayslipMonths">
     <part name="parameters" element="tns:GetPayslipMonths" />
@@ -2473,12 +2492,6 @@
   </message>
   <message name="InsertPettyCashRequisitionLine_Result">
     <part name="parameters" element="tns:InsertPettyCashRequisitionLine_Result" />
-  </message>
-  <message name="InsertPettyCashSurrenderLines1">
-    <part name="parameters" element="tns:InsertPettyCashSurrenderLines1" />
-  </message>
-  <message name="InsertPettyCashSurrenderLines1_Result">
-    <part name="parameters" element="tns:InsertPettyCashSurrenderLines1_Result" />
   </message>
   <message name="InsertPettyCashSurrenderLines">
     <part name="parameters" element="tns:InsertPettyCashSurrenderLines" />
@@ -2935,6 +2948,10 @@
       <input name="GetLeaveTypes" message="tns:GetLeaveTypes" />
       <output name="GetLeaveTypes_Result" message="tns:GetLeaveTypes_Result" />
     </operation>
+    <operation name="GetMonthName">
+      <input name="GetMonthName" message="tns:GetMonthName" />
+      <output name="GetMonthName_Result" message="tns:GetMonthName_Result" />
+    </operation>
     <operation name="GetMyApplications">
       <input name="GetMyApplications" message="tns:GetMyApplications" />
       <output name="GetMyApplications_Result" message="tns:GetMyApplications_Result" />
@@ -2978,6 +2995,10 @@
     <operation name="GetNextPettyCashNo">
       <input name="GetNextPettyCashNo" message="tns:GetNextPettyCashNo" />
       <output name="GetNextPettyCashNo_Result" message="tns:GetNextPettyCashNo_Result" />
+    </operation>
+    <operation name="GetPayslipMonths1">
+      <input name="GetPayslipMonths1" message="tns:GetPayslipMonths1" />
+      <output name="GetPayslipMonths1_Result" message="tns:GetPayslipMonths1_Result" />
     </operation>
     <operation name="GetPayslipMonths">
       <input name="GetPayslipMonths" message="tns:GetPayslipMonths" />
@@ -3074,10 +3095,6 @@
     <operation name="InsertPettyCashRequisitionLine">
       <input name="InsertPettyCashRequisitionLine" message="tns:InsertPettyCashRequisitionLine" />
       <output name="InsertPettyCashRequisitionLine_Result" message="tns:InsertPettyCashRequisitionLine_Result" />
-    </operation>
-    <operation name="InsertPettyCashSurrenderLines1">
-      <input name="InsertPettyCashSurrenderLines1" message="tns:InsertPettyCashSurrenderLines1" />
-      <output name="InsertPettyCashSurrenderLines1_Result" message="tns:InsertPettyCashSurrenderLines1_Result" />
     </operation>
     <operation name="InsertPettyCashSurrenderLines">
       <input name="InsertPettyCashSurrenderLines" message="tns:InsertPettyCashSurrenderLines" />
@@ -3714,6 +3731,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetMonthName">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMonthName" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMonthName">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMonthName_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetMyApplications">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyApplications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetMyApplications">
@@ -3810,6 +3836,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetNextPettyCashNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPayslipMonths1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPayslipMonths1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPayslipMonths1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPayslipMonths1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4026,15 +4061,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="InsertPettyCashRequisitionLine_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="InsertPettyCashSurrenderLines1">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertPettyCashSurrenderLines1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="InsertPettyCashSurrenderLines1">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="InsertPettyCashSurrenderLines1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

@@ -63,7 +63,7 @@ namespace NCIASTaff.pages
             }
         }
 
-        private void LoadMonths()
+        private void LoadMonths1()
         {
             try
             {
@@ -83,6 +83,37 @@ namespace NCIASTaff.pages
             catch (Exception ex)
             {
                 ex.Data.Clear();
+            }
+        }
+        private void LoadMonths()
+        {
+            try
+            {
+                ddlMonth.Items.Clear(); // Clear the dropdown list
+
+                string payslipMonths = webportals.GetPayslipMonths(); // Get the payslip months
+                if (!string.IsNullOrEmpty(payslipMonths))
+                {
+                    string[] monthsArr = payslipMonths.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string months in monthsArr)
+                    {
+                        // Split the response into month number and month name
+                        string[] responseArr = months.Split(strLimiters, StringSplitOptions.None);
+                        if (responseArr.Length == 2)
+                        {
+                            string monthNumber = responseArr[0]; // Month number
+                            string monthName = responseArr[1];   // Month name
+
+                            // Create a ListItem with the month name as Text and the month number as Value
+                            ListItem li = new ListItem(monthName, monthNumber);
+                            ddlMonth.Items.Add(li); // Add the item to the dropdown
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear(); // Clear exception data for error handling
             }
         }
 

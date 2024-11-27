@@ -32,12 +32,14 @@ namespace NCIASTaff.pages
 
                 LoadStaffDetails();
                 LoadResponsibilityCenter();
+                LoadAccountNos();
 
                 string query = Request.QueryString["query"];
                 string approvalStatus = Request.QueryString["status"].Replace("%", " ");
                 if (query == "new")
                 {
                     MultiView1.SetActiveView(vwHeader);
+
                 }
                 else if (query == "old")
                 {
@@ -48,7 +50,7 @@ namespace NCIASTaff.pages
                     LoadAdvanceTypes();
                     BindGridViewData(pettyCashNo);
                     BindAttachedDocuments(pettyCashNo);
-                    LoadAccountNos();
+                   // LoadAccountNos();
                 }
 
                 if (approvalStatus == "Open" || approvalStatus == "Pending")

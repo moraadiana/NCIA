@@ -55,8 +55,8 @@ namespace NCIASupplier.Controllers
                                 string subject = "NCIA E-Tender Portal OTP";
                                 string body = $"{otp} is your OTP Code for NCIA eTendering Portal. Use it to verify login.";
                                 Components.SentEmailAlerts(bidderEmail, subject, body);
-                                //return RedirectToAction("verifyotp");
-                           return RedirectToAction("index", "dashboard");
+                                return RedirectToAction("verifyotp");
+                           ///return RedirectToAction("index", "dashboard");
                         }
                             else
                             {
