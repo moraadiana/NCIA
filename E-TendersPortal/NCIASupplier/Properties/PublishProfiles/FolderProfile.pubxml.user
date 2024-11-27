@@ -5,7 +5,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot\Portals\E-tendering</_PublishTargetUrl>
-    <History>True|2024-11-26T10:34:19.5994912Z||;True|2024-11-18T19:23:15.0692389+03:00||;</History>
+    <History>True|2024-11-27T19:11:09.2523606Z||;True|2024-11-26T13:34:19.5994912+03:00||;True|2024-11-18T19:23:15.0692389+03:00||;</History>
+    <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="assets/apps/css/inbox.min.css">
@@ -7104,13 +7105,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2024 21:06:17</publishTime>
     </File>
     <File Include="bin/NCIASupplier.dll">
-      <publishTime>11/26/2024 13:34:13</publishTime>
+      <publishTime>11/27/2024 22:11:02</publishTime>
     </File>
     <File Include="bin/NCIASupplier.pdb">
-      <publishTime>11/26/2024 13:34:13</publishTime>
+      <publishTime>11/27/2024 22:11:02</publishTime>
     </File>
     <File Include="bin/NCIASupplier.XmlSerializers.dll">
-      <publishTime>11/26/2024 13:34:14</publishTime>
+      <publishTime>11/27/2024 22:11:03</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/14/2024 21:06:17</publishTime>
