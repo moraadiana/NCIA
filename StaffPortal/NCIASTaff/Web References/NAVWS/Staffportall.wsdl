@@ -599,6 +599,18 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetAccountNo">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetAccountNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetAdvancetype">
         <complexType>
           <sequence>
@@ -860,6 +872,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetMyPettyCashSurrender">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyPettyCashSurrender_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetMyStoreRequisitions">
         <complexType>
           <sequence>
@@ -972,6 +998,20 @@
         </complexType>
       </element>
       <element name="GetPettyCashLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashSurrenderLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="surrenderNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCashSurrenderLines_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1257,7 +1297,9 @@
       <element name="InsertPettyCashRequisitionLine">
         <complexType>
           <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
             <element minOccurs="1" maxOccurs="1" name="pettyCashNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="advanceType" type="string" />
             <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
           </sequence>
@@ -1267,6 +1309,25 @@
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertPettyCashSurrenderLines1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="pettyCashNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amountSpent" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="cashReturned" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="message" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertPettyCashSurrenderLines1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="message" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -1283,7 +1344,9 @@
       </element>
       <element name="InsertPettyCashSurrenderLines_Result">
         <complexType>
-          <sequence />
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
         </complexType>
       </element>
       <element name="InsertStoreLines">
@@ -1700,6 +1763,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="RemoveStoreRequisitionLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="storeReqNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveStoreRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="SaveMemoAttchmnts">
         <complexType>
           <sequence>
@@ -2097,6 +2174,12 @@
   <message name="Generatep9Report_Result">
     <part name="parameters" element="tns:Generatep9Report_Result" />
   </message>
+  <message name="GetAccountNo">
+    <part name="parameters" element="tns:GetAccountNo" />
+  </message>
+  <message name="GetAccountNo_Result">
+    <part name="parameters" element="tns:GetAccountNo_Result" />
+  </message>
   <message name="GetAdvancetype">
     <part name="parameters" element="tns:GetAdvancetype" />
   </message>
@@ -2211,6 +2294,12 @@
   <message name="GetMyPettyCashApplications_Result">
     <part name="parameters" element="tns:GetMyPettyCashApplications_Result" />
   </message>
+  <message name="GetMyPettyCashSurrender">
+    <part name="parameters" element="tns:GetMyPettyCashSurrender" />
+  </message>
+  <message name="GetMyPettyCashSurrender_Result">
+    <part name="parameters" element="tns:GetMyPettyCashSurrender_Result" />
+  </message>
   <message name="GetMyStoreRequisitions">
     <part name="parameters" element="tns:GetMyStoreRequisitions" />
   </message>
@@ -2264,6 +2353,12 @@
   </message>
   <message name="GetPettyCashLines_Result">
     <part name="parameters" element="tns:GetPettyCashLines_Result" />
+  </message>
+  <message name="GetPettyCashSurrenderLines">
+    <part name="parameters" element="tns:GetPettyCashSurrenderLines" />
+  </message>
+  <message name="GetPettyCashSurrenderLines_Result">
+    <part name="parameters" element="tns:GetPettyCashSurrenderLines_Result" />
   </message>
   <message name="GetReceipts">
     <part name="parameters" element="tns:GetReceipts" />
@@ -2378,6 +2473,12 @@
   </message>
   <message name="InsertPettyCashRequisitionLine_Result">
     <part name="parameters" element="tns:InsertPettyCashRequisitionLine_Result" />
+  </message>
+  <message name="InsertPettyCashSurrenderLines1">
+    <part name="parameters" element="tns:InsertPettyCashSurrenderLines1" />
+  </message>
+  <message name="InsertPettyCashSurrenderLines1_Result">
+    <part name="parameters" element="tns:InsertPettyCashSurrenderLines1_Result" />
   </message>
   <message name="InsertPettyCashSurrenderLines">
     <part name="parameters" element="tns:InsertPettyCashSurrenderLines" />
@@ -2558,6 +2659,12 @@
   </message>
   <message name="RemovePurchaseLine_Result">
     <part name="parameters" element="tns:RemovePurchaseLine_Result" />
+  </message>
+  <message name="RemoveStoreRequisitionLine">
+    <part name="parameters" element="tns:RemoveStoreRequisitionLine" />
+  </message>
+  <message name="RemoveStoreRequisitionLine_Result">
+    <part name="parameters" element="tns:RemoveStoreRequisitionLine_Result" />
   </message>
   <message name="SaveMemoAttchmnts">
     <part name="parameters" element="tns:SaveMemoAttchmnts" />
@@ -2768,6 +2875,10 @@
       <input name="Generatep9Report" message="tns:Generatep9Report" />
       <output name="Generatep9Report_Result" message="tns:Generatep9Report_Result" />
     </operation>
+    <operation name="GetAccountNo">
+      <input name="GetAccountNo" message="tns:GetAccountNo" />
+      <output name="GetAccountNo_Result" message="tns:GetAccountNo_Result" />
+    </operation>
     <operation name="GetAdvancetype">
       <input name="GetAdvancetype" message="tns:GetAdvancetype" />
       <output name="GetAdvancetype_Result" message="tns:GetAdvancetype_Result" />
@@ -2844,6 +2955,10 @@
       <input name="GetMyPettyCashApplications" message="tns:GetMyPettyCashApplications" />
       <output name="GetMyPettyCashApplications_Result" message="tns:GetMyPettyCashApplications_Result" />
     </operation>
+    <operation name="GetMyPettyCashSurrender">
+      <input name="GetMyPettyCashSurrender" message="tns:GetMyPettyCashSurrender" />
+      <output name="GetMyPettyCashSurrender_Result" message="tns:GetMyPettyCashSurrender_Result" />
+    </operation>
     <operation name="GetMyStoreRequisitions">
       <input name="GetMyStoreRequisitions" message="tns:GetMyStoreRequisitions" />
       <output name="GetMyStoreRequisitions_Result" message="tns:GetMyStoreRequisitions_Result" />
@@ -2879,6 +2994,10 @@
     <operation name="GetPettyCashLines">
       <input name="GetPettyCashLines" message="tns:GetPettyCashLines" />
       <output name="GetPettyCashLines_Result" message="tns:GetPettyCashLines_Result" />
+    </operation>
+    <operation name="GetPettyCashSurrenderLines">
+      <input name="GetPettyCashSurrenderLines" message="tns:GetPettyCashSurrenderLines" />
+      <output name="GetPettyCashSurrenderLines_Result" message="tns:GetPettyCashSurrenderLines_Result" />
     </operation>
     <operation name="GetReceipts">
       <input name="GetReceipts" message="tns:GetReceipts" />
@@ -2955,6 +3074,10 @@
     <operation name="InsertPettyCashRequisitionLine">
       <input name="InsertPettyCashRequisitionLine" message="tns:InsertPettyCashRequisitionLine" />
       <output name="InsertPettyCashRequisitionLine_Result" message="tns:InsertPettyCashRequisitionLine_Result" />
+    </operation>
+    <operation name="InsertPettyCashSurrenderLines1">
+      <input name="InsertPettyCashSurrenderLines1" message="tns:InsertPettyCashSurrenderLines1" />
+      <output name="InsertPettyCashSurrenderLines1_Result" message="tns:InsertPettyCashSurrenderLines1_Result" />
     </operation>
     <operation name="InsertPettyCashSurrenderLines">
       <input name="InsertPettyCashSurrenderLines" message="tns:InsertPettyCashSurrenderLines" />
@@ -3075,6 +3198,10 @@
     <operation name="RemovePurchaseLine">
       <input name="RemovePurchaseLine" message="tns:RemovePurchaseLine" />
       <output name="RemovePurchaseLine_Result" message="tns:RemovePurchaseLine_Result" />
+    </operation>
+    <operation name="RemoveStoreRequisitionLine">
+      <input name="RemoveStoreRequisitionLine" message="tns:RemoveStoreRequisitionLine" />
+      <output name="RemoveStoreRequisitionLine_Result" message="tns:RemoveStoreRequisitionLine_Result" />
     </operation>
     <operation name="SaveMemoAttchmnts">
       <input name="SaveMemoAttchmnts" message="tns:SaveMemoAttchmnts" />
@@ -3452,6 +3579,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetAccountNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAccountNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAccountNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAccountNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetAdvancetype">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAdvancetype" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetAdvancetype">
@@ -3623,6 +3759,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetMyPettyCashSurrender">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyPettyCashSurrender" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyPettyCashSurrender">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyPettyCashSurrender_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetMyStoreRequisitions">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyStoreRequisitions" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetMyStoreRequisitions">
@@ -3701,6 +3846,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetPettyCashLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCashSurrenderLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPettyCashSurrenderLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashSurrenderLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashSurrenderLines_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -3872,6 +4026,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="InsertPettyCashRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertPettyCashSurrenderLines1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertPettyCashSurrenderLines1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertPettyCashSurrenderLines1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertPettyCashSurrenderLines1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4142,6 +4305,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="RemovePurchaseLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemoveStoreRequisitionLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:RemoveStoreRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveStoreRequisitionLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveStoreRequisitionLine_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

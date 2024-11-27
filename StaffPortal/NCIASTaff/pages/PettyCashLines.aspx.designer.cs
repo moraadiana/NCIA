@@ -159,6 +159,15 @@ namespace NCIASTaff.pages
         protected global::System.Web.UI.WebControls.DropDownList ddlAdvancType;
 
         /// <summary>
+        /// ddlAccountNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAccountNo;
+
+        /// <summary>
         /// txtAmnt control.
         /// </summary>
         /// <remarks>

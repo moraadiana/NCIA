@@ -48,6 +48,7 @@ namespace NCIASTaff.pages
                     LoadAdvanceTypes();
                     BindGridViewData(pettyCashNo);
                     BindAttachedDocuments(pettyCashNo);
+                    LoadAccountNos();
                 }
 
                 if (approvalStatus == "Open" || approvalStatus == "Pending")
@@ -132,7 +133,37 @@ namespace NCIASTaff.pages
                 ddlResponsibilityCenter.Items.Add(new ListItem("Error loading responsibility centers"));
             }
         }
+        private void LoadAccountNos()
+        {
 
+            try
+            {
+                ddlAccountNo.Items.Clear();
+                string AccountNo = webportals.GetAccountNo();
+                if (!string.IsNullOrEmpty(AccountNo))
+                {
+                    string[] AccountNoArr = AccountNo.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string account in AccountNoArr)
+                    {
+                        string[] responseArr = account.Split(strLimiters, StringSplitOptions.None);
+                        if (responseArr.Length >= 2) {
+                            //ListItem li = new ListItem(responseArr[1], responseArr[0]);
+                            //ddlAccountNo.Items.Add(li);
+                            string displayText = $"{responseArr[0]} - {responseArr[1]}"; // Display as "No - Name"
+                            string value = responseArr[0]; // Only the account number is stored
+                            ListItem li = new ListItem(displayText, value);
+                            ddlAccountNo.Items.Add(li);
+                        }
+                       
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+
+        }
         private void LoadAdvanceTypes()
         {
             try
@@ -171,6 +202,7 @@ namespace NCIASTaff.pages
                 string directorate = lblDirectorate.Text;
                 string responsibilityCenter = ddlResponsibilityCenter.SelectedValue;
                 string purpose = txtPurpose.Text;
+               
 
                 if (string.IsNullOrEmpty(department))
                 {
@@ -272,38 +304,7 @@ namespace NCIASTaff.pages
             }
         }
 
-        private void BindAttachedDocuments1(string pettyCashNo)
-        {
-            try
-            {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spDocumentLines",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@DocNo", "'" + pettyCashNo + "'");
-                adapter = new SqlDataAdapter();
-                adapter.SelectCommand = command;
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                gvAttachments.DataSource = dt;
-                gvAttachments.DataBind();
-                connection.Close();
-
-                foreach (GridViewRow row in gvAttachments.Rows)
-                {
-                    row.Cells[3].Text = row.Cells[3].Text.Split(' ')[0];
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }
-        }
-
+       
         private void BindGridViewData(string pettyCashNo)
         {
             string pettyCashLines = webportals.GetPettyCashLines(pettyCashNo);
@@ -367,12 +368,18 @@ namespace NCIASTaff.pages
             try
             {
                 string pettyCashNo = lblPettyCashNo.Text;
-                string employeeNo = Session["username"].ToString();
+                string username = Session["username"].ToString();
                 string advanceType = ddlAdvancType.SelectedValue;
                 string amount = txtAmnt.Text;
+                string accountNo = ddlAccountNo.SelectedValue;
                 if (advanceType == "0")
                 {
                     Message("Advance type cannot be null!");
+                    return;
+                }
+                if (accountNo == "0")
+                {
+                    Message("Account Number cannot be null!");
                     return;
                 }
                 if (amount == "")
@@ -382,7 +389,7 @@ namespace NCIASTaff.pages
                     return;
                 }
 
-                string response = webportals.InsertPettyCashRequisitionLine(pettyCashNo, advanceType, Convert.ToDecimal(amount));
+                string response = webportals.InsertPettyCashRequisitionLine(username,pettyCashNo, accountNo, advanceType, Convert.ToDecimal(amount));
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] strLimiters = new string[] { "::" };
@@ -589,46 +596,6 @@ namespace NCIASTaff.pages
                 ex.Data.Clear();
             }
         }
-        protected void lbtnRemoveAttach_Click1(object sender, EventArgs e)
-        {
-            string status = Request.QueryString["status"].ToString().Replace("%", " ");
-            if (status == "Open" || status == "Pending")
-            {
-                string[] args = new string[2];
-                args = (sender as LinkButton).CommandArgument.ToString().Split(';');
-                string systemId = args[0];
-                string documentNo = lblLNo.Text;
-                string fileName = string.Empty;
-                string documentDetails = webportals.GetAttachmentDetails(systemId);
-                if (documentDetails != null)
-                {
-                    string[] documentsDetailsArr = documentDetails.Split(strLimiters, StringSplitOptions.None);
-                    fileName = documentsDetailsArr[0].Split('.')[0];
-                }
-
-                string response = webportals.DeleteDocumentAttachment(systemId, fileName, documentNo);
-                if (response != null)
-                {
-                    string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
-                    string returnMsg1 = responseArr[0];
-                    string returnMsg2 = responseArr[1];
-                    if (returnMsg1 == "SUCCESS" && returnMsg2 == "SUCCESS")
-                    {
-                        Message("Document deleted successfully.");
-                        BindAttachedDocuments(documentNo);
-                    }
-                    else
-                    {
-                        Message("An error has occured. Please try again later.");
-                        return;
-                    }
-                }
-            }
-            else
-            {
-                Message("You can only edit an open document!");
-                return;
-            }
-        }
+       
     }
 }

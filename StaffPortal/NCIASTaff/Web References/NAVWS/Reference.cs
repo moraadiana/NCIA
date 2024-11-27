@@ -103,6 +103,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback Generatep9ReportOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAccountNoOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAdvancetypeOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAllEmployeesOperationCompleted;
@@ -141,6 +143,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetMyPettyCashApplicationsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetMyPettyCashSurrenderOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetMyStoreRequisitionsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetMyTrainingApplicationsOperationCompleted;
@@ -158,6 +162,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback GetPettyCashDetailsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetPettyCashLinesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetPettyCashSurrenderLinesOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetReceiptsOperationCompleted;
         
@@ -196,6 +202,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback InsertImprestSurrenderLinesOperationCompleted;
         
         private System.Threading.SendOrPostCallback InsertPettyCashRequisitionLineOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsertPettyCashSurrenderLines1OperationCompleted;
         
         private System.Threading.SendOrPostCallback InsertPettyCashSurrenderLinesOperationCompleted;
         
@@ -256,6 +264,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback RemovePettyCashRequisitionLineOperationCompleted;
         
         private System.Threading.SendOrPostCallback RemovePurchaseLineOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RemoveStoreRequisitionLineOperationCompleted;
         
         private System.Threading.SendOrPostCallback SaveMemoAttchmntsOperationCompleted;
         
@@ -427,6 +437,9 @@ namespace NCIASTaff.NAVWS {
         public event Generatep9ReportCompletedEventHandler Generatep9ReportCompleted;
         
         /// <remarks/>
+        public event GetAccountNoCompletedEventHandler GetAccountNoCompleted;
+        
+        /// <remarks/>
         public event GetAdvancetypeCompletedEventHandler GetAdvancetypeCompleted;
         
         /// <remarks/>
@@ -484,6 +497,9 @@ namespace NCIASTaff.NAVWS {
         public event GetMyPettyCashApplicationsCompletedEventHandler GetMyPettyCashApplicationsCompleted;
         
         /// <remarks/>
+        public event GetMyPettyCashSurrenderCompletedEventHandler GetMyPettyCashSurrenderCompleted;
+        
+        /// <remarks/>
         public event GetMyStoreRequisitionsCompletedEventHandler GetMyStoreRequisitionsCompleted;
         
         /// <remarks/>
@@ -509,6 +525,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetPettyCashLinesCompletedEventHandler GetPettyCashLinesCompleted;
+        
+        /// <remarks/>
+        public event GetPettyCashSurrenderLinesCompletedEventHandler GetPettyCashSurrenderLinesCompleted;
         
         /// <remarks/>
         public event GetReceiptsCompletedEventHandler GetReceiptsCompleted;
@@ -566,6 +585,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event InsertPettyCashRequisitionLineCompletedEventHandler InsertPettyCashRequisitionLineCompleted;
+        
+        /// <remarks/>
+        public event InsertPettyCashSurrenderLines1CompletedEventHandler InsertPettyCashSurrenderLines1Completed;
         
         /// <remarks/>
         public event InsertPettyCashSurrenderLinesCompletedEventHandler InsertPettyCashSurrenderLinesCompleted;
@@ -656,6 +678,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event RemovePurchaseLineCompletedEventHandler RemovePurchaseLineCompleted;
+        
+        /// <remarks/>
+        public event RemoveStoreRequisitionLineCompletedEventHandler RemoveStoreRequisitionLineCompleted;
         
         /// <remarks/>
         public event SaveMemoAttchmntsCompletedEventHandler SaveMemoAttchmntsCompleted;
@@ -1963,6 +1988,34 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAccountNo", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetAccountNo_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetAccountNo() {
+            object[] results = this.Invoke("GetAccountNo", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAccountNoAsync() {
+            this.GetAccountNoAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetAccountNoAsync(object userState) {
+            if ((this.GetAccountNoOperationCompleted == null)) {
+                this.GetAccountNoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAccountNoOperationCompleted);
+            }
+            this.InvokeAsync("GetAccountNo", new object[0], this.GetAccountNoOperationCompleted, userState);
+        }
+        
+        private void OnGetAccountNoOperationCompleted(object arg) {
+            if ((this.GetAccountNoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAccountNoCompleted(this, new GetAccountNoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAdvancetype", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetAdvancetype_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetAdvancetype(int type) {
@@ -2529,6 +2582,36 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyPettyCashSurrender", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetMyPettyCashSurrender_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetMyPettyCashSurrender(string username) {
+            object[] results = this.Invoke("GetMyPettyCashSurrender", new object[] {
+                        username});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMyPettyCashSurrenderAsync(string username) {
+            this.GetMyPettyCashSurrenderAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void GetMyPettyCashSurrenderAsync(string username, object userState) {
+            if ((this.GetMyPettyCashSurrenderOperationCompleted == null)) {
+                this.GetMyPettyCashSurrenderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyPettyCashSurrenderOperationCompleted);
+            }
+            this.InvokeAsync("GetMyPettyCashSurrender", new object[] {
+                        username}, this.GetMyPettyCashSurrenderOperationCompleted, userState);
+        }
+        
+        private void OnGetMyPettyCashSurrenderOperationCompleted(object arg) {
+            if ((this.GetMyPettyCashSurrenderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMyPettyCashSurrenderCompleted(this, new GetMyPettyCashSurrenderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyStoreRequisitions", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetMyStoreRequisitions_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetMyStoreRequisitions(string username) {
@@ -2787,6 +2870,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetPettyCashLinesCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetPettyCashLinesCompleted(this, new GetPettyCashLinesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPettyCashSurrenderLines", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetPettyCashSurrenderLines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetPettyCashSurrenderLines(string surrenderNo) {
+            object[] results = this.Invoke("GetPettyCashSurrenderLines", new object[] {
+                        surrenderNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPettyCashSurrenderLinesAsync(string surrenderNo) {
+            this.GetPettyCashSurrenderLinesAsync(surrenderNo, null);
+        }
+        
+        /// <remarks/>
+        public void GetPettyCashSurrenderLinesAsync(string surrenderNo, object userState) {
+            if ((this.GetPettyCashSurrenderLinesOperationCompleted == null)) {
+                this.GetPettyCashSurrenderLinesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPettyCashSurrenderLinesOperationCompleted);
+            }
+            this.InvokeAsync("GetPettyCashSurrenderLines", new object[] {
+                        surrenderNo}, this.GetPettyCashSurrenderLinesOperationCompleted, userState);
+        }
+        
+        private void OnGetPettyCashSurrenderLinesOperationCompleted(object arg) {
+            if ((this.GetPettyCashSurrenderLinesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPettyCashSurrenderLinesCompleted(this, new GetPettyCashSurrenderLinesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3389,26 +3502,30 @@ namespace NCIASTaff.NAVWS {
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertPettyCashRequisitionLi" +
             "ne", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="InsertPettyCashRequisitionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string InsertPettyCashRequisitionLine(string pettyCashNo, string advanceType, decimal amount) {
+        public string InsertPettyCashRequisitionLine(string username, string pettyCashNo, string accountNo, string advanceType, decimal amount) {
             object[] results = this.Invoke("InsertPettyCashRequisitionLine", new object[] {
+                        username,
                         pettyCashNo,
+                        accountNo,
                         advanceType,
                         amount});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void InsertPettyCashRequisitionLineAsync(string pettyCashNo, string advanceType, decimal amount) {
-            this.InsertPettyCashRequisitionLineAsync(pettyCashNo, advanceType, amount, null);
+        public void InsertPettyCashRequisitionLineAsync(string username, string pettyCashNo, string accountNo, string advanceType, decimal amount) {
+            this.InsertPettyCashRequisitionLineAsync(username, pettyCashNo, accountNo, advanceType, amount, null);
         }
         
         /// <remarks/>
-        public void InsertPettyCashRequisitionLineAsync(string pettyCashNo, string advanceType, decimal amount, object userState) {
+        public void InsertPettyCashRequisitionLineAsync(string username, string pettyCashNo, string accountNo, string advanceType, decimal amount, object userState) {
             if ((this.InsertPettyCashRequisitionLineOperationCompleted == null)) {
                 this.InsertPettyCashRequisitionLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPettyCashRequisitionLineOperationCompleted);
             }
             this.InvokeAsync("InsertPettyCashRequisitionLine", new object[] {
+                        username,
                         pettyCashNo,
+                        accountNo,
                         advanceType,
                         amount}, this.InsertPettyCashRequisitionLineOperationCompleted, userState);
         }
@@ -3422,14 +3539,56 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertPettyCashSurrenderLine" +
+            "s1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="InsertPettyCashSurrenderLines1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void InsertPettyCashSurrenderLines1(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo, ref string message) {
+            object[] results = this.Invoke("InsertPettyCashSurrenderLines1", new object[] {
+                        documentNo,
+                        pettyCashNo,
+                        amountSpent,
+                        cashReturned,
+                        accountNo,
+                        message});
+            message = ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertPettyCashSurrenderLines1Async(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo, string message) {
+            this.InsertPettyCashSurrenderLines1Async(documentNo, pettyCashNo, amountSpent, cashReturned, accountNo, message, null);
+        }
+        
+        /// <remarks/>
+        public void InsertPettyCashSurrenderLines1Async(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo, string message, object userState) {
+            if ((this.InsertPettyCashSurrenderLines1OperationCompleted == null)) {
+                this.InsertPettyCashSurrenderLines1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPettyCashSurrenderLines1OperationCompleted);
+            }
+            this.InvokeAsync("InsertPettyCashSurrenderLines1", new object[] {
+                        documentNo,
+                        pettyCashNo,
+                        amountSpent,
+                        cashReturned,
+                        accountNo,
+                        message}, this.InsertPettyCashSurrenderLines1OperationCompleted, userState);
+        }
+        
+        private void OnInsertPettyCashSurrenderLines1OperationCompleted(object arg) {
+            if ((this.InsertPettyCashSurrenderLines1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertPettyCashSurrenderLines1Completed(this, new InsertPettyCashSurrenderLines1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertPettyCashSurrenderLine" +
             "s", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="InsertPettyCashSurrenderLines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void InsertPettyCashSurrenderLines(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo) {
-            this.Invoke("InsertPettyCashSurrenderLines", new object[] {
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string InsertPettyCashSurrenderLines(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo) {
+            object[] results = this.Invoke("InsertPettyCashSurrenderLines", new object[] {
                         documentNo,
                         pettyCashNo,
                         amountSpent,
                         cashReturned,
                         accountNo});
+            return ((string)(results[0]));
         }
         
         /// <remarks/>
@@ -3453,7 +3612,7 @@ namespace NCIASTaff.NAVWS {
         private void OnInsertPettyCashSurrenderLinesOperationCompleted(object arg) {
             if ((this.InsertPettyCashSurrenderLinesCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.InsertPettyCashSurrenderLinesCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.InsertPettyCashSurrenderLinesCompleted(this, new InsertPettyCashSurrenderLinesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4366,6 +4525,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.RemovePurchaseLineCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.RemovePurchaseLineCompleted(this, new RemovePurchaseLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:RemoveStoreRequisitionLine", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="RemoveStoreRequisitionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string RemoveStoreRequisitionLine(string storeReqNo) {
+            object[] results = this.Invoke("RemoveStoreRequisitionLine", new object[] {
+                        storeReqNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RemoveStoreRequisitionLineAsync(string storeReqNo) {
+            this.RemoveStoreRequisitionLineAsync(storeReqNo, null);
+        }
+        
+        /// <remarks/>
+        public void RemoveStoreRequisitionLineAsync(string storeReqNo, object userState) {
+            if ((this.RemoveStoreRequisitionLineOperationCompleted == null)) {
+                this.RemoveStoreRequisitionLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveStoreRequisitionLineOperationCompleted);
+            }
+            this.InvokeAsync("RemoveStoreRequisitionLine", new object[] {
+                        storeReqNo}, this.RemoveStoreRequisitionLineOperationCompleted, userState);
+        }
+        
+        private void OnRemoveStoreRequisitionLineOperationCompleted(object arg) {
+            if ((this.RemoveStoreRequisitionLineCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoveStoreRequisitionLineCompleted(this, new RemoveStoreRequisitionLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -5732,6 +5921,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetAccountNoCompletedEventHandler(object sender, GetAccountNoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAccountNoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAccountNoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetAdvancetypeCompletedEventHandler(object sender, GetAdvancetypeCompletedEventArgs e);
     
     /// <remarks/>
@@ -6226,6 +6441,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetMyPettyCashSurrenderCompletedEventHandler(object sender, GetMyPettyCashSurrenderCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMyPettyCashSurrenderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMyPettyCashSurrenderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetMyStoreRequisitionsCompletedEventHandler(object sender, GetMyStoreRequisitionsCompletedEventArgs e);
     
     /// <remarks/>
@@ -6445,6 +6686,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetPettyCashLinesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetPettyCashSurrenderLinesCompletedEventHandler(object sender, GetPettyCashSurrenderLinesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPettyCashSurrenderLinesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPettyCashSurrenderLinesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -6954,7 +7221,55 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void InsertPettyCashSurrenderLinesCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void InsertPettyCashSurrenderLines1CompletedEventHandler(object sender, InsertPettyCashSurrenderLines1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertPettyCashSurrenderLines1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertPettyCashSurrenderLines1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string message {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void InsertPettyCashSurrenderLinesCompletedEventHandler(object sender, InsertPettyCashSurrenderLinesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertPettyCashSurrenderLinesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertPettyCashSurrenderLinesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
@@ -7574,6 +7889,32 @@ namespace NCIASTaff.NAVWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void RemoveStoreRequisitionLineCompletedEventHandler(object sender, RemoveStoreRequisitionLineCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RemoveStoreRequisitionLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RemoveStoreRequisitionLineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

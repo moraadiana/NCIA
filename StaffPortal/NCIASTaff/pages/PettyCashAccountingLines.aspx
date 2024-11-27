@@ -66,10 +66,10 @@
                                                 </ItemTemplate>
                                             </asp:TemplateField>
                                             <asp:BoundField DataField="Advance Type" HeaderText="Advance Type" />
-                                            <asp:BoundField DataField="Account No:" HeaderText="Account No" />
+                                            <asp:BoundField DataField="Account No_" HeaderText="Account No" />
                                             <asp:BoundField DataField="Account Name" HeaderText="Account Name" />
-                                            <asp:BoundField DataField="Imprest Holder" HeaderText="Imprest Holder" />
-                                            <asp:BoundField DataField="varAmount" HeaderText="Amount" />
+                                            <%--<asp:BoundField DataField="Imprest Holder" HeaderText="Imprest Holder" />--%>
+                                            <asp:BoundField DataField="Amount" HeaderText="Amount" />
                                             <asp:TemplateField HeaderText="Receipt No">
                                                 <ItemTemplate>
                                                     <asp:DropDownList ID="ddlReceipts" CssClass="form-control" OnSelectedIndexChanged="ddlReceipts_SelectedIndexChanged" AutoPostBack="true" runat="server">
@@ -97,12 +97,12 @@
                                     </asp:GridView>
                                 </div>
                             </div>
-                            <div class="row">
+                             <div class="row">
                                 <div class="col-md-12">
                                     <h3>Document Attachments</h3>
                                 </div>
                                 <div class="col-md-12">
-                                    <asp:GridView ID="gvAttachments" AutoGenerateColumns="false" DataKeyNames="Document No" class="table table-responsive no-padding table-bordered table-hover" runat="server"
+                                    <asp:GridView ID="gvAttachments" AutoGenerateColumns="false" DataKeyNames="No_" class="table table-responsive no-padding table-bordered table-hover" runat="server"
                                         AllowSorting="True" AllowPaging="true" ShowFooter="true" PageSize="5">
                                         <Columns>
                                             <asp:TemplateField HeaderStyle-HorizontalAlign="Left" HeaderText="#No" SortExpression="">
@@ -111,8 +111,8 @@
                                                     <%# string.Format("{0}",Container.DataItemIndex + 1 +".") %>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="Document No" HeaderText="Document No" />
-                                            <asp:BoundField DataField="Description" HeaderText="Description" />
+                                            <asp:BoundField DataField="No_" HeaderText="Document No" />
+                                            <asp:BoundField DataField="File Name" HeaderText="File Name" />
                                             <asp:BoundField DataField="$systemCreatedAt" HeaderText="Date Uploaded" />
                                             <asp:TemplateField HeaderText="Action" SortExpression="" HeaderStyle-HorizontalAlign="Left">
                                                 <ItemStyle Width="110px" HorizontalAlign="Left" />

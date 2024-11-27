@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Net.Mail;
 
 namespace NCIASTaff.pages
 {
@@ -40,7 +41,7 @@ namespace NCIASTaff.pages
                 else
                 {
                     documentNo = Request.QueryString["SurrenderNo"].ToString();
-                    string pettyCashNo = Request.QueryString["PettyCashNo"].ToString();
+                    string pettyCashNo = Request.QueryString["PettyCashNo"];
                     string response = webportals.GetPettyCashDetails(pettyCashNo);
                     if (!string.IsNullOrEmpty(response))
                     {
@@ -54,10 +55,21 @@ namespace NCIASTaff.pages
                         ddlResponsibilityCenter.SelectedValue = responsibilityCenter;
                     }
                 }
-
+                
                 Session["DocumentNo"] = documentNo;
                 BindAttachedDocuments(documentNo);
                 BindGridViewData();
+            }
+            string approvalStatus = Request.QueryString["status"].Replace("%", " ");
+            if (approvalStatus == "Open" || approvalStatus == "Pending")
+            {
+                lbtnSubmit.Visible = true;
+              
+            }
+            else if (approvalStatus == "Pending Approval")
+            {
+               
+                lbtnSubmit.Visible = false;
             }
         }
 
@@ -119,7 +131,80 @@ namespace NCIASTaff.pages
                 ddlResponsibilityCenter.Items.Add(new ListItem("Error loading responsibility centers"));
             }
         }
-        private void BindGridViewData()
+         private void BindGridViewData()
+        {
+            string pettyCashNo = ddlPostedPettyCash.SelectedValue.ToString();
+            string pettyCashLines = webportals.GetPettyCashLines(pettyCashNo);
+
+            if (!string.IsNullOrEmpty(pettyCashLines))
+            {
+                
+                DataTable dt = new DataTable();
+               // dt.Columns.Add("Document No_");
+                dt.Columns.Add("Advance Type");
+                dt.Columns.Add("Account No_");
+                dt.Columns.Add("Account Name");
+                dt.Columns.Add("Amount");
+              //  dt.Columns.Add("Line No_");
+
+               
+                string[] lines = pettyCashLines.Split(new[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                
+                foreach (string line in lines)
+                {
+                    string[] fields = line.Split(new[] { "::" }, StringSplitOptions.None);
+                    if (fields.Length == 6) 
+                    {
+                        DataRow row = dt.NewRow();
+                       // row["Document No_"] = fields[0];
+                        row["Advance Type"] = fields[1];
+                        row["Account No_"] = fields[2];
+                        row["Account Name"] = fields[3];
+                        row["Amount"] = fields[4];
+                       // row["Line No_"] = fields[5];
+
+                        dt.Rows.Add(row); 
+                    }
+                }
+
+                gvLines.DataSource = dt;
+                gvLines.DataBind();
+
+              
+            }
+            foreach (GridViewRow row in gvLines.Rows)
+            {
+                string account = row.Cells[2].Text;
+                string surrenderNo = Session["DocumentNo"].ToString();
+                TextBox txtActualAmount = row.FindControl("txtActualAmount") as TextBox;
+                TextBox txtAmountReturned = row.FindControl("txtAmountReturned") as TextBox;
+                //if (txtActualAmount.Text == "") txtActualAmount.Text = "0";
+                //if (txtAmountReturned.Text == "") txtAmountReturned.Text = "0";
+
+                string response = webportals.LoadPettyCashSurrenderSurrenderLineDetails(surrenderNo, account);
+                if (!string.IsNullOrEmpty(response))
+                {
+                    string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
+                    string returnMsg = responseArr[0];
+                    if (returnMsg == "SUCCESS")
+                    {
+                        decimal actualAmount = Convert.ToDecimal(responseArr[1]);
+                        decimal cashReturned = Convert.ToDecimal(responseArr[2]);
+                        txtActualAmount.Text = actualAmount.ToString();
+                        txtAmountReturned.Text = cashReturned.ToString();
+                    }
+                    else
+                    {
+                        txtActualAmount.Text = "0";
+                        txtAmountReturned.Text = "0";
+                    }
+                }
+            }
+
+        }
+
+        private void BindGridViewData1()
         {
             try
             {
@@ -188,7 +273,7 @@ namespace NCIASTaff.pages
                     Connection = connection
                 };
                 command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@ReqNo", "'" + documentNo + "'");
+                command.Parameters.AddWithValue("@DocNo", "'" + documentNo + "'");
                 adapter = new SqlDataAdapter();
                 adapter.SelectCommand = command;
                 DataTable dt = new DataTable();
@@ -273,10 +358,10 @@ namespace NCIASTaff.pages
                         return;
                     }
 
-                    decimal actualAmount = Convert.ToDecimal(txtActualAmount.Text);
+                    decimal AmountSpent = Convert.ToDecimal(txtActualAmount.Text);
                     decimal cashReturned = Convert.ToDecimal(txtAmountReturned.Text);
-                    decimal totalAmount = actualAmount + cashReturned;
-                    decimal amount = Convert.ToDecimal(row.Cells[5].Text);
+                    decimal totalAmount = AmountSpent + cashReturned;
+                    decimal amount = Convert.ToDecimal(row.Cells[4].Text);
                     string accountNo = row.Cells[2].Text;
 
                     if (totalAmount != amount)
@@ -284,10 +369,24 @@ namespace NCIASTaff.pages
                         Message("The sum of Actual Amount Spent and Cash Amount Returned must ne equal to the amount.");
                         return;
                     }
-                    webportals.InsertPettyCashSurrenderLines(documentNo,pettyCashNo,actualAmount,cashReturned,accountNo);
+                    string response1 = webportals.InsertPettyCashSurrenderLines(documentNo,pettyCashNo, AmountSpent, cashReturned,accountNo);
+                    if (response1 != null)
+                    {
+                        string[] responseArr = response1.Split(strLimiters, StringSplitOptions.None);
+                        string returnMsg = responseArr[0];
+                        if (returnMsg == "SUCCESS")
+                        {
+                            documentNo = responseArr[1];
+                        }
+                        else
+                        {
+                            Message("An error occured while surendering petty cash. Please try again later");
+                            return;
+                        }
+                    }
                 }
 
-                string approvalResponse = webportals.OnSendPettyCashRequisitionForApproval(documentNo);
+                string approvalResponse = webportals.OnSendPettyCashSurrenderForApproval(documentNo);
                 if (approvalResponse == "SUCCESS")
                 {
                     SuccessMessage("Petty Cash surrender has been submitted successfully!");
@@ -366,8 +465,34 @@ namespace NCIASTaff.pages
                 ex.Data.Clear();
             }
         }
-
         protected void lbtnRemoveAttach_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string documentNo = Session["DocumentNo"].ToString();
+                //string documentNo = Request.QueryString["SurrenderNo"];
+                // string documentNo = lblLNo.Text;
+                string[] args = new string[2];
+                args = (sender as LinkButton).CommandArgument.ToString().Split(';');
+                string systemId = args[0];
+                if (Components.ObjNav.DeleteDocumentAttachments(systemId))
+                {
+                    Message("Document deleted successfully!");
+                    BindAttachedDocuments(documentNo);
+
+                }
+                else
+                {
+                    Message("An error occured while deleting document. Please try again later!");
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
+        protected void lbtnRemoveAttach_Click1(object sender, EventArgs e)
         {
             try
             {
