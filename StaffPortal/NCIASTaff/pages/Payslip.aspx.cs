@@ -37,7 +37,7 @@ namespace NCIASTaff.pages
             }
         }
 
-        private void LoadYears()
+        private void LoadYears1()
         {
             try
             {
@@ -47,15 +47,40 @@ namespace NCIASTaff.pages
                 if (!string.IsNullOrEmpty(payslipYears))
                 {
                     string[] yearsArr = payslipYears.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string years in yearsArr)
-                    {
-                        string[] responseArr = years.Split(strLimiters, StringSplitOptions.None);
-                        ListItem li = new ListItem(responseArr[0]);
+                    
+                       // string[] responseArr = years.Split(strLimiters, StringSplitOptions.None);
+                        ListItem li = new ListItem(yearsArr[0]);
                         ddlYear.Items.Add(li);
-                    }
+                    
                 }
                
                 
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
+        private void LoadYears()
+        {
+            try
+            {
+                connection = Components.GetconnToNAV();
+                command = new SqlCommand()
+                {
+                    CommandText = "spGetPayslipYears",
+                    CommandType = CommandType.StoredProcedure,
+                    Connection = connection
+                };
+                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
+                reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    ddlYear.DataSource = reader;
+                    ddlYear.DataTextField = "Period Year";
+                    ddlYear.DataValueField = "Period Year";
+                    ddlYear.DataBind();
+                }
             }
             catch (Exception ex)
             {
