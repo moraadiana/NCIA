@@ -37,30 +37,7 @@ namespace NCIASTaff.pages
             }
         }
 
-        private void LoadYears1()
-        {
-            try
-            {
-                
-                ddlYear.Items.Clear();
-                string payslipYears = webportals.GetPayslipYears();
-                if (!string.IsNullOrEmpty(payslipYears))
-                {
-                    string[] yearsArr = payslipYears.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
-                    
-                       // string[] responseArr = years.Split(strLimiters, StringSplitOptions.None);
-                        ListItem li = new ListItem(yearsArr[0]);
-                        ddlYear.Items.Add(li);
-                    
-                }
-               
-                
-            }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }
-        }
+       
         private void LoadYears()
         {
             try
@@ -88,28 +65,7 @@ namespace NCIASTaff.pages
             }
         }
 
-        private void LoadMonths1()
-        {
-            try
-            {
-                ddlMonth.Items.Clear();
-                string payslipMonths = webportals.GetPayslipMonths();
-                if (!string.IsNullOrEmpty(payslipMonths))
-                {
-                    string[] monthsArr = payslipMonths.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string months in monthsArr)
-                    {
-                        string[] responseArr = months.Split(strLimiters, StringSplitOptions.None);
-                        ListItem li = new ListItem(responseArr[0]);
-                        ddlMonth.Items.Add(li);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }
-        }
+       
         private void LoadMonths()
         {
             try
