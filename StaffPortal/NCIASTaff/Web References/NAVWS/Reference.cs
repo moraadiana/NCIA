@@ -157,8 +157,6 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetNextPettyCashNoOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetPayslipMonths1OperationCompleted;
-        
         private System.Threading.SendOrPostCallback GetPayslipMonthsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetPayslipYearsOperationCompleted;
@@ -518,9 +516,6 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetNextPettyCashNoCompletedEventHandler GetNextPettyCashNoCompleted;
-        
-        /// <remarks/>
-        public event GetPayslipMonths1CompletedEventHandler GetPayslipMonths1Completed;
         
         /// <remarks/>
         public event GetPayslipMonthsCompletedEventHandler GetPayslipMonthsCompleted;
@@ -2793,34 +2788,6 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPayslipMonths1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetPayslipMonths1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string GetPayslipMonths1() {
-            object[] results = this.Invoke("GetPayslipMonths1", new object[0]);
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetPayslipMonths1Async() {
-            this.GetPayslipMonths1Async(null);
-        }
-        
-        /// <remarks/>
-        public void GetPayslipMonths1Async(object userState) {
-            if ((this.GetPayslipMonths1OperationCompleted == null)) {
-                this.GetPayslipMonths1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPayslipMonths1OperationCompleted);
-            }
-            this.InvokeAsync("GetPayslipMonths1", new object[0], this.GetPayslipMonths1OperationCompleted, userState);
-        }
-        
-        private void OnGetPayslipMonths1OperationCompleted(object arg) {
-            if ((this.GetPayslipMonths1Completed != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetPayslipMonths1Completed(this, new GetPayslipMonths1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPayslipMonths", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetPayslipMonths_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetPayslipMonths() {
@@ -3604,10 +3571,11 @@ namespace NCIASTaff.NAVWS {
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertPettyCashSurrenderLine" +
             "s", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="InsertPettyCashSurrenderLines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string InsertPettyCashSurrenderLines(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo) {
+        public string InsertPettyCashSurrenderLines(string documentNo, string pettyCashNo, decimal amount, decimal amountSpent, decimal cashReturned, string accountNo) {
             object[] results = this.Invoke("InsertPettyCashSurrenderLines", new object[] {
                         documentNo,
                         pettyCashNo,
+                        amount,
                         amountSpent,
                         cashReturned,
                         accountNo});
@@ -3615,18 +3583,19 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
-        public void InsertPettyCashSurrenderLinesAsync(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo) {
-            this.InsertPettyCashSurrenderLinesAsync(documentNo, pettyCashNo, amountSpent, cashReturned, accountNo, null);
+        public void InsertPettyCashSurrenderLinesAsync(string documentNo, string pettyCashNo, decimal amount, decimal amountSpent, decimal cashReturned, string accountNo) {
+            this.InsertPettyCashSurrenderLinesAsync(documentNo, pettyCashNo, amount, amountSpent, cashReturned, accountNo, null);
         }
         
         /// <remarks/>
-        public void InsertPettyCashSurrenderLinesAsync(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo, object userState) {
+        public void InsertPettyCashSurrenderLinesAsync(string documentNo, string pettyCashNo, decimal amount, decimal amountSpent, decimal cashReturned, string accountNo, object userState) {
             if ((this.InsertPettyCashSurrenderLinesOperationCompleted == null)) {
                 this.InsertPettyCashSurrenderLinesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPettyCashSurrenderLinesOperationCompleted);
             }
             this.InvokeAsync("InsertPettyCashSurrenderLines", new object[] {
                         documentNo,
                         pettyCashNo,
+                        amount,
                         amountSpent,
                         cashReturned,
                         accountNo}, this.InsertPettyCashSurrenderLinesOperationCompleted, userState);
@@ -6631,32 +6600,6 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetNextPettyCashNoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void GetPayslipMonths1CompletedEventHandler(object sender, GetPayslipMonths1CompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetPayslipMonths1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetPayslipMonths1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

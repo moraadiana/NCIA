@@ -966,18 +966,6 @@
           </sequence>
         </complexType>
       </element>
-      <element name="GetPayslipMonths1">
-        <complexType>
-          <sequence />
-        </complexType>
-      </element>
-      <element name="GetPayslipMonths1_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
       <element name="GetPayslipMonths">
         <complexType>
           <sequence />
@@ -1343,6 +1331,7 @@
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="pettyCashNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
             <element minOccurs="1" maxOccurs="1" name="amountSpent" type="decimal" />
             <element minOccurs="1" maxOccurs="1" name="cashReturned" type="decimal" />
             <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
@@ -2343,12 +2332,6 @@
   <message name="GetNextPettyCashNo_Result">
     <part name="parameters" element="tns:GetNextPettyCashNo_Result" />
   </message>
-  <message name="GetPayslipMonths1">
-    <part name="parameters" element="tns:GetPayslipMonths1" />
-  </message>
-  <message name="GetPayslipMonths1_Result">
-    <part name="parameters" element="tns:GetPayslipMonths1_Result" />
-  </message>
   <message name="GetPayslipMonths">
     <part name="parameters" element="tns:GetPayslipMonths" />
   </message>
@@ -2995,10 +2978,6 @@
     <operation name="GetNextPettyCashNo">
       <input name="GetNextPettyCashNo" message="tns:GetNextPettyCashNo" />
       <output name="GetNextPettyCashNo_Result" message="tns:GetNextPettyCashNo_Result" />
-    </operation>
-    <operation name="GetPayslipMonths1">
-      <input name="GetPayslipMonths1" message="tns:GetPayslipMonths1" />
-      <output name="GetPayslipMonths1_Result" message="tns:GetPayslipMonths1_Result" />
     </operation>
     <operation name="GetPayslipMonths">
       <input name="GetPayslipMonths" message="tns:GetPayslipMonths" />
@@ -3836,15 +3815,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetNextPettyCashNo_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="GetPayslipMonths1">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPayslipMonths1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="GetPayslipMonths1">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="GetPayslipMonths1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
