@@ -28,7 +28,8 @@ namespace NCIASTaff.pages
                         Response.Redirect("~/Default.aspx");
                     }
                     LoadLeaves();
-                    BindGridviewData();
+                    // BindGridviewData();
+                    BindGridViewData();
                 }
             }
             catch (Exception Ex)
@@ -37,7 +38,50 @@ namespace NCIASTaff.pages
                 Ex.Data.Clear();
             }
         }
-        private void BindGridviewData()
+        private void BindGridViewData()
+        {
+            string number = ddlLeaves.SelectedValue.ToString();
+            string leavedata = Components.ObjNav.GetLeaveDetails(number);
+
+            if (!string.IsNullOrEmpty(leavedata))
+            {
+
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Employee No");
+                dt.Columns.Add("Employee Name");
+                dt.Columns.Add("Date");
+                dt.Columns.Add("Applied Days");
+                dt.Columns.Add("Starting Date");
+                dt.Columns.Add("End Date");
+                dt.Columns.Add("Purpose");
+                dt.Columns.Add("Leave Type");
+
+
+                string[] fields = leavedata.Split(':');
+
+                    if (fields.Length >= 6)
+                    {
+                        DataRow row = dt.NewRow();
+                        row["Employee No"] = fields[0];
+                        row["Employee Name"] = fields[1];
+                        row["Date"] = fields[2];
+                        row["Applied Days"] = fields[3];
+                        row["Starting Date"] = fields[4];
+                        row["End Date"] = fields[5];
+                        row["Leave Type"] = fields[7];
+
+                        dt.Rows.Add(row);
+                    }
+                
+
+                gvLines.DataSource = dt;
+                gvLines.DataBind();
+
+
+            }
+
+        }
+        private void BindGridviewData1()
         {
             string number = ddlLeaves.SelectedValue.ToString();
             try
@@ -115,7 +159,8 @@ namespace NCIASTaff.pages
         }
         protected void ddlLeaves_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BindGridviewData();
+            //BindGridviewData();
+            BindGridViewData();
         }
         public void Message1(string strMsg)
         {

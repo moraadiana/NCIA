@@ -53,7 +53,7 @@ namespace NCIASTaff
 
                 var loginInfo = new NetworkCredential(email, password);
                 var msg = new MailMessage();
-                var smtpClient = new SmtpClient("smtp.gmail.com", 25);
+                var smtpClient = new SmtpClient("smtp.gmail.com", 587);
 
                 msg.From = new MailAddress(email);
                 msg.To.Add(new MailAddress(address));

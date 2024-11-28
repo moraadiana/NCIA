@@ -1171,6 +1171,7 @@
       <element name="HRMLeaveApplication1">
         <complexType>
           <sequence>
+            <element minOccurs="1" maxOccurs="1" name="leaveNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="username" type="string" />
             <element minOccurs="1" maxOccurs="1" name="reliever" type="string" />
             <element minOccurs="1" maxOccurs="1" name="leaveType" type="string" />
@@ -1331,6 +1332,7 @@
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="pettyCashNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
             <element minOccurs="1" maxOccurs="1" name="amountSpent" type="decimal" />
             <element minOccurs="1" maxOccurs="1" name="cashReturned" type="decimal" />
             <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />

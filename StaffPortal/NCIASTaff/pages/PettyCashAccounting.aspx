@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <p class="text-center"><a class="btn btn-pill btn-warning u-posRelative" href="PettyCashAccountingLines.aspx?query=new&status=Open">New Petty Cash Accounting<span class="waves"></span> </a></p>
+                           <%-- <p class="text-center"><a class="btn btn-pill btn-warning u-posRelative" href="PettyCashAccountingLines.aspx?query=new&status=Open">New Petty Cash Accounting<span class="waves"></span> </a></p>--%>
                             <br />
                             <div class="row">
                                 <div class="col-md-12">

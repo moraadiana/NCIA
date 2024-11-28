@@ -3232,8 +3232,9 @@ namespace NCIASTaff.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:HRMLeaveApplication1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="HRMLeaveApplication1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string HRMLeaveApplication1(string username, string reliever, string leaveType, decimal appliedDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime startDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime endDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime returnDate, string purpose, string responsibilityCenter) {
+        public string HRMLeaveApplication1(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime startDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime endDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime returnDate, string purpose, string responsibilityCenter) {
             object[] results = this.Invoke("HRMLeaveApplication1", new object[] {
+                        leaveNo,
                         username,
                         reliever,
                         leaveType,
@@ -3247,16 +3248,17 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
-        public void HRMLeaveApplication1Async(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter) {
-            this.HRMLeaveApplication1Async(username, reliever, leaveType, appliedDays, startDate, endDate, returnDate, purpose, responsibilityCenter, null);
+        public void HRMLeaveApplication1Async(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter) {
+            this.HRMLeaveApplication1Async(leaveNo, username, reliever, leaveType, appliedDays, startDate, endDate, returnDate, purpose, responsibilityCenter, null);
         }
         
         /// <remarks/>
-        public void HRMLeaveApplication1Async(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, object userState) {
+        public void HRMLeaveApplication1Async(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, object userState) {
             if ((this.HRMLeaveApplication1OperationCompleted == null)) {
                 this.HRMLeaveApplication1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnHRMLeaveApplication1OperationCompleted);
             }
             this.InvokeAsync("HRMLeaveApplication1", new object[] {
+                        leaveNo,
                         username,
                         reliever,
                         leaveType,
@@ -3571,10 +3573,11 @@ namespace NCIASTaff.NAVWS {
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertPettyCashSurrenderLine" +
             "s", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="InsertPettyCashSurrenderLines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string InsertPettyCashSurrenderLines(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo) {
+        public string InsertPettyCashSurrenderLines(string documentNo, string pettyCashNo, decimal amount, decimal amountSpent, decimal cashReturned, string accountNo) {
             object[] results = this.Invoke("InsertPettyCashSurrenderLines", new object[] {
                         documentNo,
                         pettyCashNo,
+                        amount,
                         amountSpent,
                         cashReturned,
                         accountNo});
@@ -3582,18 +3585,19 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
-        public void InsertPettyCashSurrenderLinesAsync(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo) {
-            this.InsertPettyCashSurrenderLinesAsync(documentNo, pettyCashNo, amountSpent, cashReturned, accountNo, null);
+        public void InsertPettyCashSurrenderLinesAsync(string documentNo, string pettyCashNo, decimal amount, decimal amountSpent, decimal cashReturned, string accountNo) {
+            this.InsertPettyCashSurrenderLinesAsync(documentNo, pettyCashNo, amount, amountSpent, cashReturned, accountNo, null);
         }
         
         /// <remarks/>
-        public void InsertPettyCashSurrenderLinesAsync(string documentNo, string pettyCashNo, decimal amountSpent, decimal cashReturned, string accountNo, object userState) {
+        public void InsertPettyCashSurrenderLinesAsync(string documentNo, string pettyCashNo, decimal amount, decimal amountSpent, decimal cashReturned, string accountNo, object userState) {
             if ((this.InsertPettyCashSurrenderLinesOperationCompleted == null)) {
                 this.InsertPettyCashSurrenderLinesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPettyCashSurrenderLinesOperationCompleted);
             }
             this.InvokeAsync("InsertPettyCashSurrenderLines", new object[] {
                         documentNo,
                         pettyCashNo,
+                        amount,
                         amountSpent,
                         cashReturned,
                         accountNo}, this.InsertPettyCashSurrenderLinesOperationCompleted, userState);
@@ -6612,7 +6616,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
+<<<<<<< HEAD
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+=======
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+>>>>>>> 77f8136b8518df2b78e02fe4d88885f8a3311f2e
     public delegate void GetPayslipMonthsCompletedEventHandler(object sender, GetPayslipMonthsCompletedEventArgs e);
     
     /// <remarks/>

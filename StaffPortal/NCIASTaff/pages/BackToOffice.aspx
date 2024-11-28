@@ -26,8 +26,8 @@
                     <div class="form-group">
                         <label for="atext3">Leave Back To Office</label>
                         <div class="icon-after-input">
-                            <asp:GridView ID="gvLines" AutoGenerateColumns="false" DataKeyNames="No" class="table table-responsive no-padding table-bordered table-hover" runat="server"
-                                AllowSorting="True" AllowPaging="true" ShowFooter="true" PageSize="5" OnRowDataBound="gvLines_RowDataBound">
+                            <asp:GridView ID="gvLines" AutoGenerateColumns="false" DataKeyNames="Employee No" class="table table-responsive no-padding table-bordered table-hover" runat="server"
+                                AllowSorting="True" AllowPaging="true" ShowFooter="true" PageSize="5" >
                                 <Columns>
                                     <asp:TemplateField HeaderStyle-HorizontalAlign="Left" HeaderText="#No" SortExpression="">
                                         <HeaderStyle Width="30px" />
@@ -35,32 +35,39 @@
                                             <%# string.Format("{0}",Container.DataItemIndex + 1 +".") %>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="Leave Type" HeaderText="Leave Type" />
-                                    <asp:BoundField DataField="Employee No:" HeaderText="Employee No" />
+                                    <asp:BoundField DataField="Employee No" HeaderText="Employee No" />
                                     <asp:BoundField DataField="Employee Name" HeaderText="Employee Name" />
-                                    <asp:BoundField DataField="varLeave Balance" HeaderText="Leave Balance" />
-                                    <asp:BoundField DataField="Leave Holder" HeaderText="Leave Holder" />
-                                    <asp:TemplateField HeaderText="Document No">
+                                    <asp:BoundField DataField="Date" HeaderText="Application Date" />
+                                    <%-- <asp:TemplateField HeaderText="Date" SortExpression="">
+                                     <ItemTemplate>
+                                         <asp:TextBox ID="txtActual" runat="server" Text="" BorderColor="Blue" BorderStyle="Ridge" BorderWidth="2px" ForeColor="Blue" Width="100px" />
+                                     </ItemTemplate>
+                                     <ItemStyle Font-Bold="True" ForeColor="Green"></ItemStyle>
+                                 </asp:TemplateField>--%>
+                                   
+                                    <asp:BoundField DataField="Starting Date" HeaderText="Starting Date" />
+                                    <asp:BoundField DataField="End Date" HeaderText="End Date" />
+                                   <%-- <asp:TemplateField HeaderText="Document No">
                                         <ItemTemplate>
                                             <asp:DropDownList ID="ddlReceipts" CssClass="form-control" OnSelectedIndexChanged="ddlReceipts_SelectedIndexChanged" AutoPostBack="true" runat="server">
                                             </asp:DropDownList>
                                         </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Actual Date" SortExpression="">
+                                    </asp:TemplateField>--%>
+                                   <%-- <asp:TemplateField HeaderText="Actual Date" SortExpression="">
                                         <ItemTemplate>
                                             <asp:TextBox ID="txtActual" runat="server" Text="" BorderColor="Blue" BorderStyle="Ridge" BorderWidth="2px" ForeColor="Blue" Width="100px" />
                                         </ItemTemplate>
                                         <ItemStyle Font-Bold="True" ForeColor="Green"></ItemStyle>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField HeaderText="Return Date">
+                                    </asp:TemplateField>--%>
+                                   <%-- <asp:TemplateField HeaderText="End Date">
                                         <ItemTemplate>
                                             <asp:TextBox ID="txtreturndt" runat="server" Text="" BorderColor="Blue" BorderStyle="Ridge" BorderWidth="2px" ForeColor="Blue" Width="100px" />
                                         </ItemTemplate>
                                         <ItemStyle Font-Bold="True" ForeColor="Green"></ItemStyle>
-                                    </asp:TemplateField>
+                                    </asp:TemplateField>--%>
                                     <%--  <asp:BoundField DataField="Ac" HeaderText="Actual Amount" />
                                     <asp:BoundField DataField="" HeaderText="Cash Amount" />--%>
-                                    <%--<asp:BoundField DataField="NumOfDays" HeaderText="Days" />--%>
+                                    <asp:BoundField DataField="Leave Type" HeaderText="Leave Type" />
                                 </Columns>
                                 <FooterStyle HorizontalAlign="Center" />
                                 <EmptyDataTemplate>

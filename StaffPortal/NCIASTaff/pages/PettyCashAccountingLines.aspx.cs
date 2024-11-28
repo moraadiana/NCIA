@@ -361,15 +361,15 @@ namespace NCIASTaff.pages
                     decimal AmountSpent = Convert.ToDecimal(txtActualAmount.Text);
                     decimal cashReturned = Convert.ToDecimal(txtAmountReturned.Text);
                     decimal totalAmount = AmountSpent + cashReturned;
-                    decimal amount = Convert.ToDecimal(row.Cells[4].Text);
+                    decimal Amount = Convert.ToDecimal(row.Cells[4].Text);
                     string accountNo = row.Cells[2].Text;
 
-                    if (totalAmount != amount)
+                    if (totalAmount != Amount)
                     {
                         Message("The sum of Actual Amount Spent and Cash Amount Returned must ne equal to the amount.");
                         return;
                     }
-                    string response1 = webportals.InsertPettyCashSurrenderLines(documentNo,pettyCashNo, AmountSpent, cashReturned,accountNo);
+                    string response1 = webportals.InsertPettyCashSurrenderLines(documentNo,pettyCashNo,Amount,AmountSpent,cashReturned,accountNo);
                     if (response1 != null)
                     {
                         string[] responseArr = response1.Split(strLimiters, StringSplitOptions.None);
