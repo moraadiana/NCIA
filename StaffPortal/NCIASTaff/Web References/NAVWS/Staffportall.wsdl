@@ -1171,6 +1171,7 @@
       <element name="HRMLeaveApplication1">
         <complexType>
           <sequence>
+            <element minOccurs="1" maxOccurs="1" name="leaveNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="username" type="string" />
             <element minOccurs="1" maxOccurs="1" name="reliever" type="string" />
             <element minOccurs="1" maxOccurs="1" name="leaveType" type="string" />

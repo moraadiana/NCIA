@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NCIASTaff.NAVWS;
 using System.Web.Services.Description;
+using System.Xml.Linq;
 
 namespace NCIASTaff.pages
 {
@@ -29,11 +30,68 @@ namespace NCIASTaff.pages
                     Response.Redirect("~/Default.aspx");
                     return;
                 }
+                string query = Request.QueryString["query"];
+                string leaveNo = null;
+                string approvalStatus = Request.QueryString["status"].Replace("%", " ");
                 LoadLeaveTypes();
                 LoadReliever();
                 LoadResponsibilityCenter();
                 LoadLeaveBalance();
                 LoadStaffDepartmentDetails();
+                if (query == "new")
+                {
+                    leaveNo = null;
+                    //lbtnSubmit.Visible = true;
+                }
+                else if (query == "old")
+                {
+                    leaveNo = Request.QueryString["leaveNo"].ToString();
+                    string response = webportals.GetLeaveDetails(leaveNo);
+                    if (!string.IsNullOrEmpty(response))
+                    {
+                        string[] responseArr = response.Split(':');
+                        string EmployeeNo = responseArr[0];
+                        string EmployeeName = responseArr[1];
+                        string Date = responseArr[2];
+                        string AppliedDays = responseArr[3];
+                        string StartingDate= responseArr[4];
+                        string EndingDate = responseArr[5];
+                        string Purpose = responseArr[6];
+                        string LeaveType = responseArr[7];
+                        string ReturnDate = responseArr[8];
+                        string userId = responseArr[9];
+                        string RelieverNo = responseArr[10];
+                        string RelieverName = responseArr[11];
+                        string department = responseArr[12];
+                        ddlLeaveType.SelectedValue = LeaveType;
+                        txtAppliedDays.Text = AppliedDays;
+                     
+                        txtPurpose.Text = Purpose;
+                        //lblEndDate.Text = EndingDate;
+
+
+                        if (!ddlReliver.Items.Contains(new ListItem(RelieverNo + " => " + RelieverName, RelieverNo)))
+                        {
+                            ListItem li = new ListItem(RelieverNo + " => " + RelieverName, RelieverNo);
+                            ddlReliver.Items.Add(li);
+                        }
+                       
+                        
+
+                    }
+
+                    if (approvalStatus == "Open" || approvalStatus == "Pending")
+                    {
+                        lbtnSubmit.Visible = true;
+                        //lbtnSubmit.Visible = true;
+                    }
+
+                    else
+                    {
+                        lbtnSubmit.Visible = false;
+                    }
+                }
+              
             }
         }
 
@@ -65,35 +123,7 @@ namespace NCIASTaff.pages
             }
         }
 
-        
-        //private void LoadResponsibilityCenter()
-        //{
-        //    try
-        //    {
-        //        string username = Session["username"].ToString();
-        //        string grouping = "LEAVE";
-        //        string responsibilityCenters = webportals.GetDocResponsibilityCentres(grouping,username);
-
-        //        if (!string.IsNullOrEmpty(responsibilityCenters))
-        //        {
-        //            string[] centers = responsibilityCenters.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
-
-        //            if (centers.Length > 0)
-        //            {
-        //                lblResCenter.Text = centers[0];
-        //            }
-        //        }
-        //        else
-        //        {
-        //            lblResCenter.Text = "No responsibility centers found.";
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ex.Data.Clear();
-        //        lblResCenter.Text = "Error loading responsibility centers.";
-        //    }
-        //}
+     
         private void LoadResponsibilityCenter()
         {
             try
@@ -425,9 +455,14 @@ namespace NCIASTaff.pages
 
                 DateTime endDate = Convert.ToDateTime(lblEndDate.Text);
                 DateTime returnDate = Convert.ToDateTime(lblReturnDate.Text);
-
+                string LeaveNo = null;
+                string query = Request.QueryString["query"];
+                if (query == "old")
+                {
+                    LeaveNo = Request.QueryString["leaveNo"]; // Get the leaveNo from the query string
+                }
                 // Applications
-                string response = webportals.HRMLeaveApplication(username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate, purpose, resCenter);
+                string response = webportals.HRMLeaveApplication1(LeaveNo ?? string.Empty, username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate, purpose, resCenter);
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);

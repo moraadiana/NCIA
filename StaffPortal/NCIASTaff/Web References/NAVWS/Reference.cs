@@ -3232,8 +3232,9 @@ namespace NCIASTaff.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:HRMLeaveApplication1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="HRMLeaveApplication1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string HRMLeaveApplication1(string username, string reliever, string leaveType, decimal appliedDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime startDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime endDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime returnDate, string purpose, string responsibilityCenter) {
+        public string HRMLeaveApplication1(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime startDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime endDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime returnDate, string purpose, string responsibilityCenter) {
             object[] results = this.Invoke("HRMLeaveApplication1", new object[] {
+                        leaveNo,
                         username,
                         reliever,
                         leaveType,
@@ -3247,16 +3248,17 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
-        public void HRMLeaveApplication1Async(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter) {
-            this.HRMLeaveApplication1Async(username, reliever, leaveType, appliedDays, startDate, endDate, returnDate, purpose, responsibilityCenter, null);
+        public void HRMLeaveApplication1Async(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter) {
+            this.HRMLeaveApplication1Async(leaveNo, username, reliever, leaveType, appliedDays, startDate, endDate, returnDate, purpose, responsibilityCenter, null);
         }
         
         /// <remarks/>
-        public void HRMLeaveApplication1Async(string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, object userState) {
+        public void HRMLeaveApplication1Async(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, object userState) {
             if ((this.HRMLeaveApplication1OperationCompleted == null)) {
                 this.HRMLeaveApplication1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnHRMLeaveApplication1OperationCompleted);
             }
             this.InvokeAsync("HRMLeaveApplication1", new object[] {
+                        leaveNo,
                         username,
                         reliever,
                         leaveType,
