@@ -6615,12 +6615,9 @@ namespace NCIASTaff.NAVWS {
         }
     }
     
-    /// <remarks/>
-<<<<<<< HEAD
+  
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-=======
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
->>>>>>> 77f8136b8518df2b78e02fe4d88885f8a3311f2e
+
     public delegate void GetPayslipMonthsCompletedEventHandler(object sender, GetPayslipMonthsCompletedEventArgs e);
     
     /// <remarks/>
