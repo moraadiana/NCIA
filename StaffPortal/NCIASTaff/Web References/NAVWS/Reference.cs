@@ -169,6 +169,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetReceiptsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetRelieverEmailOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetRelieversOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetResponsibilityCentresOperationCompleted;
@@ -534,6 +536,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetReceiptsCompletedEventHandler GetReceiptsCompleted;
+        
+        /// <remarks/>
+        public event GetRelieverEmailCompletedEventHandler GetRelieverEmailCompleted;
         
         /// <remarks/>
         public event GetRelieversCompletedEventHandler GetRelieversCompleted;
@@ -2958,6 +2963,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetReceiptsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetReceiptsCompleted(this, new GetReceiptsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetRelieverEmail", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetRelieverEmail_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetRelieverEmail(string staffNum) {
+            object[] results = this.Invoke("GetRelieverEmail", new object[] {
+                        staffNum});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetRelieverEmailAsync(string staffNum) {
+            this.GetRelieverEmailAsync(staffNum, null);
+        }
+        
+        /// <remarks/>
+        public void GetRelieverEmailAsync(string staffNum, object userState) {
+            if ((this.GetRelieverEmailOperationCompleted == null)) {
+                this.GetRelieverEmailOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetRelieverEmailOperationCompleted);
+            }
+            this.InvokeAsync("GetRelieverEmail", new object[] {
+                        staffNum}, this.GetRelieverEmailOperationCompleted, userState);
+        }
+        
+        private void OnGetRelieverEmailOperationCompleted(object arg) {
+            if ((this.GetRelieverEmailCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetRelieverEmailCompleted(this, new GetRelieverEmailCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6758,6 +6793,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetReceiptsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetRelieverEmailCompletedEventHandler(object sender, GetRelieverEmailCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetRelieverEmailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetRelieverEmailCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

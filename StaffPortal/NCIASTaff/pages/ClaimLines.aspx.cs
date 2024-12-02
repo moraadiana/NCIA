@@ -20,6 +20,7 @@ namespace NCIASTaff.pages
         SqlDataAdapter adapter;
         Staffportall webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
+        string[] strLimiters2 = new string[] { "[]" };
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -140,14 +141,16 @@ namespace NCIASTaff.pages
         {
             try
             {
-                string advancetype = webportals.GetAdvancetype(4);
-                if(!string.IsNullOrEmpty(advancetype) )
+                ddlAdvancType.Items.Clear();
+                string advanceTypes = webportals.GetAdvancetype(4);
+                if (!string.IsNullOrEmpty(advanceTypes))
                 {
-                    string[] type = advancetype.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
-
-                    if (type.Length > 0)
+                    string[] advanceTypeArr = advanceTypes.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string advanceType in advanceTypeArr)
                     {
-                        lblAdvanceType.Text = type[0];
+                        string[] responseArr = advanceType.Split(strLimiters, StringSplitOptions.None);
+                        ListItem li = new ListItem(responseArr[1], responseArr[0]);
+                        ddlAdvancType.Items.Add(li);
                     }
                 }
 
@@ -324,7 +327,7 @@ namespace NCIASTaff.pages
             {
                 string claimNo = lblClaimNo.Text;
                 string employeeNo = Session["username"].ToString();
-                string advanceType = lblAdvanceType.Text;
+                string advanceType = ddlAdvancType.SelectedValue;
                 string amount = txtAmnt.Text;
                 if (advanceType == "0")
                 {

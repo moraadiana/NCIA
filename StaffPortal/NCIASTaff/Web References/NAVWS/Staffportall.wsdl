@@ -1044,6 +1044,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetRelieverEmail">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="staffNum" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRelieverEmail_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetRelievers">
         <complexType>
           <sequence />
@@ -2369,6 +2383,12 @@
   <message name="GetReceipts_Result">
     <part name="parameters" element="tns:GetReceipts_Result" />
   </message>
+  <message name="GetRelieverEmail">
+    <part name="parameters" element="tns:GetRelieverEmail" />
+  </message>
+  <message name="GetRelieverEmail_Result">
+    <part name="parameters" element="tns:GetRelieverEmail_Result" />
+  </message>
   <message name="GetRelievers">
     <part name="parameters" element="tns:GetRelievers" />
   </message>
@@ -3003,6 +3023,10 @@
     <operation name="GetReceipts">
       <input name="GetReceipts" message="tns:GetReceipts" />
       <output name="GetReceipts_Result" message="tns:GetReceipts_Result" />
+    </operation>
+    <operation name="GetRelieverEmail">
+      <input name="GetRelieverEmail" message="tns:GetRelieverEmail" />
+      <output name="GetRelieverEmail_Result" message="tns:GetRelieverEmail_Result" />
     </operation>
     <operation name="GetRelievers">
       <input name="GetRelievers" message="tns:GetRelievers" />
@@ -3870,6 +3894,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetReceipts_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetRelieverEmail">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetRelieverEmail" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetRelieverEmail">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetRelieverEmail_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
