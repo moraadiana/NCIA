@@ -46,66 +46,13 @@ namespace NCIASTaff
                 LoadStaffDetails();
                 LoadIndividualCourses();
                 LoadCountries();
-                LoadSupervisor();
+                //LoadSupervisor();
                // LoadTrainer();
             }
         }
 
-        //private void LoadTrainer()
-        //{
-        //    try
-        //    {
-        //        ddlTrainer.Items.Clear();
-        //        connection = Components.GetconnToNAV();
-        //        command = new SqlCommand()
-        //        {
-        //            CommandText = "spGetVendors",
-        //            CommandType = CommandType.StoredProcedure,
-        //            Connection = connection
-        //        };
-        //        command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-        //        reader = command.ExecuteReader();
-        //        if (reader.HasRows)
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                if (reader["Name"].ToString() == "") continue;
-        //                ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["No_"].ToString());
-        //                ddlTrainer.Items.Add(li);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ex.Data.Clear();
-        //    }
-        //}
 
-        private void LoadSupervisor()
-        {
-            try
-            {
-                ddlSupervisor.Items.Clear();
-                ddlParticipants.Items.Clear();
-                string username = Session["username"].ToString();
-                string Supervisors = webportals.GetRelievers();
-                if (!string.IsNullOrEmpty(Supervisors))
-                {
-                    string[] supervisorArr = Supervisors.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string supervisor in supervisorArr)
-                    {
-                        string[] responseArr = supervisor.Split(strLimiters, StringSplitOptions.None);
-                        ListItem li = new ListItem(responseArr[1], responseArr[0]);
-                        ddlSupervisor.Items.Add(li);
-                        ddlParticipants.Items.Add(li);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }
-        }
+       
 
         private void LoadCountries()
         {
@@ -181,7 +128,14 @@ namespace NCIASTaff
                 ex.Data.Clear();
             }
         }
+        protected void txtStartDate_TextChanged(object sender, EventArgs e)
+        {
 
+        }
+        protected void txtEndDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
         protected void lbtnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -191,13 +145,7 @@ namespace NCIASTaff
                 string department = lblDepartment.Text;
                 string location = ddlLocation.SelectedValue;
                 string individualCourse = ddlIndividualCourse.SelectedValue;
-                string country = ddlCountry.SelectedValue;
-                string supervisor = ddlSupervisor.SelectedValue;
-                string trainingCategory = ddlTrainingCategory.SelectedValue;
-                string trainer = txtTrainer.Text;
-                string sponsor = ddlSponsor.SelectedValue;
-                string county = ddlCounty.SelectedValue;
-                string purpose = txtPurpose.Text;
+               
 
                 //string response = webportals.HRMTrainingApplication(staffNo, supervisor, Convert.ToInt32(trainingCategory), individualCourse, purpose, Convert.ToInt32(sponsor), Convert.ToInt32(location), country, county, trainer, directorate,department);
                 //if (!string.IsNullOrEmpty(response))

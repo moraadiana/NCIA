@@ -24,7 +24,8 @@
                         </div>
                         <div class="box-body">
                             <div class="col-md-12">
-                                <p class="text-center"><a class="btn btn-pill btn-info u-posRelative pull-left" href="AppraisalLines.aspx?query=new">New Appraisal<span class="waves"></span> </a>
+                                
+                                <p class="text-center"><a class="btn btn-pill btn-info u-posRelative " href="AppraisalLines.aspx?query=new">New Appraisal<span class="waves"></span> </a>
                                     <%--<a class="btn btn-pill btn-warning u-posRelative pull-right" href="LeaveStatement.aspx"><i class="fa fa-file-pdf-o"></i>My Leave Statement<span class="waves"></span> </a>--%>
 
                                 </p>
@@ -45,8 +46,8 @@
                                             </tr>
                                         </thead>
                                        <tbody>
-    <%= Jobs() %>
-</tbody>
+                                            <%= Jobs() %>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

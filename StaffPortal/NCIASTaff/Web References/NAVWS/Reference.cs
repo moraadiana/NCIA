@@ -6807,9 +6807,7 @@ namespace NCIASTaff.NAVWS {
         }
     }
     
-    /// <remarks/>
-<<<<<<< HEAD
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+  
     public delegate void GetRelieverEmailCompletedEventHandler(object sender, GetRelieverEmailCompletedEventArgs e);
     
     /// <remarks/>
@@ -6834,14 +6832,10 @@ namespace NCIASTaff.NAVWS {
         }
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-=======
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
->>>>>>> a04e6e7aab9c40b4e9edd2c35dd4dc3195191f34
+   
     public delegate void GetRelieversCompletedEventHandler(object sender, GetRelieversCompletedEventArgs e);
     
-    /// <remarks/>
+   
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
