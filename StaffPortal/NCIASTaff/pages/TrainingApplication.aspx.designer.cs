@@ -69,85 +69,112 @@ namespace NCIASTaff
         protected global::System.Web.UI.WebControls.Label lblDepartment;
 
         /// <summary>
-        /// ddlLocation control.
+        /// ddlType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLocation;
+        protected global::System.Web.UI.WebControls.DropDownList ddlType;
 
         /// <summary>
-        /// ddlIndividualCourse control.
+        /// ddlCourse control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlIndividualCourse;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCourse;
 
         /// <summary>
-        /// ddlCountry control.
+        /// ddlApplicationType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCountry;
+        protected global::System.Web.UI.WebControls.DropDownList ddlApplicationType;
 
         /// <summary>
-        /// ddlSupervisor control.
+        /// ddlTrainingClassification control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSupervisor;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTrainingClassification;
 
         /// <summary>
-        /// ddlTrainingCategory control.
+        /// txtTrainingNeed control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTrainingCategory;
+        protected global::System.Web.UI.WebControls.TextBox txtTrainingNeed;
 
         /// <summary>
-        /// txtTrainer control.
+        /// txtTrainingObjective control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTrainer;
+        protected global::System.Web.UI.WebControls.TextBox txtTrainingObjective;
 
         /// <summary>
-        /// ddlSponsor control.
+        /// ddlModeofTraining control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSponsor;
+        protected global::System.Web.UI.WebControls.DropDownList ddlModeofTraining;
 
         /// <summary>
-        /// ddlCounty control.
+        /// ddlDsaVote control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlCounty;
+        protected global::System.Web.UI.WebControls.DropDownList ddlDsaVote;
 
         /// <summary>
-        /// txtPurpose control.
+        /// ddlTrainingVote control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPurpose;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTrainingVote;
+
+        /// <summary>
+        /// ddlTransportVote control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTransportVote;
+
+        /// <summary>
+        /// txtStartDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtStartDate;
+
+        /// <summary>
+        /// txtEndDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEndDate;
 
         /// <summary>
         /// lbtnSubmit control.
@@ -186,13 +213,31 @@ namespace NCIASTaff
         protected global::System.Web.UI.WebControls.DropDownList ddlParticipants;
 
         /// <summary>
-        /// txtObjective control.
+        /// txtCourseFee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtObjective;
+        protected global::System.Web.UI.WebControls.TextBox txtCourseFee;
+
+        /// <summary>
+        /// txtDsaAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDsaAmount;
+
+        /// <summary>
+        /// txtTransportCost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTransportCost;
 
         /// <summary>
         /// lbtnAddParticipant control.

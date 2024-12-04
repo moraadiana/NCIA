@@ -105,8 +105,8 @@
                                                             <th>
                                                                 <asp:Label ID="lblLNo" runat="server" Text="Label"></asp:Label></th>
                                                             <td>
-                                                                <%--<asp:DropDownList ID="ddlAdvancType" runat="server" CssClass="form-control select2"></asp:DropDownList></td>--%>
-                                                                 <asp:Label ID="lblAdvanceType" runat="server" Text="Label"></asp:Label></td>
+                                                                <asp:DropDownList ID="ddlAdvancType" runat="server" CssClass="form-control select2"></asp:DropDownList></td>
+                                                                 <%--<asp:Label ID="lblAdvanceType" runat="server" Text="Label"></asp:Label></td>--%>
                                                             <td>
                                                                 <asp:TextBox ID="txtAmnt" CssClass="form-control" runat="server"></asp:TextBox>
                                                             </td>

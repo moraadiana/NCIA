@@ -150,13 +150,13 @@ namespace NCIASTaff.pages
         protected global::System.Web.UI.WebControls.Label lblLNo;
 
         /// <summary>
-        /// lblAdvanceType control.
+        /// ddlAdvancType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAdvanceType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAdvancType;
 
         /// <summary>
         /// txtAmnt control.

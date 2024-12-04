@@ -52,71 +52,113 @@
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Location</label>
-                                                <asp:DropDownList ID="ddlLocation" CssClass="form-control" runat="server">
+                                                <label>Type</label>
+                                                <asp:DropDownList ID="ddlType" CssClass="form-control" runat="server">
                                                     <asp:ListItem Value="0">Local</asp:ListItem>
-                                                    <asp:ListItem Value="1">International</asp:ListItem>
+                                                    <asp:ListItem Value="1">Foreign</asp:ListItem>
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Individual Course</label>
-                                                <asp:DropDownList ID="ddlIndividualCourse" CssClass="form-control select2" runat="server"></asp:DropDownList>
+                                                <label>Course</label>
+                                                <asp:DropDownList ID="ddlCourse" CssClass="form-control select2" runat="server"></asp:DropDownList>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Country</label>
-                                                <asp:DropDownList ID="ddlCountry" CssClass="form-control select2" runat="server"></asp:DropDownList>
+                                                <label>Application Type</label>
+                                                <asp:DropDownList ID="ddlApplicationType" CssClass="form-control select2" runat="server">
+                                                     <asp:ListItem Value="0">Individual</asp:ListItem>
+                                                     <asp:ListItem Value="1">Group</asp:ListItem>
+                                                </asp:DropDownList>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Supervisor</label>
-                                                <asp:DropDownList ID="ddlSupervisor" CssClass="form-control select2" runat="server"></asp:DropDownList>
+                                                <label>Training Classification</label>
+                                               <asp:DropDownList ID="ddlTrainingClassification" CssClass="form-control" runat="server">
+                                                    <asp:ListItem Value="0">External</asp:ListItem>
+                                                    <asp:ListItem Value="1">In-house</asp:ListItem>
+                                                </asp:DropDownList>
                                             </div>
                                         </div>
                                     </div>
+                                  <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Training Need</label>
+<%--                                                <asp:DropDownList ID="ddlTrainer" CssClass="form-control select2" runat="server"></asp:DropDownList>--%>
+                                                <asp:TextBox ID="txtTrainingNeed" CssClass="form-control" runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>    
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Training Objective</label>
+<%--                                                <asp:DropDownList ID="ddlTrainer" CssClass="form-control select2" runat="server"></asp:DropDownList>--%>
+                                                <asp:TextBox ID="txtTrainingObjective" CssClass="form-control" runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>    
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Mode of Training</label>
+                                                <asp:DropDownList ID="ddlModeofTraining" CssClass="form-control" runat="server">
+                                                    <asp:ListItem Value="0">Physical</asp:ListItem>
+                                                    <asp:ListItem Value="1">Virtual</asp:ListItem>
+                                                   
+                                                </asp:DropDownList>
+                                            </div>
+                                        </div>
+                                         <div class="col-md-3">
+                                             <div class="form-group">
+                                                 <label>Dsa Vote</label>
+                                                 <asp:DropDownList ID="ddlDsaVote" CssClass="form-control select2" runat="server"></asp:DropDownList>
+                                             </div>
+                                         </div>
+                                      </div>
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Training Category</label>
-                                                <asp:DropDownList ID="ddlTrainingCategory" CssClass="form-control" runat="server">
-                                                    <asp:ListItem Value="0">Individual</asp:ListItem>
-                                                    <asp:ListItem Value="1">Group</asp:ListItem>
-                                                </asp:DropDownList>
+                                                <label>Training Vote</label>
+                                                <asp:DropDownList ID="ddlTrainingVote" CssClass="form-control select2" runat="server"></asp:DropDownList>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Trainer</label>
-<%--                                                <asp:DropDownList ID="ddlTrainer" CssClass="form-control select2" runat="server"></asp:DropDownList>--%>
-                                                <asp:TextBox ID="txtTrainer" CssClass="form-control" runat="server"></asp:TextBox>
-                                            </div>
-                                        </div>                                        
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Sponsor</label>
-                                                <asp:DropDownList ID="ddlSponsor" CssClass="form-control" runat="server">
-                                                    <asp:ListItem Value="0">Self</asp:ListItem>
-                                                    <asp:ListItem Value="1">Donor</asp:ListItem>
-                                                    <asp:ListItem Value="2">Other</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>County</label>
-                                                <asp:DropDownList ID="ddlCounty" CssClass="form-control select2" runat="server"></asp:DropDownList>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Purpose of Training</label>
-                                                <asp:TextBox ID="txtPurpose" CssClass="form-control" TextMode="MultiLine" runat="server"></asp:TextBox>
-                                            </div>
-                                        </div>
+                                         <div class="col-md-3">
+                                             <div class="form-group">
+                                                 <label>Transport Vote</label>
+                                                 <asp:DropDownList ID="ddlTransportVote" CssClass="form-control select2" runat="server"></asp:DropDownList>
+                                             </div>
+                                         </div>
+                                       
+                                         <div class="col-md-3">
+                                             <div class="form-group">
+                                                 <label>Start Date</label>
+                                                 <asp:TextBox ID="txtStartDate" CssClass="form-control" runat="server" Widt="350px" TextMode="Date" OnTextChanged="txtStartDate_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                                 <script>
+                                                     $j('#Main1_txtStartDate').Zebra_DatePicker({
+                                                         direction: [1, false],
+                                                         onSelect: function () {
+                                                             this.trigger("change")
+                                                         }
+                                                     });</script>
+                                             </div>
+                                             </div>
+                                         
+
+                                         
+                                         <div class="col-md-3">
+                                             <div class="form-group">
+                                                 <label>End Date</label>
+                                                 <asp:TextBox ID="txtEndDate" CssClass="form-control" runat="server" Widt="350px" TextMode="Date" OnTextChanged="txtEndDate_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                                 <script>
+                                                     $j('#Main1_txtEndDate').Zebra_DatePicker({
+                                                         direction: [1, false],
+                                                         onSelect: function () {
+                                                             this.trigger("change")
+                                                         }
+                                                     });</script>
+                                             </div>
+                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
@@ -145,8 +187,20 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Objective</label><br />
-                                                <asp:TextBox ID="txtObjective" CssClass="form-control" runat="server"></asp:TextBox>
+                                                <label>Course Fee</label><br />
+                                                <asp:TextBox ID="txtCourseFee" CssClass="form-control" runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>DSA Amount</label><br />
+                                                <asp:TextBox ID="txtDsaAmount" CssClass="form-control" runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Transport Cost</label><br />
+                                                <asp:TextBox ID="txtTransportCost" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -155,7 +209,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <asp:GridView ID="gvLines" AutoGenerateColumns="false" DataKeyNames="Training Code" class="table table-responsive no-padding table-bordered table-hover" runat="server"
+                                            <asp:GridView ID="gvLines" AutoGenerateColumns="false" DataKeyNames="Document No" class="table table-responsive no-padding table-bordered table-hover" runat="server"
                                                 AllowSorting="True" AllowPaging="true" ShowFooter="true" PageSize="5">
                                                 <Columns>
                                                     <asp:TemplateField HeaderStyle-HorizontalAlign="Left" HeaderText="#No" SortExpression="">
@@ -164,14 +218,16 @@
                                                             <%# string.Format("{0}",Container.DataItemIndex + 1 +".") %>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField DataField="Training Code" HeaderText="Training Code" />
-                                                    <asp:BoundField DataField="Employee Code" HeaderText="Employee No" />
-                                                    <asp:BoundField DataField="Employee name" HeaderText="Employee Name" />
-                                                    <asp:BoundField DataField="Objectives" HeaderText="Objectives" />
+                                                    <asp:BoundField DataField="Document No" HeaderText="Training Code" />
+                                                    <asp:BoundField DataField="Staff No" HeaderText="Employee No" />
+                                                    <asp:BoundField DataField="Staff Name" HeaderText="Employee Name" />
+                                                    <asp:BoundField DataField="Course Fee" HeaderText="Objectives" />
+                                                    <asp:BoundField DataField="DSA Amount" HeaderText="Objectives" />
+                                                    <asp:BoundField DataField="Transport Cost" HeaderText="Objectives" />
                                                     <asp:TemplateField HeaderText="Action" SortExpression="" HeaderStyle-HorizontalAlign="Left">
                                                         <ItemStyle Width="110px" HorizontalAlign="Left" />
                                                         <ItemTemplate>
-                                                            <asp:LinkButton ID="lbtnRemove" CssClass="label label-danger" runat="server" ToolTip="Click to Remove line" OnClick="lbtnRemove_Click" OnClientClick="return confirm('Are you sure you want to delete this line?')" CommandArgument='<%# Eval("Employee Code ") %>'><i class="fa fa-remove"></i> Remove</asp:LinkButton>
+                                                            <asp:LinkButton ID="lbtnRemove" CssClass="label label-danger" runat="server" ToolTip="Click to Remove line" OnClick="lbtnRemove_Click" OnClientClick="return confirm('Are you sure you want to delete this line?')" CommandArgument='<%# Eval("Staff No") %>'><i class="fa fa-remove"></i> Remove</asp:LinkButton>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>

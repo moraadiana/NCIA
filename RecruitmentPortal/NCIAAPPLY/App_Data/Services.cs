@@ -18,6 +18,9 @@ namespace NCIAAPPLY
         public static SqlConnection connection;
         public static SqlCommand command;
         public static SqlDataReader reader;
+        public static Recruitment webportals = Components.ObjNav;
+        public static string[] strLimiters = new string[] { "::" };
+        public static string[] strLimiters2 = new string[] { "[]" };
 
 
         public static List<AdvertisedJobs> GetAdvertisedJobs()
@@ -25,35 +28,27 @@ namespace NCIAAPPLY
             var advertisedJobs = new List<AdvertisedJobs>();
             try
             {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spGetAdvertisedJobs",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.CompanyName);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
+                string advertJobs = webportals.GetAdvertisedJobs();
+                if (!string.IsNullOrEmpty(advertJobs))
                 {
                     int counter = 0;
-                    while (reader.Read())
+                    string[] advertJobsArr = advertJobs.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string aJob in advertJobsArr)
                     {
                         counter++;
-                        var job = new AdvertisedJobs()
+                        string[] responseArr = aJob.Split(strLimiters, StringSplitOptions.None);
+                        AdvertisedJobs job = new AdvertisedJobs()
                         {
                             Counter = counter,
-                            JobRefNo = reader["Requisition No_"].ToString(),
-                            JobTitle = reader["Job Description"].ToString(),
-                            JobId = reader["Job ID"].ToString(),
-                            VacantPositions = Convert.ToDecimal(reader["Vacant Positions"].ToString()),
-                            RequiredPositions = Convert.ToDecimal(reader["Required Positions"].ToString()),
-
+                            JobRefNo = responseArr[0],
+                            JobId = responseArr[1],
+                            JobTitle = responseArr[2],
+                            VacantPositions = Convert.ToDecimal(responseArr[3]),
+                            RequiredPositions = Convert.ToDecimal(responseArr[4]),
                         };
                         advertisedJobs.Add(job);
                     }
                 }
-               
             }
             catch (Exception ex)
             {
@@ -67,27 +62,18 @@ namespace NCIAAPPLY
             List<JobRequirement> jobRequirements = new List<JobRequirement>();
             try
             {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
+                string jobReqs = webportals.JobRequirements(jobId);
+                if (!string.IsNullOrEmpty(jobReqs))
                 {
-                    CommandText = "spGetJobRequirements",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.CompanyName);
-                command.Parameters.AddWithValue("JobID", "'"+jobId+"'");
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    int counter = 0;
-                    while (reader.Read())
+                    string[] jobReqsArr = jobReqs.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string aJob in jobReqsArr)
                     {
-                        counter++;
-                        var req = new JobRequirement()
+                        string[] responseArr = aJob.Split(strLimiters, StringSplitOptions.None);
+                        JobRequirement requirement = new JobRequirement()
                         {
-                            Requirements = reader["Qualification Description"].ToString()
+                            Requirements = responseArr[1],
                         };
-                        jobRequirements.Add(req);
+                        jobRequirements.Add(requirement);
                     }
                 }
             }
@@ -103,30 +89,20 @@ namespace NCIAAPPLY
             List<JobResponsibility> jobResponsibilities = new List<JobResponsibility>();
             try
             {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
+                string jobReqs = webportals.JobDescription(jobId);
+                if (!string.IsNullOrEmpty(jobReqs))
                 {
-                    CommandText = "spGetJobResponsibilities",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.CompanyName);
-                command.Parameters.AddWithValue("JobID", "'"+jobId+"'");
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    int counter = 0;
-                    while (reader.Read())
+                    string[] jobReqsArr = jobReqs.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string aJob in jobReqsArr)
                     {
-                        counter++;
-                        var req = new JobResponsibility()
+                        string[] responseArr = aJob.Split(strLimiters, StringSplitOptions.None);
+                        JobResponsibility jobResponsibility = new JobResponsibility()
                         {
-                            Responsibilities = reader["Responsibility Description"].ToString()
+                            Responsibilities = responseArr[1],
                         };
-                        jobResponsibilities.Add(req);
+                        jobResponsibilities.Add(jobResponsibility);
                     }
                 }
-                
             }
             catch (Exception ex)
             {
@@ -140,24 +116,7 @@ namespace NCIAAPPLY
             string jobDescription = string.Empty;
             try
             {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spGetJobDescription",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.CompanyName);
-                command.Parameters.AddWithValue("JobID", jobId);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    
-                    while (reader.Read())
-                    {
-                        jobDescription = reader["Job Description"].ToString();
-                    }
-                }
+                jobDescription = webportals.GetJobTitle(jobId);
             }
             catch (Exception ex)
             {
@@ -171,29 +130,21 @@ namespace NCIAAPPLY
             List<Citizenship> citizenships = new List<Citizenship>();
             try
             {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
+                string nationalities = webportals.GetNationalities();
+                if (!string.IsNullOrEmpty(nationalities))
                 {
-                    CommandText = "spGetCitizenship",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.CompanyName);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
-
-                    while (reader.Read())
+                    string[] nationalitiesArr = nationalities.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string str in nationalitiesArr)
                     {
-                        var citizen = new Citizenship()
+                        string[] responseArr = str.Split(strLimiters, StringSplitOptions.None);
+                        Citizenship citizenship = new Citizenship()
                         {
-                            Code = reader["Code"].ToString(),
-                            Name = reader["Name"].ToString()
+                            Code = responseArr[0],
+                            Name = responseArr[1],
                         };
-                        citizenships.Add(citizen);
+                        citizenships.Add(citizenship);
                     }
                 }
-                
             }
             catch (Exception ex)
             {
@@ -245,38 +196,29 @@ namespace NCIAAPPLY
             var applicantQualifications = new List<ApplicantQualification>();
             try
             {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
+                string applicantQuals = webportals.GetApplicantQualifications(applicationNo);
+                if (!string.IsNullOrEmpty(applicantQuals))
                 {
-                    CommandText = "spGetQualifications",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.CompanyName);
-                command.Parameters.AddWithValue("@Job Application No", applicationNo);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
-                {
+                    string[] applicantQualsArr = applicantQuals.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
                     int counter = 0;
-                    while (reader.Read())
+                    foreach (string applicantQual in applicantQualsArr)
                     {
                         counter++;
+                        string[] responseArr = applicantQual.Split(strLimiters, StringSplitOptions.None);
                         ApplicantQualification qualification = new ApplicantQualification()
                         {
                             Counter = counter,
-                            ApplitionNo = reader["Application No"].ToString(),
-                            QualificationType = reader["Qualification Type"].ToString(),
-                            QualificationCode = reader["Qualification Code"].ToString(),
-                            QualificationDescription = reader["Qualification Description"].ToString(),
-                            Institution = reader["Institution_Company"].ToString(),
-                            StartDate = reader["From Date"].ToString(),
-                            EndDate = reader["To Date"].ToString()
+                            ApplitionNo = responseArr[0],
+                            QualificationType = responseArr[1],
+                            QualificationCode = responseArr[2],
+                            QualificationDescription = responseArr[3],
+                            Institution = responseArr[4],
+                            StartDate = responseArr[5],
+                            EndDate = responseArr[6]
                         };
                         applicantQualifications.Add(qualification);
-
                     }
                 }
-                
             }
             catch (Exception ex)
             {
@@ -290,36 +232,27 @@ namespace NCIAAPPLY
             var applicantReferees = new List<ApplicantReferee>();
             try
             {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spGetReferees",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.CompanyName);
-                command.Parameters.AddWithValue("@JobID", "'" + applicationNo+"'");
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
+                string referees = webportals.GetApplicantReferees(applicationNo);
+                if (!string.IsNullOrEmpty(referees))
                 {
                     int counter = 0;
-                    while (reader.Read())
+                    string[] refereesArr = referees.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string referee in refereesArr)
                     {
                         counter++;
-                        ApplicantReferee referee = new ApplicantReferee()
+                        string[] responseArr = referee.Split(strLimiters, StringSplitOptions.None);
+                        ApplicantReferee app = new ApplicantReferee()
                         {
                             Counter = counter,
-                            FullName = reader["Names"].ToString(),
-                            Institution = reader["Institution"].ToString(),
-                            Designation = reader["Designation"].ToString(),
-                            Email = reader["E-Mail"].ToString(),
-                            Phone = reader["Telephone No"].ToString()
+                            FullName = responseArr[0],
+                            Institution = responseArr[1],
+                            Designation = responseArr[2],
+                            Email = responseArr[3],
+                            Phone = responseArr[4]
                         };
-                        applicantReferees.Add(referee);
-                       
+                        applicantReferees.Add(app);
                     }
                 }
-                
             }
             catch (Exception ex)
             {
@@ -333,33 +266,24 @@ namespace NCIAAPPLY
             var applicantHobbies = new List<ApplicantHobby>();
             try
             {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spGetHobbies",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.CompanyName);
-                command.Parameters.AddWithValue("@ApplicationNo", applicationNo);
-                reader = command.ExecuteReader();
-                if (reader.HasRows)
+                string applicantHobs = webportals.GetApplicantHobbies(applicationNo);
+                if (!string.IsNullOrEmpty(applicantHobs))
                 {
                     int counter = 0;
-                    while (reader.Read())
+                    string[] applicantHobsArr = applicantHobs.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string applicantHobsStr in applicantHobsArr)
                     {
                         counter++;
+                        string[] responseArr = applicantHobsStr.Split(strLimiters, StringSplitOptions.None);
                         ApplicantHobby hobby = new ApplicantHobby()
                         {
                             Counter = counter,
-                            ApplicantNo = reader["Job Application No"].ToString(),
-                            Hobbies = reader["Hobby"].ToString()
+                            ApplicantNo = responseArr[0],
+                            Hobbies = responseArr[1]
                         };
                         applicantHobbies.Add(hobby);
-
                     }
                 }
-                
             }
             catch (Exception ex)
             {

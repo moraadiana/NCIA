@@ -27,6 +27,12 @@ namespace NCIASTaff.pages
                     Response.Redirect("~/Default.aspx");
                     return;
                 }
+                if (Request.QueryString["trainingNo"] != null)
+                {
+                    string trainingNo = Request.QueryString["trainingNo"].ToString();
+                   // Components.ObjNav.OnCancelLeaveApplication(leaveNo);
+                    //Response.Redirect("LeaveListing.aspx");
+                }
             }
         }
 
@@ -49,6 +55,9 @@ namespace NCIASTaff.pages
                         string status = responseArr[7];
                         switch (status)
                         {
+                            case "New":
+                                statusCls = "warning";
+                                break;
                             case "Open":
                                 statusCls = "warning";
                                 break;
@@ -83,7 +92,8 @@ namespace NCIASTaff.pages
                                     <div class='options btn-group' >
 					                    <a class='label label-success dropdown-toggle btn-success' data-toggle='dropdown' href='#' style='padding:4px;margin-top:3px'><i class='fa fa-gears'></i> Options</a>
 					                    <ul class='dropdown-menu'>
-                                            <li><a href='TrainingListing.aspx?leaveNo={1}&status={8}'><i class='fa fa-trash text-danger'></i><span class='text-danger'>Cancel</span></a></li>
+                                            <li><a href='TrainingApplication.aspx?trainingNo={1}&query=old&status={8}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></li>
+                                            <li><a href='TrainingListing.aspx?trainingNo={1}&status={8}'><i class='fa fa-trash text-danger'></i><span class='text-danger'>Cancel</span></a></li>
                                             <li><a href='ApprovalTracking.aspx?DocNum={0}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Approval Tracking</span></a></li>
                                         </ul>	
                                     </div>
@@ -100,7 +110,6 @@ namespace NCIASTaff.pages
                           responseArr[5],
                           responseArr[6],
                           responseArr[7],
-
                           statusCls
                           );
                     }

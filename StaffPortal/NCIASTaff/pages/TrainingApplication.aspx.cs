@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Lifetime;
 using System.Web;
 using System.Web.Services.Description;
 using System.Web.UI;
@@ -44,59 +45,27 @@ namespace NCIASTaff
                 }
 
                 LoadStaffDetails();
-                LoadIndividualCourses();
-                LoadCountries();
-                LoadSupervisor();
-               // LoadTrainer();
+                LoadBudgetVotes();
+                LoadCourses();
+                Loadparticipants();
+                //LoadSupervisor();
+                // LoadTrainer();
             }
         }
-
-        //private void LoadTrainer()
-        //{
-        //    try
-        //    {
-        //        ddlTrainer.Items.Clear();
-        //        connection = Components.GetconnToNAV();
-        //        command = new SqlCommand()
-        //        {
-        //            CommandText = "spGetVendors",
-        //            CommandType = CommandType.StoredProcedure,
-        //            Connection = connection
-        //        };
-        //        command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-        //        reader = command.ExecuteReader();
-        //        if (reader.HasRows)
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                if (reader["Name"].ToString() == "") continue;
-        //                ListItem li = new ListItem(reader["Name"].ToString().ToUpper(), reader["No_"].ToString());
-        //                ddlTrainer.Items.Add(li);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ex.Data.Clear();
-        //    }
-        //}
-
-        private void LoadSupervisor()
+        private void Loadparticipants()
         {
+            ddlParticipants.Items.Clear();
             try
             {
-                ddlSupervisor.Items.Clear();
                 ddlParticipants.Items.Clear();
-                string username = Session["username"].ToString();
-                string Supervisors = webportals.GetRelievers();
-                if (!string.IsNullOrEmpty(Supervisors))
+                string Relievers = webportals.GetRelievers();
+                if (!string.IsNullOrEmpty(Relievers))
                 {
-                    string[] supervisorArr = Supervisors.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string supervisor in supervisorArr)
+                    string[] relieverArr = Relievers.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string reliever in relieverArr)
                     {
-                        string[] responseArr = supervisor.Split(strLimiters, StringSplitOptions.None);
+                        string[] responseArr = reliever.Split(strLimiters, StringSplitOptions.None);
                         ListItem li = new ListItem(responseArr[1], responseArr[0]);
-                        ddlSupervisor.Items.Add(li);
                         ddlParticipants.Items.Add(li);
                     }
                 }
@@ -105,55 +74,93 @@ namespace NCIASTaff
             {
                 ex.Data.Clear();
             }
-        }
 
-        private void LoadCountries()
+        }
+        private void LoadBudgetVotes()
         {
-           /* try
+            try
             {
-                ddlCountry.Items.Clear();
-                var serviceRoot = Components.ServiceRoot;
-                var context = new BC.NAV(new Uri(serviceRoot));
-                context.BuildingRequest += Components.Context_BuildingRequest;
-                var data = context.CountriesRegions.Execute();
-                if (data != null)
+                ddlDsaVote.Items.Clear();
+                ddlTrainingVote.Items.Clear();
+                ddlTransportVote.Items.Clear();
+
+                //  int type = 1;
+                string vote = webportals.GetTrainingVotes(5);
+                if (!string.IsNullOrEmpty(vote))
                 {
-                    foreach (var item in data)
+                    string[] voteArr = vote.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string votes in voteArr)
                     {
-                        ListItem li = new ListItem(item.Name, item.Code);
-                        ddlCountry.Items.Add(li);
+                        string[] responseArr = votes.Split(strLimiters, StringSplitOptions.None);
+                        if (responseArr.Length == 2)
+                        {
+                            string code = responseArr[0];
+                            string description = responseArr[1];
+
+                            // Create a ListItem with the month name as Text and the month number as Value
+                            ListItem li = new ListItem(description, code);
+                            ddlDsaVote.Items.Add(li); // Add the item to the dropdown
+                            ddlTrainingVote.Items.Add(li);
+                            ddlTransportVote.Items.Add(li);
+                        }
                     }
                 }
-
-            }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }*/
-        }
-
-        private void LoadIndividualCourses()
-        {
-            /*try
-            {
-                ddlIndividualCourse.Items.Clear();
-                var serviceRoot = Components.ServiceRoot;
-                var context = new BC.NAV(new Uri(serviceRoot));
-                context.BuildingRequest += Components.Context_BuildingRequest;
-                var data = context.HRMCourseList.Execute();
-                if (data != null)
+                else
                 {
-                    foreach (var item in data)
-                    {
-                        ListItem li = new ListItem(item.Course_Tittle.ToUpper(), item.Course_Code);
-                        ddlIndividualCourse.Items.Add(li);
-                    }
+                    ddlDsaVote.Items.Clear();
+                    ddlTrainingVote.Items.Clear();
+                    ddlTransportVote.Items.Clear();
                 }
             }
             catch (Exception ex)
             {
-                ex.Data.Clear();
-            }*/
+                Console.WriteLine("Error: " + ex.Message);
+                ddlDsaVote.Items.Add(new ListItem("Error loading budget votes"));
+            }
+        }
+
+
+   
+
+        private void LoadCourses()
+        {
+            
+            try
+            {
+                ddlCourse.Items.Clear();
+               
+
+                //  int type = 1;
+                string course = webportals.GetTrainingVotes(3);
+                if (!string.IsNullOrEmpty(course))
+                {
+                    string[] courseArr = course.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string courses in courseArr)
+                    {
+                        string[] responseArr = courses.Split(strLimiters, StringSplitOptions.None);
+                        if (responseArr.Length == 2)
+                        {
+                            string code = responseArr[0];
+                            string description = responseArr[1];
+
+                            // Create a ListItem with the month name as Text and the month number as Value
+                            ListItem li = new ListItem(description, code);
+                            ddlCourse.Items.Add(li); // Add the item to the dropdown
+                            
+                        }
+                    }
+                }
+                else
+                {
+                    ddlCourse.Items.Clear();
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                ddlCourse.Items.Add(new ListItem("Error loading courses"));
+            }
         }
 
         private void LoadStaffDetails()
@@ -181,7 +188,15 @@ namespace NCIASTaff
                 ex.Data.Clear();
             }
         }
+        protected void txtStartDate_TextChanged(object sender, EventArgs e)
+        {
+            string startDate = txtStartDate.Text;
 
+        }
+        protected void txtEndDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
         protected void lbtnSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -189,63 +204,109 @@ namespace NCIASTaff
                 string staffNo = Session["username"].ToString();
                 string directorate = lblDirectorate.Text;
                 string department = lblDepartment.Text;
-                string location = ddlLocation.SelectedValue;
-                string individualCourse = ddlIndividualCourse.SelectedValue;
-                string country = ddlCountry.SelectedValue;
-                string supervisor = ddlSupervisor.SelectedValue;
-                string trainingCategory = ddlTrainingCategory.SelectedValue;
-                string trainer = txtTrainer.Text;
-                string sponsor = ddlSponsor.SelectedValue;
-                string county = ddlCounty.SelectedValue;
-                string purpose = txtPurpose.Text;
+                string Course = ddlCourse.SelectedValue;
+                string type = ddlType.SelectedValue;
+                string applicationType = ddlApplicationType.SelectedValue;
+                string trainingClassification = ddlTrainingClassification.SelectedValue;
+               
+                string trainingNeed = txtTrainingNeed.Text;
+                string trainingObjective = txtTrainingObjective.Text;
+                string trainingMode = ddlModeofTraining.SelectedValue;
+                string dsaVote = ddlDsaVote.SelectedValue;
+                string trainingVote = ddlTrainingVote.SelectedValue;
+                string transportVote = ddlTransportVote.SelectedValue;
+                string startDate = txtStartDate.Text;
+                string endDate = txtEndDate.Text;
 
-                //string response = webportals.HRMTrainingApplication(staffNo, supervisor, Convert.ToInt32(trainingCategory), individualCourse, purpose, Convert.ToInt32(sponsor), Convert.ToInt32(location), country, county, trainer, directorate,department);
-                //if (!string.IsNullOrEmpty(response))
-                //{
-                //    string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
-                //    string returnMsg = responseArr[0];
-                //    if (returnMsg == "SUCCESS")
-                //    {
-                //        string trainingNo = responseArr[1];
-                //        MultiView1.SetActiveView(vwLines);
-                //        Session["TrainingNo"] = trainingNo;
-                //        lblTrainingNo.Text = trainingNo;
-                //        BindGridViewData(trainingNo);
-                //    }
-                //}
+
+
+                string response = webportals.HRMTrainingApplication(staffNo, Convert.ToInt32(type), Course, Convert.ToInt32(applicationType), Convert.ToInt32(trainingClassification), trainingNeed, trainingObjective, Convert.ToInt32(trainingMode), dsaVote, trainingVote, transportVote, Convert.ToDateTime(startDate), Convert.ToDateTime(endDate));
+                if (!string.IsNullOrEmpty(response))
+                {
+                    string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
+                    string returnMsg = responseArr[0];
+                    if (returnMsg == "SUCCESS")
+                    {
+                        string trainingNo = responseArr[1];
+                        MultiView1.SetActiveView(vwLines);
+                        Session["TrainingNo"] = trainingNo;
+                        lblTrainingNo.Text = trainingNo;
+                        BindGridViewData(trainingNo);
+                    }
+                }
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
             }
         }
-
         private void BindGridViewData(string trainingNo)
         {
             try
             {
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
+                // Call the AL web service method
+                string transportLines = webportals.GetTrainingLines(trainingNo);
+
+                // Check if the response is not empty or null
+                if (!string.IsNullOrEmpty(transportLines))
                 {
-                    CommandText = "spTrainingApplicants",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@TrainingNo", "'" + trainingNo + "'");
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                adapter.SelectCommand = command;
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                gvLines.DataSource= dt;
-                gvLines.DataBind();
-                connection.Close();
+                    // Split the response by '[]' to separate each line
+                    string[] lineItems = transportLines.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    Console.WriteLine("Number of line items: " + lineItems.Length);
+
+                    // Create a DataTable to hold the parsed data for binding
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Document No");
+                    dt.Columns.Add("Staff No");
+                    dt.Columns.Add("Staff Name");
+                    dt.Columns.Add("Course Fee");
+                    dt.Columns.Add("DSA Amount");
+                    dt.Columns.Add("Transport Cost");
+
+                    // Loop through each line item
+                    foreach (string item in lineItems)
+                    {
+                        // Split each line by '::' to get individual fields
+                        string[] fields = item.Split(strLimiters, StringSplitOptions.None);
+
+                        // Check if we have the correct number of fields
+                        if (fields.Length == 6)
+                        {
+                            DataRow row = dt.NewRow();
+                            row["Document No"] = fields[0];
+                            row["Staff No"] = fields[1];
+                            row["Staff Name"] = fields[2];
+                            row["Course Fee"] = fields[3];
+                            row["DSA Amount"] = fields[4];
+                            row["Transport Cost"] = fields[5];
+                            dt.Rows.Add(row);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Skipping invalid record: " + item);
+                        }
+                    }
+
+                    // Bind the DataTable to the GridView
+                    gvLines.DataSource = dt;
+                    gvLines.DataBind();
+                }
+                else
+                {
+                    // Handle the case where there are no lines
+                    gvLines.DataSource = null;
+                    gvLines.DataBind();
+                    Console.WriteLine("No transport lines returned.");
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                ex.Data.Clear();
+                // Handle exception (log or show an error message as needed)
+                Console.WriteLine("Error: " + ex.Message);
             }
         }
+
+      
 
         protected void lbtnAddParticipant_Click(object sender, EventArgs e)
         {
@@ -253,36 +314,55 @@ namespace NCIASTaff
             {
                 string trainingNo = lblTrainingNo.Text;
                 string participant = ddlParticipants.SelectedValue;
-                string objective = txtObjective.Text;
+               // string staffNo = Session["username"].ToString();
+                string courseFee = txtCourseFee.Text;
+                string dsaAmount = txtDsaAmount.Text;
+                string transportCost = txtTransportCost.Text;
 
-                if (string.IsNullOrEmpty(objective))
+
+
+                  if (string.IsNullOrEmpty(participant))
+                  {
+                      Message("participant cannot be null or empty!");
+                      ddlParticipants.Focus();
+                      return;
+                  }
+
+                  if (string.IsNullOrEmpty(courseFee))
+                  {
+                      Message("Course Fee cannot be null or empty!");
+                      txtCourseFee.Focus();
+                      return;
+                  }
+                if (string.IsNullOrEmpty(dsaAmount))
                 {
-                    Message("Objective cannot be null or empty!");
-                    txtObjective.Focus();
+                    Message("DSA Amount cannot be null or empty!");
+                    txtDsaAmount.Focus();
+                    return;
+                }
+                if (string.IsNullOrEmpty(transportCost))
+                {
+                    Message("Transport Cost cannot be null or empty!");
+                    txtTransportCost.Focus();
                     return;
                 }
 
-                if (string.IsNullOrEmpty(participant))
+                string response = webportals.InsertHRMTrainingParticipants(trainingNo, participant, Convert.ToDecimal(courseFee), Convert.ToDecimal(dsaAmount), Convert.ToDecimal(transportCost));
+                if (!string.IsNullOrEmpty(response))
                 {
-                    Message("Training participant cannot be null or empty!");
-                    txtObjective.Focus();
-                    return;
+                    if (response == "SUCCESS")
+                    {
+                        Message("Training participant has been added successfully");
+                        txtCourseFee.Text = string.Empty;
+                        txtDsaAmount.Text = string.Empty;
+                        txtTransportCost.Text = string.Empty;
+                        BindGridViewData(trainingNo);
+                    }
+                    else
+                    {
+                        Message(response);
+                    }
                 }
-
-                //string response = webportals.InsertHRMTrainingParticipants(trainingNo, participant, objective);
-                //if(!string.IsNullOrEmpty(response))
-                //{
-                //    if (response == "SUCCESS")
-                //    {
-                //        Message("Training participant has been added successfully");
-                //        txtObjective.Text = string.Empty;
-                //        BindGridViewData(trainingNo);
-                //    }
-                //    else
-                //    {
-                //        Message(response);
-                //    }
-                //}
             }
             catch(Exception ex)
             {
@@ -296,24 +376,24 @@ namespace NCIASTaff
             {
                 string[] args = new string[2];
                 args = (sender as LinkButton).CommandArgument.ToString().Split(';');
-                string employeeCode = args[0];
+                string staffNo = args[0];
                 string trainingNo = lblTrainingNo.Text;
-                //string response = webportals.RemoveHRMTrainingParticipant(trainingNo, employeeCode);
-                //if(!string.IsNullOrEmpty(response))
-                //{
-                //    if(response == "SUCCESS")
-                //    {
-                //        Message("Training participant removed successfully");
-                //        BindGridViewData(trainingNo);
-                //    }
-                //    else
-                //    {
-                //        Message("An error occured while removing the participant");
-                //        return;
-                //    }
-                //}
+                string response = webportals.RemoveHRMTrainingParticipant(trainingNo, staffNo);
+                if (!string.IsNullOrEmpty(response))
+                {
+                    if (response == "SUCCESS")
+                    {
+                        Message("Training participant removed successfully");
+                        BindGridViewData(trainingNo);
+                    }
+                    else
+                    {
+                        Message("An error occured while removing the participant");
+                        return;
+                    }
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.Data.Clear();
             }
