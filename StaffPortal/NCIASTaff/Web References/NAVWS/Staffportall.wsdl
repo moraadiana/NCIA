@@ -1182,6 +1182,34 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetTrainingLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="requestNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTrainingLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTrainingVotes">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="type" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTrainingVotes_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="HRMLeaveApplication1">
         <complexType>
           <sequence>
@@ -1227,6 +1255,32 @@
           </sequence>
         </complexType>
       </element>
+      <element name="HRMTrainingApplication">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="staffNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="type" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="course" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="applicationType" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="trainingClassification" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="trainingNeed" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="trainingObjective" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="trainingMode" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="dsaVote" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="trainingVote" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="transportVote" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="startDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="HRMTrainingApplication_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="HasPendingLeaveApplication">
         <complexType>
           <sequence>
@@ -1266,6 +1320,24 @@
         </complexType>
       </element>
       <element name="InsertClaimRequisitionLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertHRMTrainingParticipants">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="staffNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="courseFee" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="dsaAmount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="transportAmount" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertHRMTrainingParticipants_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1724,6 +1796,21 @@
         </complexType>
       </element>
       <element name="RemoveClaimRequisitionLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveHRMTrainingParticipant">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="trainingNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="staffNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveHRMTrainingParticipant_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -2443,6 +2530,18 @@
   <message name="GetStoreItemQuantity_Result">
     <part name="parameters" element="tns:GetStoreItemQuantity_Result" />
   </message>
+  <message name="GetTrainingLines">
+    <part name="parameters" element="tns:GetTrainingLines" />
+  </message>
+  <message name="GetTrainingLines_Result">
+    <part name="parameters" element="tns:GetTrainingLines_Result" />
+  </message>
+  <message name="GetTrainingVotes">
+    <part name="parameters" element="tns:GetTrainingVotes" />
+  </message>
+  <message name="GetTrainingVotes_Result">
+    <part name="parameters" element="tns:GetTrainingVotes_Result" />
+  </message>
   <message name="HRMLeaveApplication1">
     <part name="parameters" element="tns:HRMLeaveApplication1" />
   </message>
@@ -2454,6 +2553,12 @@
   </message>
   <message name="HRMLeaveApplication_Result">
     <part name="parameters" element="tns:HRMLeaveApplication_Result" />
+  </message>
+  <message name="HRMTrainingApplication">
+    <part name="parameters" element="tns:HRMTrainingApplication" />
+  </message>
+  <message name="HRMTrainingApplication_Result">
+    <part name="parameters" element="tns:HRMTrainingApplication_Result" />
   </message>
   <message name="HasPendingLeaveApplication">
     <part name="parameters" element="tns:HasPendingLeaveApplication" />
@@ -2472,6 +2577,12 @@
   </message>
   <message name="InsertClaimRequisitionLines_Result">
     <part name="parameters" element="tns:InsertClaimRequisitionLines_Result" />
+  </message>
+  <message name="InsertHRMTrainingParticipants">
+    <part name="parameters" element="tns:InsertHRMTrainingParticipants" />
+  </message>
+  <message name="InsertHRMTrainingParticipants_Result">
+    <part name="parameters" element="tns:InsertHRMTrainingParticipants_Result" />
   </message>
   <message name="InsertImprestRequisitonLines">
     <part name="parameters" element="tns:InsertImprestRequisitonLines" />
@@ -2658,6 +2769,12 @@
   </message>
   <message name="RemoveClaimRequisitionLines_Result">
     <part name="parameters" element="tns:RemoveClaimRequisitionLines_Result" />
+  </message>
+  <message name="RemoveHRMTrainingParticipant">
+    <part name="parameters" element="tns:RemoveHRMTrainingParticipant" />
+  </message>
+  <message name="RemoveHRMTrainingParticipant_Result">
+    <part name="parameters" element="tns:RemoveHRMTrainingParticipant_Result" />
   </message>
   <message name="RemoveImprestRequisitionLine">
     <part name="parameters" element="tns:RemoveImprestRequisitionLine" />
@@ -3064,6 +3181,14 @@
       <input name="GetStoreItemQuantity" message="tns:GetStoreItemQuantity" />
       <output name="GetStoreItemQuantity_Result" message="tns:GetStoreItemQuantity_Result" />
     </operation>
+    <operation name="GetTrainingLines">
+      <input name="GetTrainingLines" message="tns:GetTrainingLines" />
+      <output name="GetTrainingLines_Result" message="tns:GetTrainingLines_Result" />
+    </operation>
+    <operation name="GetTrainingVotes">
+      <input name="GetTrainingVotes" message="tns:GetTrainingVotes" />
+      <output name="GetTrainingVotes_Result" message="tns:GetTrainingVotes_Result" />
+    </operation>
     <operation name="HRMLeaveApplication1">
       <input name="HRMLeaveApplication1" message="tns:HRMLeaveApplication1" />
       <output name="HRMLeaveApplication1_Result" message="tns:HRMLeaveApplication1_Result" />
@@ -3071,6 +3196,10 @@
     <operation name="HRMLeaveApplication">
       <input name="HRMLeaveApplication" message="tns:HRMLeaveApplication" />
       <output name="HRMLeaveApplication_Result" message="tns:HRMLeaveApplication_Result" />
+    </operation>
+    <operation name="HRMTrainingApplication">
+      <input name="HRMTrainingApplication" message="tns:HRMTrainingApplication" />
+      <output name="HRMTrainingApplication_Result" message="tns:HRMTrainingApplication_Result" />
     </operation>
     <operation name="HasPendingLeaveApplication">
       <input name="HasPendingLeaveApplication" message="tns:HasPendingLeaveApplication" />
@@ -3083,6 +3212,10 @@
     <operation name="InsertClaimRequisitionLines">
       <input name="InsertClaimRequisitionLines" message="tns:InsertClaimRequisitionLines" />
       <output name="InsertClaimRequisitionLines_Result" message="tns:InsertClaimRequisitionLines_Result" />
+    </operation>
+    <operation name="InsertHRMTrainingParticipants">
+      <input name="InsertHRMTrainingParticipants" message="tns:InsertHRMTrainingParticipants" />
+      <output name="InsertHRMTrainingParticipants_Result" message="tns:InsertHRMTrainingParticipants_Result" />
     </operation>
     <operation name="InsertImprestRequisitonLines">
       <input name="InsertImprestRequisitonLines" message="tns:InsertImprestRequisitonLines" />
@@ -3207,6 +3340,10 @@
     <operation name="RemoveClaimRequisitionLines">
       <input name="RemoveClaimRequisitionLines" message="tns:RemoveClaimRequisitionLines" />
       <output name="RemoveClaimRequisitionLines_Result" message="tns:RemoveClaimRequisitionLines_Result" />
+    </operation>
+    <operation name="RemoveHRMTrainingParticipant">
+      <input name="RemoveHRMTrainingParticipant" message="tns:RemoveHRMTrainingParticipant" />
+      <output name="RemoveHRMTrainingParticipant_Result" message="tns:RemoveHRMTrainingParticipant_Result" />
     </operation>
     <operation name="RemoveImprestRequisitionLine">
       <input name="RemoveImprestRequisitionLine" message="tns:RemoveImprestRequisitionLine" />
@@ -3987,6 +4124,24 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetTrainingLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetTrainingLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetTrainingLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetTrainingLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetTrainingVotes">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetTrainingVotes" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetTrainingVotes">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetTrainingVotes_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="HRMLeaveApplication1">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:HRMLeaveApplication1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="HRMLeaveApplication1">
@@ -4002,6 +4157,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="HRMLeaveApplication_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="HRMTrainingApplication">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:HRMTrainingApplication" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="HRMTrainingApplication">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="HRMTrainingApplication_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4029,6 +4193,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="InsertClaimRequisitionLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertHRMTrainingParticipants">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertHRMTrainingParticipants" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertHRMTrainingParticipants">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertHRMTrainingParticipants_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4308,6 +4481,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="RemoveClaimRequisitionLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemoveHRMTrainingParticipant">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:RemoveHRMTrainingParticipant" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveHRMTrainingParticipant">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveHRMTrainingParticipant_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

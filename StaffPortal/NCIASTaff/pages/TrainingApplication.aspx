@@ -53,7 +53,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Type</label>
-                                                <asp:DropDownList ID="ddlLocation" CssClass="form-control" runat="server">
+                                                <asp:DropDownList ID="ddlType" CssClass="form-control" runat="server">
                                                     <asp:ListItem Value="0">Local</asp:ListItem>
                                                     <asp:ListItem Value="1">Foreign</asp:ListItem>
                                                 </asp:DropDownList>
@@ -62,7 +62,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Course</label>
-                                                <asp:DropDownList ID="ddlIndividualCourse" CssClass="form-control select2" runat="server"></asp:DropDownList>
+                                                <asp:DropDownList ID="ddlCourse" CssClass="form-control select2" runat="server"></asp:DropDownList>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -84,16 +84,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label>Training Category</label>
-                                                <asp:DropDownList ID="ddlTrainingCategory" CssClass="form-control" runat="server">
-                                                    <asp:ListItem Value="0">Individual</asp:ListItem>
-                                                    <asp:ListItem Value="1">Group</asp:ListItem>
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
+                                  <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Training Need</label>
@@ -124,6 +115,8 @@
                                                  <asp:DropDownList ID="ddlDsaVote" CssClass="form-control select2" runat="server"></asp:DropDownList>
                                              </div>
                                          </div>
+                                      </div>
+                                    <div class="row">
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label>Training Vote</label>
@@ -156,7 +149,7 @@
                                          <div class="col-md-3">
                                              <div class="form-group">
                                                  <label>End Date</label>
-                                                 <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" Widt="350px" TextMode="Date" OnTextChanged="txtEndDate_TextChanged" AutoPostBack="true"></asp:TextBox>
+                                                 <asp:TextBox ID="txtEndDate" CssClass="form-control" runat="server" Widt="350px" TextMode="Date" OnTextChanged="txtEndDate_TextChanged" AutoPostBack="true"></asp:TextBox>
                                                  <script>
                                                      $j('#Main1_txtEndDate').Zebra_DatePicker({
                                                          direction: [1, false],
@@ -194,8 +187,20 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label>Objective</label><br />
-                                                <asp:TextBox ID="txtObjective" CssClass="form-control" runat="server"></asp:TextBox>
+                                                <label>Course Fee</label><br />
+                                                <asp:TextBox ID="txtCourseFee" CssClass="form-control" runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>DSA Amount</label><br />
+                                                <asp:TextBox ID="txtDsaAmount" CssClass="form-control" runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>Transport Cost</label><br />
+                                                <asp:TextBox ID="txtTransportCost" CssClass="form-control" runat="server"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
@@ -204,7 +209,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <asp:GridView ID="gvLines" AutoGenerateColumns="false" DataKeyNames="Training Code" class="table table-responsive no-padding table-bordered table-hover" runat="server"
+                                            <asp:GridView ID="gvLines" AutoGenerateColumns="false" DataKeyNames="Document No" class="table table-responsive no-padding table-bordered table-hover" runat="server"
                                                 AllowSorting="True" AllowPaging="true" ShowFooter="true" PageSize="5">
                                                 <Columns>
                                                     <asp:TemplateField HeaderStyle-HorizontalAlign="Left" HeaderText="#No" SortExpression="">
@@ -213,14 +218,16 @@
                                                             <%# string.Format("{0}",Container.DataItemIndex + 1 +".") %>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
-                                                    <asp:BoundField DataField="Training Code" HeaderText="Training Code" />
-                                                    <asp:BoundField DataField="Employee Code" HeaderText="Employee No" />
-                                                    <asp:BoundField DataField="Employee name" HeaderText="Employee Name" />
-                                                    <asp:BoundField DataField="Objectives" HeaderText="Objectives" />
+                                                    <asp:BoundField DataField="Document No" HeaderText="Training Code" />
+                                                    <asp:BoundField DataField="Staff No" HeaderText="Employee No" />
+                                                    <asp:BoundField DataField="Staff Name" HeaderText="Employee Name" />
+                                                    <asp:BoundField DataField="Course Fee" HeaderText="Objectives" />
+                                                    <asp:BoundField DataField="DSA Amount" HeaderText="Objectives" />
+                                                    <asp:BoundField DataField="Transport Cost" HeaderText="Objectives" />
                                                     <asp:TemplateField HeaderText="Action" SortExpression="" HeaderStyle-HorizontalAlign="Left">
                                                         <ItemStyle Width="110px" HorizontalAlign="Left" />
                                                         <ItemTemplate>
-                                                            <asp:LinkButton ID="lbtnRemove" CssClass="label label-danger" runat="server" ToolTip="Click to Remove line" OnClick="lbtnRemove_Click" OnClientClick="return confirm('Are you sure you want to delete this line?')" CommandArgument='<%# Eval("Employee Code ") %>'><i class="fa fa-remove"></i> Remove</asp:LinkButton>
+                                                            <asp:LinkButton ID="lbtnRemove" CssClass="label label-danger" runat="server" ToolTip="Click to Remove line" OnClick="lbtnRemove_Click" OnClientClick="return confirm('Are you sure you want to delete this line?')" CommandArgument='<%# Eval("Staff No") %>'><i class="fa fa-remove"></i> Remove</asp:LinkButton>
                                                         </ItemTemplate>
                                                     </asp:TemplateField>
                                                 </Columns>

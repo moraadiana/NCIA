@@ -69,22 +69,22 @@ namespace NCIASTaff
         protected global::System.Web.UI.WebControls.Label lblDepartment;
 
         /// <summary>
-        /// ddlLocation control.
+        /// ddlType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLocation;
+        protected global::System.Web.UI.WebControls.DropDownList ddlType;
 
         /// <summary>
-        /// ddlIndividualCourse control.
+        /// ddlCourse control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlIndividualCourse;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCourse;
 
         /// <summary>
         /// ddlApplicationType control.
@@ -103,15 +103,6 @@ namespace NCIASTaff
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlTrainingClassification;
-
-        /// <summary>
-        /// ddlTrainingCategory control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTrainingCategory;
 
         /// <summary>
         /// txtTrainingNeed control.
@@ -177,13 +168,13 @@ namespace NCIASTaff
         protected global::System.Web.UI.WebControls.TextBox txtStartDate;
 
         /// <summary>
-        /// TextBox1 control.
+        /// txtEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtEndDate;
 
         /// <summary>
         /// lbtnSubmit control.
@@ -222,13 +213,31 @@ namespace NCIASTaff
         protected global::System.Web.UI.WebControls.DropDownList ddlParticipants;
 
         /// <summary>
-        /// txtObjective control.
+        /// txtCourseFee control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtObjective;
+        protected global::System.Web.UI.WebControls.TextBox txtCourseFee;
+
+        /// <summary>
+        /// txtDsaAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtDsaAmount;
+
+        /// <summary>
+        /// txtTransportCost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTransportCost;
 
         /// <summary>
         /// lbtnAddParticipant control.

@@ -196,7 +196,7 @@
                                         <label style="font-size: 1.6rem;">Memo Imprest Lines</label>
                                     </div>
                                     <div class="col-md-12">
-                                        <asp:GridView ID="gvLines" DataKeyNames="Advance Type" AutoGenerateColumns="false" class="table table-responsive no-padding table-bordered table-hover" runat="server"
+                                        <asp:GridView ID="gvLines" DataKeyNames="No" AutoGenerateColumns="false" class="table table-responsive no-padding table-bordered table-hover" runat="server"
                                             AllowSorting="True" AllowPaging="true" ShowFooter="true" PageSize="100">
                                             <Columns>
                                                 <asp:TemplateField HeaderStyle-HorizontalAlign="Left" HeaderText="#No" SortExpression="">

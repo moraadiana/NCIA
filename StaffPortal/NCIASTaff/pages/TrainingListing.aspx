@@ -33,12 +33,12 @@
                                     <thead>
                                         <tr>
                                             <th class="small">#No</th>
+                                            <th class="small">Document No</th>
                                             <th class="small">Course Title</th>
-                                            <th class="small">Date From</th>
-                                            <th class="small">Date To</th>
-                                            <th class="small">Purpose</th>
-                                            <th class="small">Duration</th>
-                                            <th class="small">Trainig Status</th>
+                                            <th class="small">Start Date </th>
+                                            <th class="small">End Date</th> 
+                                            <th class="small">Training Objective</th>
+                                            <th class="small">Period</th>
                                             <th class="small">Status</th>
                                             <th class="small">Actions</th>
                                         </tr>

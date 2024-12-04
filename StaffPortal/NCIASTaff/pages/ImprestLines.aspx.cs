@@ -305,38 +305,7 @@ namespace NCIASTaff.pages
             }
         }
 
-        //private void BindGridViewData(string imprestNo)
-        //{
-        //    try
-        //    {
-        //        connection = Components.GetconnToNAV();
-        //        command = new SqlCommand()
-        //        {
-        //            CommandText = "spImprestLines",
-        //            CommandType = CommandType.StoredProcedure,
-        //            Connection = connection,
-        //        };
-        //        command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-        //        command.Parameters.AddWithValue("@ImpNo", "'" + imprestNo + "'");
-        //        adapter = new SqlDataAdapter();
-        //        adapter.SelectCommand = command;
-        //        DataTable dt = new DataTable();
-        //        adapter.Fill(dt);
-        //        gvLines.DataSource = dt;
-        //        gvLines.DataBind();
-        //        connection.Close();
-
-        //        foreach (GridViewRow row in gvLines.Rows)
-        //        {
-        //            row.Cells[6].Text = Convert.ToDateTime(row.Cells[6].Text).ToShortDateString();
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ex.Data.Clear();
-        //    }
-        //}
+     
         private void BindGridViewData(string imprestNo)
         {
             try
