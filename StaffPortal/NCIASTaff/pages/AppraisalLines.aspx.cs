@@ -22,16 +22,30 @@ namespace NCIASTaff.pages
                 Response.Redirect("~/Default.aspx");
                 return;
             }
-            LoadSupervisor();
-            LoadStaffDetails();
-            LoadPeriod();
-            string query = Request.QueryString["query"];
-
-            if (query == "new")
+            if (!IsPostBack)
             {
-                MultiView1.SetActiveView(vwHeader);
-            }
+                LoadSupervisor();
+                LoadStaffDetails();
+                LoadPeriod();
+                string query = Request.QueryString["query"];
 
+                if (query == "new")
+                {
+                    MultiView1.SetActiveView(vwHeader);
+
+                }
+                else
+                {
+                    string appraisalNo = Request.QueryString["appraisalNo"].ToString();
+                    if (!string.IsNullOrEmpty(appraisalNo))
+                    {
+                        Session["appraisalNo"] = appraisalNo;
+                        MultiView1.SetActiveView(vwLines);
+                        BindGridViewData();
+                    }
+
+                }
+            }
         }
         private void LoadSupervisor()
         {
@@ -141,6 +155,8 @@ namespace NCIASTaff.pages
                     Session["AppraisalNo"] = documentNo;
                     Message($"Appraisal with number {documentNo} has been created successfully.");
                     MultiView1.SetActiveView(vwLines);
+                    BindGridViewData();
+                  
 
                 }
                 else
@@ -151,99 +167,49 @@ namespace NCIASTaff.pages
             }
             
         }
-        protected void lbtnClose_Click(object sender, EventArgs e)
-        {
-            newLines.Visible = false;
-            lbtnAddLine.Visible = true;
-        }
-        protected void btnLine_Click(object sender, EventArgs e)
+        private void NewView()
         {
             try
             {
-                //string pettyCashNo = lblPettyCashNo.Text;
-                //string employeeNo = Session["username"].ToString();
-                //string advanceType = ddlAdvancType.SelectedValue;
-                //string amount = txtAmnt.Text;
-                //if (advanceType == "0")
-                //{
-                //    Message("Advance type cannot be null!");
-                //    return;
-                //}
-                //if (amount == "")
-                //{
-                //    Message("Amount cannot be empty!");
-                //    txtAmnt.Focus();
-                //    return;
-                //}
-
-                //string response = webportals.InsertPettyCashRequisitionLine(pettyCashNo, advanceType, Convert.ToDecimal(amount));
-                //if (!string.IsNullOrEmpty(response))
-                //{
-                //    string[] strLimiters = new string[] { "::" };
-                //    string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
-                //    string returnMsg = responseArr[0];
-                //    if (returnMsg == "SUCCESS")
-                //    {
-                //        Message("Line added successfully!");
-                //        txtAmnt.Text = string.Empty;
-                //        BindGridViewData(pettyCashNo);
-                //    }
-                //}
+                MultiView1.SetActiveView(vwLines);
+                string appraisalNo = Session["appraisalNo"].ToString();
+                string staffNo = Session["username"].ToString();
+                BindGridViewData();
+              
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
             }
         }
+      
 
-        protected void lbtnAddLine_Click(object sender, EventArgs e)
+        private void BindGridViewData()
         {
-            //string pettyCashNo = string.Empty;
-            //if (Request.QueryString["PettyCashNo"] == null)
-            //{
-            //    pettyCashNo = Session["PettyCashNo"].ToString();
-            //}
-            //else
-            //{
-            //    pettyCashNo = Request.QueryString["PettyCashNo"].ToString();
-            //}
-           // lblLNo.Text = pettyCashNo;
-            //LoadAdvanceTypes();
-            newLines.Visible = true;
-            lbtnAddLine.Visible = false;
-        }
+            string staffNo = Session["username"].ToString();
+            string appraisalLines = webportals.CpActivityLines(staffNo);
 
-        private void BindGridViewData(string pettyCashNo)
-        {
-            string pettyCashLines = webportals.GetPettyCashLines(pettyCashNo);
-
-            if (!string.IsNullOrEmpty(pettyCashLines))
+            if (!string.IsNullOrEmpty(appraisalLines))
             {
 
                 DataTable dt = new DataTable();
-                dt.Columns.Add("Document No_");
-                dt.Columns.Add("Advance Type");
-                dt.Columns.Add("Account No_");
-                dt.Columns.Add("Account Name");
-                dt.Columns.Add("Amount");
-                dt.Columns.Add("Line No_");
+                dt.Columns.Add("Sub-Activity Code");
+                dt.Columns.Add("Sub-Activity Description");
+              
 
 
-                string[] lines = pettyCashLines.Split(new[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+                string[] lines = appraisalLines.Split(new[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
 
 
                 foreach (string line in lines)
                 {
                     string[] fields = line.Split(new[] { "::" }, StringSplitOptions.None);
-                    if (fields.Length == 6)
+                    if (fields.Length >= 3 && fields[0] == "SUCCESS")
                     {
                         DataRow row = dt.NewRow();
-                        row["Document No_"] = fields[0];
-                        row["Advance Type"] = fields[1];
-                        row["Account No_"] = fields[2];
-                        row["Account Name"] = fields[3];
-                        row["Amount"] = fields[4];
-                        row["Line No_"] = fields[5];
+                        row["Sub-Activity Code"] = fields[1];
+                        row["Sub-Activity Description"] = fields[2];
+                       
 
                         dt.Rows.Add(row);
                     }
@@ -254,13 +220,121 @@ namespace NCIASTaff.pages
 
 
             }
+            foreach (GridViewRow row in gvLines.Rows)
+            {
+                string appraisalNo = Session["appraisalNo"].ToString();
+                TextBox txtCriteria = row.FindControl("txtCriteria") as TextBox;
+                TextBox txtAnnualTarget = row.FindControl("txtAnnualTarget") as TextBox;
+                TextBox txtRemarks = row.FindControl("txtRemarks") as TextBox;
+
+                string response = webportals.GetAppraisalLines(appraisalNo);
+
+                if (!string.IsNullOrEmpty(response) && response.StartsWith("SUCCESS"))
+                {
+                    string[] records = response.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    for (int i = 0; i < records.Length; i++)
+                    {
+                        string[] data = records[i].Split(new string[] { "::" }, StringSplitOptions.None);
+
+                        if (data.Length >= 4)
+                        {
+                            string performanceCriteria = data[1];
+                            string annualTarget = data[2];
+                            string remarks = data[3];
+
+                            if (i == row.RowIndex) 
+                            {
+                                txtCriteria.Text = performanceCriteria;
+                                txtAnnualTarget.Text = annualTarget;
+                                txtRemarks.Text = remarks;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    txtCriteria.Text = "";
+                    txtAnnualTarget.Text = "";
+                    txtRemarks.Text = "";
+                }
+            }
+
 
         }
+        protected void btnSendForApproval_Click(object sender, EventArgs e)
+        {
+            
+            List<string> results = new List<string>();
+
+            foreach (GridViewRow row in gvLines.Rows)
+            {
+                if (row.RowType == DataControlRowType.DataRow)
+                {
+                    try
+                    {
+                        string appraisalNo = Session["appraisalNo"]?.ToString();
+                        string subCode = row.Cells[1].Text.Trim();
+                        string activityDescription = row.Cells[2].Text.Trim();    
+                        string criteria = ((TextBox)row.FindControl("txtCriteria")).Text.Trim();
+                        string annualTargetText = ((TextBox)row.FindControl("txtAnnualTarget")).Text.Trim();
+                        string remarks = ((TextBox)row.FindControl("txtRemarks")).Text.Trim();
+
+                        // Convert annualTarget to decimal
+                        decimal annualTarget = 0;
+                        if (!decimal.TryParse(annualTargetText, out annualTarget))
+                        {
+                            results.Add($"Error in row {row.RowIndex + 1}: Invalid Annual Target value.");
+                            continue; // Skip to next row
+                        }
+
+                        string response = webportals.InsertAppraisalLines(appraisalNo, subCode, activityDescription, criteria, annualTarget, remarks);
+
+                        if (!string.IsNullOrEmpty(response))
+                        {
+                            if (response.StartsWith("SUCCESS"))
+                            {
+                               
+                               // Response.Redirect("AppraisalListing.aspx");
+                                Message($"Appraisal lines submitted successfully.");
+                                //return;
+                            }
+                            else
+                            {
+                                Message($"Error Submitting Appraisal lines .");
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            Message($"Error ");
+                        }
+                        //string approvalResponse = webportals.OnSendPettyCashSurrenderForApproval(documentNo);
+                        //if (approvalResponse == "SUCCESS")
+                        //{
+                        //    SuccessMessage("Petty Cash surrender has been submitted successfully!");
+                        //}
+                        //else
+                        //{
+                        //    Message(approvalResponse);
+                        //    return;
+                        //}
+                    }
+                    catch (Exception ex)
+                    {
+                        Message($"Error Submitting Appraisal lines   { ex.Message}");
+                    }
+                }
+            }
+        }
+
+      
         private void Message(string message)
         {
             string strScript = "<script>alert('" + message + "');</script>";
             ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
         }
 
+       
     }
 }
