@@ -409,10 +409,10 @@ namespace NCIAAPPLY.Controllers
             string applicationNo = Session["ApplicationNo"].ToString();
             //var hobbies = Services.GetApplicantHobbies(applicationNo);
             var hobbies = Services.GetApplicantHobbies(applicationNo);
-            if (hobbies.Count >= 3) return RedirectToAction("attachments");
+            if (hobbies.Count >= 1) return RedirectToAction("attachments");
             else
             {
-                TempData["error"] = "You must add atleast 3 hobbies";
+                TempData["error"] = "You must add atleast 1 hobbies";
                 return RedirectToAction("hobbies");
             }
         }
