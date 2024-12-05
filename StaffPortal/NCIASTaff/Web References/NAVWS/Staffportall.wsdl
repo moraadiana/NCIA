@@ -166,6 +166,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="CpActivityLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="staffNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CpActivityLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="CreateAppraisalHeader">
         <complexType>
           <sequence>
@@ -637,6 +651,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetAppraisalLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAppraisalLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetAppraisalPeriod">
         <complexType>
           <sequence />
@@ -657,6 +685,18 @@
         </complexType>
       </element>
       <element name="GetAttachmentDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCpPeriods">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetCpPeriods_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1304,6 +1344,25 @@
         </complexType>
       </element>
       <element name="ImprestRequisitionApprovalRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertAppraisalLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="subcode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="subActivity" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="criteria" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="annualTarget" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="remarks" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertAppraisalLines_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -2116,6 +2175,12 @@
   <message name="CheckValidVendorNo_Result">
     <part name="parameters" element="tns:CheckValidVendorNo_Result" />
   </message>
+  <message name="CpActivityLines">
+    <part name="parameters" element="tns:CpActivityLines" />
+  </message>
+  <message name="CpActivityLines_Result">
+    <part name="parameters" element="tns:CpActivityLines_Result" />
+  </message>
   <message name="CreateAppraisalHeader">
     <part name="parameters" element="tns:CreateAppraisalHeader" />
   </message>
@@ -2290,6 +2355,12 @@
   <message name="GetAllEmployees_Result">
     <part name="parameters" element="tns:GetAllEmployees_Result" />
   </message>
+  <message name="GetAppraisalLines">
+    <part name="parameters" element="tns:GetAppraisalLines" />
+  </message>
+  <message name="GetAppraisalLines_Result">
+    <part name="parameters" element="tns:GetAppraisalLines_Result" />
+  </message>
   <message name="GetAppraisalPeriod">
     <part name="parameters" element="tns:GetAppraisalPeriod" />
   </message>
@@ -2301,6 +2372,12 @@
   </message>
   <message name="GetAttachmentDetails_Result">
     <part name="parameters" element="tns:GetAttachmentDetails_Result" />
+  </message>
+  <message name="GetCpPeriods">
+    <part name="parameters" element="tns:GetCpPeriods" />
+  </message>
+  <message name="GetCpPeriods_Result">
+    <part name="parameters" element="tns:GetCpPeriods_Result" />
   </message>
   <message name="GetDefaultDays">
     <part name="parameters" element="tns:GetDefaultDays" />
@@ -2571,6 +2648,12 @@
   </message>
   <message name="ImprestRequisitionApprovalRequest_Result">
     <part name="parameters" element="tns:ImprestRequisitionApprovalRequest_Result" />
+  </message>
+  <message name="InsertAppraisalLines">
+    <part name="parameters" element="tns:InsertAppraisalLines" />
+  </message>
+  <message name="InsertAppraisalLines_Result">
+    <part name="parameters" element="tns:InsertAppraisalLines_Result" />
   </message>
   <message name="InsertClaimRequisitionLines">
     <part name="parameters" element="tns:InsertClaimRequisitionLines" />
@@ -2905,6 +2988,10 @@
       <input name="CheckValidVendorNo" message="tns:CheckValidVendorNo" />
       <output name="CheckValidVendorNo_Result" message="tns:CheckValidVendorNo_Result" />
     </operation>
+    <operation name="CpActivityLines">
+      <input name="CpActivityLines" message="tns:CpActivityLines" />
+      <output name="CpActivityLines_Result" message="tns:CpActivityLines_Result" />
+    </operation>
     <operation name="CreateAppraisalHeader">
       <input name="CreateAppraisalHeader" message="tns:CreateAppraisalHeader" />
       <output name="CreateAppraisalHeader_Result" message="tns:CreateAppraisalHeader_Result" />
@@ -3021,6 +3108,10 @@
       <input name="GetAllEmployees" message="tns:GetAllEmployees" />
       <output name="GetAllEmployees_Result" message="tns:GetAllEmployees_Result" />
     </operation>
+    <operation name="GetAppraisalLines">
+      <input name="GetAppraisalLines" message="tns:GetAppraisalLines" />
+      <output name="GetAppraisalLines_Result" message="tns:GetAppraisalLines_Result" />
+    </operation>
     <operation name="GetAppraisalPeriod">
       <input name="GetAppraisalPeriod" message="tns:GetAppraisalPeriod" />
       <output name="GetAppraisalPeriod_Result" message="tns:GetAppraisalPeriod_Result" />
@@ -3028,6 +3119,10 @@
     <operation name="GetAttachmentDetails">
       <input name="GetAttachmentDetails" message="tns:GetAttachmentDetails" />
       <output name="GetAttachmentDetails_Result" message="tns:GetAttachmentDetails_Result" />
+    </operation>
+    <operation name="GetCpPeriods">
+      <input name="GetCpPeriods" message="tns:GetCpPeriods" />
+      <output name="GetCpPeriods_Result" message="tns:GetCpPeriods_Result" />
     </operation>
     <operation name="GetDefaultDays">
       <input name="GetDefaultDays" message="tns:GetDefaultDays" />
@@ -3208,6 +3303,10 @@
     <operation name="ImprestRequisitionApprovalRequest">
       <input name="ImprestRequisitionApprovalRequest" message="tns:ImprestRequisitionApprovalRequest" />
       <output name="ImprestRequisitionApprovalRequest_Result" message="tns:ImprestRequisitionApprovalRequest_Result" />
+    </operation>
+    <operation name="InsertAppraisalLines">
+      <input name="InsertAppraisalLines" message="tns:InsertAppraisalLines" />
+      <output name="InsertAppraisalLines_Result" message="tns:InsertAppraisalLines_Result" />
     </operation>
     <operation name="InsertClaimRequisitionLines">
       <input name="InsertClaimRequisitionLines" message="tns:InsertClaimRequisitionLines" />
@@ -3503,6 +3602,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="CpActivityLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CpActivityLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CpActivityLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CpActivityLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="CreateAppraisalHeader">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateAppraisalHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="CreateAppraisalHeader">
@@ -3764,6 +3872,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetAppraisalLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAppraisalLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAppraisalLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAppraisalLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetAppraisalPeriod">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAppraisalPeriod" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetAppraisalPeriod">
@@ -3779,6 +3896,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetAttachmentDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetCpPeriods">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetCpPeriods" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetCpPeriods">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetCpPeriods_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4184,6 +4310,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="ImprestRequisitionApprovalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertAppraisalLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertAppraisalLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertAppraisalLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertAppraisalLines_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

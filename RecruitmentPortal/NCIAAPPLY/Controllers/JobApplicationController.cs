@@ -98,10 +98,10 @@ namespace NCIAAPPLY.Controllers
             string applicationNo = Session["ApplicationNo"].ToString();
 
             // Get the list of all qualifications
-           // var applicantQualifications = Services.GetApplicantQualifications(applicationNo);
+           var applicantQualifications = Services.GetApplicantQualifications(applicationNo);
 
             // Append the qualification list
-            qualifications.ApplicantQualifications = ApplicantQualification(applicationNo);
+            qualifications.ApplicantQualifications = applicantQualifications;
 
             // Pass the object to the view
             return View(qualifications);
@@ -188,7 +188,7 @@ namespace NCIAAPPLY.Controllers
             //}
         }
 
-        private List<ApplicantQualification> ApplicantQualification(string applicationNo)
+      /*  private List<ApplicantQualification> ApplicantQualification(string applicationNo)
         {
             var list = new List<ApplicantQualification>();
             try
@@ -238,7 +238,7 @@ namespace NCIAAPPLY.Controllers
             
             return list;
 
-        }
+        } */
 
         public ActionResult Referees()
         {
@@ -334,8 +334,9 @@ namespace NCIAAPPLY.Controllers
         {
             string applicationNo = Session["ApplicationNo"].ToString();
             Hobby hobby = new Hobby();
-            //var applicantHobbies = Services.GetApplicantHobbies(applicationNo);
-            hobby.ApplicantHobbies = GetHobbies(applicationNo);
+            var applicantHobbies = Services.GetApplicantHobbies(applicationNo);
+            hobby.ApplicantHobbies = applicantHobbies;
+            //hobby.ApplicantHobbies = GetHobbies(applicationNo);
             return View(hobby);
         }
 
@@ -402,56 +403,12 @@ namespace NCIAAPPLY.Controllers
             return View();
         }
 
-        private List<ApplicantHobby> GetHobbies(string applicationNo)
-        {
-            var list = new List<ApplicantHobby>();
-            try
-            {
-                using (SqlConnection conn = Components.GetconnToNAV())
-                {
-                    SqlCommand cmd = new SqlCommand
-                    {
-                        CommandText = "spGetApplicantHobbies",
-                        CommandType = System.Data.CommandType.StoredProcedure,
-                        Connection = conn
-
-                    };
-                    cmd.Parameters.AddWithValue("@Company_Name", Components.CompanyName);
-                    cmd.Parameters.AddWithValue("@JobID", "'" + applicationNo + "'");
-                    using (SqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        if (reader.HasRows)
-                        {
-                            int count = 0;
-                            while (reader.Read())
-                            {
-                                count++;
-                                var qualification = new ApplicantHobby()
-                                {
-                                    Counter = count,
-                                    ApplicantNo = reader["Job Application No"].ToString(),
-                                    Hobbies = reader["Hobby"].ToString()
-                                };
-
-                                list.Add(qualification);
-
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }
-
-            return list;
-        }
+       
         public ActionResult NavigateAttachments()
         {
             string applicationNo = Session["ApplicationNo"].ToString();
             //var hobbies = Services.GetApplicantHobbies(applicationNo);
-            var hobbies = GetHobbies(applicationNo);
+            var hobbies = Services.GetApplicantHobbies(applicationNo);
             if (hobbies.Count >= 3) return RedirectToAction("attachments");
             else
             {

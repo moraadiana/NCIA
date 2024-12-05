@@ -56,170 +56,77 @@
                                
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <asp:LinkButton ID="lbtnSubmit" runat="server" CssClass="btn btn-primary pull-right" OnClick="lbtnSubmit_Click"><i class="fa fa-paper-plane"></i>&nbsp;Submit</asp:LinkButton>
+                                        <asp:LinkButton ID="lbtnSubmit" runat="server" CssClass="btn btn-primary pull-right" OnClick="lbtnSubmit_Click"><i class="fa fa-paper-plane"></i>&nbsp;Next</asp:LinkButton>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </asp:View>
 
                     <asp:View ID="vwLines" runat="server">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="box box-info box-solid">
-                                    <div class="box-header">
-                                        <h3 class="box-title">Appraisal Lines &mdash;
-                                        <asp:Label ID="lblAppraisalNo" runat="server" Text=""></asp:Label></h3>
-                                    </div>
-                                    <div class="box-body">
-                                        <div id="newLines" runat="server" visible="false">
-                                            <asp:LinkButton ID="lbtnClose" ToolTip="Close Lines" class="pull-right" runat="server" OnClick="lbtnClose_Click"><i class="fa fa-minus-circle"></i> Close lines</asp:LinkButton>
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No:</th>
-                                                        <th>Sub Code:</th>
-                                                        <th>Sub Activity</th>
-                                                        <th>Performance Criteria</th>
-                                                        <th>Annual Target</th>
-                                                        <th>Remarks</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th>
-                                                            <asp:Label ID="lblNo" runat="server" Text="Label"></asp:Label></th>
-                                                         <td>
-                                                             <asp:DropDownList ID="ddlCode" runat="server" CssClass="form-control select2"></asp:DropDownList>
-
-                                                         </td>
-                                                        <td>
-                                                            <asp:DropDownList ID="ddlActivity" runat="server" CssClass="form-control select2"></asp:DropDownList>
-
-                                                        </td>                                  
-                                                         <td>
-                                                             <asp:TextBox ID="txtCriteria" CssClass="form-control" runat="server"></asp:TextBox>
-                                                         </td>
-                                                        <td>
-                                                            <asp:TextBox ID="txtAnnualTarget" CssClass="form-control" runat="server"></asp:TextBox>
-                                                        </td>
-                                                         <td>
-                                                             <asp:TextBox ID="txtRemarks" CssClass="form-control" runat="server"></asp:TextBox>
-                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th></th>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        
-                                                        <td>
-                                                            <asp:Button ID="btnLine" class="btn btn-primary pull-right" runat="server" Text="Add" OnClick="btnLine_Click" /></td>
-                                                        <td></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                        <asp:LinkButton ID="lbtnAddLine" ToolTip="Add New Lines" class="pull-right text-info" runat="server" OnClick="lbtnAddLine_Click"><i class="fa fa-plus-circle"></i> Add Line</asp:LinkButton>
-
-                                        <div id="attachments" runat="server" visible="false">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <label>Attach supporting documents</label>
-                                                    <asp:FileUpload ID="fuClaimDocs" CssClass="form-control" ToolTip="Attach documents with .pdf, .png, .jpg and .jpeg extensions only" runat="server" />
-                                                    <br />
-                                                 <%--   <asp:LinkButton ID="lbtnAttach" runat="server" CssClass="btn btn-primary" OnClick="lbtnAttach_Click"><i class="fa fa-upload"></i>&nbsp;Upload</asp:LinkButton>--%>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br />
-
-                                        <h4>Appraisal Lines</h4>
-                                        <asp:GridView ID="gvLines" AutoGenerateColumns="false" DataKeyNames="Document No_" class="table table-responsive no-padding table-bordered table-hover" runat="server"
-                                            AllowSorting="True" AllowPaging="true" ShowFooter="true" PageSize="5">
-                                            <Columns>
-                                                <asp:TemplateField HeaderStyle-HorizontalAlign="Left" HeaderText="#No" SortExpression="">
-                                                    <HeaderStyle Width="30px" />
-                                                    <ItemTemplate>
-                                                        <%# string.Format("{0}",Container.DataItemIndex + 1 +".") %>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:BoundField DataField="Document No_" HeaderText="Number" />
-                                                <asp:BoundField DataField="Sub Code" HeaderText="Sub Code" />
-                                                <asp:BoundField DataField="Sub Activity" HeaderText="Activity" />
-                                                <asp:BoundField DataField="Criteria" HeaderText="Appraisal Criteria" />
-                                                <asp:BoundField DataField="Target" HeaderText="Annual Target" />
-                                                <asp:TemplateField HeaderText="Action" SortExpression="" HeaderStyle-HorizontalAlign="Left">
-                                                    <ItemStyle Width="110px" HorizontalAlign="Left" />
-                                                    <ItemTemplate>
-                                                      <%--  <asp:LinkButton ID="lbtnRemove" CssClass="label label-danger" runat="server" ToolTip="Click to Remove line" OnClick="lbtnRemove_Click" OnClientClick="return confirm('Are you sure you want to delete this line?')" CommandArgument='<%# Eval("Line No_") %>'><i class="fa fa-remove"></i> Remove</asp:LinkButton>--%>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                            </Columns>
-                                            <FooterStyle HorizontalAlign="Center" />
-                                            <EmptyDataTemplate>
-                                                <span style="color: red">No Recods</span>
-                                            </EmptyDataTemplate>
-                                        </asp:GridView>
-                                        <br />
-                                     
-                                         <div class="row">
-     <div class="col-md-12">
-         <h3>Document Attachments</h3>
-     </div>
-     <div class="col-md-12">
-         <asp:GridView ID="gvAttachments" AutoGenerateColumns="false" DataKeyNames="No_" class="table table-responsive no-padding table-bordered table-hover" runat="server"
-             AllowSorting="True" AllowPaging="true" ShowFooter="true" PageSize="5">
-             <Columns>
-                 <asp:TemplateField HeaderStyle-HorizontalAlign="Left" HeaderText="#No" SortExpression="">
-                     <HeaderStyle Width="30px" />
-                     <ItemTemplate>
-                         <%# string.Format("{0}",Container.DataItemIndex + 1 +".") %>
-                     </ItemTemplate>
-                 </asp:TemplateField>
-                 <asp:BoundField DataField="No_" HeaderText="Document No" />
-                 <asp:BoundField DataField="File Name" HeaderText="File Name" />
-                 <asp:BoundField DataField="$systemCreatedAt" HeaderText="Date Uploaded" />
-                 <asp:TemplateField HeaderText="Action" SortExpression="" HeaderStyle-HorizontalAlign="Left">
-                     <ItemStyle Width="110px" HorizontalAlign="Left" />
-                     <ItemTemplate>
-                        <%-- <asp:LinkButton ID="lbtnRemoveAttach" CssClass="label label-danger" runat="server" ToolTip="Click to Remove line" OnClick="lbtnRemoveAttach_Click" OnClientClick="return confirm('Are you sure you want to delete this line?')" CommandArgument='<%# Eval("$systemId") %>'><i class="fa fa-remove"></i> Remove</asp:LinkButton>--%>
-                     </ItemTemplate>
-                 </asp:TemplateField>
-             </Columns>
-             <FooterStyle HorizontalAlign="Center" />
-             <EmptyDataTemplate>
-                 <span style="color: red">No Recods</span>
-             </EmptyDataTemplate>
-         </asp:GridView>
-     </div>
- </div>
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        <a href="ImprestListing.aspx" class="btn btn-warning pull-left"><i class="fa fa-backward"></i>&nbsp;Back</a>
-                                                    </th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th>&nbsp;</th>
-                                                    <th>
-                                                     <%--   <asp:Button ID="btnApproval" CssClass="btn btn-success pull-right" runat="server" Text="Send Approval" OnClick="btnApproval_Click" />&nbsp;
-                                <asp:Button ID="btnCancellApproval" runat="server" CssClass="btn btn-danger pull-right" OnClick="btnCancellApproval_Click" Text="Cancel Approval Request" />--%>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <!-- Header Section -->
+                        <div class="col-md-12">
+                            <h3 class="text-center">Activities</h3>
                         </div>
-                    </asp:View>
+
+                        <!-- Grid Section -->
+                        <div class="col-md-12">
+                            <asp:GridView ID="gvLines" AutoGenerateColumns="false" DataKeyNames="Sub-Activity Code" class="table table-striped table-bordered table-hover table-responsive" runat="server"
+                                AllowSorting="True" ShowFooter="true">
+                                <Columns>
+                                    <asp:TemplateField HeaderStyle-HorizontalAlign="Left" HeaderText="#No">
+                                        <HeaderStyle Width="30px" />
+                                        <ItemTemplate>
+                                            <%# string.Format("{0}",Container.DataItemIndex + 1 + ".") %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                   
+                                    <asp:BoundField DataField="Sub-Activity Code" HeaderText="Sub Code" SortExpression="Sub-Activity Code" />
+
+                                    <asp:BoundField DataField="Sub-Activity Description" HeaderText="Sub Activity" SortExpression="Sub-Activity Description" />
+
+                    
+                                    <asp:TemplateField HeaderText="Performance Criteria">
+                                        <ItemTemplate>
+                                            <asp:TextBox ID="txtCriteria" runat="server" Text="" BorderColor="Blue" BorderStyle="Solid" BorderWidth="1px" ForeColor="Blue" Width="150px" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                                    <asp:TemplateField HeaderText="Annual Target">
+                                        <ItemTemplate>
+                                            <asp:TextBox ID="txtAnnualTarget" runat="server" Text="" BorderColor="Blue" BorderStyle="Solid" BorderWidth="1px" ForeColor="Blue" Width="150px" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+                    
+                                    <asp:TemplateField HeaderText="Remarks">
+                                        <ItemTemplate>
+                                            <asp:TextBox ID="txtRemarks" runat="server" Text="" BorderColor="Blue" BorderStyle="Solid" BorderWidth="1px" ForeColor="Blue" Width="150px" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+
+                                <FooterStyle HorizontalAlign="Center" />
+
+               
+                                <EmptyDataTemplate>
+                                    <span style="color: red; font-weight: bold;">No Records Available</span>
+                                </EmptyDataTemplate>
+                            </asp:GridView>
+                        </div>
+
+        
+                        <div class="col-md-12 text-center mt-3">
+                            <a href="AppraisalListing.aspx" class="btn btn-warning pull-left"><i class="fa fa-backward"></i>&nbsp;Back</a>
+                           <%-- <asp:Button ID="btnBack" runat="server" Text="Back" CssClass="btn btn-danger btn-sm" OnClick="btnBack_Click" />--%>
+                            <asp:Button ID="btnSendForApproval" runat="server" Text="Send for Approval" CssClass="btn btn-primary pull-right" OnClick="btnSendForApproval_Click" />
+                        </div>
+                    </div>
+                </asp:View>
+
                 </asp:MultiView>
             </div>
         </div>

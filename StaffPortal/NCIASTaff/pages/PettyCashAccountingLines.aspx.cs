@@ -204,62 +204,7 @@ namespace NCIASTaff.pages
 
         }
 
-        private void BindGridViewData1()
-        {
-            try
-            {
-                string pettyCashNo = ddlPostedPettyCash.SelectedValue.ToString();
-                connection = Components.GetconnToNAV();
-                command = new SqlCommand()
-                {
-                    CommandText = "spPettyCashLines",
-                    CommandType = CommandType.StoredProcedure,
-                    Connection = connection
-                };
-                command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                command.Parameters.AddWithValue("@PettyCashNo", "'" + pettyCashNo + "'");
-                adapter = new SqlDataAdapter();
-                adapter.SelectCommand = command;
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                gvLines.DataSource = dt;
-                gvLines.DataBind();
-                connection.Close();
-
-                foreach (GridViewRow row in gvLines.Rows)
-                {
-                    string account = row.Cells[2].Text;
-                    string surrenderNo = Session["DocumentNo"].ToString();
-                    TextBox txtActualAmount = row.FindControl("txtActualAmount") as TextBox;
-                    TextBox txtAmountReturned = row.FindControl("txtAmountReturned") as TextBox;
-                    //if (txtActualAmount.Text == "") txtActualAmount.Text = "0";
-                    //if (txtAmountReturned.Text == "") txtAmountReturned.Text = "0";
-
-                    string response = webportals.LoadPettyCashSurrenderSurrenderLineDetails(surrenderNo, account);
-                    if (!string.IsNullOrEmpty(response))
-                    {
-                        string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
-                        string returnMsg = responseArr[0];
-                        if (returnMsg == "SUCCESS")
-                        {
-                            decimal actualAmount = Convert.ToDecimal(responseArr[1]);
-                            decimal cashReturned = Convert.ToDecimal(responseArr[2]);
-                            txtActualAmount.Text = actualAmount.ToString();
-                            txtAmountReturned.Text = cashReturned.ToString();
-                        }
-                        else
-                        {
-                            txtActualAmount.Text = "0";
-                            txtAmountReturned.Text = "0";
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.Data.Clear();
-            }
-        }
+      
 
         private void BindAttachedDocuments(string documentNo)
         {

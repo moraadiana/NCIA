@@ -300,7 +300,7 @@ namespace NCIAAPPLY
                 connection = Components.GetconnToNAV();
                 command = new SqlCommand()
                 {
-                    CommandText = "spGetDocumentAttachments",
+                    CommandText = "spDocumentLines",
                     CommandType = CommandType.StoredProcedure,
                     Connection = connection
                 };

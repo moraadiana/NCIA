@@ -86,6 +86,7 @@ namespace NCIASTaff
                                     <div class='options btn-group' >
 					                    <a class='label label-success dropdown-toggle btn-success' data-toggle='dropdown' href='#' style='padding:4px;margin-top:3px'><i class='fa fa-gears'></i> Options</a>
 					                    <ul class='dropdown-menu'>
+                                            <li><a href='AppraisalLines.aspx?appraisalNo={1}&query=old&status={4}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></li>
                                             <li><a href=AppraisalListing.aspx?appraisalNo={1}&status={4}'><i class='fa fa-trash text-danger'></i><span class='text-danger'>Cancel</span></a></li>
                                             <li><a href='ApprovalTracking.aspx?DocNum={1}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Approval Tracking</span></a></li>
                                         </ul>	
