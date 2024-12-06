@@ -1261,23 +1261,23 @@ namespace NCIASupplier.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:InsertTenderSubmissionLine1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="InsertTenderSubmissionLine1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool InsertTenderSubmissionLine1(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmt) {
+        public bool InsertTenderSubmissionLine1(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmnt) {
             object[] results = this.Invoke("InsertTenderSubmissionLine1", new object[] {
                         bidderNo,
                         tenderNo,
                         bidNo,
                         itemNo,
-                        quotedAmt});
+                        quotedAmnt});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void InsertTenderSubmissionLine1Async(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmt) {
-            this.InsertTenderSubmissionLine1Async(bidderNo, tenderNo, bidNo, itemNo, quotedAmt, null);
+        public void InsertTenderSubmissionLine1Async(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmnt) {
+            this.InsertTenderSubmissionLine1Async(bidderNo, tenderNo, bidNo, itemNo, quotedAmnt, null);
         }
         
         /// <remarks/>
-        public void InsertTenderSubmissionLine1Async(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmt, object userState) {
+        public void InsertTenderSubmissionLine1Async(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmnt, object userState) {
             if ((this.InsertTenderSubmissionLine1OperationCompleted == null)) {
                 this.InsertTenderSubmissionLine1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertTenderSubmissionLine1OperationCompleted);
             }
@@ -1286,7 +1286,7 @@ namespace NCIASupplier.NAVWS {
                         tenderNo,
                         bidNo,
                         itemNo,
-                        quotedAmt}, this.InsertTenderSubmissionLine1OperationCompleted, userState);
+                        quotedAmnt}, this.InsertTenderSubmissionLine1OperationCompleted, userState);
         }
         
         private void OnInsertTenderSubmissionLine1OperationCompleted(object arg) {
@@ -1299,23 +1299,23 @@ namespace NCIASupplier.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:InsertTenderSubmissionLine", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="InsertTenderSubmissionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool InsertTenderSubmissionLine(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmnt) {
+        public bool InsertTenderSubmissionLine(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmt) {
             object[] results = this.Invoke("InsertTenderSubmissionLine", new object[] {
                         bidderNo,
                         tenderNo,
                         bidNo,
                         itemNo,
-                        quotedAmnt});
+                        quotedAmt});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void InsertTenderSubmissionLineAsync(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmnt) {
-            this.InsertTenderSubmissionLineAsync(bidderNo, tenderNo, bidNo, itemNo, quotedAmnt, null);
+        public void InsertTenderSubmissionLineAsync(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmt) {
+            this.InsertTenderSubmissionLineAsync(bidderNo, tenderNo, bidNo, itemNo, quotedAmt, null);
         }
         
         /// <remarks/>
-        public void InsertTenderSubmissionLineAsync(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmnt, object userState) {
+        public void InsertTenderSubmissionLineAsync(string bidderNo, string tenderNo, string bidNo, string itemNo, decimal quotedAmt, object userState) {
             if ((this.InsertTenderSubmissionLineOperationCompleted == null)) {
                 this.InsertTenderSubmissionLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertTenderSubmissionLineOperationCompleted);
             }
@@ -1324,7 +1324,7 @@ namespace NCIASupplier.NAVWS {
                         tenderNo,
                         bidNo,
                         itemNo,
-                        quotedAmnt}, this.InsertTenderSubmissionLineOperationCompleted, userState);
+                        quotedAmt}, this.InsertTenderSubmissionLineOperationCompleted, userState);
         }
         
         private void OnInsertTenderSubmissionLineOperationCompleted(object arg) {
