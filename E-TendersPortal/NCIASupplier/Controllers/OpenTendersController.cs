@@ -134,7 +134,7 @@ namespace NCIASupplier.Controllers
 
                 string path = Server.MapPath("~/Attachments");                
 
-                string bidNo = webportals.CreateTenderSubmissionHeader1(bidderNo, tenderNo);
+                string bidNo = webportals.CreateTenderSubmissionHeader(bidderNo, tenderNo);
 
                 if(!string.IsNullOrEmpty(bidNo))
                 {
@@ -170,7 +170,7 @@ namespace NCIASupplier.Controllers
                         decimal quotedAmnt = Convert.ToDecimal(productArr[1].Trim());
                         
                         //update line no here this is just constant
-                        webportals.InsertTenderSubmissionLine1(bidderNo, tenderNo, bidNo,itemNo,quotedAmnt);
+                        webportals.InsertTenderSubmissionLine(bidderNo, tenderNo, bidNo,itemNo,quotedAmnt);
                     }
                     if (webportals.SubmitBid(bidderNo, bidNo))
                     {
