@@ -330,6 +330,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetMyBids1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="bidderNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyBids1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetMyBids">
         <complexType>
           <sequence>
@@ -446,7 +460,6 @@
             <element minOccurs="1" maxOccurs="1" name="bidNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="itemNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="quotedAmt" type="decimal" />
-            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
           </sequence>
         </complexType>
       </element>
@@ -755,6 +768,12 @@
   <message name="GetMyBidLines_Result">
     <part name="parameters" element="tns:GetMyBidLines_Result" />
   </message>
+  <message name="GetMyBids1">
+    <part name="parameters" element="tns:GetMyBids1" />
+  </message>
+  <message name="GetMyBids1_Result">
+    <part name="parameters" element="tns:GetMyBids1_Result" />
+  </message>
   <message name="GetMyBids">
     <part name="parameters" element="tns:GetMyBids" />
   </message>
@@ -963,6 +982,10 @@
     <operation name="GetMyBidLines">
       <input name="GetMyBidLines" message="tns:GetMyBidLines" />
       <output name="GetMyBidLines_Result" message="tns:GetMyBidLines_Result" />
+    </operation>
+    <operation name="GetMyBids1">
+      <input name="GetMyBids1" message="tns:GetMyBids1" />
+      <output name="GetMyBids1_Result" message="tns:GetMyBids1_Result" />
     </operation>
     <operation name="GetMyBids">
       <input name="GetMyBids" message="tns:GetMyBids" />
@@ -1242,6 +1265,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetMyBidLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyBids1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:GetMyBids1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyBids1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyBids1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

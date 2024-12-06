@@ -237,6 +237,11 @@
                                                 </EmptyDataTemplate>
                                             </asp:GridView>
                                         </div>
+                                         <div class="col-md-12 text-center mt-3">
+                                             <a href="TrainingListing.aspx" class="btn btn-warning pull-left"><i class="fa fa-backward"></i>&nbsp;Back</a>
+                                            <%-- <asp:Button ID="btnBack" runat="server" Text="Back" CssClass="btn btn-danger btn-sm" OnClick="btnBack_Click" />--%>
+                                             <asp:Button ID="btnSendForApproval" runat="server" Text="Send for Approval" CssClass="btn btn-primary pull-right" OnClick="btnSendForApproval_Click" />
+                                         </div>
                                     </div>
                                 </asp:View>
                             </asp:MultiView>
