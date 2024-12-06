@@ -398,6 +398,43 @@ namespace NCIASTaff
                 ex.Data.Clear();
             }
         }
+        protected void btnSendForApproval_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string trainingNo = lblTrainingNo.Text;
+                if (gvLines.Rows.Count < 1)
+                {
+                    Message("Please add lines before sending for approval!");
+                    return;
+                }
+                //if (gvAttachments.Rows.Count < 1)
+                //{
+                //    Message("Please attach documents before sending for approval!");
+                //    return;
+                //}
+                string msg = webportals.OnSendClaimRequisitionForApproval(trainingNo);//ClaimRequisitionApprovalRequest(claimNo);//
+                if (msg == "SUCCESS")
+                {
+                    SuccessMessage($"Training number {trainingNo} has been sent for approval successfuly!");
+                }
+                else
+                {
+                    Message("ERROR:Approval Workflow not set"  );
+                }
+            }
+            catch (Exception ex)
+            {
+                Message("ERROR: " + ex.Message);
+                ex.Data.Clear();
+            }
+        }
+        private void SuccessMessage(string message)
+        {
+            string page = "TrainingListing.aspx";
+            string strScript = "<script>alert('" + message + "');window.location='" + page + "'</script>";
+            ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
+        }
 
         private void Message(string message)
         {

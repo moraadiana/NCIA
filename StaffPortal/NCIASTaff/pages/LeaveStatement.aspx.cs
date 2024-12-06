@@ -20,46 +20,32 @@ namespace NCIASTaff.pages
                     return;
                 }
 
-                GeneratetLeaveStatement();
+                GenerateLeaveStatement();
             }
         }
-
-        private void GeneratetLeaveStatement()
+        private void GenerateLeaveStatement()
         {
-            try
+            string username = Session["username"].ToString();
+            string fileName = username.ToString().Replace(@"/", @"");
+            string pdfFilename = String.Format(@"Leave-Statement-{0}.pdf", fileName);
+            var filePath = Server.MapPath("~/Downloads/") + String.Format("Leave-Statement-{0}.pdf", fileName);
+            if (!Directory.Exists(Server.MapPath("~/Downloads/")))
             {
-                string username = Session["username"].ToString();
-                string fileName = username.Replace("/", "");
-                string pdfFilename = $"Leave-Statement-{fileName}.pdf";
-                Components.ObjNav.GenerateStaffLeaveStatement(username, String.Format(@"Leave-Statement-{0}.pdf", fileName));
-               
-
-
-                string networkPath = @"\\10.107.8.40\Downloads\" + pdfFilename;
-
-
-                string localFolderPath = Server.MapPath("~/Downloads/");
-                string localFilePath = Path.Combine(localFolderPath, pdfFilename);
-
-
-                if (!Directory.Exists(localFolderPath))
-                {
-                    Directory.CreateDirectory(localFolderPath);
-                }
-
-
-                System.IO.File.Copy(networkPath, localFilePath, true);
-
-
-                string fileUrl = ResolveUrl("~/Downloads/" + pdfFilename);
-
-
-                myPDF.Attributes.Add("src", fileUrl);
+                Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
             }
-            catch (Exception ex)
+
+            Components.ObjNav.GenerateStaffLeaveStatement(username, String.Format(@"Leave-Statement-{0}.pdf", fileName));
+            if (File.Exists(filePath))
             {
-                ex.Data.Clear();
+                System.Diagnostics.Debug.WriteLine("Statement generated successfully.");
+                myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("Leave-Statement-{0}.pdf", fileName)));
             }
+            else
+            {
+                throw new FileNotFoundException("Statement PDF was not found after generation.");
+            }
+
         }
+       
     }
 }

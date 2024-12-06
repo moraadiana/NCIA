@@ -555,6 +555,34 @@ namespace NCIASTaff.pages
         {
             try
             {
+                string status = Request.QueryString["status"].ToString().Replace("%", " ");
+                if (status == "Open" || status == "Pending")
+                {
+                    string[] args = new string[2];
+                    string storeNo = lblStoreNo.Text;
+                    args = (sender as LinkButton).CommandArgument.ToString().Split(';');
+                    string lineNo = args[0];
+                    //string response = "";
+                    string response = webportals.RemoveStoreRequisitionLine(storeNo);
+                    if (!string.IsNullOrEmpty(response))
+                    {
+                        if (response == "SUCCESS")
+                        {
+                            Message("Line deleted successfully!");
+                            BindGridViewData(storeNo);
+                        }
+                        else
+                        {
+                            Message("An error occured while removing line. Please try again later");
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    Message("You can only edit an open document!");
+                    return;
+                }
 
             }
             catch (Exception ex)

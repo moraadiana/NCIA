@@ -294,10 +294,21 @@ namespace NCIASTaff.pages
                         {
                             if (response.StartsWith("SUCCESS"))
                             {
-                               
-                               // Response.Redirect("AppraisalListing.aspx");
-                                Message($"Appraisal lines submitted successfully.");
-                                //return;
+
+                                string approvalResponse = webportals.OnSendPettyCashSurrenderForApproval(appraisalNo);
+                                if (approvalResponse == "SUCCESS")
+                                {
+                                    SuccessMessage("PAppraisal has been submitted successfully!");
+                                }
+                                //else
+                                //{
+                                //    Message(approvalResponse);
+                                //    return;
+                                //}
+                                else
+                                {
+                                    Message("ERROR:Approval Workflow not set");
+                                }
                             }
                             else
                             {
@@ -309,16 +320,7 @@ namespace NCIASTaff.pages
                         {
                             Message($"Error ");
                         }
-                        //string approvalResponse = webportals.OnSendPettyCashSurrenderForApproval(documentNo);
-                        //if (approvalResponse == "SUCCESS")
-                        //{
-                        //    SuccessMessage("Petty Cash surrender has been submitted successfully!");
-                        //}
-                        //else
-                        //{
-                        //    Message(approvalResponse);
-                        //    return;
-                        //}
+                        
                     }
                     catch (Exception ex)
                     {
@@ -328,7 +330,12 @@ namespace NCIASTaff.pages
             }
         }
 
-      
+        private void SuccessMessage(string message)
+        {
+            string page = "AppraisalListing.aspx";
+            string strScript = "<script>alert('" + message + "');window.location='" + page + "'</script>";
+            ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
+        }
         private void Message(string message)
         {
             string strScript = "<script>alert('" + message + "');</script>";
