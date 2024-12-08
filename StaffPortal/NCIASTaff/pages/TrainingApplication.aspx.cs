@@ -413,7 +413,7 @@ namespace NCIASTaff
                 //    Message("Please attach documents before sending for approval!");
                 //    return;
                 //}
-                string msg = webportals.OnSendClaimRequisitionForApproval(trainingNo);//ClaimRequisitionApprovalRequest(claimNo);//
+                string msg = webportals.OnSendTrainigRequisitionForApproval(trainingNo);//ClaimRequisitionApprovalRequest(claimNo);//
                 if (msg == "SUCCESS")
                 {
                     SuccessMessage($"Training number {trainingNo} has been sent for approval successfuly!");

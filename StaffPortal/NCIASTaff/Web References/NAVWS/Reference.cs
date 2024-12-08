@@ -91,8 +91,6 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GeneratePaySlipReportOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GeneratePayslipReport31OperationCompleted;
-        
         private System.Threading.SendOrPostCallback GenerateStaffLeaveStatementOperationCompleted;
         
         private System.Threading.SendOrPostCallback GenerateVendorLPOOperationCompleted;
@@ -269,6 +267,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback OnSendStoreRequisitionForApprovalOperationCompleted;
         
+        private System.Threading.SendOrPostCallback OnSendTrainigRequisitionForApprovalOperationCompleted;
+        
         private System.Threading.SendOrPostCallback OnsendLeaveRequisitionForApprovalOperationCompleted;
         
         private System.Threading.SendOrPostCallback PurchaseQuoteCreateOperationCompleted;
@@ -437,9 +437,6 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GeneratePaySlipReportCompletedEventHandler GeneratePaySlipReportCompleted;
-        
-        /// <remarks/>
-        public event GeneratePayslipReport31CompletedEventHandler GeneratePayslipReport31Completed;
         
         /// <remarks/>
         public event GenerateStaffLeaveStatementCompletedEventHandler GenerateStaffLeaveStatementCompleted;
@@ -704,6 +701,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event OnSendStoreRequisitionForApprovalCompletedEventHandler OnSendStoreRequisitionForApprovalCompleted;
+        
+        /// <remarks/>
+        public event OnSendTrainigRequisitionForApprovalCompletedEventHandler OnSendTrainigRequisitionForApprovalCompleted;
         
         /// <remarks/>
         public event OnsendLeaveRequisitionForApprovalCompletedEventHandler OnsendLeaveRequisitionForApprovalCompleted;
@@ -1819,38 +1819,6 @@ namespace NCIASTaff.NAVWS {
             if ((this.GeneratePaySlipReportCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GeneratePaySlipReportCompleted(this, new GeneratePaySlipReportCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePayslipReport31", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GeneratePayslipReport31_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void GeneratePayslipReport31(string employeeNo, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime period, string fileNameFromApp) {
-            this.Invoke("GeneratePayslipReport31", new object[] {
-                        employeeNo,
-                        period,
-                        fileNameFromApp});
-        }
-        
-        /// <remarks/>
-        public void GeneratePayslipReport31Async(string employeeNo, System.DateTime period, string fileNameFromApp) {
-            this.GeneratePayslipReport31Async(employeeNo, period, fileNameFromApp, null);
-        }
-        
-        /// <remarks/>
-        public void GeneratePayslipReport31Async(string employeeNo, System.DateTime period, string fileNameFromApp, object userState) {
-            if ((this.GeneratePayslipReport31OperationCompleted == null)) {
-                this.GeneratePayslipReport31OperationCompleted = new System.Threading.SendOrPostCallback(this.OnGeneratePayslipReport31OperationCompleted);
-            }
-            this.InvokeAsync("GeneratePayslipReport31", new object[] {
-                        employeeNo,
-                        period,
-                        fileNameFromApp}, this.GeneratePayslipReport31OperationCompleted, userState);
-        }
-        
-        private void OnGeneratePayslipReport31OperationCompleted(object arg) {
-            if ((this.GeneratePayslipReport31Completed != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GeneratePayslipReport31Completed(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4651,6 +4619,37 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnSendTrainigRequisitionForA" +
+            "pproval", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="OnSendTrainigRequisitionForApproval_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string OnSendTrainigRequisitionForApproval(string trainingNo) {
+            object[] results = this.Invoke("OnSendTrainigRequisitionForApproval", new object[] {
+                        trainingNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void OnSendTrainigRequisitionForApprovalAsync(string trainingNo) {
+            this.OnSendTrainigRequisitionForApprovalAsync(trainingNo, null);
+        }
+        
+        /// <remarks/>
+        public void OnSendTrainigRequisitionForApprovalAsync(string trainingNo, object userState) {
+            if ((this.OnSendTrainigRequisitionForApprovalOperationCompleted == null)) {
+                this.OnSendTrainigRequisitionForApprovalOperationCompleted = new System.Threading.SendOrPostCallback(this.OnOnSendTrainigRequisitionForApprovalOperationCompleted);
+            }
+            this.InvokeAsync("OnSendTrainigRequisitionForApproval", new object[] {
+                        trainingNo}, this.OnSendTrainigRequisitionForApprovalOperationCompleted, userState);
+        }
+        
+        private void OnOnSendTrainigRequisitionForApprovalOperationCompleted(object arg) {
+            if ((this.OnSendTrainigRequisitionForApprovalCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.OnSendTrainigRequisitionForApprovalCompleted(this, new OnSendTrainigRequisitionForApprovalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnsendLeaveRequisitionForApp" +
             "roval", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="OnsendLeaveRequisitionForApproval_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
@@ -6154,10 +6153,6 @@ namespace NCIASTaff.NAVWS {
             }
         }
     }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void GeneratePayslipReport31CompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
@@ -8320,6 +8315,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal OnSendStoreRequisitionForApprovalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void OnSendTrainigRequisitionForApprovalCompletedEventHandler(object sender, OnSendTrainigRequisitionForApprovalCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class OnSendTrainigRequisitionForApprovalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal OnSendTrainigRequisitionForApprovalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

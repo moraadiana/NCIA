@@ -187,18 +187,18 @@ namespace NCIASTaff.pages
         private void BindGridViewData()
         {
             string staffNo = Session["username"].ToString();
-            string appraisalLines = webportals.CpActivityLines(staffNo);
             string department = lblDepartment.Text;
             string unit = lblDirectorate.Text;
-
-
+            string appraisalLines = webportals.CpActivityLines(staffNo);
+            
             if (!string.IsNullOrEmpty(appraisalLines))
             {
 
                 DataTable dt = new DataTable();
                 dt.Columns.Add("Sub-Activity Code");
                 dt.Columns.Add("Sub-Activity Description");
-              
+                dt.Columns.Add("Perfomance Target");
+
 
 
                 string[] lines = appraisalLines.Split(new[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
@@ -207,12 +207,13 @@ namespace NCIASTaff.pages
                 foreach (string line in lines)
                 {
                     string[] fields = line.Split(new[] { "::" }, StringSplitOptions.None);
-                    if (fields.Length >= 3 && fields[0] == "SUCCESS")
+                    if (fields.Length >= 4 && fields[0] == "SUCCESS")
                     {
                         DataRow row = dt.NewRow();
                         row["Sub-Activity Code"] = fields[1];
                         row["Sub-Activity Description"] = fields[2];
-                       
+                        row["Perfomance Target"] = fields[3];
+
 
                         dt.Rows.Add(row);
                     }
@@ -231,7 +232,7 @@ namespace NCIASTaff.pages
             {
                 string appraisalNo = Session["appraisalNo"].ToString();
                 TextBox txtCriteria = row.FindControl("txtCriteria") as TextBox;
-                TextBox txtAnnualTarget = row.FindControl("txtAnnualTarget") as TextBox;
+               // TextBox txtAnnualTarget = row.FindControl("txtAnnualTarget") as TextBox;
                 TextBox txtRemarks = row.FindControl("txtRemarks") as TextBox;
 
                 string response = webportals.GetAppraisalLines(appraisalNo);
@@ -247,13 +248,13 @@ namespace NCIASTaff.pages
                         if (data.Length >= 4)
                         {
                             string performanceCriteria = data[1];
-                            string annualTarget = data[2];
+                            //string annualTarget = data[2];
                             string remarks = data[3];
 
                             if (i == row.RowIndex) 
                             {
                                 txtCriteria.Text = performanceCriteria;
-                                txtAnnualTarget.Text = annualTarget;
+                              //  txtAnnualTarget.Text = annualTarget;
                                 txtRemarks.Text = remarks;
                             }
                         }
@@ -262,7 +263,7 @@ namespace NCIASTaff.pages
                 else
                 {
                     txtCriteria.Text = "";
-                    txtAnnualTarget.Text = "";
+                   // txtAnnualTarget.Text = "";
                     txtRemarks.Text = "";
                 }
             }
