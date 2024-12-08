@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot\Portals\RecruitmentPortal</_PublishTargetUrl>
-    <History>False|2024-12-08T15:06:09.1965079Z||;False|2024-12-08T18:04:46.8433934+03:00||;False|2024-12-08T18:03:15.5591565+03:00||;False|2024-12-08T18:02:49.5901945+03:00||;</History>
+    <History>False|2024-12-08T15:06:59.6002922Z||;False|2024-12-08T18:06:09.1965079+03:00||;False|2024-12-08T18:04:46.8433934+03:00||;False|2024-12-08T18:03:15.5591565+03:00||;False|2024-12-08T18:02:49.5901945+03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>
