@@ -2580,10 +2580,11 @@
     <Content Include="Views\JobApplication\GeneralInformation.cshtml" />
     <Content Include="Views\JobApplication\MinimumRequirements.cshtml" />
     <Content Include="Views\JobApplication\NextOfKin.cshtml" />
-    <Content Include="Views\JobApplication\ProfessionalBodies.cshtml" />
-    <Content Include="Views\JobApplication\ProfessionalQualifications.cshtml" />
+    <Content Include="Views\JobApplication\ProfFessionalBodies.cshtml" />
+    <Content Include="Views\JobApplication\ProffessionalQualifications.cshtml" />
     <Content Include="Views\JobApplication\Qualifications.cshtml" />
     <Content Include="Views\JobApplication\Referees.cshtml" />
+    <Content Include="Views\JobApplication\Trainings.cshtml" />
     <None Include="Web References\NAVWS\recruitment.wsdl" />
     <None Include="Web References\NAVWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>

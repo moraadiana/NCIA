@@ -3,6 +3,7 @@ using NCIAJobs.NAVWS;
 using System;
 using System.Collections.Generic;
 using System.EnterpriseServices.Internal;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -333,14 +334,30 @@ namespace NCIAJobs
                 if (!string.IsNullOrEmpty(requirements))
                 {
                     string[] requirementsArr = requirements.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+
                     foreach (string requirement in requirementsArr)
                     {
                         string[] responseArr = requirement.Split(strLimiters, StringSplitOptions.None);
+                        DateTime dateFrom, dateTo;
+                        string format = "MM/dd/yy"; // Matches AL output
+                        var culture = CultureInfo.InvariantCulture;
+
+
+                        if (!DateTime.TryParseExact(responseArr[2].Trim(), format, culture, DateTimeStyles.None, out dateFrom))
+                        {
+                            throw new FormatException($"Invalid date format for DateFrom: {responseArr[2]}");
+                        }
+
+                        if (!DateTime.TryParseExact(responseArr[3].Trim(), format, culture, DateTimeStyles.None, out dateTo))
+                        {
+                            throw new FormatException($"Invalid date format for DateTo: {responseArr[3]}");
+                        }
+
                         list.Add(new Applicant()
                         {
                             Institution = responseArr[1],
-                            DateFrom = DateTime.Parse(responseArr[2]),
-                            DateTo = DateTime.Parse(responseArr[3]),
+                            DateFrom = dateFrom,
+                            DateTo = dateTo,
                             Course = responseArr[4],
                             SystemId = responseArr[5]
                         });
