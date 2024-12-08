@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot\Portals\E-tendering</_PublishTargetUrl>
-    <History>True|2024-12-06T07:32:08.3712337Z||;True|2024-11-27T22:11:09.2523606+03:00||;True|2024-11-26T13:34:19.5994912+03:00||;True|2024-11-18T19:23:15.0692389+03:00||;</History>
+    <History>True|2024-12-06T14:27:54.3911327Z||;True|2024-12-06T10:32:08.3712337+03:00||;True|2024-11-27T22:11:09.2523606+03:00||;True|2024-11-26T13:34:19.5994912+03:00||;True|2024-11-18T19:23:15.0692389+03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -7105,13 +7105,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2024 21:06:17</publishTime>
     </File>
     <File Include="bin/NCIASupplier.dll">
-      <publishTime>12/06/2024 17:12:15</publishTime>
+      <publishTime>12/06/2024 17:27:47</publishTime>
     </File>
     <File Include="bin/NCIASupplier.pdb">
-      <publishTime>12/06/2024 17:12:15</publishTime>
+      <publishTime>12/06/2024 17:27:47</publishTime>
     </File>
     <File Include="bin/NCIASupplier.XmlSerializers.dll">
-      <publishTime>12/06/2024 17:12:17</publishTime>
+      <publishTime>12/06/2024 17:27:48</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/14/2024 21:06:17</publishTime>
