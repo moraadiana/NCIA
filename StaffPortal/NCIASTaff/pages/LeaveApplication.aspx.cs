@@ -107,8 +107,8 @@ namespace NCIASTaff.pages
                     string returnMsg = responseArr[0];
                     if (returnMsg == "SUCCESS")
                     {
-                        lblDirectorate.Text = responseArr[1];
-                        lblDepartment.Text = responseArr[2];
+                        lblDirectorate.Text = responseArr[2];
+                        lblDepartment.Text = responseArr[1];
                     }
                     else
                     {

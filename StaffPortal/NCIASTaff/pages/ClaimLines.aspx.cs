@@ -533,69 +533,37 @@ namespace NCIASTaff.pages
         {
             try
             {
-                //string documentNo = Session["PettyCashNo"].ToString();
-                string documentNo = Request.QueryString["ClaimNo"];
-                // string documentNo = lblLNo.Text;
-                string[] args = new string[2];
-                args = (sender as LinkButton).CommandArgument.ToString().Split(';');
-                string systemId = args[0];
-                if (Components.ObjNav.DeleteDocumentAttachments(systemId))
+                string status = Request.QueryString["status"].ToString().Replace("%", " ");
+                if (status == "Open" || status == "Pending")
                 {
-                    Message("Document deleted successfully!");
-                    BindAttachedDocuments(documentNo);
+                    //string documentNo = Session["PettyCashNo"].ToString();
+                    string documentNo = Request.QueryString["ClaimNo"];
+                    // string documentNo = lblLNo.Text;
+                    string[] args = new string[2];
+                    args = (sender as LinkButton).CommandArgument.ToString().Split(';');
+                    string systemId = args[0];
+                    if (Components.ObjNav.DeleteDocumentAttachments(systemId))
+                    {
+                        Message("Document deleted successfully!");
+                        BindAttachedDocuments(documentNo);
+
+                    }
+                    else
+                    {
+                        Message("An error occured while deleting document. Please try again later!");
+                        return;
+                    }
 
                 }
                 else
                 {
-                    Message("An error occured while deleting document. Please try again later!");
+                    Message("You can only edit an open document!");
                     return;
                 }
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
-            }
-        }
-
-        protected void lbtnRemoveAttach_Click1(object sender, EventArgs e)
-        {
-            string status = Request.QueryString["status"].ToString().Replace("%", " ");
-            if (status == "Open" || status == "Pending")
-            {
-                string[] args = new string[2];
-                args = (sender as LinkButton).CommandArgument.ToString().Split(';');
-                string systemId = args[0];
-                string documentNo = lblLNo.Text;
-                string fileName = string.Empty;
-                string documentDetails = webportals.GetAttachmentDetails(systemId);
-                if (documentDetails != null)
-                {
-                    string[] documentsDetailsArr = documentDetails.Split(strLimiters, StringSplitOptions.None);
-                    fileName = documentsDetailsArr[1].Split('.')[0];
-                }
-
-                string response = webportals.DeleteDocumentAttachment(systemId, fileName, documentNo);
-                if (response != null)
-                {
-                    string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
-                    string returnMsg1 = responseArr[0];
-                    string returnMsg2 = responseArr[1];
-                    if (returnMsg1 == "SUCCESS" && returnMsg2 == "SUCCESS")
-                    {
-                        Message("Document deleted successfully.");
-                        BindAttachedDocuments(documentNo);
-                    }
-                    else
-                    {
-                        Message("An error has occured. Please try again later.");
-                        return;
-                    }
-                }
-            }
-            else
-            {
-                Message("You can only edit an open document!");
-                return;
             }
         }
     }

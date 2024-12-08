@@ -188,6 +188,9 @@ namespace NCIASTaff.pages
         {
             string staffNo = Session["username"].ToString();
             string appraisalLines = webportals.CpActivityLines(staffNo);
+            string department = lblDepartment.Text;
+            string unit = lblDirectorate.Text;
+
 
             if (!string.IsNullOrEmpty(appraisalLines))
             {
@@ -219,6 +222,10 @@ namespace NCIASTaff.pages
                 gvLines.DataBind();
 
 
+            }
+            else
+            {
+                Message($"No approved workplan for {department}, {unit} ");
             }
             foreach (GridViewRow row in gvLines.Rows)
             {
