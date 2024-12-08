@@ -1,5 +1,3 @@
-D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\obj\Debug\NCIAJobs.csproj.AssemblyReference.cache
-D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\obj\Debug\NCIAJobs.csproj.CoreCompileInputs.cache
 D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\bin\NCIAJobs.dll.config
 D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\bin\NCIAJobs.dll
 D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\bin\NCIAJobs.pdb
@@ -74,6 +72,8 @@ D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\bin\System.Web.WebPages.Razor.xml
 D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\bin\Newtonsoft.Json.xml
 D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\bin\Antlr3.Runtime.pdb
 D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\obj\Debug\NCIAJobs.csproj.AssemblyReference.cache
+D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\obj\Debug\NCIAJobs.csproj.CoreCompileInputs.cache
 D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\obj\Debug\NCIAJobs.csproj.Up2Date
 D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\obj\Debug\NCIAJobs.dll
 D:\NCIA\Jobs Portal\NCIAJobs\NCIAJobs\obj\Debug\NCIAJobs.pdb

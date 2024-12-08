@@ -272,7 +272,7 @@ namespace NCIAJobs.Controllers
         {
             string applicationNo = Session["username"].ToString();
             var qualifications = Services.GetQualifications(applicationNo);
-            return RedirectToAction("professionalqualifications", "jobapplication");
+            return RedirectToAction("ProffessionalQualifications", "jobapplication");
             //if (qualifications.Count > 0)
             //{
             //}
@@ -613,6 +613,7 @@ namespace NCIAJobs.Controllers
         {
             string applicationNo = Session["username"].ToString();
             var referees = Services.GetApplicantReferees(applicationNo);
+           
             return RedirectToAction("attachments", "jobapplication");
         }
 
@@ -702,6 +703,7 @@ namespace NCIAJobs.Controllers
             try
             {
                 string applicationNo = Session["ApplicationNo"].ToString();
+                //string applicationNo = Session["username"].ToString();
                 if (!webportals.SubmitApplication(applicationNo))
                 {
                     TempData["Error"] = "An error occured while submitting the application. Please try again later!";
@@ -709,10 +711,10 @@ namespace NCIAJobs.Controllers
                 }
                 string jobTitle = Session["jobTitle"].ToString();
                 string recipient = Session["username"].ToString();
-                string subject = "Office of the Auditor General Job Application Alert";
+                string subject = "NCIA Job Application Alert";
                 string body = $"Hello " +
                     $"<br/><br/>" +
-                    $"You have successfully initiated a job application for <b>{jobTitle}</b> at the Office of the Auditor General." +
+                    $"You have successfully initiated a job application for <b>{jobTitle}</b> at NCIA." +
                     $"<br/><br/>" +
                     $"Your application reference number is: <b>{applicationNo}</b>";
                 Components.SendMyEmail(recipient, subject, body);
