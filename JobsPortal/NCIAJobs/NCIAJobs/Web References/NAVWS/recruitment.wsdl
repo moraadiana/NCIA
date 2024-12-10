@@ -415,6 +415,22 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetSubmittedMinimumRequirements1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="refNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="applicationNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetSubmittedMinimumRequirements1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetSubmittedMinimumRequirements">
         <complexType>
           <sequence>
@@ -1082,6 +1098,12 @@
   <message name="GetSubCounties_Result">
     <part name="parameters" element="tns:GetSubCounties_Result" />
   </message>
+  <message name="GetSubmittedMinimumRequirements1">
+    <part name="parameters" element="tns:GetSubmittedMinimumRequirements1" />
+  </message>
+  <message name="GetSubmittedMinimumRequirements1_Result">
+    <part name="parameters" element="tns:GetSubmittedMinimumRequirements1_Result" />
+  </message>
   <message name="GetSubmittedMinimumRequirements">
     <part name="parameters" element="tns:GetSubmittedMinimumRequirements" />
   </message>
@@ -1376,6 +1398,10 @@
     <operation name="GetSubCounties">
       <input name="GetSubCounties" message="tns:GetSubCounties" />
       <output name="GetSubCounties_Result" message="tns:GetSubCounties_Result" />
+    </operation>
+    <operation name="GetSubmittedMinimumRequirements1">
+      <input name="GetSubmittedMinimumRequirements1" message="tns:GetSubmittedMinimumRequirements1" />
+      <output name="GetSubmittedMinimumRequirements1_Result" message="tns:GetSubmittedMinimumRequirements1_Result" />
     </operation>
     <operation name="GetSubmittedMinimumRequirements">
       <input name="GetSubmittedMinimumRequirements" message="tns:GetSubmittedMinimumRequirements" />
@@ -1763,6 +1789,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetSubCounties_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetSubmittedMinimumRequirements1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/recruitment:GetSubmittedMinimumRequirements1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetSubmittedMinimumRequirements1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetSubmittedMinimumRequirements1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
