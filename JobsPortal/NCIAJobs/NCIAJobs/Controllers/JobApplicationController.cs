@@ -111,7 +111,43 @@ namespace NCIAJobs.Controllers
         }
 
         [HttpPost]
-        public ActionResult SubmitRequirements(Applicant applicant)
+        public ActionResult SubmitRequirements(Dictionary<string, string> RequirementAnswers, Dictionary<string, string> RequirementDescriptions)
+        {
+            try
+            {
+                string jobId = Session["jobId"].ToString();
+                string refNo = Session["refNo"].ToString();
+                string applicationNo = Session["ApplicationNo"].ToString();
+
+                // Loop through each answer submitted from the view
+                foreach (var answer in RequirementAnswers)
+                {
+                    string code = answer.Key; // Qualification code
+                    string selectedAnswer = answer.Value; // Selected answer
+
+                    // Parse the selected answer into an integer value (Yes = 2, No = 1)
+                    int answerValue = selectedAnswer == "2" ? 2 : 1;
+
+                    // Retrieve the corresponding description from RequirementDescriptions
+                    string description = RequirementDescriptions.ContainsKey(code)
+                        ? RequirementDescriptions[code]
+                        : string.Empty;
+
+                    // Call the procedure to update/insert the requirement
+                    webportals.UpdateEmployeeMinimuRequirement(applicationNo, refNo, jobId, answerValue, code, description);
+                }
+
+                TempData["Success"] = "Minimum requirements added successfully!";
+                return RedirectToAction("qualifications", "jobapplication");
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = $"An error occurred while submitting requirements: {ex.Message}";
+                return RedirectToAction("minimumrequirements", "jobapplication");
+            }
+        }
+
+        public ActionResult SubmitRequirements1(Applicant applicant)
         {
             try
             {
@@ -120,40 +156,41 @@ namespace NCIAJobs.Controllers
                 string applicationNo = Session["ApplicationNo"].ToString();
                 string code = applicant.QualificationType;
                 string description = applicant.QualificationCode;
-                if (applicant.AttachmentFile != null || applicant.AttachmentFile.ContentLength > 0)
-                {
-                    string fileName = applicant.AttachmentFile.FileName;
-                    string fileExtension = Path.GetExtension(fileName).Split('.')[1].ToLower();
-                    if (fileExtension == "pdf")
-                    {
-                        string path = Server.MapPath("~/Uploads/");
-                        if (!Directory.Exists(path))
-                        {
-                            Directory.CreateDirectory(path);
-                        }
-                        string pathToUpload = Path.Combine(path, applicationNo.Replace("/", "") + fileName);
-                        if (System.IO.File.Exists(pathToUpload))
-                        {
-                            System.IO.File.Delete(pathToUpload);
-                        }
-                        applicant.AttachmentFile.SaveAs(pathToUpload);
-                        Stream fs = applicant.AttachmentFile.InputStream;
-                        BinaryReader br = new BinaryReader(fs);
-                        byte[] bytes = br.ReadBytes((int)fs.Length);
-                        string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                        webportals.RegFileUpload(applicationNo, fileName.ToUpper(), base64String, 52179114);
-                    }
-                    else
-                    {
-                        TempData["Error"] = "Please upload files with .pdf extensions only.";
-                        return RedirectToAction("minimumrequirements", "jobapplication");
-                    }
-                    webportals.UpdateEmployeeMinimuRequirement(applicationNo, refNo, jobId, 2, code, description);
-                }
-                else
-                {
-                    webportals.UpdateEmployeeMinimuRequirement(applicationNo, refNo, jobId, 1, code, description);
-                }
+                //if (applicant.AttachmentFile != null || applicant.AttachmentFile.ContentLength > 0)
+                //{
+                //    string fileName = applicant.AttachmentFile.FileName;
+                //    string fileExtension = Path.GetExtension(fileName).Split('.')[1].ToLower();
+                //    if (fileExtension == "pdf")
+                //    {
+                //        string path = Server.MapPath("~/Uploads/");
+                //        if (!Directory.Exists(path))
+                //        {
+                //            Directory.CreateDirectory(path);
+                //        }
+                //        string pathToUpload = Path.Combine(path, applicationNo.Replace("/", "") + fileName);
+                //        if (System.IO.File.Exists(pathToUpload))
+                //        {
+                //            System.IO.File.Delete(pathToUpload);
+                //        }
+                //        applicant.AttachmentFile.SaveAs(pathToUpload);
+                //        Stream fs = applicant.AttachmentFile.InputStream;
+                //        BinaryReader br = new BinaryReader(fs);
+                //        byte[] bytes = br.ReadBytes((int)fs.Length);
+                //        string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                //        webportals.RegFileUpload(applicationNo, fileName.ToUpper(), base64String, 52179114);
+                //    }
+                //else
+                //{
+                //    TempData["Error"] = "Please upload files with .pdf extensions only.";
+                //    return RedirectToAction("minimumrequirements", "jobapplication");
+                //}
+
+                //}
+                //else
+                //{
+                //    webportals.UpdateEmployeeMinimuRequirement(applicationNo, refNo, jobId, 1, code, description);
+                //}
+                webportals.UpdateEmployeeMinimuRequirement(applicationNo, refNo, jobId, 2, code, description);
                 TempData["Success"] = "Minimum requirements added successfully!";
                 return RedirectToAction("minimumrequirements", "jobapplication");
             }

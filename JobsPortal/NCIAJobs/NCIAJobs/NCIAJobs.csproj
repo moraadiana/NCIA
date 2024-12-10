@@ -2578,13 +2578,14 @@
     <Content Include="Views\JobApplication\Attachments.cshtml" />
     <Content Include="Views\JobApplication\EmploymentDetails.cshtml" />
     <Content Include="Views\JobApplication\GeneralInformation.cshtml" />
-    <Content Include="Views\JobApplication\MinimumRequirements.cshtml" />
+    <Content Include="Views\JobApplication\MinimumRequirements1.cshtml" />
     <Content Include="Views\JobApplication\NextOfKin.cshtml" />
     <Content Include="Views\JobApplication\ProfFessionalBodies.cshtml" />
     <Content Include="Views\JobApplication\ProffessionalQualifications.cshtml" />
     <Content Include="Views\JobApplication\Qualifications.cshtml" />
     <Content Include="Views\JobApplication\Referees.cshtml" />
     <Content Include="Views\JobApplication\Trainings.cshtml" />
+    <Content Include="Views\JobApplication\MinimumRequirements.cshtml" />
     <None Include="Web References\NAVWS\recruitment.wsdl" />
     <None Include="Web References\NAVWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
