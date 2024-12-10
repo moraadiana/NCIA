@@ -85,8 +85,53 @@ namespace NCIAJobs.Controllers
             }
             return View();
         }
-
         public ActionResult MinimumRequirements()
+        {
+            if (Session["username"] == null) return RedirectToAction("index", "login");
+
+            string jobId = Session["jobId"].ToString();
+            string refNo = Session["refNo"].ToString();
+            string applicationNo = Session["ApplicationNo"].ToString();
+
+            Applicant applicant = new Applicant();
+
+            try
+            {
+                // Get minimum requirements and submitted requirements
+                var minimumRequirements = Services.GetMinimumRequirements(applicationNo, jobId, refNo);
+                var submittedRequirements = Services.GetSubmittedMinimumRequirements(jobId, refNo);
+                var qualificationTypes = Services.GetQualificationTypes(jobId);
+
+                // Combine minimum and submitted requirements
+                foreach (var submittedRequirement in submittedRequirements)
+                {
+                    // Check if the requirement already exists in minimumRequirements
+                    var existingRequirement = minimumRequirements.FirstOrDefault(req => req.Code == submittedRequirement.Code);
+                    if (existingRequirement != null)
+                    {
+                        // If exists, update the Answer from submittedRequirements
+                        existingRequirement.Answer = submittedRequirement.Answer;
+                    }
+                    else
+                    {
+                        // If not exists, append the new requirement
+                        minimumRequirements.Add(submittedRequirement);
+                    }
+                }
+
+                applicant.MinimumRequirements = minimumRequirements;
+                applicant.QualificationTypes = qualificationTypes;
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = ex.Message;
+                return RedirectToAction("minimumrequirements", "jobapplication");
+            }
+
+            return View(applicant);
+        }
+
+        public ActionResult MinimumRequirements1()
         {
             if (Session["username"] == null) return RedirectToAction("index", "login");
             string jobId = Session["jobId"].ToString();
