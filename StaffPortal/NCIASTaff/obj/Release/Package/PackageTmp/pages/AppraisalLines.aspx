@@ -88,6 +88,7 @@
 
                                     <asp:BoundField DataField="Sub-Activity Description" HeaderText="Sub Activity" SortExpression="Sub-Activity Description" />
 
+                                    <asp:BoundField DataField="Perfomance Target" HeaderText="Perfomance Target" SortExpression="Perfomance Target" />
                     
                                     <asp:TemplateField HeaderText="Performance Criteria">
                                         <ItemTemplate>
@@ -95,11 +96,11 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
-                                    <asp:TemplateField HeaderText="Annual Target">
+                                   <%-- <asp:TemplateField HeaderText="Annual Target">
                                         <ItemTemplate>
                                             <asp:TextBox ID="txtAnnualTarget" runat="server" Text="" BorderColor="Blue" BorderStyle="Solid" BorderWidth="1px" ForeColor="Blue" Width="150px" />
                                         </ItemTemplate>
-                                    </asp:TemplateField>
+                                    </asp:TemplateField>--%>
 
                     
                                     <asp:TemplateField HeaderText="Remarks">
