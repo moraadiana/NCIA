@@ -29,7 +29,7 @@ namespace NCIASTaff
                     Response.Redirect("~/Default.aspx");
                     return;
                 }
-
+                string approvalStatus = Request.QueryString["status"].Replace("%", " ");
                 string query = Request.QueryString["query"].ToString();
                 if (query == "new")
                 {
@@ -42,6 +42,15 @@ namespace NCIASTaff
                     Session["TrainingNo"] = trainingNo;
                     lblTrainingNo.Text = trainingNo;
                     BindGridViewData(trainingNo);
+                    if (approvalStatus == "Open" || approvalStatus == "Pending")
+                    {
+                        btnSendForApproval.Visible = true;
+                        //lbtnSubmit.Visible = true;
+                    }
+                    else
+                    {
+                        btnSendForApproval.Visible = false;
+                    }
                 }
 
                 LoadStaffDetails();

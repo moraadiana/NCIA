@@ -28,7 +28,7 @@ namespace NCIASTaff.pages
                 LoadStaffDetails();
                 LoadPeriod();
                 string query = Request.QueryString["query"];
-
+                string approvalStatus = Request.QueryString["status"].Replace("%", " ");
                 if (query == "new")
                 {
                     MultiView1.SetActiveView(vwHeader);
@@ -42,6 +42,15 @@ namespace NCIASTaff.pages
                         Session["appraisalNo"] = appraisalNo;
                         MultiView1.SetActiveView(vwLines);
                         BindGridViewData();
+                    }
+                    if (approvalStatus == "Open" || approvalStatus == "Pending")
+                    {
+                        btnSendForApproval.Visible = true;
+                        //lbtnSubmit.Visible = true;
+                    }
+                    else
+                    {
+                        btnSendForApproval.Visible = false;
                     }
 
                 }
@@ -283,9 +292,10 @@ namespace NCIASTaff.pages
                     {
                         string appraisalNo = Session["appraisalNo"]?.ToString();
                         string subCode = row.Cells[1].Text.Trim();
-                        string activityDescription = row.Cells[2].Text.Trim();    
+                        string activityDescription = row.Cells[2].Text.Trim();
+                        string annualTargetText = row.Cells[3].Text.Trim();
                         string criteria = ((TextBox)row.FindControl("txtCriteria")).Text.Trim();
-                        string annualTargetText = ((TextBox)row.FindControl("txtAnnualTarget")).Text.Trim();
+                        //string annualTargetText = ((TextBox)row.FindControl("txtAnnualTarget")).Text.Trim();
                         string remarks = ((TextBox)row.FindControl("txtRemarks")).Text.Trim();
 
                         // Convert annualTarget to decimal
@@ -302,21 +312,29 @@ namespace NCIASTaff.pages
                         {
                             if (response.StartsWith("SUCCESS"))
                             {
-
-                                string approvalResponse = webportals.OnSendPettyCashSurrenderForApproval(appraisalNo);
-                                if (approvalResponse == "SUCCESS")
+                                string msg = webportals.OnSendAppraisalForApproval(appraisalNo);
+                                if (msg == "SUCCESS")
                                 {
-                                    SuccessMessage("PAppraisal has been submitted successfully!");
+                                    SuccessMessage($"Appraisal number {appraisalNo} has been sent for approval successfuly!");
                                 }
-                                //else
-                                //{
-                                //    Message(approvalResponse);
-                                //    return;
-                                //}
                                 else
                                 {
                                     Message("ERROR:Approval Workflow not set");
                                 }
+                                //string approvalResponse = webportals.OnSendAppraisalForApproval(appraisalNo);
+                                //if (approvalResponse == "SUCCESS")
+                                //{
+                                //    SuccessMessage("PAppraisal has been submitted successfully!");
+                                //}
+                                ////else
+                                ////{
+                                ////    Message(approvalResponse);
+                                ////    return;
+                                ////}
+                                //else
+                                //{
+                                //    Message("ERROR:Approval Workflow not set");
+                                //}
                             }
                             else
                             {

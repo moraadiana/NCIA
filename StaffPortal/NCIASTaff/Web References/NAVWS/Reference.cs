@@ -237,6 +237,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback LoginForUnchnagedPasswordOperationCompleted;
         
+        private System.Threading.SendOrPostCallback OnCancelAppraisalRequestOperationCompleted;
+        
         private System.Threading.SendOrPostCallback OnCancelClaimRequisitionOperationCompleted;
         
         private System.Threading.SendOrPostCallback OnCancelImprestRequisitionOperationCompleted;
@@ -252,6 +254,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback OnCancelPurchaseRequsiitionOperationCompleted;
         
         private System.Threading.SendOrPostCallback OnCancelStoreRequisitionApprovalOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback OnSendAppraisalForApprovalOperationCompleted;
         
         private System.Threading.SendOrPostCallback OnSendClaimRequisitionForApprovalOperationCompleted;
         
@@ -658,6 +662,9 @@ namespace NCIASTaff.NAVWS {
         public event LoginForUnchnagedPasswordCompletedEventHandler LoginForUnchnagedPasswordCompleted;
         
         /// <remarks/>
+        public event OnCancelAppraisalRequestCompletedEventHandler OnCancelAppraisalRequestCompleted;
+        
+        /// <remarks/>
         public event OnCancelClaimRequisitionCompletedEventHandler OnCancelClaimRequisitionCompleted;
         
         /// <remarks/>
@@ -680,6 +687,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event OnCancelStoreRequisitionApprovalCompletedEventHandler OnCancelStoreRequisitionApprovalCompleted;
+        
+        /// <remarks/>
+        public event OnSendAppraisalForApprovalCompletedEventHandler OnSendAppraisalForApprovalCompleted;
         
         /// <remarks/>
         public event OnSendClaimRequisitionForApprovalCompletedEventHandler OnSendClaimRequisitionForApprovalCompleted;
@@ -4172,6 +4182,34 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnCancelAppraisalRequest", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="OnCancelAppraisalRequest_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void OnCancelAppraisalRequest(string appraisalNo) {
+            this.Invoke("OnCancelAppraisalRequest", new object[] {
+                        appraisalNo});
+        }
+        
+        /// <remarks/>
+        public void OnCancelAppraisalRequestAsync(string appraisalNo) {
+            this.OnCancelAppraisalRequestAsync(appraisalNo, null);
+        }
+        
+        /// <remarks/>
+        public void OnCancelAppraisalRequestAsync(string appraisalNo, object userState) {
+            if ((this.OnCancelAppraisalRequestOperationCompleted == null)) {
+                this.OnCancelAppraisalRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnOnCancelAppraisalRequestOperationCompleted);
+            }
+            this.InvokeAsync("OnCancelAppraisalRequest", new object[] {
+                        appraisalNo}, this.OnCancelAppraisalRequestOperationCompleted, userState);
+        }
+        
+        private void OnOnCancelAppraisalRequestOperationCompleted(object arg) {
+            if ((this.OnCancelAppraisalRequestCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.OnCancelAppraisalRequestCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnCancelClaimRequisition", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="OnCancelClaimRequisition_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void OnCancelClaimRequisition(string claimNo) {
             this.Invoke("OnCancelClaimRequisition", new object[] {
@@ -4398,6 +4436,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.OnCancelStoreRequisitionApprovalCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.OnCancelStoreRequisitionApprovalCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnSendAppraisalForApproval", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="OnSendAppraisalForApproval_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string OnSendAppraisalForApproval(string appraisalNo) {
+            object[] results = this.Invoke("OnSendAppraisalForApproval", new object[] {
+                        appraisalNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void OnSendAppraisalForApprovalAsync(string appraisalNo) {
+            this.OnSendAppraisalForApprovalAsync(appraisalNo, null);
+        }
+        
+        /// <remarks/>
+        public void OnSendAppraisalForApprovalAsync(string appraisalNo, object userState) {
+            if ((this.OnSendAppraisalForApprovalOperationCompleted == null)) {
+                this.OnSendAppraisalForApprovalOperationCompleted = new System.Threading.SendOrPostCallback(this.OnOnSendAppraisalForApprovalOperationCompleted);
+            }
+            this.InvokeAsync("OnSendAppraisalForApproval", new object[] {
+                        appraisalNo}, this.OnSendAppraisalForApprovalOperationCompleted, userState);
+        }
+        
+        private void OnOnSendAppraisalForApprovalOperationCompleted(object arg) {
+            if ((this.OnSendAppraisalForApprovalCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.OnSendAppraisalForApprovalCompleted(this, new OnSendAppraisalForApprovalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -8072,6 +8140,10 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void OnCancelAppraisalRequestCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void OnCancelClaimRequisitionCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
@@ -8145,6 +8217,32 @@ namespace NCIASTaff.NAVWS {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void OnCancelStoreRequisitionApprovalCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void OnSendAppraisalForApprovalCompletedEventHandler(object sender, OnSendAppraisalForApprovalCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class OnSendAppraisalForApprovalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal OnSendAppraisalForApprovalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]

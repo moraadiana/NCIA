@@ -86,14 +86,13 @@ namespace NCIASTaff.pages
                                 <td>{4}</td>
                                 <td>{5}</td>
                                 <td>{6}</td>
-                                <td>{7}</td>
-                                <td><span class='label label-{9}'>{8}</span></td>
+                                <td><span class='label label-{8}'>{7}</span></td>
                                 <td class='small'>
                                     <div class='options btn-group' >
 					                    <a class='label label-success dropdown-toggle btn-success' data-toggle='dropdown' href='#' style='padding:4px;margin-top:3px'><i class='fa fa-gears'></i> Options</a>
 					                    <ul class='dropdown-menu'>
-                                            <li><a href='TrainingApplication.aspx?trainingNo={1}&query=old&status={8}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></li>
-                                            <li><a href='TrainingListing.aspx?trainingNo={1}&status={8}'><i class='fa fa-trash text-danger'></i><span class='text-danger'>Cancel</span></a></li>
+                                            <li><a href='TrainingApplication.aspx?trainingNo={1}&query=old&status={7}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></li>
+                                            <li><a href='TrainingListing.aspx?trainingNo={1}&status={7}'><i class='fa fa-trash text-danger'></i><span class='text-danger'>Cancel</span></a></li>
                                             <li><a href='ApprovalTracking.aspx?DocNum={0}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Approval Tracking</span></a></li>
                                         </ul>	
                                     </div>
@@ -109,7 +108,6 @@ namespace NCIASTaff.pages
                           responseArr[4],
                           responseArr[5],
                           responseArr[6],
-                          responseArr[7],
                           statusCls
                           );
                     }

@@ -1585,6 +1585,18 @@
           </sequence>
         </complexType>
       </element>
+      <element name="OnCancelAppraisalRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OnCancelAppraisalRequest_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
       <element name="OnCancelClaimRequisition">
         <complexType>
           <sequence>
@@ -1683,6 +1695,20 @@
       <element name="OnCancelStoreRequisitionApproval_Result">
         <complexType>
           <sequence />
+        </complexType>
+      </element>
+      <element name="OnSendAppraisalForApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OnSendAppraisalForApproval_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
         </complexType>
       </element>
       <element name="OnSendClaimRequisitionForApproval">
@@ -2733,6 +2759,12 @@
   <message name="LoginForUnchnagedPassword_Result">
     <part name="parameters" element="tns:LoginForUnchnagedPassword_Result" />
   </message>
+  <message name="OnCancelAppraisalRequest">
+    <part name="parameters" element="tns:OnCancelAppraisalRequest" />
+  </message>
+  <message name="OnCancelAppraisalRequest_Result">
+    <part name="parameters" element="tns:OnCancelAppraisalRequest_Result" />
+  </message>
   <message name="OnCancelClaimRequisition">
     <part name="parameters" element="tns:OnCancelClaimRequisition" />
   </message>
@@ -2780,6 +2812,12 @@
   </message>
   <message name="OnCancelStoreRequisitionApproval_Result">
     <part name="parameters" element="tns:OnCancelStoreRequisitionApproval_Result" />
+  </message>
+  <message name="OnSendAppraisalForApproval">
+    <part name="parameters" element="tns:OnSendAppraisalForApproval" />
+  </message>
+  <message name="OnSendAppraisalForApproval_Result">
+    <part name="parameters" element="tns:OnSendAppraisalForApproval_Result" />
   </message>
   <message name="OnSendClaimRequisitionForApproval">
     <part name="parameters" element="tns:OnSendClaimRequisitionForApproval" />
@@ -3360,6 +3398,10 @@
       <input name="LoginForUnchnagedPassword" message="tns:LoginForUnchnagedPassword" />
       <output name="LoginForUnchnagedPassword_Result" message="tns:LoginForUnchnagedPassword_Result" />
     </operation>
+    <operation name="OnCancelAppraisalRequest">
+      <input name="OnCancelAppraisalRequest" message="tns:OnCancelAppraisalRequest" />
+      <output name="OnCancelAppraisalRequest_Result" message="tns:OnCancelAppraisalRequest_Result" />
+    </operation>
     <operation name="OnCancelClaimRequisition">
       <input name="OnCancelClaimRequisition" message="tns:OnCancelClaimRequisition" />
       <output name="OnCancelClaimRequisition_Result" message="tns:OnCancelClaimRequisition_Result" />
@@ -3391,6 +3433,10 @@
     <operation name="OnCancelStoreRequisitionApproval">
       <input name="OnCancelStoreRequisitionApproval" message="tns:OnCancelStoreRequisitionApproval" />
       <output name="OnCancelStoreRequisitionApproval_Result" message="tns:OnCancelStoreRequisitionApproval_Result" />
+    </operation>
+    <operation name="OnSendAppraisalForApproval">
+      <input name="OnSendAppraisalForApproval" message="tns:OnSendAppraisalForApproval" />
+      <output name="OnSendAppraisalForApproval_Result" message="tns:OnSendAppraisalForApproval_Result" />
     </operation>
     <operation name="OnSendClaimRequisitionForApproval">
       <input name="OnSendClaimRequisitionForApproval" message="tns:OnSendClaimRequisitionForApproval" />
@@ -4439,6 +4485,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="OnCancelAppraisalRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnCancelAppraisalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="OnCancelAppraisalRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="OnCancelAppraisalRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="OnCancelClaimRequisition">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnCancelClaimRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="OnCancelClaimRequisition">
@@ -4508,6 +4563,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="OnCancelStoreRequisitionApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="OnSendAppraisalForApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnSendAppraisalForApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="OnSendAppraisalForApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="OnSendAppraisalForApproval_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
