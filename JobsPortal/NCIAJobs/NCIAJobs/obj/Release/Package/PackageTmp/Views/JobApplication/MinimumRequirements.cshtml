@@ -56,8 +56,8 @@
                                                     <input type="hidden" name="RequirementDescriptions[@item.Code]" value="@item.Description" />
                                                     <select name="RequirementAnswers[@item.Code]" class="form-control">
                                                         <option value="">Select</option>
-                                                        <option value="Yes" @(item.Answer == "Yes" ? "selected" : "")>Yes</option>
-                                                        <option value="No" @(item.Answer == "No" ? "selected" : "")>No</option>
+                                                        <option value="2" @(item.Answer == "Yes" ? "selected" : "")>Yes</option>
+                                                        <option value="1" @(item.Answer == "No" ? "selected" : "")>No</option>
                                                     </select>
                                                 </td>
                                             </tr>
