@@ -143,26 +143,17 @@ namespace NCIASTaff.pages
                 webportals.GeneratePaySlipReport3(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
 
                 // myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format(@"PAYSLIP-{0}.pdf", filename)));
-                /* if (File.Exists(filePath))
-                 {
-                     System.Diagnostics.Debug.WriteLine("Payslip generated successfully.");
-                     myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("PAYSLIP-{0}.pdf", filename)));
-                 }
-                 else
-                 {
-                     throw new FileNotFoundException("Payslip PDF was not found after generation.");
-                 }
-                */
-                if (!File.Exists(filePath))
+                if (File.Exists(filePath))
                 {
-                    throw new FileNotFoundException($"Payslip PDF file '{filePath}' was not found after generation.");
+                    System.Diagnostics.Debug.WriteLine("Payslip generated successfully.");
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("PAYSLIP-{0}.pdf", filename)));
+                }
+                else
+                {
+                    throw new FileNotFoundException("Payslip PDF was not found after generation.");
                 }
 
-                // Update iframe src
-                string fileUrl = ResolveUrl("~/Downloads/" + filename);
-                myPDF.Attributes.Add("src", fileUrl);
-                System.Diagnostics.Debug.WriteLine($"Payslip generated successfully at: {fileUrl}");
-
+                
             }
             catch (Exception ex)
             {
