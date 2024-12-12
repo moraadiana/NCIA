@@ -91,6 +91,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GeneratePaySlipReportOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GeneratePayslipReport2OperationCompleted;
+        
         private System.Threading.SendOrPostCallback GenerateStaffLeaveStatementOperationCompleted;
         
         private System.Threading.SendOrPostCallback GenerateVendorLPOOperationCompleted;
@@ -441,6 +443,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GeneratePaySlipReportCompletedEventHandler GeneratePaySlipReportCompleted;
+        
+        /// <remarks/>
+        public event GeneratePayslipReport2CompletedEventHandler GeneratePayslipReport2Completed;
         
         /// <remarks/>
         public event GenerateStaffLeaveStatementCompletedEventHandler GenerateStaffLeaveStatementCompleted;
@@ -1829,6 +1834,38 @@ namespace NCIASTaff.NAVWS {
             if ((this.GeneratePaySlipReportCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GeneratePaySlipReportCompleted(this, new GeneratePaySlipReportCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePayslipReport2", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GeneratePayslipReport2_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void GeneratePayslipReport2(string employeeNo, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime period, string fileNameFromApp) {
+            this.Invoke("GeneratePayslipReport2", new object[] {
+                        employeeNo,
+                        period,
+                        fileNameFromApp});
+        }
+        
+        /// <remarks/>
+        public void GeneratePayslipReport2Async(string employeeNo, System.DateTime period, string fileNameFromApp) {
+            this.GeneratePayslipReport2Async(employeeNo, period, fileNameFromApp, null);
+        }
+        
+        /// <remarks/>
+        public void GeneratePayslipReport2Async(string employeeNo, System.DateTime period, string fileNameFromApp, object userState) {
+            if ((this.GeneratePayslipReport2OperationCompleted == null)) {
+                this.GeneratePayslipReport2OperationCompleted = new System.Threading.SendOrPostCallback(this.OnGeneratePayslipReport2OperationCompleted);
+            }
+            this.InvokeAsync("GeneratePayslipReport2", new object[] {
+                        employeeNo,
+                        period,
+                        fileNameFromApp}, this.GeneratePayslipReport2OperationCompleted, userState);
+        }
+        
+        private void OnGeneratePayslipReport2OperationCompleted(object arg) {
+            if ((this.GeneratePayslipReport2Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GeneratePayslipReport2Completed(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6221,6 +6258,10 @@ namespace NCIASTaff.NAVWS {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GeneratePayslipReport2CompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
