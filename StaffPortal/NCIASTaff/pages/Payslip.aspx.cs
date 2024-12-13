@@ -165,7 +165,10 @@ namespace NCIASTaff.pages
             //var s =Convert.ToDateTime(period.ToString("M/dd/yyyy", CultureInfo.InvariantCulture));
             try
             {
+<<<<<<< HEAD
                
+=======
+>>>>>>> 2717109cd8234f13e20e01610fb61a92904e8670
                 var filename = Session["username"].ToString().Replace(@"-", @"");
                 var month = ddlMonth.SelectedValue;
 
