@@ -4854,7 +4854,7 @@
   </binding>
   <service name="Staffportall">
     <port name="Staffportall_Port" binding="tns:Staffportall_Binding">
-      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA%20TEST/Codeunit/Staffportall" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.210.149.230:1067/Test/WS/NCIA%20TEST/Codeunit/Staffportall" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

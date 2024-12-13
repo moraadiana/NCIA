@@ -165,60 +165,7 @@ namespace NCIASTaff.pages
             //var s =Convert.ToDateTime(period.ToString("M/dd/yyyy", CultureInfo.InvariantCulture));
             try
             {
-                /* var filename = Session["username"].ToString().Replace(@"-", @"");
-                 var month = DdMonth.SelectedValue;
-                
-                                 if (month == "12")
-                                 {
-                                    month = "12";
-
-                                 }
-                                 else if (month == "11")
-                                 {
-                                     month = "11";
-                                 }
-                                 else if (month == "10")
-                                 {
-                                     month = "10";
-                                 }
-                                 else
-                                 {
-                                     month = "0"+month;
-
-                                 }
-
-                 var myDate = month + "/03/" + Convert.ToInt32(ddlYear.SelectedValue);
-                //HttpContext.Current.Response.Write(myDate);
-                //var myDate = "11/01/2020";
-
-                var period = DateTime.ParseExact(myDate, "M/d/yyyy", CultureInfo.InvariantCulture);
-
-                 //MyComponents.ObjNav.GeneratePaySlipReport(filename, period, String.Format("PAYSLIP{0}.pdf", username));
-                 //string tempFile=String.Format("PAYSLIP{0}.pdf", filename);
-                 string username = Session["username"].ToString().Replace(@"/", @"");
-
-                 string returnstring = "";
-                 MyComponents.ObjNav.GeneratePaySlipReport(filename, period, String.Format("PAYSLIP{0}.pdf", username), ref returnstring);
-                 //, ref returnstring
-                 //WSConfig.ObjNavWS.FnFosaStatement(accno, ref returnstring, filter);
-
-
-                 myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP{0}.pdf", filename)));
-                 byte[] bytes = Convert.FromBase64String(returnstring);
-                 string path = HostingEnvironment.MapPath("~/Download/" + $"PAYSLIP{filename}.pdf");
-                 if (System.IO.File.Exists(path))
-                 {
-                     System.IO.File.Delete(path);
-                 }
-                   FileStream stream = new FileStream(path, FileMode.CreateNew);
-                   BinaryWriter writer = new BinaryWriter(stream);
-                   writer.Write(bytes, 0, bytes.Length);
-                   writer.Close();
-
-                 File.WriteAllBytes(path, bytes);
-                 myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP{0}.pdf", filename)));
-                 
-                */
+               
                 var filename = Session["username"].ToString().Replace(@"-", @"");
                 var month = ddlMonth.SelectedValue;
 
