@@ -160,77 +160,7 @@ namespace NCIASTaff.pages
                 ex.Data.Clear();
             }
         }
-        private void ViewPayslip1()
-        {
-            //var s =Convert.ToDateTime(period.ToString("M/dd/yyyy", CultureInfo.InvariantCulture));
-            try
-            {
-
-                var filename = Session["username"].ToString().Replace(@"-", @"");
-                var month = ddlMonth.SelectedValue;
-
-                /*
-                                if (month.Length == 1)
-                                {
-                                    month = "0" + month;
-                                }*/
-
-                if (month == "12")
-                {
-                    month = "12";
-
-                }
-                else if (month == "11")
-                {
-                    month = "11";
-                }
-                else if (month == "10")
-                {
-                    month = "10";
-                }
-                else
-                {
-                    month = "0" + month;
-
-                }
-                string myDate = month + "/01/" + Convert.ToInt32(ddlYear.SelectedValue);
-
-                var period = DateTime.ParseExact(myDate, "M/d/yyyy", CultureInfo.InvariantCulture);
-
-                string username = Session["username"].ToString().Replace(@"/", @"");
-
-                string returnstring = "";
-                Components.ObjNav.GeneratePaySlipReport3(Session["username"].ToString(), period, String.Format("PAYSLIP-{0}.pdf", filename));
-
-                string directoryPath = HostingEnvironment.MapPath("~/Downloads/");
-                if (!Directory.Exists(directoryPath))
-                {
-                    Directory.CreateDirectory(directoryPath);
-                }
-                // Define the file path
-                string filePath = Path.Combine(directoryPath, $"PAYSLIP-{filename}.pdf");
-
-                if (!string.IsNullOrEmpty(returnstring))
-                {
-                    byte[] bytes = Convert.FromBase64String(returnstring);
-                    File.WriteAllBytes(filePath, bytes);
-
-                    // Update PDF viewer
-                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + $"PAYSLIP-{filename}.pdf"));
-                }
-                // Clean up any existing file
-                else
-                {
-                    throw new Exception("Generated PDF data is null or empty.");
-                }
-
-            }
-            catch (Exception exception)
-            {
-                exception.Data.Clear();
-                HttpContext.Current.Response.Write(exception);
-            }
-        }
+    
         protected void ddlYear_SelectedIndexChanged(object sender, EventArgs e)
         {
             try

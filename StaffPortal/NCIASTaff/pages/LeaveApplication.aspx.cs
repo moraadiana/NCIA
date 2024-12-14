@@ -157,6 +157,7 @@ namespace NCIASTaff.pages
             try
             {
                 ddlReliver.Items.Clear();
+                ddlReliver.Items.Add(new ListItem("--Select Reliever--", string.Empty));
                 string Relievers = webportals.GetRelievers();
                 if(!string.IsNullOrEmpty(Relievers))
                 {
@@ -417,7 +418,7 @@ namespace NCIASTaff.pages
                 }
                 if (string.IsNullOrEmpty(directorate))
                 {
-                    Message("Directorate cannot be null");
+                    Message("Unit cannot be null");
                     return;
                 }
                 if (string.IsNullOrEmpty(department))
