@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot\Portals\E-tendering</_PublishTargetUrl>
-    <History>True|2024-12-08T11:19:05.8967562Z||;True|2024-12-06T17:27:54.3911327+03:00||;True|2024-12-06T10:32:08.3712337+03:00||;True|2024-11-27T22:11:09.2523606+03:00||;True|2024-11-26T13:34:19.5994912+03:00||;True|2024-11-18T19:23:15.0692389+03:00||;</History>
+    <History>True|2024-12-14T09:19:46.8694048Z||;True|2024-12-08T14:19:05.8967562+03:00||;True|2024-12-06T17:27:54.3911327+03:00||;True|2024-12-06T10:32:08.3712337+03:00||;True|2024-11-27T22:11:09.2523606+03:00||;True|2024-11-26T13:34:19.5994912+03:00||;True|2024-11-18T19:23:15.0692389+03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -7105,13 +7105,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2024 21:06:17</publishTime>
     </File>
     <File Include="bin/NCIASupplier.dll">
-      <publishTime>12/08/2024 14:19:00</publishTime>
+      <publishTime>12/14/2024 12:19:40</publishTime>
     </File>
     <File Include="bin/NCIASupplier.pdb">
-      <publishTime>12/08/2024 14:19:00</publishTime>
+      <publishTime>12/14/2024 12:19:40</publishTime>
     </File>
     <File Include="bin/NCIASupplier.XmlSerializers.dll">
-      <publishTime>12/08/2024 14:19:00</publishTime>
+      <publishTime>12/14/2024 12:19:41</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/14/2024 21:06:17</publishTime>
@@ -7432,13 +7432,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2024 21:06:13</publishTime>
     </File>
     <File Include="Views/Login/CreateAccount.cshtml">
-      <publishTime>11/14/2024 21:06:13</publishTime>
+      <publishTime>12/14/2024 12:14:12</publishTime>
     </File>
     <File Include="Views/Login/ForgotPassword.cshtml">
       <publishTime>11/14/2024 21:06:13</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
-      <publishTime>11/18/2024 19:10:56</publishTime>
+      <publishTime>12/14/2024 12:14:12</publishTime>
     </File>
     <File Include="Views/Login/ResetPassword.cshtml">
       <publishTime>11/14/2024 21:06:13</publishTime>
