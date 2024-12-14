@@ -98,7 +98,7 @@ namespace NCIASTaff.pages
             }
         }
 
-        private void ViewPayslip1()
+        private void ViewPayslip()
         {
             try
             {
@@ -160,7 +160,7 @@ namespace NCIASTaff.pages
                 ex.Data.Clear();
             }
         }
-        private void ViewPayslip()
+        private void ViewPayslip1()
         {
             //var s =Convert.ToDateTime(period.ToString("M/dd/yyyy", CultureInfo.InvariantCulture));
             try
