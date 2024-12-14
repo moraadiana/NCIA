@@ -165,10 +165,7 @@ namespace NCIASTaff.pages
             //var s =Convert.ToDateTime(period.ToString("M/dd/yyyy", CultureInfo.InvariantCulture));
             try
             {
-<<<<<<< HEAD
-               
-=======
->>>>>>> 2717109cd8234f13e20e01610fb61a92904e8670
+
                 var filename = Session["username"].ToString().Replace(@"-", @"");
                 var month = ddlMonth.SelectedValue;
 
@@ -203,24 +200,29 @@ namespace NCIASTaff.pages
                 string username = Session["username"].ToString().Replace(@"/", @"");
 
                 string returnstring = "";
-                Components.ObjNav.GeneratePaySlipReport(Session["username"].ToString(), period, String.Format("PAYSLIP{0}.pdf", filename), ref returnstring);
-                // MyComponents.ObjNav.GeneratePaySlipReport(filename, period, String.Format("PAYSLIP{0}.pdf", username), ref returnstring);
-                //MyComponents.ObjNav.GeneratePaySlipReport(username, period, String.Format("PAYSLIP{0}.pdf", filename), ref returnstring);
-                myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP{0}.pdf", filename)));
-                byte[] bytes = Convert.FromBase64String(returnstring);
+                Components.ObjNav.GeneratePaySlipReport3(Session["username"].ToString(), period, String.Format("PAYSLIP-{0}.pdf", filename));
 
-                string path = HostingEnvironment.MapPath("~/Download/" + $"PAYSLIP{filename}.pdf");
-                if (System.IO.File.Exists(path))
+                string directoryPath = HostingEnvironment.MapPath("~/Downloads/");
+                if (!Directory.Exists(directoryPath))
                 {
-                    System.IO.File.Delete(path);
+                    Directory.CreateDirectory(directoryPath);
                 }
-                FileStream stream = new FileStream(path, FileMode.CreateNew);
-                BinaryWriter writer = new BinaryWriter(stream);
-                writer.Write(bytes, 0, bytes.Length);
-                writer.Close();
+                // Define the file path
+                string filePath = Path.Combine(directoryPath, $"PAYSLIP-{filename}.pdf");
 
-                //File.WriteAllBytes(path, bytes);
-                myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP{0}.pdf", filename)));
+                if (!string.IsNullOrEmpty(returnstring))
+                {
+                    byte[] bytes = Convert.FromBase64String(returnstring);
+                    File.WriteAllBytes(filePath, bytes);
+
+                    // Update PDF viewer
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + $"PAYSLIP-{filename}.pdf"));
+                }
+                // Clean up any existing file
+                else
+                {
+                    throw new Exception("Generated PDF data is null or empty.");
+                }
 
             }
             catch (Exception exception)

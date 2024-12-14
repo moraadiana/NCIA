@@ -479,24 +479,6 @@
           </sequence>
         </complexType>
       </element>
-      <element name="GeneratePaySlipReport">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="period" type="date" />
-            <element minOccurs="1" maxOccurs="1" name="filenameFromApp" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="GeneratePaySlipReport_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
-          </sequence>
-        </complexType>
-      </element>
       <element name="GeneratePayslipReport2">
         <complexType>
           <sequence>
@@ -2329,12 +2311,6 @@
   <message name="GeneratePaySlipReport3_Result">
     <part name="parameters" element="tns:GeneratePaySlipReport3_Result" />
   </message>
-  <message name="GeneratePaySlipReport">
-    <part name="parameters" element="tns:GeneratePaySlipReport" />
-  </message>
-  <message name="GeneratePaySlipReport_Result">
-    <part name="parameters" element="tns:GeneratePaySlipReport_Result" />
-  </message>
   <message name="GeneratePayslipReport2">
     <part name="parameters" element="tns:GeneratePayslipReport2" />
   </message>
@@ -3122,10 +3098,6 @@
       <input name="GeneratePaySlipReport3" message="tns:GeneratePaySlipReport3" />
       <output name="GeneratePaySlipReport3_Result" message="tns:GeneratePaySlipReport3_Result" />
     </operation>
-    <operation name="GeneratePaySlipReport">
-      <input name="GeneratePaySlipReport" message="tns:GeneratePaySlipReport" />
-      <output name="GeneratePaySlipReport_Result" message="tns:GeneratePaySlipReport_Result" />
-    </operation>
     <operation name="GeneratePayslipReport2">
       <input name="GeneratePayslipReport2" message="tns:GeneratePayslipReport2" />
       <output name="GeneratePayslipReport2_Result" message="tns:GeneratePayslipReport2_Result" />
@@ -3840,15 +3812,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GeneratePaySlipReport3_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
-    <operation name="GeneratePaySlipReport">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePaySlipReport" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="GeneratePaySlipReport">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="GeneratePaySlipReport_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

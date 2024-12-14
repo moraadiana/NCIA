@@ -89,8 +89,6 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GeneratePaySlipReport3OperationCompleted;
         
-        private System.Threading.SendOrPostCallback GeneratePaySlipReportOperationCompleted;
-        
         private System.Threading.SendOrPostCallback GeneratePayslipReport2OperationCompleted;
         
         private System.Threading.SendOrPostCallback GenerateStaffLeaveStatementOperationCompleted;
@@ -440,9 +438,6 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GeneratePaySlipReport3CompletedEventHandler GeneratePaySlipReport3Completed;
-        
-        /// <remarks/>
-        public event GeneratePaySlipReportCompletedEventHandler GeneratePaySlipReportCompleted;
         
         /// <remarks/>
         public event GeneratePayslipReport2CompletedEventHandler GeneratePayslipReport2Completed;
@@ -1797,43 +1792,6 @@ namespace NCIASTaff.NAVWS {
             if ((this.GeneratePaySlipReport3Completed != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GeneratePaySlipReport3Completed(this, new GeneratePaySlipReport3CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePaySlipReport", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GeneratePaySlipReport_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string GeneratePaySlipReport(string employeeNo, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime period, string filenameFromApp, ref string bigtext) {
-            object[] results = this.Invoke("GeneratePaySlipReport", new object[] {
-                        employeeNo,
-                        period,
-                        filenameFromApp,
-                        bigtext});
-            bigtext = ((string)(results[1]));
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GeneratePaySlipReportAsync(string employeeNo, System.DateTime period, string filenameFromApp, string bigtext) {
-            this.GeneratePaySlipReportAsync(employeeNo, period, filenameFromApp, bigtext, null);
-        }
-        
-        /// <remarks/>
-        public void GeneratePaySlipReportAsync(string employeeNo, System.DateTime period, string filenameFromApp, string bigtext, object userState) {
-            if ((this.GeneratePaySlipReportOperationCompleted == null)) {
-                this.GeneratePaySlipReportOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGeneratePaySlipReportOperationCompleted);
-            }
-            this.InvokeAsync("GeneratePaySlipReport", new object[] {
-                        employeeNo,
-                        period,
-                        filenameFromApp,
-                        bigtext}, this.GeneratePaySlipReportOperationCompleted, userState);
-        }
-        
-        private void OnGeneratePaySlipReportOperationCompleted(object arg) {
-            if ((this.GeneratePaySlipReportCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GeneratePaySlipReportCompleted(this, new GeneratePaySlipReportCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6221,40 +6179,6 @@ namespace NCIASTaff.NAVWS {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void GeneratePaySlipReportCompletedEventHandler(object sender, GeneratePaySlipReportCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GeneratePaySlipReportCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GeneratePaySlipReportCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-        
-        /// <remarks/>
-        public string bigtext {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[1]));
             }
         }
     }
