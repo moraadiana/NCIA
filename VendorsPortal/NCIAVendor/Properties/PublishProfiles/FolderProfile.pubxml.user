@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot\Portals\Suppliers</_PublishTargetUrl>
-    <History>True|2024-12-08T11:16:55.7688206Z||;True|2024-12-06T10:30:56.0218560+03:00||;True|2024-11-27T22:13:15.5096102+03:00||;True|2024-11-26T13:57:50.6054924+03:00||;True|2024-11-20T14:32:18.2429215+03:00||;True|2024-11-20T12:07:35.9365921+03:00||;True|2024-11-19T16:12:20.2596529+03:00||;</History>
+    <History>True|2024-12-14T09:21:51.3623795Z||;True|2024-12-08T14:16:55.7688206+03:00||;True|2024-12-06T10:30:56.0218560+03:00||;True|2024-11-27T22:13:15.5096102+03:00||;True|2024-11-26T13:57:50.6054924+03:00||;True|2024-11-20T14:32:18.2429215+03:00||;True|2024-11-20T12:07:35.9365921+03:00||;True|2024-11-19T16:12:20.2596529+03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -7108,13 +7108,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/20/2024 14:00:30</publishTime>
     </File>
     <File Include="bin/NCIAVendor.dll">
-      <publishTime>12/08/2024 14:17:28</publishTime>
+      <publishTime>12/14/2024 12:21:45</publishTime>
     </File>
     <File Include="bin/NCIAVendor.pdb">
-      <publishTime>12/08/2024 14:17:28</publishTime>
+      <publishTime>12/14/2024 12:21:45</publishTime>
     </File>
     <File Include="bin/NCIAVendor.XmlSerializers.dll">
-      <publishTime>12/08/2024 14:17:29</publishTime>
+      <publishTime>12/14/2024 12:21:46</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>11/20/2024 14:00:30</publishTime>
@@ -7426,7 +7426,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/20/2024 13:59:57</publishTime>
     </File>
     <File Include="Views/Login/Index.cshtml">
-      <publishTime>11/20/2024 14:28:57</publishTime>
+      <publishTime>12/14/2024 12:14:12</publishTime>
     </File>
     <File Include="Views/Login/Index_Vendor.cshtml">
       <publishTime>11/20/2024 13:59:57</publishTime>
