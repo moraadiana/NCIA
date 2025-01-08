@@ -20,6 +20,8 @@ namespace NCIAJobs.Models
         public string Institution { get; set; }
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
+        
+       public string CurrentJob { get; set; }
         public string Course { get; set; }
         public string Grade { get; set; }
         public int Type { get; set; }

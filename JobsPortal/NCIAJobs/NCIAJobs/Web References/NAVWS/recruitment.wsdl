@@ -574,6 +574,7 @@
             <element minOccurs="1" maxOccurs="1" name="salary" type="decimal" />
             <element minOccurs="1" maxOccurs="1" name="dateFrom" type="date" />
             <element minOccurs="1" maxOccurs="1" name="dateTo" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="current" type="boolean" />
           </sequence>
         </complexType>
       </element>
