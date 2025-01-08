@@ -536,6 +536,10 @@ namespace NCIAJobs
                     foreach (string requirement in requirementsArr)
                     {
                         string[] responseArr = requirement.Split(strLimiters, StringSplitOptions.None);
+
+                        //DateTime? dateTo = string.IsNullOrEmpty(responseArr[4]) ? (DateTime?)null : Convert.ToDateTime(responseArr[4]);
+
+
                         list.Add(new Applicant()
                         {
                             Designation = responseArr[0],
@@ -543,8 +547,10 @@ namespace NCIAJobs
                             Institution = responseArr[2],
                             DateFrom = Convert.ToDateTime(responseArr[3]),
                             DateTo = Convert.ToDateTime(responseArr[4]),
-                            SystemId = responseArr[5]
+                            SystemId = responseArr[5],
+                            CurrentJob = responseArr[6]
                         });
+                       
                     }
                 }
             }
@@ -553,6 +559,7 @@ namespace NCIAJobs
                 ex.Data.Clear();
             }
             return list;
+
         }
 
         public static List<Applicant> GetAreasOfStudy()

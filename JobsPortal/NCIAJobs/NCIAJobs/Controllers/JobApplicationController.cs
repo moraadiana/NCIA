@@ -902,9 +902,11 @@ namespace NCIAJobs.Controllers
                 string organization = applicant.Institution;
                 decimal salary = applicant.Salary;
                 DateTime dateFrom = applicant.DateFrom;
-                DateTime dateTo = applicant.DateTo;
-
-                if (webportals.InsertEmploymentDetails(username, designation, jobGrade, organization, salary, dateFrom, dateTo))
+                DateTime dateTo = applicant.DateTo == null ? DateTime.Now : applicant.DateTo;
+                bool currentJob = applicant.CurrentJob == "on" ? true : false;
+               // DateTime? dateTo = applicant.DateTo;
+                //DateTime? dateTo = applicant.DateTo.HasValue ? applicant.DateTo.Value : (DateTime?)null;
+                if (webportals.InsertEmploymentDetails(username, designation, jobGrade, organization, salary, dateFrom, dateTo, currentJob))
                 {
                     TempData["Success"] = "Employment history has been added successfully!";
                     return RedirectToAction("employmentdetails", "jobapplication");
