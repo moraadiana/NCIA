@@ -14,6 +14,8 @@ namespace NCIAJobs.Controllers
         recruitment webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
         string[] strLimiters2 = new string[] { "[]" };
+      
+
         public ActionResult GeneralInformation(string jobId, string refNo)
         {
             if (Session["username"] == null) return RedirectToAction("index", "login");
@@ -22,6 +24,24 @@ namespace NCIAJobs.Controllers
             {
                 string username = Session["username"].ToString();
                 string response = webportals.GetUserData(username);
+                string appliedJobs = webportals.GetMyCompleteApplications(username);
+
+                if (!string.IsNullOrEmpty(appliedJobs))
+                {
+                    var appliedJobList = appliedJobs.Split(new[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
+
+                    foreach (var jobDetails in appliedJobList)
+                    {
+                        var jobFields = jobDetails.Split(new[] { "::" }, StringSplitOptions.None);
+                        if (jobFields.Length > 1 && jobFields[1] == jobId)
+                        {
+                            TempData["Error"] = $"You have already applied for this job (Ref No: {refNo}, Job ID: {jobId}).";
+                            return RedirectToAction("openvacancies","dashboard");
+                        }
+                    }
+                }
+
+
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);

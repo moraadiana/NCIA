@@ -2586,6 +2586,7 @@
     <Content Include="Views\JobApplication\Referees.cshtml" />
     <Content Include="Views\JobApplication\Trainings.cshtml" />
     <Content Include="Views\JobApplication\MinimumRequirements.cshtml" />
+    <Content Include="Views\JobApplication\Personaldetails.cshtml" />
     <None Include="Web References\NAVWS\recruitment.wsdl" />
     <None Include="Web References\NAVWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
