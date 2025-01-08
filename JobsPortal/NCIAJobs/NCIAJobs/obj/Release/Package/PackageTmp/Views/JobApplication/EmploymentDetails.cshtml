@@ -50,22 +50,28 @@
                                     <input type="text" name="JobGrade" class="form-control" placeholder="Job Grade" required />
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>Salary</label> <span class="text-danger">*</span>
                                     <input type="number" name="Salary" class="form-control" placeholder="Gross Monthly Salary" required />
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>From</label> <span class="text-danger">*</span>
                                     <input type="date" name="DateFrom" id="date-from" class="form-control" placeholder="From Date" required />
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <input type="checkbox" id="current-job" name="CurrentJob" />
+                                    <label for="current-job">Current Job</label>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
                                 <div class="form-group">
                                     <label>To</label> <span class="text-danger">*</span>
-                                    <input type="date" name="DateTo" id="date-to" class="form-control" placeholder="To Date" required />
+                                    <input type="date" name="DateTo" id="date-to" class="form-control" placeholder="To Date"  />
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -97,7 +103,16 @@
                                             <td>@item.Designation</td>
                                             <td>@item.JobGrade</td>
                                             <td>@Convert.ToDateTime(item.DateFrom).ToShortDateString()</td>
-                                            <td>@Convert.ToDateTime(item.DateTo).ToShortDateString()</td>
+                                            @if (item.CurrentJob == "Yes")
+                                            {
+
+
+                                                <td>&nbsp;</td>
+                                            }
+                                            else
+                                            {
+                                                <td>@Convert.ToDateTime(item.DateTo).ToShortDateString()</td>
+                                            }
                                             <td><a href="@Url.Action("removeemploymentdetail", "jobapplication", new {id=item.SystemId})" class="text-danger"><i class="fa fa-trash-alt"></i></a></td>
                                         </tr>
                                     }
@@ -115,18 +130,34 @@
     const dateFrom = document.getElementById('date-from');
     const dateTo = document.getElementById('date-to');
 
+    const currentJobCheckbox = document.getElementById('current-job');
+    const dateToGroup = dateTo.closest('.form-group');
+
+    currentJobCheckbox.addEventListener('change', function () {
+        if (this.checked) {
+            dateTo.value = ''; // Clear the 'To' date value
+            dateToGroup.style.display = 'none';
+        } else {
+            dateToGroup.style.display = 'block';
+        }
+    });
     const validateInputs = function () {
         if (dateFrom.value === '') {
             alert('Date from cannot be empty');
             dateFrom.focus();
             return false;
         }
-
-        if (dateTo.value === '') {
+        if (!currentJobCheckbox.checked && dateTo.value === '') {
             alert('Date to cannot be empty');
             dateTo.focus();
             return false;
         }
+
+        //if (dateTo.value === '') {
+        //    alert('Date to cannot be empty');
+        //    dateTo.focus();
+        //    return false;
+        //}
     }
 </script>
 
