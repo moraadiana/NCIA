@@ -123,6 +123,13 @@
                                 <i class="icon-user"></i>
                                 <span class="title">My Profile</span>
                             </a>
+                            <ul class="sub-menu" style="list-style-type:circle !important;">
+                                <li class="nav-item">
+                                    <a href="@Url.Action("profileupdate", "dashboard")" class="nav-link nav-toggle">
+                                        <span style="color: #ffffff !important" class="title">Personal Details</span>
+                                    </a>
+                                </li>
+                             </ul>
                         </li>
                         <li class="nav-item" style="display: block;">
                             <a href="javascript:;" class="nav-link nav-toggle">
@@ -130,6 +137,11 @@
                                 <span style="color: #ffffff !important" class="title">Update Profile</span>
                             </a>
                             <ul class="sub-menu" style="list-style-type:circle !important;">
+                                @*<li class="nav-item">
+                                    <a href="@Url.Action("profileupdate", "dashboard")" class="nav-link nav-toggle">
+                                        <span style="color: #ffffff !important" class="title">Personal Details</span>
+                                    </a>
+                                </li>*@
                                 <li class="nav-item">
                                     <a href="@Url.Action("qualifications", "jobapplication")" class="nav-link nav-toggle">
                                         <span style="color: #ffffff !important" class="title">Academic Qualications</span>

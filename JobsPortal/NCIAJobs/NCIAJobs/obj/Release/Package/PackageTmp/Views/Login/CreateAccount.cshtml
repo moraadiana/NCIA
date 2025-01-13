@@ -42,7 +42,7 @@
         <label class="control-label visible-ie8 visible-ie9">Email Address</label>
         <div class="input-icon">
             <i class="icon-lock"></i>
-            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Email Address" name="EmailAddress" required />
+            <input class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="Email Address" name="EmailAddress" required />
         </div>
     </div>
     <div class="form-group">
@@ -69,7 +69,9 @@
                 <a href="@Url.Action("index", "login")" class="btn green pull-left"> <i class="icon-question"> Back</i></a>
             </div>
             <div class="col-md-6">
-                <button type="submit" class="btn green pull-right" onclick="return validatePasswords()"> <i class="icon-login"> Create Account</i></button>
+                @*<button type="submit" class="btn green pull-right" onclick="return validatePasswords()"> <i class="icon-login"> Create Account</i></button>*@
+                <button type="submit" class="btn green pull-right" onclick="return validateForm()"> <i class="icon-login"> Create Account</i></button>
+
             </div>
         </div>
     </div>
@@ -78,6 +80,11 @@
 <script type="text/javascript">
     const password = document.getElementById('password');
     const confirmPassword = document.getElementById('confirm-password');
+    const idNumber = document.querySelector('input[name="IdNumber"]');
+    const firstName = document.querySelector('input[name="FirstName"]');
+    const middleName = document.querySelector('input[name="MiddleName"]');
+    const lastName = document.querySelector('input[name="LastName"]');
+    const emailAddress = document.querySelector('input[name="EmailAddress"]');
 
     const showPassword = function () {
         if (password.type == 'password') password.type = 'text';
@@ -87,10 +94,33 @@
         else confirmPassword.type = 'password';
     }
 
+
     const validatePasswords = function () {
         if (password.value !== confirmPassword.value) {
             alert('Passwords do not match!');
             return false;
         } else return true;
+    }
+
+    const validateIdNumber = function () {
+        if (idNumber.value.trim() === '' || isNaN(idNumber.value) || idNumber.value.length < 6) {
+            alert('Please enter a valid ID Number.');
+            return false;
+        }
+        return true;
+    }
+    const validateName = function (name, fieldName) {
+        if (name.value.trim() === '' || !/^[A-Za-z\s]+$/.test(name.value)) {
+            alert(`Please enter  ${fieldName}.`);
+            return false;
+        }
+        return true;
+    }
+    const validateForm = function () {
+        return validateIdNumber() &&
+            validateName(firstName, 'First Name') &&
+            validateName(lastName, 'Last Name') &&
+            validateEmail() &&
+            validatePasswords();
     }
 </script>
