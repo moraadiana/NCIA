@@ -99,12 +99,12 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-12">
+                              <%--  <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Purpose</label>
                                         <asp:TextBox ID="txtPurpose" CssClass="form-control" TextMode="MultiLine" runat="server"></asp:TextBox>
                                     </div>
-                                </div>
+                                </div>--%>
                                 <div class="col-md-12">
                                     <a href="LeaveListing.aspx" class="btn btn-warning pull-left"><i class="fa fa-backward"></i>&nbsp;Back</a>
                                     <asp:LinkButton ID="lbtnSubmit" CssClass="btn btn-success pull-right" runat="server" OnClick="lbtnSubmit_Click"><i class="fa fa-paper-plane"></i>&nbsp;Submit</asp:LinkButton>

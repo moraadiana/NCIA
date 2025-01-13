@@ -105,15 +105,6 @@ namespace NCIASTaff.pages
         protected global::System.Web.UI.WebControls.Label lblReturnDate;
 
         /// <summary>
-        /// txtPurpose control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPurpose;
-
-        /// <summary>
         /// lbtnSubmit control.
         /// </summary>
         /// <remarks>

@@ -66,7 +66,7 @@ namespace NCIASTaff.pages
                         ddlLeaveType.SelectedValue = LeaveType;
                         txtAppliedDays.Text = AppliedDays;
                      
-                        txtPurpose.Text = Purpose;
+                        //txtPurpose.Text = Purpose;
                         //lblEndDate.Text = EndingDate;
 
 
@@ -378,7 +378,7 @@ namespace NCIASTaff.pages
                 string directorate = lblDirectorate.Text;
                 string department = lblDepartment.Text;
                 string availableDays = lblBalance.Text;
-                string purpose = txtPurpose.Text;
+            //    string purpose = txtPurpose.Text;
 
                 // Validations
                 if (HasPendingApplication())
@@ -426,17 +426,17 @@ namespace NCIASTaff.pages
                     Message("Department cannot be null");
                     return;
                 }
-                if (string.IsNullOrEmpty(purpose))
-                {
-                    Message("Purpose cannot cannot be null");
-                    return;
-                }
+                //if (string.IsNullOrEmpty(purpose))
+                //{
+                //    Message("Purpose cannot cannot be null");
+                //    return;
+                //}
 
-                if (purpose.Length > 200)
-                {
-                    Message("Purpose cannot be more than 200 characters");
-                    return;
-                }
+                //if (purpose.Length > 200)
+                //{
+                //    Message("Purpose cannot be more than 200 characters");
+                //    return;
+                //}
 
                 if (Convert.ToInt32(availableDays) < Convert.ToInt32(appliedDays))
                 {
@@ -463,7 +463,7 @@ namespace NCIASTaff.pages
                     LeaveNo = Request.QueryString["leaveNo"]; // Get the leaveNo from the query string
                 }
                 // Applications
-                string response = webportals.HRMLeaveApplication1(LeaveNo ?? string.Empty, username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate, purpose, resCenter);
+                string response = webportals.HRMLeaveApplication1(LeaveNo ?? string.Empty, username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate,  resCenter);
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);

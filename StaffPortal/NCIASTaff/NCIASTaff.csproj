@@ -6380,6 +6380,8 @@
     <Content Include="pages\StoreListing.aspx" />
     <Content Include="pages\TrainingApplication.aspx" />
     <Content Include="pages\TrainingListing.aspx" />
+    <Content Include="pages\TransportRequisition.aspx" />
+    <Content Include="pages\TransportRequisitionListing.aspx" />
     <Content Include="plugins\bootstrap-slider\bootstrap-slider.js" />
     <Content Include="plugins\bootstrap-slider\slider.css" />
     <Content Include="plugins\bootstrap-wysihtml5\bootstrap3-wysihtml5.all.js" />
@@ -7396,6 +7398,20 @@
     <Compile Include="pages\TrainingListing.aspx.designer.cs">
       <DependentUpon>TrainingListing.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\TransportRequisition.aspx.cs">
+      <DependentUpon>TransportRequisition.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\TransportRequisition.aspx.designer.cs">
+      <DependentUpon>TransportRequisition.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\TransportRequisitionListing.aspx.cs">
+      <DependentUpon>TransportRequisitionListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\TransportRequisitionListing.aspx.designer.cs">
+      <DependentUpon>TransportRequisitionListing.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -7468,10 +7484,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://102.210.149.230:1067/Test/WS/NCIA%2520TEST/Codeunit/Staffportall">
+    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/NCIA%2520TEST/Codeunit/Staffportall">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\NAVWS\</RelPath>
-      <UpdateFromURL>http://102.210.149.230:1067/Test/WS/NCIA%2520TEST/Codeunit/Staffportall</UpdateFromURL>
+      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/NCIA%2520TEST/Codeunit/Staffportall</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

@@ -73,6 +73,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback CreateStoreRequisitionHeaderOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CreateTransportRequestOperationCompleted;
+        
         private System.Threading.SendOrPostCallback CreateVendorRFQquoteOperationCompleted;
         
         private System.Threading.SendOrPostCallback DeleteDocumentAttachmentOperationCompleted;
@@ -112,6 +114,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback GetAppraisalLinesOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAppraisalPeriodOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetApprovedMemosOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAttachmentDetailsOperationCompleted;
         
@@ -155,11 +159,15 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetMyTrainingApplicationsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetMyTransportRequisitionsOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetMyleaveApplicationsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetNextImprestSurrenderNoOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetNextPettyCashNoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetPassengersOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetPayslipMonthsOperationCompleted;
         
@@ -197,6 +205,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetTrainingVotesOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetTransportReqPassengersOperationCompleted;
+        
         private System.Threading.SendOrPostCallback HRMLeaveApplication1OperationCompleted;
         
         private System.Threading.SendOrPostCallback HRMLeaveApplicationOperationCompleted;
@@ -226,6 +236,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback InsertStoreLinesOperationCompleted;
         
         private System.Threading.SendOrPostCallback InsertStoreRequisitionLinesOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsertTransportPassengersOperationCompleted;
         
         private System.Threading.SendOrPostCallback IsItemInProcurementPlanOperationCompleted;
         
@@ -273,6 +285,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback OnSendTrainigRequisitionForApprovalOperationCompleted;
         
+        private System.Threading.SendOrPostCallback OnSentTransportRequisitionForApprovalOperationCompleted;
+        
         private System.Threading.SendOrPostCallback OnsendLeaveRequisitionForApprovalOperationCompleted;
         
         private System.Threading.SendOrPostCallback PurchaseQuoteCreateOperationCompleted;
@@ -290,6 +304,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback RemovePurchaseLineOperationCompleted;
         
         private System.Threading.SendOrPostCallback RemoveStoreRequisitionLineOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RemoveTransportPassengersOperationCompleted;
         
         private System.Threading.SendOrPostCallback SaveMemoAttchmntsOperationCompleted;
         
@@ -416,6 +432,9 @@ namespace NCIASTaff.NAVWS {
         public event CreateStoreRequisitionHeaderCompletedEventHandler CreateStoreRequisitionHeaderCompleted;
         
         /// <remarks/>
+        public event CreateTransportRequestCompletedEventHandler CreateTransportRequestCompleted;
+        
+        /// <remarks/>
         public event CreateVendorRFQquoteCompletedEventHandler CreateVendorRFQquoteCompleted;
         
         /// <remarks/>
@@ -474,6 +493,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetAppraisalPeriodCompletedEventHandler GetAppraisalPeriodCompleted;
+        
+        /// <remarks/>
+        public event GetApprovedMemosCompletedEventHandler GetApprovedMemosCompleted;
         
         /// <remarks/>
         public event GetAttachmentDetailsCompletedEventHandler GetAttachmentDetailsCompleted;
@@ -539,6 +561,9 @@ namespace NCIASTaff.NAVWS {
         public event GetMyTrainingApplicationsCompletedEventHandler GetMyTrainingApplicationsCompleted;
         
         /// <remarks/>
+        public event GetMyTransportRequisitionsCompletedEventHandler GetMyTransportRequisitionsCompleted;
+        
+        /// <remarks/>
         public event GetMyleaveApplicationsCompletedEventHandler GetMyleaveApplicationsCompleted;
         
         /// <remarks/>
@@ -546,6 +571,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetNextPettyCashNoCompletedEventHandler GetNextPettyCashNoCompleted;
+        
+        /// <remarks/>
+        public event GetPassengersCompletedEventHandler GetPassengersCompleted;
         
         /// <remarks/>
         public event GetPayslipMonthsCompletedEventHandler GetPayslipMonthsCompleted;
@@ -602,6 +630,9 @@ namespace NCIASTaff.NAVWS {
         public event GetTrainingVotesCompletedEventHandler GetTrainingVotesCompleted;
         
         /// <remarks/>
+        public event GetTransportReqPassengersCompletedEventHandler GetTransportReqPassengersCompleted;
+        
+        /// <remarks/>
         public event HRMLeaveApplication1CompletedEventHandler HRMLeaveApplication1Completed;
         
         /// <remarks/>
@@ -645,6 +676,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event InsertStoreRequisitionLinesCompletedEventHandler InsertStoreRequisitionLinesCompleted;
+        
+        /// <remarks/>
+        public event InsertTransportPassengersCompletedEventHandler InsertTransportPassengersCompleted;
         
         /// <remarks/>
         public event IsItemInProcurementPlanCompletedEventHandler IsItemInProcurementPlanCompleted;
@@ -716,6 +750,9 @@ namespace NCIASTaff.NAVWS {
         public event OnSendTrainigRequisitionForApprovalCompletedEventHandler OnSendTrainigRequisitionForApprovalCompleted;
         
         /// <remarks/>
+        public event OnSentTransportRequisitionForApprovalCompletedEventHandler OnSentTransportRequisitionForApprovalCompleted;
+        
+        /// <remarks/>
         public event OnsendLeaveRequisitionForApprovalCompletedEventHandler OnsendLeaveRequisitionForApprovalCompleted;
         
         /// <remarks/>
@@ -741,6 +778,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event RemoveStoreRequisitionLineCompletedEventHandler RemoveStoreRequisitionLineCompleted;
+        
+        /// <remarks/>
+        public event RemoveTransportPassengersCompletedEventHandler RemoveTransportPassengersCompleted;
         
         /// <remarks/>
         public event SaveMemoAttchmntsCompletedEventHandler SaveMemoAttchmntsCompleted;
@@ -1532,6 +1572,54 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateTransportRequest", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CreateTransportRequest_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string CreateTransportRequest(string requestNo, string description, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime dateofTravel, decimal noOfDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime expectedReturnDate, string from, string destination, string unitCode, string department, string createdBy) {
+            object[] results = this.Invoke("CreateTransportRequest", new object[] {
+                        requestNo,
+                        description,
+                        dateofTravel,
+                        noOfDays,
+                        expectedReturnDate,
+                        from,
+                        destination,
+                        unitCode,
+                        department,
+                        createdBy});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CreateTransportRequestAsync(string requestNo, string description, System.DateTime dateofTravel, decimal noOfDays, System.DateTime expectedReturnDate, string from, string destination, string unitCode, string department, string createdBy) {
+            this.CreateTransportRequestAsync(requestNo, description, dateofTravel, noOfDays, expectedReturnDate, from, destination, unitCode, department, createdBy, null);
+        }
+        
+        /// <remarks/>
+        public void CreateTransportRequestAsync(string requestNo, string description, System.DateTime dateofTravel, decimal noOfDays, System.DateTime expectedReturnDate, string from, string destination, string unitCode, string department, string createdBy, object userState) {
+            if ((this.CreateTransportRequestOperationCompleted == null)) {
+                this.CreateTransportRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateTransportRequestOperationCompleted);
+            }
+            this.InvokeAsync("CreateTransportRequest", new object[] {
+                        requestNo,
+                        description,
+                        dateofTravel,
+                        noOfDays,
+                        expectedReturnDate,
+                        from,
+                        destination,
+                        unitCode,
+                        department,
+                        createdBy}, this.CreateTransportRequestOperationCompleted, userState);
+        }
+        
+        private void OnCreateTransportRequestOperationCompleted(object arg) {
+            if ((this.CreateTransportRequestCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CreateTransportRequestCompleted(this, new CreateTransportRequestCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateVendorRFQquote", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CreateVendorRFQquote_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string CreateVendorRFQquote(string rfqNum, string rfqPath, string vendor, string purpose) {
@@ -2185,6 +2273,34 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetApprovedMemos", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetApprovedMemos_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetApprovedMemos() {
+            object[] results = this.Invoke("GetApprovedMemos", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetApprovedMemosAsync() {
+            this.GetApprovedMemosAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetApprovedMemosAsync(object userState) {
+            if ((this.GetApprovedMemosOperationCompleted == null)) {
+                this.GetApprovedMemosOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetApprovedMemosOperationCompleted);
+            }
+            this.InvokeAsync("GetApprovedMemos", new object[0], this.GetApprovedMemosOperationCompleted, userState);
+        }
+        
+        private void OnGetApprovedMemosOperationCompleted(object arg) {
+            if ((this.GetApprovedMemosCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetApprovedMemosCompleted(this, new GetApprovedMemosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAttachmentDetails", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetAttachmentDetails_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetAttachmentDetails(string systemId) {
@@ -2813,6 +2929,36 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyTransportRequisitions", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetMyTransportRequisitions_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetMyTransportRequisitions(string username) {
+            object[] results = this.Invoke("GetMyTransportRequisitions", new object[] {
+                        username});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetMyTransportRequisitionsAsync(string username) {
+            this.GetMyTransportRequisitionsAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void GetMyTransportRequisitionsAsync(string username, object userState) {
+            if ((this.GetMyTransportRequisitionsOperationCompleted == null)) {
+                this.GetMyTransportRequisitionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetMyTransportRequisitionsOperationCompleted);
+            }
+            this.InvokeAsync("GetMyTransportRequisitions", new object[] {
+                        username}, this.GetMyTransportRequisitionsOperationCompleted, userState);
+        }
+        
+        private void OnGetMyTransportRequisitionsOperationCompleted(object arg) {
+            if ((this.GetMyTransportRequisitionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetMyTransportRequisitionsCompleted(this, new GetMyTransportRequisitionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyleaveApplications", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetMyleaveApplications_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetMyleaveApplications(string username) {
@@ -2895,6 +3041,34 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetNextPettyCashNoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetNextPettyCashNoCompleted(this, new GetNextPettyCashNoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPassengers", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetPassengers_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetPassengers() {
+            object[] results = this.Invoke("GetPassengers", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetPassengersAsync() {
+            this.GetPassengersAsync(null);
+        }
+        
+        /// <remarks/>
+        public void GetPassengersAsync(object userState) {
+            if ((this.GetPassengersOperationCompleted == null)) {
+                this.GetPassengersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPassengersOperationCompleted);
+            }
+            this.InvokeAsync("GetPassengers", new object[0], this.GetPassengersOperationCompleted, userState);
+        }
+        
+        private void OnGetPassengersOperationCompleted(object arg) {
+            if ((this.GetPassengersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetPassengersCompleted(this, new GetPassengersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3431,9 +3605,39 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetTransportReqPassengers", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetTransportReqPassengers_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetTransportReqPassengers(string requestNo) {
+            object[] results = this.Invoke("GetTransportReqPassengers", new object[] {
+                        requestNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetTransportReqPassengersAsync(string requestNo) {
+            this.GetTransportReqPassengersAsync(requestNo, null);
+        }
+        
+        /// <remarks/>
+        public void GetTransportReqPassengersAsync(string requestNo, object userState) {
+            if ((this.GetTransportReqPassengersOperationCompleted == null)) {
+                this.GetTransportReqPassengersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetTransportReqPassengersOperationCompleted);
+            }
+            this.InvokeAsync("GetTransportReqPassengers", new object[] {
+                        requestNo}, this.GetTransportReqPassengersOperationCompleted, userState);
+        }
+        
+        private void OnGetTransportReqPassengersOperationCompleted(object arg) {
+            if ((this.GetTransportReqPassengersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetTransportReqPassengersCompleted(this, new GetTransportReqPassengersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:HRMLeaveApplication1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="HRMLeaveApplication1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string HRMLeaveApplication1(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime startDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime endDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime returnDate, string purpose, string responsibilityCenter) {
+        public string HRMLeaveApplication1(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime startDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime endDate, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime returnDate, string responsibilityCenter) {
             object[] results = this.Invoke("HRMLeaveApplication1", new object[] {
                         leaveNo,
                         username,
@@ -3443,18 +3647,17 @@ namespace NCIASTaff.NAVWS {
                         startDate,
                         endDate,
                         returnDate,
-                        purpose,
                         responsibilityCenter});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void HRMLeaveApplication1Async(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter) {
-            this.HRMLeaveApplication1Async(leaveNo, username, reliever, leaveType, appliedDays, startDate, endDate, returnDate, purpose, responsibilityCenter, null);
+        public void HRMLeaveApplication1Async(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string responsibilityCenter) {
+            this.HRMLeaveApplication1Async(leaveNo, username, reliever, leaveType, appliedDays, startDate, endDate, returnDate, responsibilityCenter, null);
         }
         
         /// <remarks/>
-        public void HRMLeaveApplication1Async(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string purpose, string responsibilityCenter, object userState) {
+        public void HRMLeaveApplication1Async(string leaveNo, string username, string reliever, string leaveType, decimal appliedDays, System.DateTime startDate, System.DateTime endDate, System.DateTime returnDate, string responsibilityCenter, object userState) {
             if ((this.HRMLeaveApplication1OperationCompleted == null)) {
                 this.HRMLeaveApplication1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnHRMLeaveApplication1OperationCompleted);
             }
@@ -3467,7 +3670,6 @@ namespace NCIASTaff.NAVWS {
                         startDate,
                         endDate,
                         returnDate,
-                        purpose,
                         responsibilityCenter}, this.HRMLeaveApplication1OperationCompleted, userState);
         }
         
@@ -4017,6 +4219,42 @@ namespace NCIASTaff.NAVWS {
             if ((this.InsertStoreRequisitionLinesCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.InsertStoreRequisitionLinesCompleted(this, new InsertStoreRequisitionLinesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertTransportPassengers", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="InsertTransportPassengers_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string InsertTransportPassengers(string reqNo, string passengerNo, string passengersName, string passengersPhoneNo) {
+            object[] results = this.Invoke("InsertTransportPassengers", new object[] {
+                        reqNo,
+                        passengerNo,
+                        passengersName,
+                        passengersPhoneNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertTransportPassengersAsync(string reqNo, string passengerNo, string passengersName, string passengersPhoneNo) {
+            this.InsertTransportPassengersAsync(reqNo, passengerNo, passengersName, passengersPhoneNo, null);
+        }
+        
+        /// <remarks/>
+        public void InsertTransportPassengersAsync(string reqNo, string passengerNo, string passengersName, string passengersPhoneNo, object userState) {
+            if ((this.InsertTransportPassengersOperationCompleted == null)) {
+                this.InsertTransportPassengersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertTransportPassengersOperationCompleted);
+            }
+            this.InvokeAsync("InsertTransportPassengers", new object[] {
+                        reqNo,
+                        passengerNo,
+                        passengersName,
+                        passengersPhoneNo}, this.InsertTransportPassengersOperationCompleted, userState);
+        }
+        
+        private void OnInsertTransportPassengersOperationCompleted(object arg) {
+            if ((this.InsertTransportPassengersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertTransportPassengersCompleted(this, new InsertTransportPassengersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4713,6 +4951,37 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnSentTransportRequisitionFo" +
+            "rApproval", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="OnSentTransportRequisitionForApproval_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string OnSentTransportRequisitionForApproval(string transportNo) {
+            object[] results = this.Invoke("OnSentTransportRequisitionForApproval", new object[] {
+                        transportNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void OnSentTransportRequisitionForApprovalAsync(string transportNo) {
+            this.OnSentTransportRequisitionForApprovalAsync(transportNo, null);
+        }
+        
+        /// <remarks/>
+        public void OnSentTransportRequisitionForApprovalAsync(string transportNo, object userState) {
+            if ((this.OnSentTransportRequisitionForApprovalOperationCompleted == null)) {
+                this.OnSentTransportRequisitionForApprovalOperationCompleted = new System.Threading.SendOrPostCallback(this.OnOnSentTransportRequisitionForApprovalOperationCompleted);
+            }
+            this.InvokeAsync("OnSentTransportRequisitionForApproval", new object[] {
+                        transportNo}, this.OnSentTransportRequisitionForApprovalOperationCompleted, userState);
+        }
+        
+        private void OnOnSentTransportRequisitionForApprovalOperationCompleted(object arg) {
+            if ((this.OnSentTransportRequisitionForApprovalCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.OnSentTransportRequisitionForApprovalCompleted(this, new OnSentTransportRequisitionForApprovalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnsendLeaveRequisitionForApp" +
             "roval", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="OnsendLeaveRequisitionForApproval_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
@@ -5005,6 +5274,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.RemoveStoreRequisitionLineCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.RemoveStoreRequisitionLineCompleted(this, new RemoveStoreRequisitionLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:RemoveTransportPassengers", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="RemoveTransportPassengers_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string RemoveTransportPassengers(string passengerNo) {
+            object[] results = this.Invoke("RemoveTransportPassengers", new object[] {
+                        passengerNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RemoveTransportPassengersAsync(string passengerNo) {
+            this.RemoveTransportPassengersAsync(passengerNo, null);
+        }
+        
+        /// <remarks/>
+        public void RemoveTransportPassengersAsync(string passengerNo, object userState) {
+            if ((this.RemoveTransportPassengersOperationCompleted == null)) {
+                this.RemoveTransportPassengersOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemoveTransportPassengersOperationCompleted);
+            }
+            this.InvokeAsync("RemoveTransportPassengers", new object[] {
+                        passengerNo}, this.RemoveTransportPassengersOperationCompleted, userState);
+        }
+        
+        private void OnRemoveTransportPassengersOperationCompleted(object arg) {
+            if ((this.RemoveTransportPassengersCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemoveTransportPassengersCompleted(this, new RemoveTransportPassengersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -5975,6 +6274,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void CreateTransportRequestCompletedEventHandler(object sender, CreateTransportRequestCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreateTransportRequestCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreateTransportRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void CreateVendorRFQquoteCompletedEventHandler(object sender, CreateVendorRFQquoteCompletedEventArgs e);
     
     /// <remarks/>
@@ -6478,6 +6803,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetAppraisalPeriodCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetApprovedMemosCompletedEventHandler(object sender, GetApprovedMemosCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetApprovedMemosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetApprovedMemosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -7039,6 +7390,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetMyTransportRequisitionsCompletedEventHandler(object sender, GetMyTransportRequisitionsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetMyTransportRequisitionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetMyTransportRequisitionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetMyleaveApplicationsCompletedEventHandler(object sender, GetMyleaveApplicationsCompletedEventArgs e);
     
     /// <remarks/>
@@ -7102,6 +7479,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetNextPettyCashNoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetPassengersCompletedEventHandler(object sender, GetPassengersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPassengersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPassengersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -7585,6 +7988,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetTransportReqPassengersCompletedEventHandler(object sender, GetTransportReqPassengersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetTransportReqPassengersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetTransportReqPassengersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void HRMLeaveApplication1CompletedEventHandler(object sender, HRMLeaveApplication1CompletedEventArgs e);
     
     /// <remarks/>
@@ -7960,6 +8389,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal InsertStoreRequisitionLinesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void InsertTransportPassengersCompletedEventHandler(object sender, InsertTransportPassengersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertTransportPassengersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertTransportPassengersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -8419,6 +8874,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void OnSentTransportRequisitionForApprovalCompletedEventHandler(object sender, OnSentTransportRequisitionForApprovalCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class OnSentTransportRequisitionForApprovalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal OnSentTransportRequisitionForApprovalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void OnsendLeaveRequisitionForApprovalCompletedEventHandler(object sender, OnsendLeaveRequisitionForApprovalCompletedEventArgs e);
     
     /// <remarks/>
@@ -8638,6 +9119,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal RemoveStoreRequisitionLineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void RemoveTransportPassengersCompletedEventHandler(object sender, RemoveTransportPassengersCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RemoveTransportPassengersCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RemoveTransportPassengersCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

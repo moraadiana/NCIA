@@ -355,6 +355,29 @@
           </sequence>
         </complexType>
       </element>
+      <element name="CreateTransportRequest">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="requestNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="dateofTravel" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="noOfDays" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="expectedReturnDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="from" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="destination" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="unitCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="createdBy" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateTransportRequest_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="CreateVendorRFQquote">
         <complexType>
           <sequence>
@@ -659,6 +682,18 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetApprovedMemos">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetApprovedMemos_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetAttachmentDetails">
         <complexType>
           <sequence>
@@ -950,6 +985,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetMyTransportRequisitions">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyTransportRequisitions_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetMyleaveApplications">
         <complexType>
           <sequence>
@@ -982,6 +1031,18 @@
         </complexType>
       </element>
       <element name="GetNextPettyCashNo_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPassengers">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetPassengers_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1232,6 +1293,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetTransportReqPassengers">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="requestNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetTransportReqPassengers_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="HRMLeaveApplication1">
         <complexType>
           <sequence>
@@ -1243,7 +1318,6 @@
             <element minOccurs="1" maxOccurs="1" name="startDate" type="date" />
             <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
             <element minOccurs="1" maxOccurs="1" name="returnDate" type="date" />
-            <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
             <element minOccurs="1" maxOccurs="1" name="responsibilityCenter" type="string" />
           </sequence>
         </complexType>
@@ -1503,6 +1577,23 @@
         </complexType>
       </element>
       <element name="InsertStoreRequisitionLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertTransportPassengers">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="reqNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="passengerNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="passengersName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="passengersPhoneNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertTransportPassengers_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1819,6 +1910,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="OnSentTransportRequisitionForApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="transportNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OnSentTransportRequisitionForApproval_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="OnsendLeaveRequisitionForApproval">
         <complexType>
           <sequence>
@@ -1950,6 +2055,20 @@
         </complexType>
       </element>
       <element name="RemoveStoreRequisitionLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveTransportPassengers">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="passengerNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemoveTransportPassengers_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -2263,6 +2382,12 @@
   <message name="CreateStoreRequisitionHeader_Result">
     <part name="parameters" element="tns:CreateStoreRequisitionHeader_Result" />
   </message>
+  <message name="CreateTransportRequest">
+    <part name="parameters" element="tns:CreateTransportRequest" />
+  </message>
+  <message name="CreateTransportRequest_Result">
+    <part name="parameters" element="tns:CreateTransportRequest_Result" />
+  </message>
   <message name="CreateVendorRFQquote">
     <part name="parameters" element="tns:CreateVendorRFQquote" />
   </message>
@@ -2382,6 +2507,12 @@
   </message>
   <message name="GetAppraisalPeriod_Result">
     <part name="parameters" element="tns:GetAppraisalPeriod_Result" />
+  </message>
+  <message name="GetApprovedMemos">
+    <part name="parameters" element="tns:GetApprovedMemos" />
+  </message>
+  <message name="GetApprovedMemos_Result">
+    <part name="parameters" element="tns:GetApprovedMemos_Result" />
   </message>
   <message name="GetAttachmentDetails">
     <part name="parameters" element="tns:GetAttachmentDetails" />
@@ -2509,6 +2640,12 @@
   <message name="GetMyTrainingApplications_Result">
     <part name="parameters" element="tns:GetMyTrainingApplications_Result" />
   </message>
+  <message name="GetMyTransportRequisitions">
+    <part name="parameters" element="tns:GetMyTransportRequisitions" />
+  </message>
+  <message name="GetMyTransportRequisitions_Result">
+    <part name="parameters" element="tns:GetMyTransportRequisitions_Result" />
+  </message>
   <message name="GetMyleaveApplications">
     <part name="parameters" element="tns:GetMyleaveApplications" />
   </message>
@@ -2526,6 +2663,12 @@
   </message>
   <message name="GetNextPettyCashNo_Result">
     <part name="parameters" element="tns:GetNextPettyCashNo_Result" />
+  </message>
+  <message name="GetPassengers">
+    <part name="parameters" element="tns:GetPassengers" />
+  </message>
+  <message name="GetPassengers_Result">
+    <part name="parameters" element="tns:GetPassengers_Result" />
   </message>
   <message name="GetPayslipMonths">
     <part name="parameters" element="tns:GetPayslipMonths" />
@@ -2635,6 +2778,12 @@
   <message name="GetTrainingVotes_Result">
     <part name="parameters" element="tns:GetTrainingVotes_Result" />
   </message>
+  <message name="GetTransportReqPassengers">
+    <part name="parameters" element="tns:GetTransportReqPassengers" />
+  </message>
+  <message name="GetTransportReqPassengers_Result">
+    <part name="parameters" element="tns:GetTransportReqPassengers_Result" />
+  </message>
   <message name="HRMLeaveApplication1">
     <part name="parameters" element="tns:HRMLeaveApplication1" />
   </message>
@@ -2724,6 +2873,12 @@
   </message>
   <message name="InsertStoreRequisitionLines_Result">
     <part name="parameters" element="tns:InsertStoreRequisitionLines_Result" />
+  </message>
+  <message name="InsertTransportPassengers">
+    <part name="parameters" element="tns:InsertTransportPassengers" />
+  </message>
+  <message name="InsertTransportPassengers_Result">
+    <part name="parameters" element="tns:InsertTransportPassengers_Result" />
   </message>
   <message name="IsItemInProcurementPlan">
     <part name="parameters" element="tns:IsItemInProcurementPlan" />
@@ -2863,6 +3018,12 @@
   <message name="OnSendTrainigRequisitionForApproval_Result">
     <part name="parameters" element="tns:OnSendTrainigRequisitionForApproval_Result" />
   </message>
+  <message name="OnSentTransportRequisitionForApproval">
+    <part name="parameters" element="tns:OnSentTransportRequisitionForApproval" />
+  </message>
+  <message name="OnSentTransportRequisitionForApproval_Result">
+    <part name="parameters" element="tns:OnSentTransportRequisitionForApproval_Result" />
+  </message>
   <message name="OnsendLeaveRequisitionForApproval">
     <part name="parameters" element="tns:OnsendLeaveRequisitionForApproval" />
   </message>
@@ -2916,6 +3077,12 @@
   </message>
   <message name="RemoveStoreRequisitionLine_Result">
     <part name="parameters" element="tns:RemoveStoreRequisitionLine_Result" />
+  </message>
+  <message name="RemoveTransportPassengers">
+    <part name="parameters" element="tns:RemoveTransportPassengers" />
+  </message>
+  <message name="RemoveTransportPassengers_Result">
+    <part name="parameters" element="tns:RemoveTransportPassengers_Result" />
   </message>
   <message name="SaveMemoAttchmnts">
     <part name="parameters" element="tns:SaveMemoAttchmnts" />
@@ -3066,6 +3233,10 @@
       <input name="CreateStoreRequisitionHeader" message="tns:CreateStoreRequisitionHeader" />
       <output name="CreateStoreRequisitionHeader_Result" message="tns:CreateStoreRequisitionHeader_Result" />
     </operation>
+    <operation name="CreateTransportRequest">
+      <input name="CreateTransportRequest" message="tns:CreateTransportRequest" />
+      <output name="CreateTransportRequest_Result" message="tns:CreateTransportRequest_Result" />
+    </operation>
     <operation name="CreateVendorRFQquote">
       <input name="CreateVendorRFQquote" message="tns:CreateVendorRFQquote" />
       <output name="CreateVendorRFQquote_Result" message="tns:CreateVendorRFQquote_Result" />
@@ -3145,6 +3316,10 @@
     <operation name="GetAppraisalPeriod">
       <input name="GetAppraisalPeriod" message="tns:GetAppraisalPeriod" />
       <output name="GetAppraisalPeriod_Result" message="tns:GetAppraisalPeriod_Result" />
+    </operation>
+    <operation name="GetApprovedMemos">
+      <input name="GetApprovedMemos" message="tns:GetApprovedMemos" />
+      <output name="GetApprovedMemos_Result" message="tns:GetApprovedMemos_Result" />
     </operation>
     <operation name="GetAttachmentDetails">
       <input name="GetAttachmentDetails" message="tns:GetAttachmentDetails" />
@@ -3230,6 +3405,10 @@
       <input name="GetMyTrainingApplications" message="tns:GetMyTrainingApplications" />
       <output name="GetMyTrainingApplications_Result" message="tns:GetMyTrainingApplications_Result" />
     </operation>
+    <operation name="GetMyTransportRequisitions">
+      <input name="GetMyTransportRequisitions" message="tns:GetMyTransportRequisitions" />
+      <output name="GetMyTransportRequisitions_Result" message="tns:GetMyTransportRequisitions_Result" />
+    </operation>
     <operation name="GetMyleaveApplications">
       <input name="GetMyleaveApplications" message="tns:GetMyleaveApplications" />
       <output name="GetMyleaveApplications_Result" message="tns:GetMyleaveApplications_Result" />
@@ -3241,6 +3420,10 @@
     <operation name="GetNextPettyCashNo">
       <input name="GetNextPettyCashNo" message="tns:GetNextPettyCashNo" />
       <output name="GetNextPettyCashNo_Result" message="tns:GetNextPettyCashNo_Result" />
+    </operation>
+    <operation name="GetPassengers">
+      <input name="GetPassengers" message="tns:GetPassengers" />
+      <output name="GetPassengers_Result" message="tns:GetPassengers_Result" />
     </operation>
     <operation name="GetPayslipMonths">
       <input name="GetPayslipMonths" message="tns:GetPayslipMonths" />
@@ -3314,6 +3497,10 @@
       <input name="GetTrainingVotes" message="tns:GetTrainingVotes" />
       <output name="GetTrainingVotes_Result" message="tns:GetTrainingVotes_Result" />
     </operation>
+    <operation name="GetTransportReqPassengers">
+      <input name="GetTransportReqPassengers" message="tns:GetTransportReqPassengers" />
+      <output name="GetTransportReqPassengers_Result" message="tns:GetTransportReqPassengers_Result" />
+    </operation>
     <operation name="HRMLeaveApplication1">
       <input name="HRMLeaveApplication1" message="tns:HRMLeaveApplication1" />
       <output name="HRMLeaveApplication1_Result" message="tns:HRMLeaveApplication1_Result" />
@@ -3373,6 +3560,10 @@
     <operation name="InsertStoreRequisitionLines">
       <input name="InsertStoreRequisitionLines" message="tns:InsertStoreRequisitionLines" />
       <output name="InsertStoreRequisitionLines_Result" message="tns:InsertStoreRequisitionLines_Result" />
+    </operation>
+    <operation name="InsertTransportPassengers">
+      <input name="InsertTransportPassengers" message="tns:InsertTransportPassengers" />
+      <output name="InsertTransportPassengers_Result" message="tns:InsertTransportPassengers_Result" />
     </operation>
     <operation name="IsItemInProcurementPlan">
       <input name="IsItemInProcurementPlan" message="tns:IsItemInProcurementPlan" />
@@ -3466,6 +3657,10 @@
       <input name="OnSendTrainigRequisitionForApproval" message="tns:OnSendTrainigRequisitionForApproval" />
       <output name="OnSendTrainigRequisitionForApproval_Result" message="tns:OnSendTrainigRequisitionForApproval_Result" />
     </operation>
+    <operation name="OnSentTransportRequisitionForApproval">
+      <input name="OnSentTransportRequisitionForApproval" message="tns:OnSentTransportRequisitionForApproval" />
+      <output name="OnSentTransportRequisitionForApproval_Result" message="tns:OnSentTransportRequisitionForApproval_Result" />
+    </operation>
     <operation name="OnsendLeaveRequisitionForApproval">
       <input name="OnsendLeaveRequisitionForApproval" message="tns:OnsendLeaveRequisitionForApproval" />
       <output name="OnsendLeaveRequisitionForApproval_Result" message="tns:OnsendLeaveRequisitionForApproval_Result" />
@@ -3501,6 +3696,10 @@
     <operation name="RemoveStoreRequisitionLine">
       <input name="RemoveStoreRequisitionLine" message="tns:RemoveStoreRequisitionLine" />
       <output name="RemoveStoreRequisitionLine_Result" message="tns:RemoveStoreRequisitionLine_Result" />
+    </operation>
+    <operation name="RemoveTransportPassengers">
+      <input name="RemoveTransportPassengers" message="tns:RemoveTransportPassengers" />
+      <output name="RemoveTransportPassengers_Result" message="tns:RemoveTransportPassengers_Result" />
     </operation>
     <operation name="SaveMemoAttchmnts">
       <input name="SaveMemoAttchmnts" message="tns:SaveMemoAttchmnts" />
@@ -3743,6 +3942,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="CreateTransportRequest">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateTransportRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateTransportRequest">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateTransportRequest_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="CreateVendorRFQquote">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateVendorRFQquote" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="CreateVendorRFQquote">
@@ -3920,6 +4128,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetAppraisalPeriod_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetApprovedMemos">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetApprovedMemos" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetApprovedMemos">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetApprovedMemos_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4112,6 +4329,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetMyTransportRequisitions">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyTransportRequisitions" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyTransportRequisitions">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyTransportRequisitions_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetMyleaveApplications">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyleaveApplications" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetMyleaveApplications">
@@ -4136,6 +4362,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetNextPettyCashNo_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPassengers">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPassengers" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPassengers">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPassengers_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4301,6 +4536,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetTransportReqPassengers">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetTransportReqPassengers" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetTransportReqPassengers">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetTransportReqPassengers_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="HRMLeaveApplication1">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:HRMLeaveApplication1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="HRMLeaveApplication1">
@@ -4433,6 +4677,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="InsertStoreRequisitionLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertTransportPassengers">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertTransportPassengers" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertTransportPassengers">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertTransportPassengers_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4643,6 +4896,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="OnSentTransportRequisitionForApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnSentTransportRequisitionForApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="OnSentTransportRequisitionForApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="OnSentTransportRequisitionForApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="OnsendLeaveRequisitionForApproval">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnsendLeaveRequisitionForApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="OnsendLeaveRequisitionForApproval">
@@ -4721,6 +4983,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="RemoveStoreRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemoveTransportPassengers">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:RemoveTransportPassengers" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemoveTransportPassengers">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemoveTransportPassengers_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4817,7 +5088,7 @@
   </binding>
   <service name="Staffportall">
     <port name="Staffportall_Port" binding="tns:Staffportall_Binding">
-      <address location="http://102.210.149.230:1067/Test/WS/NCIA%20TEST/Codeunit/Staffportall" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA%20TEST/Codeunit/Staffportall" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>
