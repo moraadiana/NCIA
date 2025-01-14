@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Leave Application" Language="C#" MasterPageFile="~/Layout/Main.Master" AutoEventWireup="true" CodeBehind="LeaveApplication.aspx.cs" Inherits="NCIASTaff.pages.LeaveApplication" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="Main1" runat="server">
+
     <div class="content-wrapper">
         <section class="content-header">
             <h1>Leave Application</h1>

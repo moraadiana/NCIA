@@ -56,18 +56,17 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="LeaveListing.aspx"><i class="fa fa-hand-o-right"></i>Leave Requisition</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="TrainingListing.aspx"><i class="fa fa-hand-o-right"></i>Training Requisition</a></li>
-                                        <li class="divider"></li>
                                         <li><a href="BackToOfficeListsing.aspx"><i class="fa fa-hand-o-right"></i>Back To Office</a></li>
                                         <li class="divider"></li>
-                                           <li><a href="AppraisalListing.aspx"><i class="fa fa-hand-o-right"></i>Appraisals</a></li>
+                                        <li><a href="AppraisalListing.aspx"><i class="fa fa-hand-o-right"></i>Appraisals</a></li>
+                                        <li class="divider"></li> 
+                                        <li><a href="TrainingListing.aspx"><i class="fa fa-hand-o-right"></i>Training Requisition</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="TransportRequisitionListing.aspx"><i class="fa fa-hand-o-right"></i>Transport Requisition</a></li>
                                         <li class="divider"></li> 
                                         <li><a href="pnineform.aspx"><i class="fa fa-hand-o-right"></i>P9 Form</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="Payslip.aspx"><i class="fa fa-hand-o-right"></i>Payslip</a></li>
-                                        <li class="divider"></li> 
-                                        <li><a href="TransportRequisitionListing.aspx"><i class="fa fa-hand-o-right"></i>Transport Requisition</a></li>
-                                    </ul>
+                                        <li><a href="Payslip.aspx"><i class="fa fa-hand-o-right"></i>Payslip</a></li>                                    </ul>
                                 </li>
 
                                 <li class="dropdown">
@@ -115,7 +114,14 @@
                                         <li><a href="Payslip.aspx"><i class="fa fa-hand-o-right"></i>Payslip</a></li>
                                     </ul>
                                 </li>
-
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Staff Exit <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="StaffExitListing.aspx"><i class="fa fa-hand-o-right"></i>Exit</a></li>
+                                        <!--<li class="divider"></li>
+                                        <li><a href="PurchaseListing.aspx"><i class="fa fa-hand-o-right"></i>Purchase Requisition</a></li> -->
+                                    </ul>
+                                </li>
                                 <li class="dropdown" runat="server" visible="false">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Approvals <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">

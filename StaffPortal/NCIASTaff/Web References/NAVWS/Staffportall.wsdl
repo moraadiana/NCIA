@@ -212,6 +212,26 @@
           </sequence>
         </complexType>
       </element>
+      <element name="CreateClearanceHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="empNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="empName" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="designation" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="natureOfliving" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="leavingDate" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="reason" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CreateClearanceHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="CreateImprestRequisitionHeader">
         <complexType>
           <sequence>
@@ -508,12 +528,16 @@
             <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="period" type="date" />
             <element minOccurs="1" maxOccurs="1" name="fileNameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
           </sequence>
         </complexType>
       </element>
       <element name="GeneratePayslipReport2_Result">
         <complexType>
-          <sequence />
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
+          </sequence>
         </complexType>
       </element>
       <element name="GeneratePayslipReport4">
@@ -937,6 +961,20 @@
         </complexType>
       </element>
       <element name="GetMyClaims_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyExitRequisitions">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyExitRequisitions_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -2362,6 +2400,12 @@
   <message name="CreateClaimRequisitionHeader_Result">
     <part name="parameters" element="tns:CreateClaimRequisitionHeader_Result" />
   </message>
+  <message name="CreateClearanceHeader">
+    <part name="parameters" element="tns:CreateClearanceHeader" />
+  </message>
+  <message name="CreateClearanceHeader_Result">
+    <part name="parameters" element="tns:CreateClearanceHeader_Result" />
+  </message>
   <message name="CreateImprestRequisitionHeader">
     <part name="parameters" element="tns:CreateImprestRequisitionHeader" />
   </message>
@@ -2649,6 +2693,12 @@
   </message>
   <message name="GetMyClaims_Result">
     <part name="parameters" element="tns:GetMyClaims_Result" />
+  </message>
+  <message name="GetMyExitRequisitions">
+    <part name="parameters" element="tns:GetMyExitRequisitions" />
+  </message>
+  <message name="GetMyExitRequisitions_Result">
+    <part name="parameters" element="tns:GetMyExitRequisitions_Result" />
   </message>
   <message name="GetMyImprests">
     <part name="parameters" element="tns:GetMyImprests" />
@@ -3241,6 +3291,10 @@
       <input name="CreateClaimRequisitionHeader" message="tns:CreateClaimRequisitionHeader" />
       <output name="CreateClaimRequisitionHeader_Result" message="tns:CreateClaimRequisitionHeader_Result" />
     </operation>
+    <operation name="CreateClearanceHeader">
+      <input name="CreateClearanceHeader" message="tns:CreateClearanceHeader" />
+      <output name="CreateClearanceHeader_Result" message="tns:CreateClearanceHeader_Result" />
+    </operation>
     <operation name="CreateImprestRequisitionHeader">
       <input name="CreateImprestRequisitionHeader" message="tns:CreateImprestRequisitionHeader" />
       <output name="CreateImprestRequisitionHeader_Result" message="tns:CreateImprestRequisitionHeader_Result" />
@@ -3432,6 +3486,10 @@
     <operation name="GetMyClaims">
       <input name="GetMyClaims" message="tns:GetMyClaims" />
       <output name="GetMyClaims_Result" message="tns:GetMyClaims_Result" />
+    </operation>
+    <operation name="GetMyExitRequisitions">
+      <input name="GetMyExitRequisitions" message="tns:GetMyExitRequisitions" />
+      <output name="GetMyExitRequisitions_Result" message="tns:GetMyExitRequisitions_Result" />
     </operation>
     <operation name="GetMyImprests">
       <input name="GetMyImprests" message="tns:GetMyImprests" />
@@ -3918,6 +3976,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="CreateClearanceHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateClearanceHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreateClearanceHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CreateClearanceHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="CreateImprestRequisitionHeader">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateImprestRequisitionHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="CreateImprestRequisitionHeader">
@@ -4347,6 +4414,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetMyClaims_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyExitRequisitions">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyExitRequisitions" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyExitRequisitions">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyExitRequisitions_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

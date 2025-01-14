@@ -102,35 +102,39 @@ namespace NCIASTaff.pages
             try
             {
                 string username = Session["username"].ToString();
-                string sanitizedUsername = username.Replace("/", "");
-                string filename = $"PAYSLIP-{sanitizedUsername}.pdf";
+                //string sanitizedUsername = username.Replace("/", "");
+              //  string filename = $"PAYSLIP-{sanitizedUsername}.pdf";
+                var filename = Session["username"].ToString().Replace(@"/", @"");
                 string month = ddlMonth.SelectedValue.PadLeft(2, '0');
                 string periodString = $"{month}/01/{ddlYear.SelectedValue}";
                 DateTime period = DateTime.ParseExact(periodString, "M/d/yyyy", CultureInfo.InvariantCulture);
-                string downloadsPath = Server.MapPath("~/Downloads/");
-                string filePath = Path.Combine(downloadsPath, filename);
+           //     string downloadsPath = Server.MapPath("~/Downloads/");
+         //       string filePath = Path.Combine(downloadsPath, filename);
 
-                // Ensure the Downloads directory exists
-                if (!Directory.Exists(downloadsPath))
+                try
                 {
-                    Directory.CreateDirectory(downloadsPath);
+                    string returnstring = "";
+                   // Components.ObjNav.Generatep9Report(period, employee, String.Format("p9Form{0}.pdf", filename), ref returnstring);
+                    webportals.GeneratePayslipReport2(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename), ref returnstring);
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("PAYSLIP-{0}.pdf", filename)));
+                    //WSConfig.ObjNavWS.FnFosaStatement(accno, ref returnstring, filter);
+                    byte[] bytes = Convert.FromBase64String(returnstring);
+                    string path = HostingEnvironment.MapPath("~/Downloads/" + $"PAYSLIP-{filename}.pdf");
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+                    FileStream stream = new FileStream(path, FileMode.CreateNew);
+                    BinaryWriter writer = new BinaryWriter(stream);
+                    writer.Write(bytes, 0, bytes.Length);
+                    writer.Close();
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("PAYSLIP-{0}.pdf", filename)));
                 }
-                // Log file path and procedure call
-                System.Diagnostics.Debug.WriteLine($"Generating payslip: {filePath}");
-
-                // Generate the payslip
-                Components.ObjNav.GeneratePayslipReport(username, period, filename);
-
-                System.Diagnostics.Debug.WriteLine($"Checking file existence: {filePath}");
-                // Verify the file exists
-                if (!File.Exists(filePath))
+                catch (Exception exception)
                 {
-                    throw new FileNotFoundException($"Payslip '{filePath}' was not found after generation.");
+                    exception.Data.Clear();
+                    //     HttpContext.Current.Response.Write(exception);
                 }
-
-                string fileUrl = ResolveUrl("~/Downloads/" + filename);
-                myPDF.Attributes.Add("src", fileUrl);
-                System.Diagnostics.Debug.WriteLine($"Payslip displayed successfully: {fileUrl}");
             }
             catch (Exception ex)
             {
