@@ -93,6 +93,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GeneratePayslipReport2OperationCompleted;
         
+        private System.Threading.SendOrPostCallback GeneratePayslipReportOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GenerateStaffLeaveStatementOperationCompleted;
         
         private System.Threading.SendOrPostCallback GenerateVendorLPOOperationCompleted;
@@ -460,6 +462,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GeneratePayslipReport2CompletedEventHandler GeneratePayslipReport2Completed;
+        
+        /// <remarks/>
+        public event GeneratePayslipReportCompletedEventHandler GeneratePayslipReportCompleted;
         
         /// <remarks/>
         public event GenerateStaffLeaveStatementCompletedEventHandler GenerateStaffLeaveStatementCompleted;
@@ -1912,6 +1917,38 @@ namespace NCIASTaff.NAVWS {
             if ((this.GeneratePayslipReport2Completed != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GeneratePayslipReport2Completed(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePayslipReport", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GeneratePayslipReport_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void GeneratePayslipReport(string username, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime period, string fileNameFromApp) {
+            this.Invoke("GeneratePayslipReport", new object[] {
+                        username,
+                        period,
+                        fileNameFromApp});
+        }
+        
+        /// <remarks/>
+        public void GeneratePayslipReportAsync(string username, System.DateTime period, string fileNameFromApp) {
+            this.GeneratePayslipReportAsync(username, period, fileNameFromApp, null);
+        }
+        
+        /// <remarks/>
+        public void GeneratePayslipReportAsync(string username, System.DateTime period, string fileNameFromApp, object userState) {
+            if ((this.GeneratePayslipReportOperationCompleted == null)) {
+                this.GeneratePayslipReportOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGeneratePayslipReportOperationCompleted);
+            }
+            this.InvokeAsync("GeneratePayslipReport", new object[] {
+                        username,
+                        period,
+                        fileNameFromApp}, this.GeneratePayslipReportOperationCompleted, userState);
+        }
+        
+        private void OnGeneratePayslipReportOperationCompleted(object arg) {
+            if ((this.GeneratePayslipReportCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GeneratePayslipReportCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6511,6 +6548,10 @@ namespace NCIASTaff.NAVWS {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GeneratePayslipReport2CompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GeneratePayslipReportCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]

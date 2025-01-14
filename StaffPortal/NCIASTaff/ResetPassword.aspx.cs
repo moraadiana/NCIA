@@ -107,7 +107,7 @@ namespace NCIASTaff
                 {
                     if (response == "SUCCESS")
                     {
-                        string subject = "Kenya Institute of Primates Research Portal Password";
+                        string subject = "NCIA Portal Password";
                         string body = $"Your portals password has been reset successfully. Use below password to login." +
                             $"<br/><br/>" +
                             $"Portal password: <b>{newPassword}</b>";
