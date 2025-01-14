@@ -516,6 +516,20 @@
           <sequence />
         </complexType>
       </element>
+      <element name="GeneratePayslipReport4">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="employeeNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="period" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="fileNameFromApp" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GeneratePayslipReport4_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
       <element name="GeneratePayslipReport">
         <complexType>
           <sequence>
@@ -2456,6 +2470,12 @@
   <message name="GeneratePayslipReport2_Result">
     <part name="parameters" element="tns:GeneratePayslipReport2_Result" />
   </message>
+  <message name="GeneratePayslipReport4">
+    <part name="parameters" element="tns:GeneratePayslipReport4" />
+  </message>
+  <message name="GeneratePayslipReport4_Result">
+    <part name="parameters" element="tns:GeneratePayslipReport4_Result" />
+  </message>
   <message name="GeneratePayslipReport">
     <part name="parameters" element="tns:GeneratePayslipReport" />
   </message>
@@ -3293,6 +3313,10 @@
       <input name="GeneratePayslipReport2" message="tns:GeneratePayslipReport2" />
       <output name="GeneratePayslipReport2_Result" message="tns:GeneratePayslipReport2_Result" />
     </operation>
+    <operation name="GeneratePayslipReport4">
+      <input name="GeneratePayslipReport4" message="tns:GeneratePayslipReport4" />
+      <output name="GeneratePayslipReport4_Result" message="tns:GeneratePayslipReport4_Result" />
+    </operation>
     <operation name="GeneratePayslipReport">
       <input name="GeneratePayslipReport" message="tns:GeneratePayslipReport" />
       <output name="GeneratePayslipReport_Result" message="tns:GeneratePayslipReport_Result" />
@@ -4053,6 +4077,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GeneratePayslipReport2_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GeneratePayslipReport4">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GeneratePayslipReport4" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GeneratePayslipReport4">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GeneratePayslipReport4_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
