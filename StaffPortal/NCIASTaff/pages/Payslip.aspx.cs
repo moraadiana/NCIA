@@ -129,24 +129,24 @@ namespace NCIASTaff.pages
                     month = "0" + month;
                 }
                 var myDate = month + "/01/" + ddlYear.SelectedValue;
-                var period = DateTime.ParseExact(myDate, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                var period = DateTime.ParseExact(myDate, "M/dd/yyyy", CultureInfo.InvariantCulture);
 
 
 
-                //var filePath = Server.MapPath("~/Downloads/") + String.Format("PAYSLIP-{0}.pdf", filename);
-                var filePath = Server.MapPath("~/Downloads/") + pdfFileName;
+                var filePath = Server.MapPath("~/Download/") + String.Format("PAYSLIP-{0}.pdf", filename);
+                //var filePath = Server.MapPath("~/Downloads/") + pdfFileName;
                 // Check if directory exists, if not create it
-                if (!Directory.Exists(Server.MapPath("~/Downloads/")))
+                if (!Directory.Exists(Server.MapPath("~/Download/")))
                 {
-                    Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
+                    Directory.CreateDirectory(Server.MapPath("~/Download/"));
                 }
-                webportals.GeneratePayslipReport(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
+                webportals.GeneratePaySlipReport3 (username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
 
                 // myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format(@"PAYSLIP-{0}.pdf", filename)));
                 if (File.Exists(filePath))
                 {
                     System.Diagnostics.Debug.WriteLine("Payslip generated successfully.");
-                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("PAYSLIP-{0}.pdf", filename)));
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP-{0}.pdf", filename)));
                 }
                 else
                 {
