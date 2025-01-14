@@ -133,20 +133,20 @@ namespace NCIASTaff.pages
 
 
 
-                var filePath = Server.MapPath("~/Download/") + String.Format("PAYSLIP-{0}.pdf", filename);
+                var filePath = Server.MapPath("~/Downloads/") + String.Format("PAYSLIP-{0}.pdf", filename);
                 //var filePath = Server.MapPath("~/Downloads/") + pdfFileName;
                 // Check if directory exists, if not create it
-                if (!Directory.Exists(Server.MapPath("~/Download/")))
+                if (!Directory.Exists(Server.MapPath("~/Downloads/")))
                 {
-                    Directory.CreateDirectory(Server.MapPath("~/Download/"));
+                    Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
                 }
-                webportals.GeneratePaySlipReport3 (username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
+                webportals.GeneratePaySlipReport3(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
 
                 // myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format(@"PAYSLIP-{0}.pdf", filename)));
                 if (File.Exists(filePath))
                 {
                     System.Diagnostics.Debug.WriteLine("Payslip generated successfully.");
-                    myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP-{0}.pdf", filename)));
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("PAYSLIP-{0}.pdf", filename)));
                 }
                 else
                 {
