@@ -102,60 +102,42 @@ namespace NCIASTaff.pages
             try
             {
                 string username = Session["username"].ToString();
-                var filename = Session["username"].ToString().Replace(@"/", @"");
-                var month = ddlMonth.SelectedValue;
+                string sanitizedUsername = username.Replace("/", "");
+                string filename = $"PAYSLIP-{sanitizedUsername}.pdf";
+                string month = ddlMonth.SelectedValue.PadLeft(2, '0');
+                string periodString = $"{month}/01/{ddlYear.SelectedValue}";
+                DateTime period = DateTime.ParseExact(periodString, "M/d/yyyy", CultureInfo.InvariantCulture);
+                string downloadsPath = Server.MapPath("~/Downloads/");
+                string filePath = Path.Combine(downloadsPath, filename);
 
-                if (month == "12")
+                // Ensure the Downloads directory exists
+                if (!Directory.Exists(downloadsPath))
                 {
-                    month = "12";
+                    Directory.CreateDirectory(downloadsPath);
+                }
+                // Log file path and procedure call
+                System.Diagnostics.Debug.WriteLine($"Generating payslip: {filePath}");
 
-                }
-                else if (month == "11")
+                // Generate the payslip
+                Components.ObjNav.GeneratePayslipReport(username, period, filename);
+
+                System.Diagnostics.Debug.WriteLine($"Checking file existence: {filePath}");
+                // Verify the file exists
+                if (!File.Exists(filePath))
                 {
-                    month = "11";
-                }
-                else if (month == "10")
-                {
-                    month = "10";
-                }
-                else if (month == "")
-                {
-                    month = "01";
-                }
-                else
-                {
-                    month = "0" + month;
+                    throw new FileNotFoundException($"Payslip '{filePath}' was not found after generation.");
                 }
 
-                var myDate = month + "/01/" + ddlYear.SelectedValue;
-                var period = DateTime.ParseExact(myDate, "M/dd/yyyy", CultureInfo.InvariantCulture);
-
-                var filePath = Server.MapPath("~/Downloads/") + String.Format("PAYSLIP-{0}.pdf", filename);
-
-                // Check if directory exists, if not create it
-                if (!Directory.Exists(Server.MapPath("~/Downloads/")))
-                {
-                    Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
-                }
-                webportals.GeneratePayslipReport4(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
-
-                // myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format(@"PAYSLIP-{0}.pdf", filename)));
-                if (File.Exists(filePath))
-                {
-                    System.Diagnostics.Debug.WriteLine("Payslip generated successfully.");
-                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("PAYSLIP-{0}.pdf", filename)));
-                }
-                else
-                {
-                    throw new FileNotFoundException("Payslip PDF was not found after generation.");
-                }
+                string fileUrl = ResolveUrl("~/Downloads/" + filename);
+                myPDF.Attributes.Add("src", fileUrl);
+                System.Diagnostics.Debug.WriteLine($"Payslip displayed successfully: {fileUrl}");
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
             }
         }
-        private void ViewPayslip1()
+            private void ViewPayslip1()
         {
             try
             {
