@@ -6587,15 +6587,11 @@ namespace NCIASTaff.NAVWS {
     public delegate void GeneratePayslipReport2CompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
   
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-=======
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void GeneratePayslipReport4CompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
->>>>>>> ec867aef09f2b39bf805faa3dde128bb35a3881d
+
     public delegate void GeneratePayslipReportCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
+
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void GenerateStaffLeaveStatementCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
