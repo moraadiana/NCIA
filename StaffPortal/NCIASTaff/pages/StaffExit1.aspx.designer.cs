@@ -11,26 +11,8 @@ namespace NCIASTaff.pages
 {
 
 
-    public partial class StaffExit1
+    public partial class StaffExit
     {
-
-        /// <summary>
-        /// MultiView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView MultiView1;
-
-        /// <summary>
-        /// vwHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View vwHeader;
 
         /// <summary>
         /// lblEmpNo control.
@@ -103,23 +85,5 @@ namespace NCIASTaff.pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lbtnSubmit;
-
-        /// <summary>
-        /// vwLines control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.View vwLines;
-
-        /// <summary>
-        /// gvLines control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvLines;
     }
 }

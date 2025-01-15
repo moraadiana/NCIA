@@ -34,7 +34,9 @@ namespace NCIASTaff.pages
                 //GetPostedReceipts();
                 //BindGridView();
                 string query = Request.QueryString["query"].ToString();
+                string approvalStatus = Request.QueryString["status"].Replace("%", " ");
                 string documentNo = string.Empty;
+                
                 if(query == "new")
                 {
                     documentNo = webportals.GetNextImprestSurrenderNo();
@@ -58,6 +60,15 @@ namespace NCIASTaff.pages
                     }                    
                 }
 
+                if (approvalStatus == "Open" || approvalStatus == "Pending")
+                {
+                    lbtnSubmit.Visible = true;
+                    //lbtnSubmit.Visible = true;
+                }
+                else
+                {
+                    lbtnSubmit.Visible = false;
+                }
                 Session["DocumentNo"] = documentNo;
                 BindAttachedDocuments(documentNo);
                 BindGridViewData();
@@ -318,13 +329,43 @@ namespace NCIASTaff.pages
                     decimal totalAmount = actualAmount + cashReturned;
                     decimal amount = Convert.ToDecimal(row.Cells[5].Text);
                     string accountNo = row.Cells[2].Text;
-
-                    if (totalAmount != amount)
-                    {
-                        Message("The sum of Actual Amount Spent and Cash Amount Returned must ne equal to the amount.");
-                        return;
-                    }
+                    decimal amt = totalAmount - amount;
+                    string purpose = " Refund of overspent amount spent in " + documentNo;
+                   // String AccNo = "BNK-0001";
+                   // string resCenter = CLAIM
                     webportals.InsertImprestSurrenderLines(documentNo, actualAmount, cashReturned, imprestNo, accountNo);
+                    if (totalAmount > amount)
+                    {
+                        
+                        string response1 = webportals.CreateClaimRequisitionHeader(username, "CLAIM", purpose, "BNK-0001");
+                        if (!string.IsNullOrEmpty(response1))
+                        {
+                            string[] responseArr = response1.Split(strLimiters, StringSplitOptions.None);
+                            string returnMsg = responseArr[0];
+                            if (returnMsg == "SUCCESS")
+                            {
+                                string claimNo = responseArr[1];
+                                // Message($"Claim number {claimNo} has been created successfully!");
+                                string claimLine = webportals.InsertClaimRequisitionLines(claimNo, "S-CLAIMS", Convert.ToDecimal(amt));
+                                if (!string.IsNullOrEmpty(claimLine))
+                                {
+                                    string[] strLimiters = new string[] { "::" };
+                                    string[] claimLinesArr = claimLine.Split(strLimiters, StringSplitOptions.None);
+                                    string returnMsg1 = claimLinesArr[0];
+                                    if (returnMsg == "SUCCESS")
+                                    {
+                                         Message($"Claim number {claimNo} has been created successfully!");
+                                        //Message("Line added successfully!");
+                                        // txtAmnt.Text = string.Empty;
+                                        // BindGridViewData(claimNo);
+                                    }
+                                }
+                            }
+
+                        }
+                        
+                    }
+                  
                 }
 
                 string approvalResponse = webportals.OnSendImprestSurrenderForApproval(documentNo);
