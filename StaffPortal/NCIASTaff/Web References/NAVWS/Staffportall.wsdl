@@ -166,6 +166,18 @@
           </sequence>
         </complexType>
       </element>
+      <element name="ClearanceSetup">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="ClearanceSetup_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="CpActivityLines">
         <complexType>
           <sequence>
@@ -202,6 +214,7 @@
             <element minOccurs="1" maxOccurs="1" name="username" type="string" />
             <element minOccurs="1" maxOccurs="1" name="responsibilityCenter" type="string" />
             <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="accNo" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -754,6 +767,21 @@
         </complexType>
       </element>
       <element name="GetAttachmentDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClearanceLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="empNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="clearedby" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetClearanceLines_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -2382,6 +2410,12 @@
   <message name="CheckValidVendorNo_Result">
     <part name="parameters" element="tns:CheckValidVendorNo_Result" />
   </message>
+  <message name="ClearanceSetup">
+    <part name="parameters" element="tns:ClearanceSetup" />
+  </message>
+  <message name="ClearanceSetup_Result">
+    <part name="parameters" element="tns:ClearanceSetup_Result" />
+  </message>
   <message name="CpActivityLines">
     <part name="parameters" element="tns:CpActivityLines" />
   </message>
@@ -2603,6 +2637,12 @@
   </message>
   <message name="GetAttachmentDetails_Result">
     <part name="parameters" element="tns:GetAttachmentDetails_Result" />
+  </message>
+  <message name="GetClearanceLines">
+    <part name="parameters" element="tns:GetClearanceLines" />
+  </message>
+  <message name="GetClearanceLines_Result">
+    <part name="parameters" element="tns:GetClearanceLines_Result" />
   </message>
   <message name="GetCpPeriods">
     <part name="parameters" element="tns:GetCpPeriods" />
@@ -3279,6 +3319,10 @@
       <input name="CheckValidVendorNo" message="tns:CheckValidVendorNo" />
       <output name="CheckValidVendorNo_Result" message="tns:CheckValidVendorNo_Result" />
     </operation>
+    <operation name="ClearanceSetup">
+      <input name="ClearanceSetup" message="tns:ClearanceSetup" />
+      <output name="ClearanceSetup_Result" message="tns:ClearanceSetup_Result" />
+    </operation>
     <operation name="CpActivityLines">
       <input name="CpActivityLines" message="tns:CpActivityLines" />
       <output name="CpActivityLines_Result" message="tns:CpActivityLines_Result" />
@@ -3426,6 +3470,10 @@
     <operation name="GetAttachmentDetails">
       <input name="GetAttachmentDetails" message="tns:GetAttachmentDetails" />
       <output name="GetAttachmentDetails_Result" message="tns:GetAttachmentDetails_Result" />
+    </operation>
+    <operation name="GetClearanceLines">
+      <input name="GetClearanceLines" message="tns:GetClearanceLines" />
+      <output name="GetClearanceLines_Result" message="tns:GetClearanceLines_Result" />
     </operation>
     <operation name="GetCpPeriods">
       <input name="GetCpPeriods" message="tns:GetCpPeriods" />
@@ -3949,6 +3997,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="ClearanceSetup">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:ClearanceSetup" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ClearanceSetup">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ClearanceSetup_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="CpActivityLines">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CpActivityLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="CpActivityLines">
@@ -4279,6 +4336,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetAttachmentDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetClearanceLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetClearanceLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetClearanceLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetClearanceLines_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

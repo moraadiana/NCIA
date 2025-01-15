@@ -172,17 +172,17 @@ namespace NCIASTaff.pages
                 string directorate = lblDirectorate.Text;
                 string responsibilityCenter = ddlResponsibilityCenter.SelectedValue;
                 string purpose = txtPurpose.Text;
-
-               /* if (string.IsNullOrEmpty(department))
-                {
-                    Message("Department cannot be null!");
-                    return;
-                }
-                if (string.IsNullOrEmpty(directorate))
-                {
-                    Message("Division cannot be null!");
-                    return;
-                }*/
+                String AccNo = "BNK-0001";
+                /* if (string.IsNullOrEmpty(department))
+                 {
+                     Message("Department cannot be null!");
+                     return;
+                 }
+                 if (string.IsNullOrEmpty(directorate))
+                 {
+                     Message("Division cannot be null!");
+                     return;
+                 }*/
                 if (string.IsNullOrEmpty(responsibilityCenter))
                 {
                     Message("Responsibility center cannot be null!");
@@ -201,7 +201,7 @@ namespace NCIASTaff.pages
                 }
                 //TODO:
 
-                string response = webportals.CreateClaimRequisitionHeader(username,responsibilityCenter, purpose);//ClaimRequisitionCreate(department, directorate, responsibilityCenter, "", username, purpose, DateTime.Today,"");//
+                string response = webportals.CreateClaimRequisitionHeader(username,responsibilityCenter, purpose, AccNo);//ClaimRequisitionCreate(department, directorate, responsibilityCenter, "", username, purpose, DateTime.Today,"");//
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);

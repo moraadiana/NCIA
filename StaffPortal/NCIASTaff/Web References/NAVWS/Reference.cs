@@ -51,6 +51,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback CheckValidVendorNoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ClearanceSetupOperationCompleted;
+        
         private System.Threading.SendOrPostCallback CpActivityLinesOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateAppraisalHeaderOperationCompleted;
@@ -124,6 +126,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback GetApprovedMemosOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAttachmentDetailsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetClearanceLinesOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetCpPeriodsOperationCompleted;
         
@@ -407,6 +411,9 @@ namespace NCIASTaff.NAVWS {
         public event CheckValidVendorNoCompletedEventHandler CheckValidVendorNoCompleted;
         
         /// <remarks/>
+        public event ClearanceSetupCompletedEventHandler ClearanceSetupCompleted;
+        
+        /// <remarks/>
         public event CpActivityLinesCompletedEventHandler CpActivityLinesCompleted;
         
         /// <remarks/>
@@ -516,6 +523,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetAttachmentDetailsCompletedEventHandler GetAttachmentDetailsCompleted;
+        
+        /// <remarks/>
+        public event GetClearanceLinesCompletedEventHandler GetClearanceLinesCompleted;
         
         /// <remarks/>
         public event GetCpPeriodsCompletedEventHandler GetCpPeriodsCompleted;
@@ -1183,6 +1193,34 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:ClearanceSetup", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="ClearanceSetup_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string ClearanceSetup() {
+            object[] results = this.Invoke("ClearanceSetup", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ClearanceSetupAsync() {
+            this.ClearanceSetupAsync(null);
+        }
+        
+        /// <remarks/>
+        public void ClearanceSetupAsync(object userState) {
+            if ((this.ClearanceSetupOperationCompleted == null)) {
+                this.ClearanceSetupOperationCompleted = new System.Threading.SendOrPostCallback(this.OnClearanceSetupOperationCompleted);
+            }
+            this.InvokeAsync("ClearanceSetup", new object[0], this.ClearanceSetupOperationCompleted, userState);
+        }
+        
+        private void OnClearanceSetupOperationCompleted(object arg) {
+            if ((this.ClearanceSetupCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ClearanceSetupCompleted(this, new ClearanceSetupCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:CpActivityLines", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CpActivityLines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string CpActivityLines(string staffNo) {
@@ -1250,28 +1288,30 @@ namespace NCIASTaff.NAVWS {
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateClaimRequisitionHeader" +
             "", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CreateClaimRequisitionHeader_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string CreateClaimRequisitionHeader(string username, string responsibilityCenter, string purpose) {
+        public string CreateClaimRequisitionHeader(string username, string responsibilityCenter, string purpose, string accNo) {
             object[] results = this.Invoke("CreateClaimRequisitionHeader", new object[] {
                         username,
                         responsibilityCenter,
-                        purpose});
+                        purpose,
+                        accNo});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void CreateClaimRequisitionHeaderAsync(string username, string responsibilityCenter, string purpose) {
-            this.CreateClaimRequisitionHeaderAsync(username, responsibilityCenter, purpose, null);
+        public void CreateClaimRequisitionHeaderAsync(string username, string responsibilityCenter, string purpose, string accNo) {
+            this.CreateClaimRequisitionHeaderAsync(username, responsibilityCenter, purpose, accNo, null);
         }
         
         /// <remarks/>
-        public void CreateClaimRequisitionHeaderAsync(string username, string responsibilityCenter, string purpose, object userState) {
+        public void CreateClaimRequisitionHeaderAsync(string username, string responsibilityCenter, string purpose, string accNo, object userState) {
             if ((this.CreateClaimRequisitionHeaderOperationCompleted == null)) {
                 this.CreateClaimRequisitionHeaderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateClaimRequisitionHeaderOperationCompleted);
             }
             this.InvokeAsync("CreateClaimRequisitionHeader", new object[] {
                         username,
                         responsibilityCenter,
-                        purpose}, this.CreateClaimRequisitionHeaderOperationCompleted, userState);
+                        purpose,
+                        accNo}, this.CreateClaimRequisitionHeaderOperationCompleted, userState);
         }
         
         private void OnCreateClaimRequisitionHeaderOperationCompleted(object arg) {
@@ -2458,6 +2498,38 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetAttachmentDetailsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAttachmentDetailsCompleted(this, new GetAttachmentDetailsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetClearanceLines", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetClearanceLines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetClearanceLines(string empNo, string clearedby) {
+            object[] results = this.Invoke("GetClearanceLines", new object[] {
+                        empNo,
+                        clearedby});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetClearanceLinesAsync(string empNo, string clearedby) {
+            this.GetClearanceLinesAsync(empNo, clearedby, null);
+        }
+        
+        /// <remarks/>
+        public void GetClearanceLinesAsync(string empNo, string clearedby, object userState) {
+            if ((this.GetClearanceLinesOperationCompleted == null)) {
+                this.GetClearanceLinesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetClearanceLinesOperationCompleted);
+            }
+            this.InvokeAsync("GetClearanceLines", new object[] {
+                        empNo,
+                        clearedby}, this.GetClearanceLinesOperationCompleted, userState);
+        }
+        
+        private void OnGetClearanceLinesOperationCompleted(object arg) {
+            if ((this.GetClearanceLinesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetClearanceLinesCompleted(this, new GetClearanceLinesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6149,6 +6221,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void ClearanceSetupCompletedEventHandler(object sender, ClearanceSetupCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ClearanceSetupCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ClearanceSetupCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void CpActivityLinesCompletedEventHandler(object sender, CpActivityLinesCompletedEventArgs e);
     
     /// <remarks/>
@@ -7080,6 +7178,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetAttachmentDetailsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetClearanceLinesCompletedEventHandler(object sender, GetClearanceLinesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetClearanceLinesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetClearanceLinesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -67,9 +67,10 @@ namespace NCIASTaff.pages
                             htmlStr += $"<td>{Reason}</td>";
                             htmlStr += $"<td>{leavingDate}</td>";
                             htmlStr += $"<td>{status}</td>";
-                           
+
                             // htmlStr += $"<td><a href='TransportRequisition.aspx?requestNo={requestNumber}' ><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</a></td>";
-                           //htmlStr += $"<td><a href='TransportRequisition.aspx?requestNo={EmpNo}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></td>";
+                             //< li >< a href = 'AppraisalLines.aspx?appraisalNo={1}&query=old&status={4}' >< i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></li>
+                           htmlStr += $"<td><a href='StaffExit.aspx?requestNo={EmpNo}&query=old&status={status}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></td>";
 
 
                             htmlStr += "</tr>";

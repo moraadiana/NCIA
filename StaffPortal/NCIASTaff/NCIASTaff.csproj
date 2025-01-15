@@ -6377,6 +6377,7 @@
     <Content Include="pages\Revieweraccept.aspx" />
     <Content Include="pages\Reviewerdecline.aspx" />
     <Content Include="pages\StaffExit.aspx" />
+    <Content Include="pages\StaffExit1.aspx" />
     <Content Include="pages\StaffExitListing.aspx" />
     <Content Include="pages\StoreLines.aspx" />
     <Content Include="pages\StoreListing.aspx" />
@@ -7374,6 +7375,13 @@
     </Compile>
     <Compile Include="pages\StaffExit.aspx.designer.cs">
       <DependentUpon>StaffExit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\StaffExit1.aspx.cs">
+      <DependentUpon>StaffExit1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\StaffExit1.aspx.designer.cs">
+      <DependentUpon>StaffExit1.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\StaffExitListing.aspx.cs">
       <DependentUpon>StaffExitListing.aspx</DependentUpon>
