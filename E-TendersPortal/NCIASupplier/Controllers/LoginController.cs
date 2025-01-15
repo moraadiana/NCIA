@@ -72,7 +72,7 @@ namespace NCIASupplier.Controllers
                 }
                 else
                 {
-                    TempData["Error"] = "Invalid VAT No.";
+                    TempData["Error"] = "KRA PIN";
                 }
             }
             catch (Exception ex)
