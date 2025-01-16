@@ -110,7 +110,7 @@ namespace NCIASTaff.pages
                 try
                 {
                     string returnstring = "";
-                    Components.ObjNav.GeneratePayslipReport(username, period, String.Format("PAYSLIP{0}.pdf", filename), ref returnstring);
+                    Components.ObjNav.GeneratePayslipReport2(username, period, String.Format("PAYSLIP{0}.pdf", filename), ref returnstring);
                     myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP{0}.pdf", filename)));
                     //WSConfig.ObjNavWS.FnFosaStatement(accno, ref returnstring, filter);
                     byte[] bytes = Convert.FromBase64String(returnstring);
@@ -143,40 +143,41 @@ namespace NCIASTaff.pages
                 string username = Session["username"].ToString();
                 var filename = Session["username"].ToString().Replace(@"/", @"");
                 string pdfFileName = String.Format(@"PAYSLIP-{0}.pdf", filename);
-                var month = ddlMonth.SelectedValue;
+                 var month = ddlMonth.SelectedValue;
 
-                if (month == "12")
-                {
-                    month = "12";
+                 if (month == "12")
+                 {
+                     month = "12";
 
-                }
-                else if (month == "11")
-                {
-                    month = "11";
-                }
-                else if (month == "10")
-                {
-                    month = "10";
-                }
-                else if (month == "")
-                {
-                    month = "01";
-                }
-                else
-                {
-                    month = "0" + month;
-                }
-                var myDate = month + "/01/" + ddlYear.SelectedValue;
-                var period = DateTime.ParseExact(myDate, "M/dd/yyyy", CultureInfo.InvariantCulture);
+                 }
+                 else if (month == "11")
+                 {
+                     month = "11";
+                 }
+                 else if (month == "10")
+                 {
+                     month = "10";
+                 }
+                 else if (month == "")
+                 {
+                     month = "01";
+                 }
+                 else
+                 {
+                     month = "0" + month;
+                 }
+                 var myDate = month + "/01/" + ddlYear.SelectedValue;
+                 var period = DateTime.ParseExact(myDate, "M/dd/yyyy", CultureInfo.InvariantCulture);
+               
+                //DateTime period = DateTime.ParseExact($"{ddlMonth.SelectedValue.PadLeft(2, '0')}/01/{ddlYear.SelectedValue}", "MM/dd/yyyy", CultureInfo.InvariantCulture);
 
 
-
-                var filePath = Server.MapPath("~/Downloads/") + String.Format("PAYSLIP-{0}.pdf", filename);
+                var filePath = Server.MapPath("~/Download/") + String.Format("PAYSLIP-{0}.pdf", filename);
                 //var filePath = Server.MapPath("~/Downloads/") + pdfFileName;
                 // Check if directory exists, if not create it
-                if (!Directory.Exists(Server.MapPath("~/Downloads/")))
+                if (!Directory.Exists(Server.MapPath("~/Download/")))
                 {
-                    Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
+                    Directory.CreateDirectory(Server.MapPath("~/Download/"));
                 }
                 webportals.GeneratePaySlipReport3(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
 
@@ -184,7 +185,7 @@ namespace NCIASTaff.pages
                 if (File.Exists(filePath))
                 {
                     System.Diagnostics.Debug.WriteLine("Payslip generated successfully.");
-                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("PAYSLIP-{0}.pdf", filename)));
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP-{0}.pdf", filename)));
                 }
                 else
                 {
