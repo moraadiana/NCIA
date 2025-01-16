@@ -32,7 +32,7 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                        <div class="col-md-12">
-                                <p class="text-center"><a class="btn btn-pill btn-info u-posRelative" href="StaffExit.aspx">Apply<span class="waves"></span></a></p>
+                                <p class="text-center"><a class="btn btn-pill btn-info u-posRelative" href="StaffExit.aspx?query=new&status=Open">Apply<span class="waves"></span></a></p>
                             </div>
                             <br/>
                             <br/>
@@ -50,7 +50,7 @@
                                                 <th class="small">Reason</th>
                                                 <th class="small">Date of leaving</th>
                                                 <th class="small">Status</th>
-                                               <%-- <th class="small">Actions</th>--%>
+                                                <th class="small">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
