@@ -102,36 +102,28 @@ namespace NCIASTaff.pages
             try
             {
                 string username = Session["username"].ToString();
-                //string sanitizedUsername = username.Replace("/", "");
-              //  string filename = $"PAYSLIP-{sanitizedUsername}.pdf";
+               
                 var filename = Session["username"].ToString().Replace(@"/", @"");
                 DateTime period = DateTime.ParseExact($"{ddlMonth.SelectedValue.PadLeft(2, '0')}/01/{ddlYear.SelectedValue}", "MM/dd/yyyy", CultureInfo.InvariantCulture);
-                //string month = ddlMonth.SelectedValue.PadLeft(2, '0');
-                // string periodString = $"{month}/01/{ddlYear.SelectedValue}";
-                // DateTime period = DateTime.ParseExact(periodString, "M/d/yyyy", CultureInfo.InvariantCulture);
-
+               
 
                 try
                 {
                     string returnstring = "";
-                   // Components.ObjNav.Generatep9Report(period, employee, String.Format("p9Form{0}.pdf", filename), ref returnstring);
-                    webportals.GeneratePayslipReport2(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename), ref returnstring);
-                    if (!string.IsNullOrEmpty(returnstring))
+                    Components.ObjNav.GeneratePayslipReport(username, period, String.Format("PAYSLIP{0}.pdf", filename), ref returnstring);
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP{0}.pdf", filename)));
+                    //WSConfig.ObjNavWS.FnFosaStatement(accno, ref returnstring, filter);
+                    byte[] bytes = Convert.FromBase64String(returnstring);
+                    string path = HostingEnvironment.MapPath("~/Download/" + $"PAYSLIP{filename}.pdf");
+                    if (System.IO.File.Exists(path))
                     {
-                        byte[] bytes = Convert.FromBase64String(returnstring);
-                        string path = HostingEnvironment.MapPath($"~/Download/PAYSLIP-{filename}.pdf");
-
-                        if (System.IO.File.Exists(path))
-                            System.IO.File.Delete(path);
-
-                        using (FileStream stream = new FileStream(path, FileMode.CreateNew))
-                        using (BinaryWriter writer = new BinaryWriter(stream))
-                        {
-                            writer.Write(bytes, 0, bytes.Length);
-                        }
-
-                        myPDF.Attributes.Add("src", ResolveUrl($"~/Download/PAYSLIP-{filename}.pdf"));
+                        System.IO.File.Delete(path);
                     }
+                    FileStream stream = new FileStream(path, FileMode.CreateNew);
+                    BinaryWriter writer = new BinaryWriter(stream);
+                    writer.Write(bytes, 0, bytes.Length);
+                    writer.Close();
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP{0}.pdf", filename)));
                 }
                 catch (Exception exception)
                 {
