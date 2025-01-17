@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.UI;
@@ -97,22 +98,50 @@ namespace NCIASTaff.pages
                 ex.Data.Clear(); 
             }
         }
+      
+      
         private void ViewPayslip()
         {
             try
             {
                 string username = Session["username"].ToString();
-               
-                var filename = Session["username"].ToString().Replace(@"/", @"");
-                DateTime period = DateTime.ParseExact($"{ddlMonth.SelectedValue.PadLeft(2, '0')}/01/{ddlYear.SelectedValue}", "MM/dd/yyyy", CultureInfo.InvariantCulture);
-               
 
+                var filename = Session["username"].ToString().Replace(@"/", @"");
+                // DateTime period = DateTime.ParseExact($"{ddlMonth.SelectedValue.PadLeft(2, '0')}/01/{ddlYear.SelectedValue}", "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                var month = ddlMonth.SelectedValue;
+
+                if (month == "12")
+                {
+                    month = "12";
+
+                }
+                else if (month == "11")
+                {
+                    month = "11";
+                }
+                else if (month == "10")
+                {
+                    month = "10";
+                }
+                else if (month == "")
+                {
+                    month = "01";
+                }
+                else
+                {
+                    month = "0" + month;
+                }
+
+                var myDate = month + "/01/" + ddlYear.SelectedValue;
+                var period = DateTime.ParseExact(myDate, "M/dd/yyyy", CultureInfo.InvariantCulture);
+                //string s = "07/01/2024";
+                //DateTime period2 = Convert.ToDateTime(s);
                 try
                 {
                     string returnstring = "";
-                    Components.ObjNav.GeneratePayslipReport2(username, period, String.Format("PAYSLIP{0}.pdf", filename), ref returnstring);
+                    Components.ObjNav.GeneratePaySlipReport(username, period, String.Format("PAYSLIP{0}.pdf", filename), ref returnstring);
                     myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP{0}.pdf", filename)));
-                    //WSConfig.ObjNavWS.FnFosaStatement(accno, ref returnstring, filter);
+
                     byte[] bytes = Convert.FromBase64String(returnstring);
                     string path = HostingEnvironment.MapPath("~/Download/" + $"PAYSLIP{filename}.pdf");
                     if (System.IO.File.Exists(path))
@@ -128,79 +157,16 @@ namespace NCIASTaff.pages
                 catch (Exception exception)
                 {
                     exception.Data.Clear();
-                    //     HttpContext.Current.Response.Write(exception);
+
                 }
+
             }
             catch (Exception ex)
             {
                 ex.Data.Clear();
             }
         }
-            private void ViewPayslip1()
-        {
-            try
-            {
-                string username = Session["username"].ToString();
-                var filename = Session["username"].ToString().Replace(@"/", @"");
-                string pdfFileName = String.Format(@"PAYSLIP-{0}.pdf", filename);
-                 var month = ddlMonth.SelectedValue;
 
-                 if (month == "12")
-                 {
-                     month = "12";
-
-                 }
-                 else if (month == "11")
-                 {
-                     month = "11";
-                 }
-                 else if (month == "10")
-                 {
-                     month = "10";
-                 }
-                 else if (month == "")
-                 {
-                     month = "01";
-                 }
-                 else
-                 {
-                     month = "0" + month;
-                 }
-                 var myDate = month + "/01/" + ddlYear.SelectedValue;
-                 var period = DateTime.ParseExact(myDate, "M/dd/yyyy", CultureInfo.InvariantCulture);
-               
-                //DateTime period = DateTime.ParseExact($"{ddlMonth.SelectedValue.PadLeft(2, '0')}/01/{ddlYear.SelectedValue}", "MM/dd/yyyy", CultureInfo.InvariantCulture);
-
-
-                var filePath = Server.MapPath("~/Download/") + String.Format("PAYSLIP-{0}.pdf", filename);
-                //var filePath = Server.MapPath("~/Downloads/") + pdfFileName;
-                // Check if directory exists, if not create it
-                if (!Directory.Exists(Server.MapPath("~/Download/")))
-                {
-                    Directory.CreateDirectory(Server.MapPath("~/Download/"));
-                }
-                webportals.GeneratePaySlipReport3(username, period, String.Format(@"PAYSLIP-{0}.pdf", filename));
-
-                // myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format(@"PAYSLIP-{0}.pdf", filename)));
-                if (File.Exists(filePath))
-                {
-                    System.Diagnostics.Debug.WriteLine("Payslip generated successfully.");
-                    myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP-{0}.pdf", filename)));
-                }
-                else
-                {
-                    throw new FileNotFoundException("Payslip PDF was not found after generation.");
-                }
-
-                
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("Error generating payslip: " + ex.ToString());
-                ex.Data.Clear();
-            }
-        }
-    
         protected void ddlYear_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
