@@ -25,7 +25,7 @@
                             </div>
                         </div>
                         <div class="box-body">
-                            <p class="text-center"><a class="btn btn-pill btn-success u-posRelative" href="ClaimLines.aspx?query=new&status=Open">New Claim Requisitions<span class="waves"></span> </a></p>
+                          <%--  <p class="text-center"><a class="btn btn-pill btn-success u-posRelative" href="ClaimLines.aspx?query=new&status=Open">New Claim Requisitions<span class="waves"></span> </a></p>--%>
                             <br />
                             <div class="table-responsive">
                                 <table id="example1" class="table no-margin">

@@ -87,7 +87,7 @@ namespace NCIASTaff.pages
                                     <i class='fa fa-gears'></i> Options
                                 </a>
                                 <ul class='dropdown-menu'>
-                                    <li><a href='ClaimLines.aspx?ClaimNo={1}&query=old&status={5}'>
+                                    <li><a href='ClaimLines.aspx?ClaimNo={1}&query=old&status={6}'>
                                         <i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></li>
                                     <li><a href='ApprovalTracking.aspx?DocNum={1}'>
                                         <i class='fa fa-plus-circle text-success'></i><span class='text-success'>Approval Tracking</span></a></li>

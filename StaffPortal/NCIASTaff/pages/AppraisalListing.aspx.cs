@@ -31,7 +31,7 @@ namespace NCIASTaff
                 if (Request.QueryString["appraisalNo"] != null)
                 {
                     string appraisalNo = Request.QueryString["appraisalNo"].ToString();
-                   // Components.ObjNav.OnCancelLeaveApplication(appraisalNo);
+                    Components.ObjNav.OnCancelAppraisalRequest(appraisalNo);
                     Response.Redirect("AppraisalListing.aspx");
                 }
             }

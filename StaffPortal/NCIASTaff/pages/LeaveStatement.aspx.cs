@@ -42,7 +42,8 @@ namespace NCIASTaff.pages
             }
             else
             {
-                throw new FileNotFoundException("Statement PDF was not found after generation.");
+                //throw new FileNotFoundException("Statement PDF was not found after generation.");
+                System.Diagnostics.Debug.WriteLine("Statement PDF was not found after generation");
             }
 
         }

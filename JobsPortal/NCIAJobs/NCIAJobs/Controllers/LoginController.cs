@@ -146,7 +146,7 @@ namespace NCIAJobs.Controllers
 
                 if (!ValidPassword(password))
                 {
-                    TempData["Error"] = "Password must be atleats 8 characters long, not more than 20 characters, atleast one lowercase letter, one uppercase letter, a number and a special character!";
+                    TempData["Error"] = "Password must be atleast 8 characters long, not more than 20 characters, atleast one lowercase letter, one uppercase letter, a number and a special character!";
                     return RedirectToAction("createaccount", "login");
                 }
 

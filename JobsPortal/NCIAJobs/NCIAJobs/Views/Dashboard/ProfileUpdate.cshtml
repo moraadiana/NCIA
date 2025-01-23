@@ -33,7 +33,7 @@
     }
     <!-- END PAGE BAR -->
     <!-- BEGIN PAGE TITLE-->
-<h1 class="page-title">Update Personal Details</h1>
+    <h1 class="page-title">Update Personal Details</h1>
     <!-- END PAGE TITLE-->
     <!-- END PAGE HEADER-->
     <form action="@Url.Action("profileupdate","dashboard")" method="post">
@@ -41,7 +41,7 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Id Number</label> <span class="text-danger">*</span>
-                    <input name="IdNumber" type="number" class="form-control" readonly value="@Model.IdNumber" />
+                    <input name="IdNumber" type="number" class="form-control" readonly value="@Model.IdNumber" required minlength="7" maxlength="8" />
                 </div>
             </div>
             <div class="col-md-4">
@@ -71,7 +71,8 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Kra Pin No</label> <span class="text-danger">*</span>
-                    <input name="KraPin" type="text" class="form-control" required />
+                    <input name="KraPin" type="text" class="form-control" required minlength="11" maxlength="11" id="kra-pin" />
+                    <span class="text-danger" id="kra-msg"></span>
                 </div>
             </div>
             <div class="col-md-4">
@@ -172,13 +173,15 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Telephone No</label> <span class="text-danger">*</span>
-                    <input name="TelephoneNo" type="text" class="form-control" required />
+
+                    <input name="TelephoneNo" type="text" class="form-control" required maxlength="10" minlength="10 " id="tel-no"/>
+                    <span class="text-danger" id="tel-msg"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Mobile No</label> <span class="text-danger">*</span>
-                    <input name="MobileNo" type="text" class="form-control" required />
+                    <input name="MobileNo" type="text" class="form-control" required maxlength="10" minlength ="10 "/>
                 </div>
             </div>
             <div class="col-md-4">
@@ -245,6 +248,62 @@
     const disabilityContainer = document.getElementById('disability-container');
     const registrationContainer = document.getElementById('registration-container');
     const checked = document.getElementById('checkbox');
+    const kraPin = document.getElementById('kra-pin');
+    const kraMsg = document.getElementById('kra-msg');
+    const telNo = document.getElementById('tel-no');
+    const telMsg = document.getElementById('tel-msg');
+
+    telNo.addEventListener('input', function () {
+        const value = telNo.value;
+        const numberRegex = /^[0-9]$/;
+        
+        //if (!numberRegex.test(value) ) {
+        //    telMsg.textContent = 'Telephone Number must digits';
+        //    return;
+        //}
+        if ( telNo.length !== 10) {
+            telMsg.textContent = 'Telephone Number must be exactly 10 characters long';
+            return;
+        }
+    });
+
+    kraPin.addEventListener('keyup', function () {
+        const characterRegex = /^[a-zA-Z]$/;
+        const numberRegex = /^[0-9]$/;
+        const value = kraPin.value;
+        
+        kraMsg.textContent = '';
+        if (!characterRegex.test(value.charAt(0))) {
+            kraMsg.textContent = 'First value must be a character';
+            return;
+        }
+
+       
+        // Validate middle characters
+        const middleChars = value.substring(1, value.length - 1);
+        for (let i = 0; i < middleChars.length; i++) {
+            if (!numberRegex.test(middleChars.charAt(i))) {
+                kraMsg.textContent = 'Middle values must be digits';
+                return;
+            }
+        }
+
+        // Validate last character when input is exactly 11 characters
+        if (value.length === 11 && !characterRegex.test(value.charAt(value.length - 1))) {
+            kraMsg.textContent = 'Last value must be a character';
+            return;
+        }
+        if (value.length !== 11) {
+            kraMsg.textContent = 'KRA PIN must be exactly 11 characters long';
+            return;
+        }
+
+        // If all validations pass
+       // kraMsg.textContent = 'Valid KRA PIN';
+    });
+
+
+
 
     const init = function () {
         disabilityContainer.style.display = 'none';
@@ -306,7 +365,6 @@
             alert('Please consent before you continue');
             return false;
         }
-        return true;
     }
 </script>
 
