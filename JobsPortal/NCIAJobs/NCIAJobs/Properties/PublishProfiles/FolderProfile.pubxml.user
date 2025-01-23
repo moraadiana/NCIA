@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\inetpub\wwwroot\Portals\RecruitmentPortal</_PublishTargetUrl>
-    <History>True|2025-01-08T15:50:17.3004111Z||;True|2025-01-08T13:07:38.9698237+03:00||;True|2024-12-11T08:20:19.5286769+03:00||;True|2024-12-11T00:44:07.4177451+03:00||;True|2024-12-11T00:10:28.8648388+03:00||;True|2024-12-11T00:10:09.6155919+03:00||;True|2024-12-10T22:50:44.6698010+03:00||;True|2024-12-08T23:48:26.1994475+03:00||;True|2024-12-08T19:13:59.9405188+03:00||;False|2024-12-08T18:10:11.7832151+03:00||;False|2024-12-08T18:06:59.6002922+03:00||;False|2024-12-08T18:06:09.1965079+03:00||;False|2024-12-08T18:04:46.8433934+03:00||;False|2024-12-08T18:03:15.5591565+03:00||;False|2024-12-08T18:02:49.5901945+03:00||;</History>
+    <History>True|2025-01-23T19:42:16.9708564Z||;True|2025-01-08T18:50:17.3004111+03:00||;True|2025-01-08T13:07:38.9698237+03:00||;True|2024-12-11T08:20:19.5286769+03:00||;True|2024-12-11T00:44:07.4177451+03:00||;True|2024-12-11T00:10:28.8648388+03:00||;True|2024-12-11T00:10:09.6155919+03:00||;True|2024-12-10T22:50:44.6698010+03:00||;True|2024-12-08T23:48:26.1994475+03:00||;True|2024-12-08T19:13:59.9405188+03:00||;False|2024-12-08T18:10:11.7832151+03:00||;False|2024-12-08T18:06:59.6002922+03:00||;False|2024-12-08T18:06:09.1965079+03:00||;False|2024-12-08T18:04:46.8433934+03:00||;False|2024-12-08T18:03:15.5591565+03:00||;False|2024-12-08T18:02:49.5901945+03:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -7483,7 +7483,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/10/2024 22:43:24</publishTime>
     </File>
     <File Include="Views/Dashboard/ProfileUpdate.cshtml">
-      <publishTime>01/08/2025 18:43:30</publishTime>
+      <publishTime>01/23/2025 22:37:59</publishTime>
     </File>
     <File Include="Views/Home/Details.cshtml">
       <publishTime>12/08/2024 13:48:57</publishTime>
@@ -7531,7 +7531,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/08/2024 17:57:18</publishTime>
     </File>
     <File Include="Views/Login/CreateAccount.cshtml">
-      <publishTime>01/08/2025 18:43:30</publishTime>
+      <publishTime>01/23/2025 22:37:59</publishTime>
     </File>
     <File Include="Views/Login/ForgotPassword.cshtml">
       <publishTime>12/08/2024 13:48:57</publishTime>
@@ -7546,7 +7546,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>12/08/2024 13:48:57</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/08/2025 18:43:30</publishTime>
+      <publishTime>01/23/2025 22:37:59</publishTime>
     </File>
     <File Include="Views/Shared/_Login.cshtml">
       <publishTime>12/08/2024 17:57:18</publishTime>
@@ -7560,8 +7560,11 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>12/08/2024 13:48:57</publishTime>
     </File>
+    <File Include="Web References/NAVWS/Reference.map">
+      <publishTime>01/23/2025 22:37:59</publishTime>
+    </File>
     <File Include="Web.config">
-      <publishTime>12/08/2024 19:13:44</publishTime>
+      <publishTime>01/23/2025 22:42:14</publishTime>
     </File>
   </ItemGroup>
 </Project>
