@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="NCIASTaff_NAVWS_Staffportall" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://102.210.149.230:7047/Ncia/WS/NCIA%20TEST/Codeunit/Staffportall</Value>
+      <Value Profile="(Default)">http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/Staffportall</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -2586,10 +2586,10 @@
     <Content Include="Views\Prequalification\PeriodCategories.cshtml" />
     <Content Include="Views\Prequalification\PrequalificationApplication.cshtml" />
     <Content Include="Views\Prequalification\PrequalificationApplications.cshtml" />
-    <None Include="Web References\NAVWS\Reference.map">
+    <Content Include="Web References\NAVWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <None Include="Web References\NAVWS\Supplier.wsdl" />
   </ItemGroup>
   <ItemGroup>
@@ -2629,10 +2629,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/NCIA%2520TEST/Codeunit/Supplier">
+    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/Supplier">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\NAVWS\</RelPath>
-      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/NCIA%2520TEST/Codeunit/Supplier</UpdateFromURL>
+      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/Supplier</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

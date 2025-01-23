@@ -2576,10 +2576,10 @@
     <Content Include="Views\Prequalification\PrequalificationApplication.cshtml" />
     <Content Include="Views\Prequalification\PrequalificationApplications.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
-    <None Include="Web References\NAVWS\Reference.map">
+    <Content Include="Web References\NAVWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <None Include="Web References\NAVWS\VendorsPortal.wsdl" />
   </ItemGroup>
   <ItemGroup>
@@ -2623,10 +2623,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/NCIA%2520TEST/Codeunit/VendorsPortal">
+    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/VendorsPortal">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\NAVWS\</RelPath>
-      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/NCIA%2520TEST/Codeunit/VendorsPortal</UpdateFromURL>
+      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/VendorsPortal</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

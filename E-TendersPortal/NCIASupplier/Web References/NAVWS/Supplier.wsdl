@@ -1460,7 +1460,7 @@
   </binding>
   <service name="Supplier">
     <port name="Supplier_Port" binding="tns:Supplier_Binding">
-      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA%20TEST/Codeunit/Supplier" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/Supplier" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>
