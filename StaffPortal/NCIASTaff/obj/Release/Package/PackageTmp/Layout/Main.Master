@@ -97,18 +97,13 @@
                                     </ul>
                                 </li>
 
-                                 <!--<li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Help Desk <span class="caret"></span></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                       <!-- <li><a href="TicketListing.aspx"><i class="fa fa-hand-o-right"></i>Tickets</a></li>
-                                    </ul>
-                                </li> -->
+                                 
 
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Downloads <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="LeaveStatement.aspx"><i class="fa fa-hand-o-right"></i>Leave Statement</a></li>
-                                        <li class="divider"></li>
+                                       <%-- <li><a href="LeaveStatement.aspx"><i class="fa fa-hand-o-right"></i>Leave Statement</a></li>
+                                        <li class="divider"></li>--%>
                                         <li><a href="pnineform.aspx"><i class="fa fa-hand-o-right"></i>P9 Form</a></li>
                                         <li class="divider"></li>
                                         <li><a href="Payslip.aspx"><i class="fa fa-hand-o-right"></i>Payslip</a></li>
