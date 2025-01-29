@@ -105,6 +105,8 @@ namespace NCIASupplier.NAVWS {
         
         private System.Threading.SendOrPostCallback SubmitPrequalificationApplicationOperationCompleted;
         
+        private System.Threading.SendOrPostCallback TenderApplied1OperationCompleted;
+        
         private System.Threading.SendOrPostCallback TenderAppliedOperationCompleted;
         
         private System.Threading.SendOrPostCallback ValidEmailAddressOperationCompleted;
@@ -266,6 +268,9 @@ namespace NCIASupplier.NAVWS {
         
         /// <remarks/>
         public event SubmitPrequalificationApplicationCompletedEventHandler SubmitPrequalificationApplicationCompleted;
+        
+        /// <remarks/>
+        public event TenderApplied1CompletedEventHandler TenderApplied1Completed;
         
         /// <remarks/>
         public event TenderAppliedCompletedEventHandler TenderAppliedCompleted;
@@ -1497,28 +1502,60 @@ namespace NCIASupplier.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:TenderApplied", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="TenderApplied_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:TenderApplied1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="TenderApplied1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public bool TenderApplied(string bidderNo, string tenderNo) {
-            object[] results = this.Invoke("TenderApplied", new object[] {
+        public bool TenderApplied1(string bidderNo, string tenderNo) {
+            object[] results = this.Invoke("TenderApplied1", new object[] {
                         bidderNo,
                         tenderNo});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void TenderAppliedAsync(string bidderNo, string tenderNo) {
-            this.TenderAppliedAsync(bidderNo, tenderNo, null);
+        public void TenderApplied1Async(string bidderNo, string tenderNo) {
+            this.TenderApplied1Async(bidderNo, tenderNo, null);
         }
         
         /// <remarks/>
-        public void TenderAppliedAsync(string bidderNo, string tenderNo, object userState) {
+        public void TenderApplied1Async(string bidderNo, string tenderNo, object userState) {
+            if ((this.TenderApplied1OperationCompleted == null)) {
+                this.TenderApplied1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnTenderApplied1OperationCompleted);
+            }
+            this.InvokeAsync("TenderApplied1", new object[] {
+                        bidderNo,
+                        tenderNo}, this.TenderApplied1OperationCompleted, userState);
+        }
+        
+        private void OnTenderApplied1OperationCompleted(object arg) {
+            if ((this.TenderApplied1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.TenderApplied1Completed(this, new TenderApplied1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Supplier:TenderApplied", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", ResponseElementName="TenderApplied_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Supplier", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool TenderApplied(string krapin, string tenderno) {
+            object[] results = this.Invoke("TenderApplied", new object[] {
+                        krapin,
+                        tenderno});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void TenderAppliedAsync(string krapin, string tenderno) {
+            this.TenderAppliedAsync(krapin, tenderno, null);
+        }
+        
+        /// <remarks/>
+        public void TenderAppliedAsync(string krapin, string tenderno, object userState) {
             if ((this.TenderAppliedOperationCompleted == null)) {
                 this.TenderAppliedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnTenderAppliedOperationCompleted);
             }
             this.InvokeAsync("TenderApplied", new object[] {
-                        bidderNo,
-                        tenderNo}, this.TenderAppliedOperationCompleted, userState);
+                        krapin,
+                        tenderno}, this.TenderAppliedOperationCompleted, userState);
         }
         
         private void OnTenderAppliedOperationCompleted(object arg) {
@@ -2642,6 +2679,32 @@ namespace NCIASupplier.NAVWS {
         private object[] results;
         
         internal SubmitPrequalificationApplicationCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void TenderApplied1CompletedEventHandler(object sender, TenderApplied1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class TenderApplied1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal TenderApplied1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

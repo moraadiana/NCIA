@@ -26,7 +26,7 @@ namespace NCIAVendor.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/VendorsPortal")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/VendorsPortal")]
         public string NCIAVendor_NAVWS_VendorsPortal {
             get {
                 return ((string)(this["NCIAVendor_NAVWS_VendorsPortal"]));

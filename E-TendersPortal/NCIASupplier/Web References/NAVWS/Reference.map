@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Results>
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/Supplier" filename="Supplier.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Supplier" filename="Supplier.wsdl" />
   </Results>
 </DiscoveryClientResultsFile>

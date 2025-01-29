@@ -2066,7 +2066,7 @@
   </binding>
   <service name="recruitment">
     <port name="recruitment_Port" binding="tns:recruitment_Binding">
-      <address location="http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/recruitment" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/recruitment" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

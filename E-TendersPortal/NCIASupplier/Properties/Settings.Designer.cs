@@ -26,7 +26,7 @@ namespace NCIASupplier.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/Supplier")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Supplier")]
         public string NCIASupplier_NAVWS_Supplier {
             get {
                 return ((string)(this["NCIASupplier_NAVWS_Supplier"]));
