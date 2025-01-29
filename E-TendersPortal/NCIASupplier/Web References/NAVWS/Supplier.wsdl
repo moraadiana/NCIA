@@ -563,11 +563,26 @@
           </sequence>
         </complexType>
       </element>
-      <element name="TenderApplied">
+      <element name="TenderApplied1">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="bidderNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="tenderNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="TenderApplied1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="TenderApplied">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="krapin" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="tenderno" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -864,6 +879,12 @@
   <message name="SubmitPrequalificationApplication_Result">
     <part name="parameters" element="tns:SubmitPrequalificationApplication_Result" />
   </message>
+  <message name="TenderApplied1">
+    <part name="parameters" element="tns:TenderApplied1" />
+  </message>
+  <message name="TenderApplied1_Result">
+    <part name="parameters" element="tns:TenderApplied1_Result" />
+  </message>
   <message name="TenderApplied">
     <part name="parameters" element="tns:TenderApplied" />
   </message>
@@ -1046,6 +1067,10 @@
     <operation name="SubmitPrequalificationApplication">
       <input name="SubmitPrequalificationApplication" message="tns:SubmitPrequalificationApplication" />
       <output name="SubmitPrequalificationApplication_Result" message="tns:SubmitPrequalificationApplication_Result" />
+    </operation>
+    <operation name="TenderApplied1">
+      <input name="TenderApplied1" message="tns:TenderApplied1" />
+      <output name="TenderApplied1_Result" message="tns:TenderApplied1_Result" />
     </operation>
     <operation name="TenderApplied">
       <input name="TenderApplied" message="tns:TenderApplied" />
@@ -1412,6 +1437,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="TenderApplied1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:TenderApplied1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="TenderApplied1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="TenderApplied1_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="TenderApplied">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Supplier:TenderApplied" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="TenderApplied">
@@ -1460,7 +1494,7 @@
   </binding>
   <service name="Supplier">
     <port name="Supplier_Port" binding="tns:Supplier_Binding">
-      <address location="http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/Supplier" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Supplier" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

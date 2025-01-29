@@ -1087,7 +1087,7 @@
   </binding>
   <service name="VendorsPortal">
     <port name="VendorsPortal_Port" binding="tns:VendorsPortal_Binding">
-      <address location="http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/VendorsPortal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/VendorsPortal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

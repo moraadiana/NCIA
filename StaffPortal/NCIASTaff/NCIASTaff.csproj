@@ -7506,10 +7506,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/Staffportall">
+    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Staffportall">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\NAVWS\</RelPath>
-      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/Staffportall</UpdateFromURL>
+      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Staffportall</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

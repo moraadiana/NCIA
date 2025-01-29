@@ -26,7 +26,7 @@ namespace NCIASTaff.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://102.210.149.230:7047/Ncia/WS/Ncia/Codeunit/Staffportall")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Staffportall")]
         public string NCIASTaff_NAVWS_Staffportall {
             get {
                 return ((string)(this["NCIASTaff_NAVWS_Staffportall"]));
