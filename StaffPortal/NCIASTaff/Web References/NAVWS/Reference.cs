@@ -91,6 +91,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback DetermineLeaveReturnDateOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GenerateLeaveStatementOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GenerateMemoReportOperationCompleted;
         
         private System.Threading.SendOrPostCallback GeneratePaySlipReport1OperationCompleted;
@@ -465,6 +467,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event DetermineLeaveReturnDateCompletedEventHandler DetermineLeaveReturnDateCompleted;
+        
+        /// <remarks/>
+        public event GenerateLeaveStatementCompletedEventHandler GenerateLeaveStatementCompleted;
         
         /// <remarks/>
         public event GenerateMemoReportCompletedEventHandler GenerateMemoReportCompleted;
@@ -1908,6 +1913,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.DetermineLeaveReturnDateCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.DetermineLeaveReturnDateCompleted(this, new DetermineLeaveReturnDateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GenerateLeaveStatement", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GenerateLeaveStatement_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void GenerateLeaveStatement(string staffNo, string filenameFromApp) {
+            this.Invoke("GenerateLeaveStatement", new object[] {
+                        staffNo,
+                        filenameFromApp});
+        }
+        
+        /// <remarks/>
+        public void GenerateLeaveStatementAsync(string staffNo, string filenameFromApp) {
+            this.GenerateLeaveStatementAsync(staffNo, filenameFromApp, null);
+        }
+        
+        /// <remarks/>
+        public void GenerateLeaveStatementAsync(string staffNo, string filenameFromApp, object userState) {
+            if ((this.GenerateLeaveStatementOperationCompleted == null)) {
+                this.GenerateLeaveStatementOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGenerateLeaveStatementOperationCompleted);
+            }
+            this.InvokeAsync("GenerateLeaveStatement", new object[] {
+                        staffNo,
+                        filenameFromApp}, this.GenerateLeaveStatementOperationCompleted, userState);
+        }
+        
+        private void OnGenerateLeaveStatementOperationCompleted(object arg) {
+            if ((this.GenerateLeaveStatementCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GenerateLeaveStatementCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6688,6 +6723,10 @@ namespace NCIASTaff.NAVWS {
             }
         }
     }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GenerateLeaveStatementCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]

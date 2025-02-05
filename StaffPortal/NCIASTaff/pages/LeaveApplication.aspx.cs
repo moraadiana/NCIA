@@ -486,9 +486,9 @@ namespace NCIASTaff.pages
                             SuccessMessage("Leave application has been sent for approval successfully.");
                             return;
                         }
-                        else
+                        else 
                         {
-                            Message(approval);
+                            Message("No approval workflow set");
                             return;
                         }
                     }
@@ -502,8 +502,8 @@ namespace NCIASTaff.pages
             }
             catch (Exception ex)
             {
-                
-                ex.Data.Clear();
+
+                Message("An error occurred: " + ex.Message);
             }
         }
 

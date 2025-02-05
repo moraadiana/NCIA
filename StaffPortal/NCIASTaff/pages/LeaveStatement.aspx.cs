@@ -23,7 +23,7 @@ namespace NCIASTaff.pages
                 GenerateLeaveStatement();
             }
         }
-        private void GenerateLeaveStatement()
+        private void GenerateLeaveStatement1()
         {
             string username = Session["username"].ToString();
             string fileName = username.ToString().Replace(@"/", @"");
@@ -47,6 +47,26 @@ namespace NCIASTaff.pages
             }
 
         }
-       
+        protected void GenerateLeaveStatement()
+        {
+            try
+            {
+                var filename = Session["username"].ToString().Replace(@"/", @"");
+                try
+                {
+                    Components.ObjNav.GenerateLeaveStatement(Session["username"].ToString(), String.Format("LvSttmnts{0}.pdf", filename));
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("LvSttmnts{0}.pdf", filename)));
+                }
+                catch (Exception exception)
+                {
+                    exception.Data.Clear();
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
+
     }
 }
