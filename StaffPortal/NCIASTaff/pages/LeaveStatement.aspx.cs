@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -23,7 +25,7 @@ namespace NCIASTaff.pages
                 GenerateLeaveStatement();
             }
         }
-        private void GenerateLeaveStatement1()
+        private void GenerateLeaveStatement()
         {
             string username = Session["username"].ToString();
             string fileName = username.ToString().Replace(@"/", @"");
@@ -34,7 +36,7 @@ namespace NCIASTaff.pages
                 Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
             }
 
-            Components.ObjNav.GenerateStaffLeaveStatement(username, String.Format(@"Leave-Statement-{0}.pdf", fileName));
+            Components.ObjNav.GenerateLeaveStatement(username, String.Format(@"Leave-Statement-{0}.pdf", fileName));
             if (File.Exists(filePath))
             {
                 System.Diagnostics.Debug.WriteLine("Statement generated successfully.");
@@ -47,7 +49,7 @@ namespace NCIASTaff.pages
             }
 
         }
-        protected void GenerateLeaveStatement()
+        protected void GenerateLeaveStatement1()
         {
             try
             {
@@ -55,7 +57,17 @@ namespace NCIASTaff.pages
                 try
                 {
                     Components.ObjNav.GenerateLeaveStatement(Session["username"].ToString(), String.Format("LvSttmnts{0}.pdf", filename));
-                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("LvSttmnts{0}.pdf", filename)));
+                    //myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("LvSttmnts{0}.pdf", filename)));
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("LvSttmnts{{0}.pdf", filename)));
+                    string path = HostingEnvironment.MapPath("~/Download/" + $"LvSttmnts{filename}.pdf");
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+                    FileStream stream = new FileStream(path, FileMode.CreateNew);
+                    BinaryWriter writer = new BinaryWriter(stream);
+                    
+                    myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP{0}.pdf", filename)));
                 }
                 catch (Exception exception)
                 {
