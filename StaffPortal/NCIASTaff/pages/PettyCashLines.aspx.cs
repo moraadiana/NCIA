@@ -549,7 +549,7 @@ namespace NCIASTaff.pages
                         BinaryReader br = new BinaryReader(fs);
                         byte[] bytes = br.ReadBytes((int)fs.Length);
                         string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                        webportals.RegFileUploadAtt(DocumentNo, fileName.ToUpper(), base64String, 52178708, "Imprest Requisition");
+                        webportals.RegFileUploadAtt(DocumentNo, fileName.ToUpper(), base64String, 52178624, "Petty Cash line");
                         BindAttachedDocuments(DocumentNo);
                         Message("Document uploaded successfully!");
                     }
