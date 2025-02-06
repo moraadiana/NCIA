@@ -36,7 +36,7 @@ namespace NCIASTaff.pages
                 Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
             }
 
-            Components.ObjNav.GenerateLeaveStatement(username, String.Format(@"Leave-Statement-{0}.pdf", fileName));
+            Components.ObjNav.GenerateStaffLeaveStatement(username, String.Format(@"Leave-Statement-{0}.pdf", fileName));
             if (File.Exists(filePath))
             {
                 System.Diagnostics.Debug.WriteLine("Statement generated successfully.");
