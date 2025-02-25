@@ -2314,6 +2314,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="getEmployeeUserId">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="staffNum" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="getEmployeeUserId_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="updateleave">
         <complexType>
           <sequence>
@@ -3247,6 +3261,12 @@
   <message name="getEmployeeName_Result">
     <part name="parameters" element="tns:getEmployeeName_Result" />
   </message>
+  <message name="getEmployeeUserId">
+    <part name="parameters" element="tns:getEmployeeUserId" />
+  </message>
+  <message name="getEmployeeUserId_Result">
+    <part name="parameters" element="tns:getEmployeeUserId_Result" />
+  </message>
   <message name="updateleave">
     <part name="parameters" element="tns:updateleave" />
   </message>
@@ -3865,6 +3885,10 @@
     <operation name="getEmployeeName">
       <input name="getEmployeeName" message="tns:getEmployeeName" />
       <output name="getEmployeeName_Result" message="tns:getEmployeeName_Result" />
+    </operation>
+    <operation name="getEmployeeUserId">
+      <input name="getEmployeeUserId" message="tns:getEmployeeUserId" />
+      <output name="getEmployeeUserId_Result" message="tns:getEmployeeUserId_Result" />
     </operation>
     <operation name="updateleave">
       <input name="updateleave" message="tns:updateleave" />
@@ -5247,6 +5271,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="getEmployeeName_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="getEmployeeUserId">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:getEmployeeUserId" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="getEmployeeUserId">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="getEmployeeUserId_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

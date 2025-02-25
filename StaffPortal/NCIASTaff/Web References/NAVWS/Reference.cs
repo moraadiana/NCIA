@@ -335,6 +335,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback getEmployeeNameOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getEmployeeUserIdOperationCompleted;
+        
         private System.Threading.SendOrPostCallback updateleaveOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
@@ -833,6 +835,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event getEmployeeNameCompletedEventHandler getEmployeeNameCompleted;
+        
+        /// <remarks/>
+        public event getEmployeeUserIdCompletedEventHandler getEmployeeUserIdCompleted;
         
         /// <remarks/>
         public event updateleaveCompletedEventHandler updateleaveCompleted;
@@ -5846,6 +5851,36 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:getEmployeeUserId", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="getEmployeeUserId_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string getEmployeeUserId(string staffNum) {
+            object[] results = this.Invoke("getEmployeeUserId", new object[] {
+                        staffNum});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getEmployeeUserIdAsync(string staffNum) {
+            this.getEmployeeUserIdAsync(staffNum, null);
+        }
+        
+        /// <remarks/>
+        public void getEmployeeUserIdAsync(string staffNum, object userState) {
+            if ((this.getEmployeeUserIdOperationCompleted == null)) {
+                this.getEmployeeUserIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetEmployeeUserIdOperationCompleted);
+            }
+            this.InvokeAsync("getEmployeeUserId", new object[] {
+                        staffNum}, this.getEmployeeUserIdOperationCompleted, userState);
+        }
+        
+        private void OngetEmployeeUserIdOperationCompleted(object arg) {
+            if ((this.getEmployeeUserIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getEmployeeUserIdCompleted(this, new getEmployeeUserIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:updateleave", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="updateleave_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void updateleave(string leaveApplicationNo, int remark) {
             this.Invoke("updateleave", new object[] {
@@ -9645,6 +9680,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal getEmployeeNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void getEmployeeUserIdCompletedEventHandler(object sender, getEmployeeUserIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getEmployeeUserIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getEmployeeUserIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
