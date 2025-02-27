@@ -126,6 +126,7 @@
     <Compile Include="Controllers\OpenTendersController.cs" />
     <Compile Include="Controllers\PrequalificationController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\TwoStageTenderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2594,6 +2595,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\TwoStageTender\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -2629,10 +2631,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Supplier">
+    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/NCIA%2520TEST%2520CO./Codeunit/Supplier">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\NAVWS\</RelPath>
-      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Supplier</UpdateFromURL>
+      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/NCIA%2520TEST%2520CO./Codeunit/Supplier</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
