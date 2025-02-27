@@ -1130,7 +1130,9 @@
       </element>
       <element name="GetPayslipMonths">
         <complexType>
-          <sequence />
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="year" type="int" />
+          </sequence>
         </complexType>
       </element>
       <element name="GetPayslipMonths_Result">

@@ -1,5 +1,6 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -72,8 +73,12 @@ namespace NCIASTaff.pages
             try
             {
                 ddlMonth.Items.Clear(); 
+                string year = ddlYear.SelectedValue;
+                Console.WriteLine($"Selected Year: {year}");
+                int CurrentYear = Convert.ToInt32(year);
 
-                string payslipMonths = webportals.GetPayslipMonths(); 
+                string payslipMonths = webportals.GetPayslipMonths(CurrentYear);
+                System.Diagnostics.Debug.WriteLine($"Payslip Months Response: {payslipMonths}");
                 if (!string.IsNullOrEmpty(payslipMonths))
                 {
                     string[] monthsArr = payslipMonths.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
