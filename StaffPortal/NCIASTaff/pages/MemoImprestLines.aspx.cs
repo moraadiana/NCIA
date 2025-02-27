@@ -47,10 +47,13 @@ namespace NCIASTaff.pages
                 if (status == "Pending" || status == string.Empty)
                 {
                     attachments.Visible = true;
+                    lbtnApprovalRequest.Visible = true;
                 }
                 else if (status == "Pending Approval")
                 {
                     attachments.Visible = false;
+                    lbtnApprovalRequest.Visible = false;
+
                 }
                 else
                 {
