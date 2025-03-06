@@ -58,6 +58,7 @@ namespace NCIASTaff.pages
                 else
                 {
                     attachments.Visible = false;
+                    lbtnApprovalRequest.Visible = false;
                 }
             }
         }
