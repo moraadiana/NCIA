@@ -225,6 +225,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback HasPendingLeaveApplicationOperationCompleted;
         
+        private System.Threading.SendOrPostCallback ImprestRequisitionApprovalRequest1OperationCompleted;
+        
         private System.Threading.SendOrPostCallback ImprestRequisitionApprovalRequestOperationCompleted;
         
         private System.Threading.SendOrPostCallback InsertAppraisalLinesOperationCompleted;
@@ -670,6 +672,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event HasPendingLeaveApplicationCompletedEventHandler HasPendingLeaveApplicationCompleted;
+        
+        /// <remarks/>
+        public event ImprestRequisitionApprovalRequest1CompletedEventHandler ImprestRequisitionApprovalRequest1Completed;
         
         /// <remarks/>
         public event ImprestRequisitionApprovalRequestCompletedEventHandler ImprestRequisitionApprovalRequestCompleted;
@@ -4008,6 +4013,39 @@ namespace NCIASTaff.NAVWS {
             if ((this.HasPendingLeaveApplicationCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.HasPendingLeaveApplicationCompleted(this, new HasPendingLeaveApplicationCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:ImprestRequisitionApprovalRe" +
+            "quest1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="ImprestRequisitionApprovalRequest1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string ImprestRequisitionApprovalRequest1(string imprestNo, decimal totalAmount) {
+            object[] results = this.Invoke("ImprestRequisitionApprovalRequest1", new object[] {
+                        imprestNo,
+                        totalAmount});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ImprestRequisitionApprovalRequest1Async(string imprestNo, decimal totalAmount) {
+            this.ImprestRequisitionApprovalRequest1Async(imprestNo, totalAmount, null);
+        }
+        
+        /// <remarks/>
+        public void ImprestRequisitionApprovalRequest1Async(string imprestNo, decimal totalAmount, object userState) {
+            if ((this.ImprestRequisitionApprovalRequest1OperationCompleted == null)) {
+                this.ImprestRequisitionApprovalRequest1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnImprestRequisitionApprovalRequest1OperationCompleted);
+            }
+            this.InvokeAsync("ImprestRequisitionApprovalRequest1", new object[] {
+                        imprestNo,
+                        totalAmount}, this.ImprestRequisitionApprovalRequest1OperationCompleted, userState);
+        }
+        
+        private void OnImprestRequisitionApprovalRequest1OperationCompleted(object arg) {
+            if ((this.ImprestRequisitionApprovalRequest1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ImprestRequisitionApprovalRequest1Completed(this, new ImprestRequisitionApprovalRequest1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -8472,6 +8510,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal HasPendingLeaveApplicationCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void ImprestRequisitionApprovalRequest1CompletedEventHandler(object sender, ImprestRequisitionApprovalRequest1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ImprestRequisitionApprovalRequest1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ImprestRequisitionApprovalRequest1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

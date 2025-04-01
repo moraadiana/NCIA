@@ -1472,6 +1472,21 @@
           </sequence>
         </complexType>
       </element>
+      <element name="ImprestRequisitionApprovalRequest1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="imprestNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="totalAmount" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="ImprestRequisitionApprovalRequest1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="ImprestRequisitionApprovalRequest">
         <complexType>
           <sequence>
@@ -2933,6 +2948,12 @@
   <message name="HasPendingLeaveApplication_Result">
     <part name="parameters" element="tns:HasPendingLeaveApplication_Result" />
   </message>
+  <message name="ImprestRequisitionApprovalRequest1">
+    <part name="parameters" element="tns:ImprestRequisitionApprovalRequest1" />
+  </message>
+  <message name="ImprestRequisitionApprovalRequest1_Result">
+    <part name="parameters" element="tns:ImprestRequisitionApprovalRequest1_Result" />
+  </message>
   <message name="ImprestRequisitionApprovalRequest">
     <part name="parameters" element="tns:ImprestRequisitionApprovalRequest" />
   </message>
@@ -3667,6 +3688,10 @@
     <operation name="HasPendingLeaveApplication">
       <input name="HasPendingLeaveApplication" message="tns:HasPendingLeaveApplication" />
       <output name="HasPendingLeaveApplication_Result" message="tns:HasPendingLeaveApplication_Result" />
+    </operation>
+    <operation name="ImprestRequisitionApprovalRequest1">
+      <input name="ImprestRequisitionApprovalRequest1" message="tns:ImprestRequisitionApprovalRequest1" />
+      <output name="ImprestRequisitionApprovalRequest1_Result" message="tns:ImprestRequisitionApprovalRequest1_Result" />
     </operation>
     <operation name="ImprestRequisitionApprovalRequest">
       <input name="ImprestRequisitionApprovalRequest" message="tns:ImprestRequisitionApprovalRequest" />
@@ -4781,6 +4806,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="ImprestRequisitionApprovalRequest1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:ImprestRequisitionApprovalRequest1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="ImprestRequisitionApprovalRequest1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="ImprestRequisitionApprovalRequest1_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="ImprestRequisitionApprovalRequest">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:ImprestRequisitionApprovalRequest" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="ImprestRequisitionApprovalRequest">
@@ -5297,7 +5331,7 @@
   </binding>
   <service name="Staffportall">
     <port name="Staffportall_Port" binding="tns:Staffportall_Binding">
-      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Staffportall" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA%201/Codeunit/Staffportall" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>
