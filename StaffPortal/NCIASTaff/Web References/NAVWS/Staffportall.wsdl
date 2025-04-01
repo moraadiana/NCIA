@@ -831,6 +831,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetDocumentApprovalEntries">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetDocumentApprovalEntries_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetEmployeeLeaves">
         <complexType>
           <sequence>
@@ -1417,6 +1431,7 @@
             <element minOccurs="1" maxOccurs="1" name="endDate" type="date" />
             <element minOccurs="1" maxOccurs="1" name="returnDate" type="date" />
             <element minOccurs="1" maxOccurs="1" name="responsibilityCenter" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="leavebal" type="int" />
           </sequence>
         </complexType>
       </element>
@@ -2695,6 +2710,12 @@
   <message name="GetDocResponsibilityCentres_Result">
     <part name="parameters" element="tns:GetDocResponsibilityCentres_Result" />
   </message>
+  <message name="GetDocumentApprovalEntries">
+    <part name="parameters" element="tns:GetDocumentApprovalEntries" />
+  </message>
+  <message name="GetDocumentApprovalEntries_Result">
+    <part name="parameters" element="tns:GetDocumentApprovalEntries_Result" />
+  </message>
   <message name="GetEmployeeLeaves">
     <part name="parameters" element="tns:GetEmployeeLeaves" />
   </message>
@@ -3531,6 +3552,10 @@
     <operation name="GetDocResponsibilityCentres">
       <input name="GetDocResponsibilityCentres" message="tns:GetDocResponsibilityCentres" />
       <output name="GetDocResponsibilityCentres_Result" message="tns:GetDocResponsibilityCentres_Result" />
+    </operation>
+    <operation name="GetDocumentApprovalEntries">
+      <input name="GetDocumentApprovalEntries" message="tns:GetDocumentApprovalEntries" />
+      <output name="GetDocumentApprovalEntries_Result" message="tns:GetDocumentApprovalEntries_Result" />
     </operation>
     <operation name="GetEmployeeLeaves">
       <input name="GetEmployeeLeaves" message="tns:GetEmployeeLeaves" />
@@ -4425,6 +4450,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetDocResponsibilityCentres_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetDocumentApprovalEntries">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetDocumentApprovalEntries" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetDocumentApprovalEntries">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetDocumentApprovalEntries_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -5367,7 +5401,7 @@
   </binding>
   <service name="Staffportall">
     <port name="Staffportall_Port" binding="tns:Staffportall_Binding">
-      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA%201/Codeunit/Staffportall" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Staffportall" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

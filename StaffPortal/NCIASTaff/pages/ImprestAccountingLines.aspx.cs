@@ -185,8 +185,7 @@ namespace NCIASTaff.pages
                         }
                     }
 
-                    //if (txtActualAmount.Text == "") txtActualAmount.Text = "0";
-                    //if (txtAmountReturned.Text == "") txtAmountReturned.Text = "0";
+                   
 
                     string response = webportals.LoadImprestSurrenderLineDetails(surrenderNo, account);
                     if (!string.IsNullOrEmpty(response))
@@ -195,8 +194,7 @@ namespace NCIASTaff.pages
                         string returnMsg = responseArr[0];
                         if (returnMsg == "SUCCESS")
                         {
-                            //ListItem li = new ListItem(responseArr[0]);
-                            //ddlReceipts.Items.Add(li);
+                            
                             decimal actualAmount = Convert.ToDecimal(responseArr[1]);
                             decimal cashReturned = Convert.ToDecimal(responseArr[2]);
                             txtActualAmount.Text = actualAmount.ToString();
@@ -204,8 +202,7 @@ namespace NCIASTaff.pages
                         }
                         else
                         {
-                            //ListItem li = new ListItem("--Select receipts--","");
-                            //ddlReceipts.Items.Add(li);
+                            
                             txtActualAmount.Text = "0";
                             txtAmountReturned.Text = "0";
                         }
@@ -300,14 +297,7 @@ namespace NCIASTaff.pages
                     }
                 }
 
-                //foreach (GridViewRow row in gvLines.Rows)
-                //{
-                //   DropDownList ddlReceipts = row.FindControl("ddlReceipts") as DropDownList;
-                //    string receiptNo = ddlReceipts.SelectedValue;
-                //    decimal amount = Convert.ToDecimal(row.Cells[5].Text);
-                //    string accountNo = row.Cells[2].Text;
-                //    webportals.InsertImprestSurrenderLines(documentNo, imprestNo, accountNo, receiptNo);
-                //}
+              
                 foreach (GridViewRow row in gvLines.Rows)
                 {
                     TextBox txtActualAmount = row.FindControl("txtActualAmount") as TextBox;

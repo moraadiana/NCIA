@@ -30,8 +30,7 @@ namespace NCIASTaff.pages
                     Response.Redirect("~/Default.aspx");
                     return;
                 }
-              ///  LoadApprovedMemos();
-              //  LoadResponsibilityCenters();
+             
 
                 if (Request.QueryString["ImprestNo"] != null)
                 {
@@ -166,8 +165,6 @@ namespace NCIASTaff.pages
         {
             try
             {
-                // string imprestNo = ddlApprovedMemos.SelectedValue.ToString();
-                //string DocNo = Session["ImprestNo"].ToString();
                 string imprestNo = Request.QueryString["ImprestNo"].ToString();
                 connection = Components.GetconnToNAV();
                 command = new SqlCommand()
@@ -197,36 +194,7 @@ namespace NCIASTaff.pages
             }
         }
 
-        //private void LoadApprovedMemos()
-        //{
-        //    try
-        //    {
-        //        string username = Session["username"].ToString();
-        //        ddlApprovedMemos.Items.Clear();
-        //        connection = Components.GetconnToNAV();
-        //        command = new SqlCommand()
-        //        {
-        //            CommandText = "spGetMyPendingImprests",
-        //            CommandType = CommandType.StoredProcedure,
-        //            Connection = connection
-        //        };
-        //        command.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-        //        command.Parameters.AddWithValue("@userID", username );
-        //        reader = command.ExecuteReader();
-        //        if (reader.HasRows)
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                ListItem li = new ListItem(reader["No_"].ToString() + " => " + reader["Purpose"].ToString().ToUpper(), reader["No_"].ToString());
-        //                ddlApprovedMemos.Items.Add(li);
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ex.Data.Clear();
-        //    }
-        //}
+     
 
         
         private void LoadResponsibilityCenter()
@@ -263,7 +231,6 @@ namespace NCIASTaff.pages
             {
                 imprestDetails.Visible = true;
                 string imprestNo = Request.QueryString["ImprestNo"].ToString();
-               // string imprestNo = ddlApprovedMemos.Text.Trim();
                 connection = Components.GetconnToNAV();
                 command = new SqlCommand()
                 {

@@ -68,9 +68,7 @@ namespace NCIASTaff.pages
             }
         }
 
-<<<<<<< HEAD
-       
-=======
+
         private void GenerateMemoReport()
         {
             try
@@ -105,7 +103,7 @@ namespace NCIASTaff.pages
                 ex.Data.Clear();
             }
         }
->>>>>>> 48b8751542b073af572d834454f4c5e14232307e
+
 
 
     }

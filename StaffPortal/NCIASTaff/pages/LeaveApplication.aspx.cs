@@ -378,6 +378,7 @@ namespace NCIASTaff.pages
                 string directorate = lblDirectorate.Text;
                 string department = lblDepartment.Text;
                 string availableDays = lblBalance.Text;
+                
             //    string purpose = txtPurpose.Text;
 
                 // Validations
@@ -463,7 +464,7 @@ namespace NCIASTaff.pages
                     LeaveNo = Request.QueryString["leaveNo"]; // Get the leaveNo from the query string
                 }
                 // Applications
-                string response = webportals.HRMLeaveApplication1(LeaveNo ?? string.Empty, username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate,  resCenter);
+                string response = webportals.HRMLeaveApplication1(LeaveNo ?? string.Empty, username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate,  resCenter,Convert.ToInt32(availableDays));
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);

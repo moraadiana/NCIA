@@ -476,59 +476,67 @@ namespace NCIASTaff.pages
         {
             try
             {
-                if (fuClaimDocs.PostedFile != null)
+                if (fuClaimDocs.HasFile)
                 {
-                    string DocumentNo = lblLNo.Text.Replace("/", "-"); // Replace slashes with dashes
-                    string username = Session["username"].ToString();
-                    string filePath = fuClaimDocs.PostedFile.FileName.Replace(" ", "-");
-                    string fileName = fuClaimDocs.FileName.Replace(" ", "-");
-                    string fileExtension = Path.GetExtension(fileName).ToLower();
+                    //string documentNo = Request.QueryString["ImprestNo"];
+                    string DocumentNo = Request.QueryString["ClaimNo"];
+                        //lblLNo.Text.Replace("/", "-");
+                    string username = Session["username"]?.ToString();
 
-                    if (fileExtension == ".pdf" || fileExtension == ".jpg" || fileExtension == ".png" || fileExtension == ".jpeg")
+                    if (string.IsNullOrEmpty(DocumentNo) || string.IsNullOrEmpty(username))
                     {
-                        string strPath = Server.MapPath("~/Uploads");
-                        if (!Directory.Exists(strPath))
-                        {
-                            Directory.CreateDirectory(strPath);
-                        }
-
-
-                        string pathToUpload = Path.Combine(strPath, DocumentNo + fileName.ToUpper());
-
-                        if (File.Exists(pathToUpload))
-                        {
-                            File.Delete(pathToUpload);
-                        }
-                        fuClaimDocs.SaveAs(pathToUpload);
-                        webportals.SaveMemoAttchmnts(DocumentNo, pathToUpload, fileName.ToUpper(), username);
-
-                        Stream fs = fuClaimDocs.PostedFile.InputStream;
-                        BinaryReader br = new BinaryReader(fs);
-                        byte[] bytes = br.ReadBytes((int)fs.Length);
-                        string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                        webportals.RegFileUploadAtt(DocumentNo, fileName.ToUpper(), base64String, 52178720, "Claim Requisition");
-                        
-                        BindAttachedDocuments(DocumentNo);
-                        Message("Document uploaded successfully!");
-                    }
-                    else
-                    {
-                        Message("Please upload files with .pdf, .png, .jpg and .jpeg extensions only!");
+                        Message("Imprest number or username is missing.");
                         return;
                     }
+
+                    string fileName = Path.GetFileName(fuClaimDocs.FileName).Replace(" ", "-").ToUpper();
+                    string fileExtension = Path.GetExtension(fileName).ToLower();
+
+                    if (!new[] { ".pdf", ".jpg", ".png", ".jpeg" }.Contains(fileExtension))
+                    {
+                        Message("Please upload files with .pdf, .png, .jpg, or .jpeg extensions only!");
+                        return;
+                    }
+
+                    string uploadPath = Server.MapPath("~/Uploads");
+                    if (!Directory.Exists(uploadPath))
+                    {
+                        Directory.CreateDirectory(uploadPath);
+                    }
+
+                    string filePath = Path.Combine(uploadPath, DocumentNo.Replace("/", "-") + fileName);
+
+                    // Save the file locally
+                    fuClaimDocs.SaveAs(filePath);
+
+                    // Register the file in the system (base64 is optional based on implementation)
+                    using (Stream fs = fuClaimDocs.PostedFile.InputStream)
+                    {
+                        using (BinaryReader br = new BinaryReader(fs))
+                        {
+                            byte[] fileBytes = br.ReadBytes((int)fs.Length);
+                            string base64String = Convert.ToBase64String(fileBytes);
+
+                            // Update the file registration in the backend
+                            Components.ObjNav.RegFileUploadAtt(DocumentNo, fileName, base64String, 52178720, "Claim Requisition");
+                        }
+                    }
+
+                    // Refresh the grid view
+                    BindAttachedDocuments(DocumentNo);
+                    Message("Document uploaded successfully!");
                 }
                 else
                 {
-                    Message("Please upload a file!");
-                    return;
+                    Message("Please select a file to upload!");
                 }
-               
             }
             catch (Exception ex)
             {
-                ex.Data.Clear();
+                Message($"Error: {ex.Message}");
             }
         }
+       
         protected void lbtnRemoveAttach_Click(object sender, EventArgs e)
         {
             try
