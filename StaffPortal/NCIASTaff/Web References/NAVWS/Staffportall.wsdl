@@ -519,6 +519,23 @@
           <sequence />
         </complexType>
       </element>
+      <element name="GenerateMemoReport1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="memoNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="fileNameFromApp" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GenerateMemoReport1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigtext" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GenerateMemoReport">
         <complexType>
           <sequence>
@@ -2552,6 +2569,12 @@
   <message name="GenerateLeaveStatement_Result">
     <part name="parameters" element="tns:GenerateLeaveStatement_Result" />
   </message>
+  <message name="GenerateMemoReport1">
+    <part name="parameters" element="tns:GenerateMemoReport1" />
+  </message>
+  <message name="GenerateMemoReport1_Result">
+    <part name="parameters" element="tns:GenerateMemoReport1_Result" />
+  </message>
   <message name="GenerateMemoReport">
     <part name="parameters" element="tns:GenerateMemoReport" />
   </message>
@@ -3425,6 +3448,10 @@
       <input name="GenerateLeaveStatement" message="tns:GenerateLeaveStatement" />
       <output name="GenerateLeaveStatement_Result" message="tns:GenerateLeaveStatement_Result" />
     </operation>
+    <operation name="GenerateMemoReport1">
+      <input name="GenerateMemoReport1" message="tns:GenerateMemoReport1" />
+      <output name="GenerateMemoReport1_Result" message="tns:GenerateMemoReport1_Result" />
+    </operation>
     <operation name="GenerateMemoReport">
       <input name="GenerateMemoReport" message="tns:GenerateMemoReport" />
       <output name="GenerateMemoReport_Result" message="tns:GenerateMemoReport_Result" />
@@ -4209,6 +4236,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GenerateLeaveStatement_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GenerateMemoReport1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GenerateMemoReport1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GenerateMemoReport1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GenerateMemoReport1_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

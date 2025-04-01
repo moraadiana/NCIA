@@ -93,6 +93,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GenerateLeaveStatementOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GenerateMemoReport1OperationCompleted;
+        
         private System.Threading.SendOrPostCallback GenerateMemoReportOperationCompleted;
         
         private System.Threading.SendOrPostCallback GeneratePaySlipReport1OperationCompleted;
@@ -474,6 +476,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GenerateLeaveStatementCompletedEventHandler GenerateLeaveStatementCompleted;
+        
+        /// <remarks/>
+        public event GenerateMemoReport1CompletedEventHandler GenerateMemoReport1Completed;
         
         /// <remarks/>
         public event GenerateMemoReportCompletedEventHandler GenerateMemoReportCompleted;
@@ -1953,6 +1958,41 @@ namespace NCIASTaff.NAVWS {
             if ((this.GenerateLeaveStatementCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GenerateLeaveStatementCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GenerateMemoReport1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GenerateMemoReport1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GenerateMemoReport1(string memoNo, string fileNameFromApp, ref string bigtext) {
+            object[] results = this.Invoke("GenerateMemoReport1", new object[] {
+                        memoNo,
+                        fileNameFromApp,
+                        bigtext});
+            bigtext = ((string)(results[1]));
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GenerateMemoReport1Async(string memoNo, string fileNameFromApp, string bigtext) {
+            this.GenerateMemoReport1Async(memoNo, fileNameFromApp, bigtext, null);
+        }
+        
+        /// <remarks/>
+        public void GenerateMemoReport1Async(string memoNo, string fileNameFromApp, string bigtext, object userState) {
+            if ((this.GenerateMemoReport1OperationCompleted == null)) {
+                this.GenerateMemoReport1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnGenerateMemoReport1OperationCompleted);
+            }
+            this.InvokeAsync("GenerateMemoReport1", new object[] {
+                        memoNo,
+                        fileNameFromApp,
+                        bigtext}, this.GenerateMemoReport1OperationCompleted, userState);
+        }
+        
+        private void OnGenerateMemoReport1OperationCompleted(object arg) {
+            if ((this.GenerateMemoReport1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GenerateMemoReport1Completed(this, new GenerateMemoReport1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6802,6 +6842,40 @@ namespace NCIASTaff.NAVWS {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GenerateLeaveStatementCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GenerateMemoReport1CompletedEventHandler(object sender, GenerateMemoReport1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GenerateMemoReport1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GenerateMemoReport1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+        
+        /// <remarks/>
+        public string bigtext {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[1]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]

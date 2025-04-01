@@ -29,7 +29,7 @@ namespace NCIASTaff.pages
                 GenerateMemoReport();
             }
         }
-        private void GenerateMemoReport()
+        private void GenerateMemoReport1()
         {
             try
             {
@@ -68,8 +68,45 @@ namespace NCIASTaff.pages
             }
         }
 
+<<<<<<< HEAD
        
+=======
+        private void GenerateMemoReport()
+        {
+            try
+            {
+                string username = Session["username"].ToString().Replace(@"/", @"");
+                string memoNo = Request.QueryString["memoNo"].ToString();
+                string fileName = Session["username"].ToString().Replace(@"-", @"");
+                string returnstring = "";
+                //string filePath = HostingEnvironment.MapPath($"~/Download/{fileName}");
 
-      
+                Components.ObjNav.GenerateMemoReport1(memoNo, String.Format("MEMO{0}.pdf", fileName), ref returnstring);
+                myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("MEMO{0}.pdf", fileName)));
+                byte[] bytes = Convert.FromBase64String(returnstring);
+
+                string path = HostingEnvironment.MapPath("~/Download/" + $"Memo{fileName}.pdf");
+                // Check if the file exists before setting the src attribute
+                if (System.IO.File.Exists(path))
+                {
+                    System.IO.File.Delete(path);
+                }
+                FileStream stream = new FileStream(path, FileMode.CreateNew);
+                BinaryWriter writer = new BinaryWriter(stream);
+                writer.Write(bytes, 0, bytes.Length);
+                writer.Close();
+
+                //File.WriteAllBytes(path, bytes);
+                myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("MEMO{0}.pdf", fileName)));
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                ex.Data.Clear();
+            }
+        }
+>>>>>>> 48b8751542b073af572d834454f4c5e14232307e
+
+
     }
 }
