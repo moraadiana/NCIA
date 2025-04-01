@@ -90,7 +90,7 @@ namespace NCIASTaff.pages
             catch (Exception exception)
             {
                 exception.Data.Clear();
-               //     HttpContext.Current.Response.Write(exception);
+              
             }
         }
            catch (Exception ex)
