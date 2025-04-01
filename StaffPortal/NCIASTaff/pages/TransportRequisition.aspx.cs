@@ -492,7 +492,7 @@ namespace NCIASTaff.pages
 
 
                 ddlPassengerNo.Items.Clear();
-
+                ddlPassengerNo.Items.Add(new System.Web.UI.WebControls.ListItem("--Select Passenger--", ""));
                 foreach (string passengerlist in passengersList)
                 {
 
