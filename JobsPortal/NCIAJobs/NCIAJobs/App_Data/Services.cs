@@ -53,6 +53,7 @@ namespace NCIAJobs
             var list = new List<Registration>();
             try
             {
+               
                 string nationalities = webportals.GetNationalities();
                 if (!string.IsNullOrEmpty(nationalities))
                 {
@@ -60,6 +61,7 @@ namespace NCIAJobs
                     foreach (string nationality in nationalitiesArr)
                     {
                         string[] responseArr = nationality.Split(strLimiters, StringSplitOptions.None);
+                        
                         list.Add(new Registration()
                         {
                             Code = responseArr[0],

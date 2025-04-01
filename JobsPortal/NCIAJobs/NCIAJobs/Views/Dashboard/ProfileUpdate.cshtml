@@ -78,48 +78,53 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Title</label> <span class="text-danger">*</span>
-                    <select class="form-control" name="Title" required>
-                        <option value="0">Prof.</option>
-                        <option value="1">Dr.</option>
-                        <option value="2">Mr.</option>
-                        <option value="3">Mrs.</option>
-                        <option value="4">Miss.</option>
-                        <option value="5">Ms.</option>
-                        <option value="6">Rev.</option>
-                    </select>
+                                         <select class="form-control" name="Title" required>
+                                             <option value=" ">-- Select --</option>
+                                             
+                                             <option value="0">Prof</option>
+                                             <option value="1">Dr</option>
+                                             <option value="2">Mr</option>
+                                             <option value="3">Mrs</option>
+                                             <option value="4">Miss</option>
+                                             <option value="5">Ms</option>
+                                             <option value="6">Rev</option>
+                                         </select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Gender</label> <span class="text-danger">*</span>
-                    <select class="form-control" name="Gender" required>
-                        <option value="0">Male</option>
-                        <option value="1">Female</option>
-                    </select>
+                                          <select class="form-control" name="Gender" required>
+                                              <option value=" ">-- Select --</option>
+                                              <option value="0">Male</option>
+                                              <option value="1">Female</option>
+                                          </select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Marital Status</label> <span class="text-danger">*</span>
-                    <select class="form-control" name="MaritalStatus" required>
-                        <option value="1">Single</option>
-                        <option value="2">Married</option>
-                        <option value="3">Separated</option>
-                        <option value="4">Divorced</option>
-                        <option value="5">Widow(er)</option>
-                        <option value="6">Other</option>
-                    </select>
+                                                  <select class="form-control" name="MaritalStatus" required>
+                                                      <option value=" ">-- Select --</option>
+                                                      <option value="1">Single</option>
+                                                      <option value="2">Married</option>
+                                                      <option value="3">Separated</option>
+                                                      <option value="4">Divorced</option>
+                                                      <option value="5">Widow(er)</option>
+                                                      <option value="6">Other</option>
+                                                  </select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Ethnic Origin</label> <span class="text-danger">*</span>
-                    <select class="form-control" name="EthnicOrigin" required>
-                        <option value="0">African</option>
-                        <option value="1">Indian</option>
-                        <option value="2">White</option>
-                        <option value="3">Coloured</option>
-                    </select>
+                                                 <select class="form-control" name="EthnicOrigin" required>
+                                                     <option value=" ">-- Select --</option>
+                                                     <option value="0">African</option>
+                                                     <option value="1">Indian</option>
+                                                     <option value="2">White</option>
+                                                     <option value="3">Coloured</option>
+                                                 </select>
                 </div>
             </div>
             <div class="col-md-4">
@@ -174,7 +179,7 @@
                 <div class="form-group">
                     <label>Telephone No</label> <span class="text-danger">*</span>
 
-                    <input name="TelephoneNo" type="text" class="form-control" required maxlength="10" minlength="10 " id="tel-no"/>
+                    <input name="TelephoneNo" type="text" class="form-control" required maxlength="10" minlength="10 " value="@Model.TelephoneNo" id="tel-no" />
                     <span class="text-danger" id="tel-msg"></span>
                 </div>
             </div>
@@ -205,10 +210,11 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Disability</label> <span class="text-danger">*</span>
-                    <select class="form-control" name="Disability" required id="disability">
-                        <option value="0">No</option>
-                        <option value="1">Yes</option>
-                    </select>
+                                              <select class="form-control" name="Disability" required id="disability">
+                                                  <option value=" ">-- Select --</option>
+                                                  <option value="0">No</option>
+                                                  <option value="1">Yes</option>
+                                              </select>
                 </div>
             </div>
             <div class="col-md-4" id="disability-container">
@@ -251,22 +257,29 @@
     const kraPin = document.getElementById('kra-pin');
     const kraMsg = document.getElementById('kra-msg');
     const telNo = document.getElementById('tel-no');
+
     const telMsg = document.getElementById('tel-msg');
 
-    telNo.addEventListener('input', function () {
-        const value = telNo.value;
-        const numberRegex = /^[0-9]$/;
-        
-        //if (!numberRegex.test(value) ) {
-        //    telMsg.textContent = 'Telephone Number must digits';
-        //    return;
-        //}
-        if ( telNo.length !== 10) {
-            telMsg.textContent = 'Telephone Number must be exactly 10 characters long';
-            return;
+    telNo.addEventListener('keyup', function () {
+        const value = telNo.value.trim(); // Remove any accidental spaces
+        const numberRegex = /^[0-9]{10}$/; // Regex for exactly 10 digits
+
+        if (!numberRegex.test(value)) {
+            telMsg.textContent = 'Telephone Number must be exactly 10 digits';
+        } else {
+            telMsg.textContent = ''; // Clear error message when valid
         }
     });
+    mblNo.addEventListener('keyup', function () {
+        const value = mblNo.value.trim(); // Remove any accidental spaces
+        const numberRegex = /^[0-9]{10}$/; // Regex for exactly 10 digits
 
+        if (!numberRegex.test(value)) {
+            mblMsg.textContent = 'Telephone Number must be exactly 10 digits';
+        } else {
+            mblMsg.textContent = ''; // Clear error message when valid
+        }
+    });
 
     kraPin.addEventListener('keyup', function () {
         const characterRegex = /^[a-zA-Z]$/;

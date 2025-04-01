@@ -66,6 +66,12 @@ namespace NCIAJobs.Controllers
                 var nationalities = Services.GetNationalities();
                 var tribes = Services.GetTribes();
                 var counties = Services.GetCounties();
+
+                // Add "--Select--" as the first option in each list
+                nationalities.Insert(0, new Registration { Code = "0", Description = "--Select--" });
+                tribes.Insert(0, new Registration { Code = "0", Description = "--Select--" });
+                counties.Insert(0, new Registration { Code = "0", Description = "--Select--" });
+
                 registration.Nationalities = nationalities;
                 registration.Tribes = tribes;
                 registration.Counties = counties;
