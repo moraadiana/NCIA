@@ -29,7 +29,7 @@ namespace NCIASTaff.pages
                 GenerateMemoReport();
             }
         }
-        private void GenerateMemoReport()
+        private void GenerateMemoReport1()
         {
             try
             {
@@ -68,52 +68,41 @@ namespace NCIASTaff.pages
             }
         }
 
-        private void GenerateMemoReport1()
+        private void GenerateMemoReport()
         {
             try
             {
-                
+                string username = Session["username"].ToString().Replace(@"/", @"");
                 string memoNo = Request.QueryString["memoNo"].ToString();
-                string username = Session["username"].ToString();
-                string filename = username.Replace("/", "@");
-              //  string pdfFileName = String.Format(@"MemoReport-{0}.pdf", filename);
+                string fileName = Session["username"].ToString().Replace(@"-", @"");
+                string returnstring = "";
+                //string filePath = HostingEnvironment.MapPath($"~/Download/{fileName}");
 
-                
+                Components.ObjNav.GenerateMemoReport1(memoNo, String.Format("MEMO{0}.pdf", fileName), ref returnstring);
+                myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("MEMO{0}.pdf", fileName)));
+                byte[] bytes = Convert.FromBase64String(returnstring);
 
-                //  string networkPath = @"\\10.107.8.40\Downloads\" + pdfFileName;
-                var filePath = Server.MapPath("~/Downloads/") + String.Format("MemoReport-{0}.pdf", filename);
-
-                // Check if directory exists, if not create it
-                if (!Directory.Exists(Server.MapPath("~/Downloads/")))
+                string path = HostingEnvironment.MapPath("~/Download/" + $"Memo{fileName}.pdf");
+                // Check if the file exists before setting the src attribute
+                if (System.IO.File.Exists(path))
                 {
-                    Directory.CreateDirectory(Server.MapPath("~/Downloads/"));
+                    System.IO.File.Delete(path);
                 }
-                Components.ObjNav.GenerateMemoReport(memoNo, filename);
+                FileStream stream = new FileStream(path, FileMode.CreateNew);
+                BinaryWriter writer = new BinaryWriter(stream);
+                writer.Write(bytes, 0, bytes.Length);
+                writer.Close();
 
-                if (File.Exists(filePath))
-                {
-                    System.Diagnostics.Debug.WriteLine("Memo generated successfully.");
-                    myPDF.Attributes.Add("src", ResolveUrl("~/Downloads/" + String.Format("MemoReport-{0}.pdf", filename)));
-                }
-                else
-                {
-                    throw new FileNotFoundException("Memo PDF was not found after generation.");
-                }
-
-
-                // string fileUrl = ResolveUrl("~/Downloads/" + filename);
-                string fileUrl = ResolveUrl("~/Downloads/" + filename);
-
-
-                myPDF.Attributes.Add("src", fileUrl);
+                //File.WriteAllBytes(path, bytes);
+                myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("MEMO{0}.pdf", fileName)));
             }
             catch (Exception ex)
             {
-                
+                // Log the exception or handle it as needed
                 ex.Data.Clear();
             }
         }
 
-      
+
     }
 }
