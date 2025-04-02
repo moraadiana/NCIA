@@ -39,7 +39,7 @@ namespace NCIAJobs.Models
         public string RegistrationNo { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
-        public int EthnicOrigin { get; set; }
+        public string EthnicOrigin { get; set; }
         public List<Registration> Nationalities { get; set; }
         public List<Registration> Counties { get; set; }
         public List<Registration> Tribes { get; set; }

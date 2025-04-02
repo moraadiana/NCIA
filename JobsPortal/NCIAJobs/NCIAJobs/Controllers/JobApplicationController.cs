@@ -105,7 +105,7 @@ namespace NCIAJobs.Controllers
             }
             return View();
         }
-        public ActionResult MinimumRequirements()
+        public ActionResult MinimumRequirements1()
         {
             if (Session["username"] == null) return RedirectToAction("index", "login");
 
@@ -151,20 +151,38 @@ namespace NCIAJobs.Controllers
             return View(applicant);
         }
 
-        public ActionResult MinimumRequirements1()
+        public ActionResult MinimumRequirements()
         {
             if (Session["username"] == null) return RedirectToAction("index", "login");
+
             string jobId = Session["jobId"].ToString();
             string refNo = Session["refNo"].ToString();
             string applicationNo = Session["ApplicationNo"].ToString();
+
             Applicant applicant = new Applicant();
+
             try
             {
+                
                 var minimumRequirements = Services.GetMinimumRequirements(applicationNo, jobId, refNo);
                 var submittedRequirements = Services.GetSubmittedMinimumRequirements(jobId, refNo);
                 var qualificationTypes = Services.GetQualificationTypes(jobId);
+
+                foreach (var submittedRequirement in submittedRequirements)
+                {
+                   
+                    var existingRequirement = minimumRequirements.FirstOrDefault(req => req.Code == submittedRequirement.Code);
+                    if (existingRequirement != null)
+                    {
+                        existingRequirement.Answer = submittedRequirement.Answer;
+                    }
+                    else
+                    {
+                        minimumRequirements.Add(submittedRequirement);
+                    }
+                }
+
                 applicant.MinimumRequirements = minimumRequirements;
-                applicant.SubmittedMinimumRequirements = submittedRequirements;
                 applicant.QualificationTypes = qualificationTypes;
             }
             catch (Exception ex)
@@ -172,34 +190,38 @@ namespace NCIAJobs.Controllers
                 TempData["Error"] = ex.Message;
                 return RedirectToAction("minimumrequirements", "jobapplication");
             }
+
             return View(applicant);
         }
 
         [HttpPost]
-        public ActionResult SubmitRequirements(Dictionary<string, string> RequirementAnswers, Dictionary<string, string> RequirementDescriptions)
+        public ActionResult SubmitRequirements(Applicant applicant)
         {
             try
             {
+                
+                if (Session["jobId"] == null || Session["refNo"] == null || Session["ApplicationNo"] == null)
+                {
+                    TempData["Error"] = "Missing session variables.";
+                    return RedirectToAction("minimumrequirements", "jobapplication");
+                }
+
                 string jobId = Session["jobId"].ToString();
                 string refNo = Session["refNo"].ToString();
                 string applicationNo = Session["ApplicationNo"].ToString();
+                string selectedCategories = applicant.SelectedCategories;
 
-                // Loop through each answer submitted from the view
-                foreach (var answer in RequirementAnswers)
+
+                string[] categoriesArr = selectedCategories.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string category in categoriesArr)
                 {
-                    string code = answer.Key; // Qualification code
-                    string selectedAnswer = answer.Value; // Selected answer
+                    string[] responseArr = category.Split(strLimiters, StringSplitOptions.None);
+                    string code = responseArr[0];
+                    string description = responseArr[1];
+                    int answer = Convert.ToInt32(responseArr[2]);
 
-                    // Parse the selected answer into an integer value (Yes = 2, No = 1)
-                    int answerValue = selectedAnswer == "2" ? 2 : 1;
 
-                    // Retrieve the corresponding description from RequirementDescriptions
-                    string description = RequirementDescriptions.ContainsKey(code)
-                        ? RequirementDescriptions[code]
-                        : string.Empty;
-
-                    // Call the procedure to update/insert the requirement
-                    webportals.UpdateEmployeeMinimuRequirement(applicationNo, refNo, jobId, answerValue, code, description);
+                    webportals.UpdateEmployeeMinimuRequirement(applicationNo, refNo, jobId, answer, code, description);
                 }
 
                 TempData["Success"] = "Minimum requirements added successfully!";
@@ -207,65 +229,12 @@ namespace NCIAJobs.Controllers
             }
             catch (Exception ex)
             {
-                TempData["Error"] = $"An error occurred while submitting requirements: {ex.Message}";
+                TempData["Error"] = $"An error occurred: {ex.Message}";
                 return RedirectToAction("minimumrequirements", "jobapplication");
             }
         }
 
-        public ActionResult SubmitRequirements1(Applicant applicant)
-        {
-            try
-            {
-                string jobId = Session["jobId"].ToString();
-                string refNo = Session["refNo"].ToString();
-                string applicationNo = Session["ApplicationNo"].ToString();
-                string code = applicant.QualificationType;
-                string description = applicant.QualificationCode;
-                //if (applicant.AttachmentFile != null || applicant.AttachmentFile.ContentLength > 0)
-                //{
-                //    string fileName = applicant.AttachmentFile.FileName;
-                //    string fileExtension = Path.GetExtension(fileName).Split('.')[1].ToLower();
-                //    if (fileExtension == "pdf")
-                //    {
-                //        string path = Server.MapPath("~/Uploads/");
-                //        if (!Directory.Exists(path))
-                //        {
-                //            Directory.CreateDirectory(path);
-                //        }
-                //        string pathToUpload = Path.Combine(path, applicationNo.Replace("/", "") + fileName);
-                //        if (System.IO.File.Exists(pathToUpload))
-                //        {
-                //            System.IO.File.Delete(pathToUpload);
-                //        }
-                //        applicant.AttachmentFile.SaveAs(pathToUpload);
-                //        Stream fs = applicant.AttachmentFile.InputStream;
-                //        BinaryReader br = new BinaryReader(fs);
-                //        byte[] bytes = br.ReadBytes((int)fs.Length);
-                //        string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-                //        webportals.RegFileUpload(applicationNo, fileName.ToUpper(), base64String, 52179114);
-                //    }
-                //else
-                //{
-                //    TempData["Error"] = "Please upload files with .pdf extensions only.";
-                //    return RedirectToAction("minimumrequirements", "jobapplication");
-                //}
-
-                //}
-                //else
-                //{
-                //    webportals.UpdateEmployeeMinimuRequirement(applicationNo, refNo, jobId, 1, code, description);
-                //}
-                webportals.UpdateEmployeeMinimuRequirement(applicationNo, refNo, jobId, 2, code, description);
-                TempData["Success"] = "Minimum requirements added successfully!";
-                return RedirectToAction("minimumrequirements", "jobapplication");
-            }
-            catch (Exception ex)
-            {
-                TempData["Error"] = ex.Message;
-                return RedirectToAction("minimumrequirements", "jobapplication");
-            }
-        }
-
+       
         public ActionResult Qualifications()
         {
             if (Session["username"] == null) return RedirectToAction("index", "login");
@@ -374,15 +343,16 @@ namespace NCIAJobs.Controllers
         {
             string applicationNo = Session["username"].ToString();
             var qualifications = Services.GetQualifications(applicationNo);
-            return RedirectToAction("ProffessionalQualifications", "jobapplication");
-            //if (qualifications.Count > 0)
-            //{
-            //}
-            //else
-            //{
-            //    TempData["Error"] = "Please add academic qualifications before you continue!";
-            //    return RedirectToAction("qualifications", "jobapplication");
-            //}
+            if (qualifications.Count > 0)
+            {
+
+                return RedirectToAction("ProffessionalQualifications", "jobapplication");
+            }
+            else
+            {
+                TempData["Error"] = "Please add academic qualifications before you continue!";
+                return RedirectToAction("qualifications", "jobapplication");
+            }
         }
 
         public ActionResult ProffessionalQualifications()
@@ -636,7 +606,18 @@ namespace NCIAJobs.Controllers
         {
             string applicationNo = Session["username"].ToString();
             var nextOfKins = Services.GetNextOfKins(applicationNo);
-            return RedirectToAction("referees", "jobapplication");
+          
+          
+            if (nextOfKins.Count > 0)
+            {
+                return RedirectToAction("referees", "jobapplication");
+                
+            }
+            else
+            {
+                TempData["Error"] = "Please add Next of Kin before you continue!";
+                return RedirectToAction("nextofkin", "jobapplication");
+            }
         }
 
         public ActionResult Referees()
@@ -716,7 +697,18 @@ namespace NCIAJobs.Controllers
             string applicationNo = Session["username"].ToString();
             var referees = Services.GetApplicantReferees(applicationNo);
            
-            return RedirectToAction("attachments", "jobapplication");
+            
+
+            if (referees.Count > 0)
+            {
+                
+                return RedirectToAction("attachments", "jobapplication");
+            }
+            else
+            {
+                TempData["Error"] = "Please add referees before you continue!";
+                return RedirectToAction("referees", "jobapplication");
+            }
         }
 
         public ActionResult Attachments()
