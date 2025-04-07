@@ -33,8 +33,9 @@ namespace NCIAJobs.Controllers
                             Counter = counter,
                             RefNo = responsearr[0],
                             JobId = responsearr[1],
-                            JobTitle = responsearr[2],
+                            JobTitle = responsearr[2], 
                             RequiredPositions = Convert.ToDecimal(responsearr[4]),
+                            Date = Convert.ToDateTime(responsearr[5])
                         };
                         list.Add(advertisedJob);
                     }

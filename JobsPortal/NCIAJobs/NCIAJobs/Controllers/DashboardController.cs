@@ -218,7 +218,8 @@ namespace NCIAJobs.Controllers
                     return RedirectToAction("profileupdate", "dashboard");
                 }
                 var list = new List<Job>();
-                string advertisedJobs = webportals.GetAdvertisedJobs();
+                //string advertisedJobs = webportals.GetAdvertisedJobs();
+                string advertisedJobs = webportals.GetAdvertisedJobsvalidate(username);
                 if (!string.IsNullOrEmpty(advertisedJobs))
                 {
                     int counter = 0;
@@ -228,10 +229,10 @@ namespace NCIAJobs.Controllers
                         counter++;
                         string[] responsearr = item.Split(strLimiters, StringSplitOptions.None);
                         string closingDate = responsearr[5];
-                        if (!string.IsNullOrEmpty(closingDate))
-                        {
-                            if (Convert.ToDateTime(closingDate) > DateTime.Now) continue;
-                        }
+                        //if (!string.IsNullOrEmpty(closingDate))
+                        //{
+                        //    if (Convert.ToDateTime(closingDate) > DateTime.Now) continue;
+                        //}
                         Job advertisedJob = new Job()
                         {
                             Counter = counter,
@@ -239,6 +240,7 @@ namespace NCIAJobs.Controllers
                             JobId = responsearr[1],
                             JobTitle = responsearr[2],
                             RequiredPositions = Convert.ToDecimal(responsearr[4]),
+                            Date = Convert.ToDateTime(closingDate)
                         };
                         list.Add(advertisedJob);
                     }

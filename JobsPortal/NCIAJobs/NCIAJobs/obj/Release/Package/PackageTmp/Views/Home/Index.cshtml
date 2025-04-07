@@ -23,6 +23,7 @@
                         <th>REF No.</th>
                         <th>Job Id</th>
                         <th>Job Title</th>
+                        <th>Closing Date</th>
                         <th>Required Positions</th>
                         <th>Details</th>
                     </tr>
@@ -37,6 +38,7 @@
                                 <td>@item.RefNo</td>
                                 <td>@item.JobId</td>
                                 <td>@item.JobTitle</td>
+                                <td>@item.Date</td>
                                 <td>@item.RequiredPositions</td>
                                 <td><a class="text-info" href="@Url.Action("details", new {jobId=item.JobId})">Details</a></td>
                             </tr>

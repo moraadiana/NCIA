@@ -31,13 +31,19 @@ namespace NCIAJobs.NAVWS {
         
         private System.Threading.SendOrPostCallback AccountExistsOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CheckApplicantIdOperationCompleted;
+        
         private System.Threading.SendOrPostCallback CloseAllRequisitionsOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateOnlineAccountOperationCompleted;
         
         private System.Threading.SendOrPostCallback DeleteAttachmentOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetAdvertisedJobs1OperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetAdvertisedJobsOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetAdvertisedJobsvalidateOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetApplicantAttachmentsOperationCompleted;
         
@@ -191,6 +197,9 @@ namespace NCIAJobs.NAVWS {
         public event AccountExistsCompletedEventHandler AccountExistsCompleted;
         
         /// <remarks/>
+        public event CheckApplicantIdCompletedEventHandler CheckApplicantIdCompleted;
+        
+        /// <remarks/>
         public event CloseAllRequisitionsCompletedEventHandler CloseAllRequisitionsCompleted;
         
         /// <remarks/>
@@ -200,7 +209,13 @@ namespace NCIAJobs.NAVWS {
         public event DeleteAttachmentCompletedEventHandler DeleteAttachmentCompleted;
         
         /// <remarks/>
+        public event GetAdvertisedJobs1CompletedEventHandler GetAdvertisedJobs1Completed;
+        
+        /// <remarks/>
         public event GetAdvertisedJobsCompletedEventHandler GetAdvertisedJobsCompleted;
+        
+        /// <remarks/>
+        public event GetAdvertisedJobsvalidateCompletedEventHandler GetAdvertisedJobsvalidateCompleted;
         
         /// <remarks/>
         public event GetApplicantAttachmentsCompletedEventHandler GetApplicantAttachmentsCompleted;
@@ -398,6 +413,36 @@ namespace NCIAJobs.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/recruitment:CheckApplicantId", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/recruitment", ResponseElementName="CheckApplicantId_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/recruitment", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public bool CheckApplicantId(string iD) {
+            object[] results = this.Invoke("CheckApplicantId", new object[] {
+                        iD});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CheckApplicantIdAsync(string iD) {
+            this.CheckApplicantIdAsync(iD, null);
+        }
+        
+        /// <remarks/>
+        public void CheckApplicantIdAsync(string iD, object userState) {
+            if ((this.CheckApplicantIdOperationCompleted == null)) {
+                this.CheckApplicantIdOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCheckApplicantIdOperationCompleted);
+            }
+            this.InvokeAsync("CheckApplicantId", new object[] {
+                        iD}, this.CheckApplicantIdOperationCompleted, userState);
+        }
+        
+        private void OnCheckApplicantIdOperationCompleted(object arg) {
+            if ((this.CheckApplicantIdCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CheckApplicantIdCompleted(this, new CheckApplicantIdCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/recruitment:CloseAllRequisitions", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/recruitment", ResponseElementName="CloseAllRequisitions_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/recruitment", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void CloseAllRequisitions() {
             this.Invoke("CloseAllRequisitions", new object[0]);
@@ -494,6 +539,34 @@ namespace NCIAJobs.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/recruitment:GetAdvertisedJobs1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/recruitment", ResponseElementName="GetAdvertisedJobs1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/recruitment", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetAdvertisedJobs1() {
+            object[] results = this.Invoke("GetAdvertisedJobs1", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAdvertisedJobs1Async() {
+            this.GetAdvertisedJobs1Async(null);
+        }
+        
+        /// <remarks/>
+        public void GetAdvertisedJobs1Async(object userState) {
+            if ((this.GetAdvertisedJobs1OperationCompleted == null)) {
+                this.GetAdvertisedJobs1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAdvertisedJobs1OperationCompleted);
+            }
+            this.InvokeAsync("GetAdvertisedJobs1", new object[0], this.GetAdvertisedJobs1OperationCompleted, userState);
+        }
+        
+        private void OnGetAdvertisedJobs1OperationCompleted(object arg) {
+            if ((this.GetAdvertisedJobs1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAdvertisedJobs1Completed(this, new GetAdvertisedJobs1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/recruitment:GetAdvertisedJobs", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/recruitment", ResponseElementName="GetAdvertisedJobs_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/recruitment", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetAdvertisedJobs() {
@@ -518,6 +591,36 @@ namespace NCIAJobs.NAVWS {
             if ((this.GetAdvertisedJobsCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetAdvertisedJobsCompleted(this, new GetAdvertisedJobsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/recruitment:GetAdvertisedJobsvalidate", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/recruitment", ResponseElementName="GetAdvertisedJobsvalidate_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/recruitment", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetAdvertisedJobsvalidate(string userId) {
+            object[] results = this.Invoke("GetAdvertisedJobsvalidate", new object[] {
+                        userId});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetAdvertisedJobsvalidateAsync(string userId) {
+            this.GetAdvertisedJobsvalidateAsync(userId, null);
+        }
+        
+        /// <remarks/>
+        public void GetAdvertisedJobsvalidateAsync(string userId, object userState) {
+            if ((this.GetAdvertisedJobsvalidateOperationCompleted == null)) {
+                this.GetAdvertisedJobsvalidateOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAdvertisedJobsvalidateOperationCompleted);
+            }
+            this.InvokeAsync("GetAdvertisedJobsvalidate", new object[] {
+                        userId}, this.GetAdvertisedJobsvalidateOperationCompleted, userState);
+        }
+        
+        private void OnGetAdvertisedJobsvalidateOperationCompleted(object arg) {
+            if ((this.GetAdvertisedJobsvalidateCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetAdvertisedJobsvalidateCompleted(this, new GetAdvertisedJobsvalidateCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2458,6 +2561,32 @@ namespace NCIAJobs.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void CheckApplicantIdCompletedEventHandler(object sender, CheckApplicantIdCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CheckApplicantIdCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CheckApplicantIdCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void CloseAllRequisitionsCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
@@ -2514,6 +2643,32 @@ namespace NCIAJobs.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void GetAdvertisedJobs1CompletedEventHandler(object sender, GetAdvertisedJobs1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAdvertisedJobs1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAdvertisedJobs1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void GetAdvertisedJobsCompletedEventHandler(object sender, GetAdvertisedJobsCompletedEventArgs e);
     
     /// <remarks/>
@@ -2525,6 +2680,32 @@ namespace NCIAJobs.NAVWS {
         private object[] results;
         
         internal GetAdvertisedJobsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    public delegate void GetAdvertisedJobsvalidateCompletedEventHandler(object sender, GetAdvertisedJobsvalidateCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetAdvertisedJobsvalidateCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetAdvertisedJobsvalidateCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
