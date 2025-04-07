@@ -59,7 +59,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Phone</label> <span class="text-danger">*</span>
-                                    <input type="number" name="RefereePhone" class="form-control" placeholder="Referee Phone" required />
+                                    <input type="text" name="RefereePhone" class="form-control" placeholder="Referee Phone" required maxlength="10" minlength="10" id="tel-no" />
+                                    <span class="text-danger" id="tel-msg"></span>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -136,3 +137,19 @@
     </div>
 </div>
 
+<script>
+    const telNo = document.getElementById('tel-no');
+
+    const telMsg = document.getElementById('tel-msg');
+
+    telNo.addEventListener('keyup', function () {
+        const value = telNo.value.trim(); 
+        const numberRegex = /^[0-9]{10}$/; 
+
+        if (!numberRegex.test(value)) {
+            telMsg.textContent = 'Phone Number must be exactly 10 digits';
+        } else {
+            telMsg.textContent = ''; 
+        }
+    });
+</script>

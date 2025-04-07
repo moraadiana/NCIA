@@ -1,4 +1,4 @@
-﻿
+﻿@model NCIAJobs.Models.Applicant
 @{
     ViewBag.Title = "MinimumRequirement";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -36,14 +36,16 @@
                 </div>
                 <div class="portlet-body">
                     <form action="@Url.Action("SubmitRequirements", "JobApplication")" method="post">
+                        <input type="hidden" id="categories" name="SelectedCategories" />
                         <div class="row">
                             <div class="col-md-12">
-                                <table class="table table-hover">
+                                <table class="table table-hover" id="table">
                                     <thead>
                                         <tr>
                                             <th>Code</th>
                                             <th>Description</th>
-                                            <th>Answer</th>
+                                            <th>Meets Requirement</th>
+                                            @*<th>Attach Certificate</th>*@
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -53,18 +55,22 @@
                                                 <td>@item.Code</td>
                                                 <td>@item.Description</td>
                                                 <td>
-                                                    <input type="hidden" name="RequirementDescriptions[@item.Code]" value="@item.Description" />
-                                                    <select name="RequirementAnswers[@item.Code]" class="form-control">
-                                                        <option value="">Select</option>
-                                                        <option value="2" @(item.Answer == "Yes" ? "selected" : "")>Yes</option>
-                                                        <option value="1" @(item.Answer == "No" ? "selected" : "")>No</option>
+
+                                                    <select id="answer" class="form-control answer" required>
+                                                        <option value=" "> Select Answer</option>
+                                                        <option value="1">No</option>
+                                                        <option value="2">Yes</option>
                                                     </select>
                                                 </td>
+
                                             </tr>
                                         }
                                     </tbody>
                                 </table>
-                                <button type="submit" class="btn btn-primary pull-right">Next</button>
+
+                                @*<button type="submit" class="btn btn-primary pull-right" onclick="return getSelectedValues()">Next</button>*@
+                                <button type="submit" class="btn btn-primary pull-right" id="submitButton">Next</button>
+
 
                             </div>
                         </div>
@@ -77,23 +83,92 @@
 
 
 <script type="text/javascript">
-    const qualificationType = document.getElementById('qualification-type');
-    const qualificationCode = document.getElementById('qualification-code');
+    //document.addEventListener("DOMContentLoaded", function () {
 
-    const getQualificationCode = async function () {
-        qualificationCode.innerHTML = '';
-        const val = qualificationType.value;
-        console.log(val);
-        const response = await fetch(`/api/qualificationcodes?qualificationType=${val}`);
-        const data = await response.json();
+    //const qualificationType = document.getElementById('qualification-type');
+    //const qualificationCode = document.getElementById('qualification-code');
 
-        let html = "";
-        data.forEach(function (item, i, arr) {
-            html += `<option value='${item.QualificationDescription}'>${item.QualificationDescription}</option>`;
-        });
-        qualificationCode.innerHTML = html;
+    const categories = document.getElementById('categories');
+    const table = document.getElementById('table');
+    document.getElementById("submitButton").addEventListener("click", function () {
+        getSelectedValues();
+    });
+  
+    const getSelectedValues = function () {
+        let messages = [];
+        const select = table.querySelectorAll('.answer');
+        for (let i = 0; i < select.length; i++) {
+            const rows = select[i].parentElement.parentElement;
+            const code = rows.cells[0].innerHTML.trim();
+            const description = rows.cells[1].innerHTML.trim();
+            const selectedValue = rows.querySelector('.answer').value;
+           
+
+            messages.push(code + '::' + description + '::' + selectedValue);
+        }
+
+        categories.value = messages.join("[]"); // Properly join all selected values
+        console.log(categories.value); // Debugging output
+        return true;
+    };
+
+    const getSelectedValues1 = function () {
+        let message = '';
+        const select = table.querySelectorAll('.answer');
+        for (let i = 0; i < select.length; i++) {
+            const rows = select[i].parentElement.parentElement;
+            const code = rows.cells[0].innerHTML;
+            const description = rows.cells[1].innerHTML;
+            const selectedDOM = rows.querySelector('.answer');
+            const selectedValue = selectedDOM.value;
+            message = '';
+            message += code + '::' + description + '::' + selectedValue + '[]';
+            console.log(message);
+
+        }
+        //categories.value = '';
+        //categories.value = message;
+        return true;
     }
-    getQualificationCode();
-    qualificationType.addEventListener('change', getQualificationCode);
+    document.querySelector("form").addEventListener("submit", function (event) {
+        let isValid = true;
+        const selects = document.querySelectorAll(".answer"); // Get all select fields
+
+        for (let select of selects) {
+            if (select.value.trim() === "" || select.value.trim() === " ") {
+                isValid = false;
+                select.focus();
+                break; // Stop checking after the first invalid field
+            }
+        }
+
+        if (!isValid) {
+            setTimeout(() => {
+                alert("Please select 'Yes' or 'No' for all requirements.");
+            }, 100); // Ensures the alert is closed when OK is clicked
+            event.preventDefault(); // Stop form submission
+        }
+    });
+
+    //const getQualificationCode = async function () {
+    //    qualificationCode.innerHTML = '';
+    //    const val = qualificationType.value;
+    //    console.log(val);
+    //    const response = await fetch(`/api/qualificationcodes?qualificationType=${val}`);
+    //    const data = await response.json();
+
+    //    let html = "";
+    //    data.forEach(function (item, i, arr) {
+    //        html += `<option value='${item.QualificationDescription}'>${item.QualificationDescription}</option>`;
+    //    });
+    //    qualificationCode.innerHTML = html;
+    //}
+    //getQualificationCode();
+    //qualificationType.addEventListener('change', getQualificationCode);
+
+function redirectToUploadPage() {
+    window.location.href = '@Url.Action("RequirementAttachments", "JobApplication")';
+}
+
 </script>
 

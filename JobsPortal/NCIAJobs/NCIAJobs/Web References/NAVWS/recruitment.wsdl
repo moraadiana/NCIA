@@ -16,6 +16,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="CheckApplicantId">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="iD" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CheckApplicantId_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="boolean" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="CloseAllRequisitions">
         <complexType>
           <sequence />
@@ -59,12 +73,38 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetAdvertisedJobs1">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetAdvertisedJobs1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetAdvertisedJobs">
         <complexType>
           <sequence />
         </complexType>
       </element>
       <element name="GetAdvertisedJobs_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAdvertisedJobsvalidate">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="userId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAdvertisedJobsvalidate_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -925,6 +965,12 @@
   <message name="AccountExists_Result">
     <part name="parameters" element="tns:AccountExists_Result" />
   </message>
+  <message name="CheckApplicantId">
+    <part name="parameters" element="tns:CheckApplicantId" />
+  </message>
+  <message name="CheckApplicantId_Result">
+    <part name="parameters" element="tns:CheckApplicantId_Result" />
+  </message>
   <message name="CloseAllRequisitions">
     <part name="parameters" element="tns:CloseAllRequisitions" />
   </message>
@@ -943,11 +989,23 @@
   <message name="DeleteAttachment_Result">
     <part name="parameters" element="tns:DeleteAttachment_Result" />
   </message>
+  <message name="GetAdvertisedJobs1">
+    <part name="parameters" element="tns:GetAdvertisedJobs1" />
+  </message>
+  <message name="GetAdvertisedJobs1_Result">
+    <part name="parameters" element="tns:GetAdvertisedJobs1_Result" />
+  </message>
   <message name="GetAdvertisedJobs">
     <part name="parameters" element="tns:GetAdvertisedJobs" />
   </message>
   <message name="GetAdvertisedJobs_Result">
     <part name="parameters" element="tns:GetAdvertisedJobs_Result" />
+  </message>
+  <message name="GetAdvertisedJobsvalidate">
+    <part name="parameters" element="tns:GetAdvertisedJobsvalidate" />
+  </message>
+  <message name="GetAdvertisedJobsvalidate_Result">
+    <part name="parameters" element="tns:GetAdvertisedJobsvalidate_Result" />
   </message>
   <message name="GetApplicantAttachments">
     <part name="parameters" element="tns:GetApplicantAttachments" />
@@ -1284,6 +1342,10 @@
       <input name="AccountExists" message="tns:AccountExists" />
       <output name="AccountExists_Result" message="tns:AccountExists_Result" />
     </operation>
+    <operation name="CheckApplicantId">
+      <input name="CheckApplicantId" message="tns:CheckApplicantId" />
+      <output name="CheckApplicantId_Result" message="tns:CheckApplicantId_Result" />
+    </operation>
     <operation name="CloseAllRequisitions">
       <input name="CloseAllRequisitions" message="tns:CloseAllRequisitions" />
       <output name="CloseAllRequisitions_Result" message="tns:CloseAllRequisitions_Result" />
@@ -1296,9 +1358,17 @@
       <input name="DeleteAttachment" message="tns:DeleteAttachment" />
       <output name="DeleteAttachment_Result" message="tns:DeleteAttachment_Result" />
     </operation>
+    <operation name="GetAdvertisedJobs1">
+      <input name="GetAdvertisedJobs1" message="tns:GetAdvertisedJobs1" />
+      <output name="GetAdvertisedJobs1_Result" message="tns:GetAdvertisedJobs1_Result" />
+    </operation>
     <operation name="GetAdvertisedJobs">
       <input name="GetAdvertisedJobs" message="tns:GetAdvertisedJobs" />
       <output name="GetAdvertisedJobs_Result" message="tns:GetAdvertisedJobs_Result" />
+    </operation>
+    <operation name="GetAdvertisedJobsvalidate">
+      <input name="GetAdvertisedJobsvalidate" message="tns:GetAdvertisedJobsvalidate" />
+      <output name="GetAdvertisedJobsvalidate_Result" message="tns:GetAdvertisedJobsvalidate_Result" />
     </operation>
     <operation name="GetApplicantAttachments">
       <input name="GetApplicantAttachments" message="tns:GetApplicantAttachments" />
@@ -1532,6 +1602,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="CheckApplicantId">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/recruitment:CheckApplicantId" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CheckApplicantId">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CheckApplicantId_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="CloseAllRequisitions">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/recruitment:CloseAllRequisitions" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="CloseAllRequisitions">
@@ -1559,12 +1638,30 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetAdvertisedJobs1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/recruitment:GetAdvertisedJobs1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAdvertisedJobs1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAdvertisedJobs1_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetAdvertisedJobs">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/recruitment:GetAdvertisedJobs" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetAdvertisedJobs">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetAdvertisedJobs_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetAdvertisedJobsvalidate">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/recruitment:GetAdvertisedJobsvalidate" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAdvertisedJobsvalidate">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAdvertisedJobsvalidate_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

@@ -65,66 +65,81 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Date of Birth</label> <span class="text-danger">*</span>
-                    <input name="BirthDate" type="date" class="form-control" required id="txtDoB" placeholder="Date of Birth" />
+                    <input name="BirthDate" type="date" class="form-control" required id="txtDoB" placeholder="Date of Birth" value="@Model.BirthDate.ToString("yyyy-MM-dd")" />
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Kra Pin No</label> <span class="text-danger">*</span>
-                    <input name="KraPin" type="text" class="form-control" required minlength="11" maxlength="11" id="kra-pin" />
+                    <input name="KraPin" type="text" class="form-control" required minlength="11" maxlength="11" id="kra-pin" value="@Model.KraPin" />
                     <span class="text-danger" id="kra-msg"></span>
                 </div>
             </div>
+            @*<div class="col-md-4">
+            <div class="form-group">
+                <label>Title</label> <span class="text-danger">*</span>
+                                     <select class="form-control" name="Title" required value="@Model.Title.ToString()">
+                                         <option value=" ">-- Select --</option>
+
+                                         <option value="0">Prof</option>
+                                         <option value="1">Dr</option>
+                                         <option value="2">Mr</option>
+                                         <option value="3">Mrs</option>
+                                         <option value="4">Miss</option>
+                                         <option value="5">Ms</option>
+                                         <option value="6">Rev</option>
+                                     </select>
+            </div>
+        </div>*@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Title</label> <span class="text-danger">*</span>
                                          <select class="form-control" name="Title" required>
-                                             <option value=" ">-- Select --</option>
-                                             
-                                             <option value="0">Prof</option>
-                                             <option value="1">Dr</option>
-                                             <option value="2">Mr</option>
-                                             <option value="3">Mrs</option>
-                                             <option value="4">Miss</option>
-                                             <option value="5">Ms</option>
-                                             <option value="6">Rev</option>
+                                             <option value="">-- Select --</option>
+                                             <option value="0" @(Model.Title == 0 ? "selected" : "")>Prof</option>
+                                             <option value="1" @(Model.Title == 1 ? "selected" : "")>Dr</option>
+                                             <option value="2" @(Model.Title == 2 ? "selected" : "")>Mr</option>
+                                             <option value="3" @(Model.Title == 3 ? "selected" : "")>Mrs</option>
+                                             <option value="4" @(Model.Title == 4 ? "selected" : "")>Miss</option>
+                                             <option value="5" @(Model.Title == 5 ? "selected" : "")>Ms</option>
+                                             <option value="6" @(Model.Title == 6 ? "selected" : "")>Rev</option>
                                          </select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Gender</label> <span class="text-danger">*</span>
-                                          <select class="form-control" name="Gender" required>
-                                              <option value=" ">-- Select --</option>
-                                              <option value="0">Male</option>
-                                              <option value="1">Female</option>
-                                          </select>
+                    <select class="form-control" name="Gender" required value="@Model.Gender">
+                        <option value=" ">-- Select --</option>
+                        <option value="0">Male</option>
+                        <option value="1">Female</option>
+                    </select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Marital Status</label> <span class="text-danger">*</span>
-                                                  <select class="form-control" name="MaritalStatus" required>
-                                                      <option value=" ">-- Select --</option>
-                                                      <option value="1">Single</option>
-                                                      <option value="2">Married</option>
-                                                      <option value="3">Separated</option>
-                                                      <option value="4">Divorced</option>
-                                                      <option value="5">Widow(er)</option>
-                                                      <option value="6">Other</option>
-                                                  </select>
+                    <select class="form-control" name="MaritalStatus" required value="@Model.MaritalStatus">
+                        <option value=" ">-- Select --</option>
+                        <option value="1">Single</option>
+                        <option value="2">Married</option>
+                        <option value="3">Separated</option>
+                        <option value="4">Divorced</option>
+                        <option value="5">Widow(er)</option>
+                        <option value="6">Other</option>
+                    </select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Ethnic Origin</label> <span class="text-danger">*</span>
-                                                 <select class="form-control" name="EthnicOrigin" required>
-                                                     <option value=" ">-- Select --</option>
-                                                     <option value="0">African</option>
-                                                     <option value="1">Indian</option>
-                                                     <option value="2">White</option>
-                                                     <option value="3">Coloured</option>
-                                                 </select>
+                    <select class="form-control" name="EthnicOrigin" required value="@Model.EthnicOrigin">
+                        <option value=" ">-- Select --</option>
+                        <option value="0">African</option>
+                        <option value="1">Indian</option>
+                        <option value="2">White</option>
+                        <option value="3">Coloured</option>
+                    </select>
                 </div>
             </div>
             <div class="col-md-4">
@@ -148,31 +163,31 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Sub County</label> <span class="text-danger">*</span>
-                    <select name="SubCounty" class="form-control" id="sub-county" required></select>
+                    <select name="SubCounty" class="form-control" id="sub-county" required value="@Model.SubCounty"></select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Constituency</label> <span class="text-danger">*</span>
-                    <select name="Constituency" class="form-control" id="constituency" required></select>
+                    <select name="Constituency" class="form-control" id="constituency" required value="@Model.Constituency"></select>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Postal Code</label> <span class="text-danger">*</span>
-                    <input name="PostalCode" type="text" class="form-control" required />
+                    <input name="PostalCode" type="text" class="form-control" required value="@Model.PostalCode" />
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Postal Address</label> <span class="text-danger">*</span>
-                    <input name="PostalAddress" type="text" class="form-control" required />
+                    <input name="PostalAddress" type="text" class="form-control" required value="@Model.PostalAddress" />
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Town/City</label> <span class="text-danger">*</span>
-                    <input name="Town" type="text" class="form-control" required />
+                    <input name="Town" type="text" class="form-control" required value="@Model.Town" />
                 </div>
             </div>
             <div class="col-md-4">
@@ -186,41 +201,43 @@
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Mobile No</label> <span class="text-danger">*</span>
-                    <input name="MobileNo" type="text" class="form-control" required maxlength="10" minlength ="10 "/>
+                    @*<input name="MobileNo" type="text" class="form-control" required maxlength="10" minlength ="10 "/>*@
+                    <input name="MobileNo" type="text" class="form-control" required maxlength="10" minlength="10 " id="mbl-no" value="@Model.MobileNo" />
+                    <span class="text-danger" id="mbl-msg"></span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Email Address</label> <span class="text-danger">*</span>
-                    <input name="EmailAddress" type="text" class="form-control" required />
+                    <input name="EmailAddress" type="text" class="form-control" required value="@Model.EmailAddress" />
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Contact Person Name</label> <span class="text-danger">*</span>
-                    <input name="ContactPersonName" type="text" class="form-control" required />
+                    <input name="ContactPersonName" type="text" class="form-control" required value="@Model.ContactPersonName" />
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Contact Person Telephone No</label> <span class="text-danger">*</span>
-                    <input name="ContactPersonTel" type="text" class="form-control" required />
+                    <input name="ContactPersonTel" type="text" class="form-control" required value="@Model.ContactPersonTel" />
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group">
                     <label>Disability</label> <span class="text-danger">*</span>
-                                              <select class="form-control" name="Disability" required id="disability">
-                                                  <option value=" ">-- Select --</option>
-                                                  <option value="0">No</option>
-                                                  <option value="1">Yes</option>
-                                              </select>
+                    <select class="form-control" name="Disability" required id="disability" value="@Model.Disability">
+                        <option value=" ">-- Select --</option>
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
                 </div>
             </div>
             <div class="col-md-4" id="disability-container">
                 <div class="form-group">
                     <label>Nature of Disability</label> <span class="text-danger">*</span>
-                    <input name="NatureOfDisability" type="text" class="form-control" id="nature-of-disability" />
+                    <input name="NatureOfDisability" type="text" class="form-control" id="nature-of-disability" value="@Model.NatureOfDisability" />
                 </div>
             </div>
             <div class="col-md-4" id="registration-container">
@@ -258,7 +275,9 @@
     const kraMsg = document.getElementById('kra-msg');
     const telNo = document.getElementById('tel-no');
 
-    const telMsg = document.getElementById('tel-msg');
+    const telMsg = document.getElementById('tel-msg'); 
+    const mblNo = document.getElementById('mbl-no');
+    const mblMsg = document.getElementById('mbl-msg');
 
     telNo.addEventListener('keyup', function () {
         const value = telNo.value.trim(); // Remove any accidental spaces
