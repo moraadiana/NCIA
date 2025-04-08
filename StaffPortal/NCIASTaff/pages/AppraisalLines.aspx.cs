@@ -24,36 +24,52 @@ namespace NCIASTaff.pages
             }
             if (!IsPostBack)
             {
-                LoadSupervisor();
-                LoadStaffDetails();
-                LoadPeriod();
+                
                 string query = Request.QueryString["query"];
+                ViewState["SubCode"] = 1;
                 string approvalStatus = Request.QueryString["status"].Replace("%", " ");
+               // string appraisalNo = Request.QueryString["appraisalNo"].ToString();
+              //  BindGridViewData(appraisalNo);
                 if (query == "new")
                 {
                     MultiView1.SetActiveView(vwHeader);
 
                 }
-                else
+                else if (query == "old")
                 {
                     string appraisalNo = Request.QueryString["appraisalNo"].ToString();
-                    if (!string.IsNullOrEmpty(appraisalNo))
-                    {
-                        Session["appraisalNo"] = appraisalNo;
-                        MultiView1.SetActiveView(vwLines);
-                        BindGridViewData();
-                    }
-                    if (approvalStatus == "Open" || approvalStatus == "Pending")
-                    {
-                        btnSendForApproval.Visible = true;
-                        //lbtnSubmit.Visible = true;
-                    }
-                    else
-                    {
-                        btnSendForApproval.Visible = false;
-                    }
+                    Session["appraisalNo"] = appraisalNo;
+                    MultiView1.SetActiveView(vwLines);
+                    BindGridViewData(appraisalNo);
+                    // }
+
 
                 }
+                if (approvalStatus == "Open" || approvalStatus == "Pending")
+                {
+                    btnSendForApproval.Visible = true;
+                    lbtnSubmit.Visible = true;
+                    lbnAddLine.Visible = true;
+                    btnMidYearReport.Visible = false;
+                }
+                else if (approvalStatus == "Approved")
+                {
+                    btnSendForApproval.Visible = false;
+                    lbtnSubmit.Visible = false;
+                    lbnAddLine.Visible = false;
+                    btnMidYearReport.Visible = true;
+                }
+                else
+                {
+                    btnSendForApproval.Visible = false;
+                    lbtnSubmit.Visible = false;
+                    lbnAddLine.Visible = false;
+                    btnMidYearReport.Visible = false;
+                }
+                LoadSupervisor();
+                LoadStaffDetails();
+                LoadPeriod();
+
             }
         }
         private void LoadSupervisor()
@@ -115,7 +131,7 @@ namespace NCIASTaff.pages
                 }
 
                 lblStaffNo.Text = staffNo;
-                //lblPayee.Text = staffName;
+                
             }
             catch (Exception ex)
             {
@@ -164,7 +180,7 @@ namespace NCIASTaff.pages
                     Session["AppraisalNo"] = documentNo;
                     Message($"Appraisal with number {documentNo} has been created successfully.");
                     MultiView1.SetActiveView(vwLines);
-                    BindGridViewData();
+                    BindGridViewData(documentNo);
                   
 
                 }
@@ -183,7 +199,7 @@ namespace NCIASTaff.pages
                 MultiView1.SetActiveView(vwLines);
                 string appraisalNo = Session["appraisalNo"].ToString();
                 string staffNo = Session["username"].ToString();
-                BindGridViewData();
+                BindGridViewData(appraisalNo);
               
             }
             catch (Exception ex)
@@ -191,95 +207,186 @@ namespace NCIASTaff.pages
                 ex.Data.Clear();
             }
         }
-      
 
-        private void BindGridViewData()
+        private void BindGridViewData(string appraisalNo)
         {
-            string staffNo = Session["username"].ToString();
-            string department = lblDepartment.Text;
-            string unit = lblDirectorate.Text;
-            string appraisalLines = webportals.CpActivityLines(staffNo);
-            
-            if (!string.IsNullOrEmpty(appraisalLines))
+            try
             {
+                string appraisalLines = webportals.GetAppraisalLines(appraisalNo);
 
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Sub-Activity Code");
-                dt.Columns.Add("Sub-Activity Description");
-                dt.Columns.Add("Perfomance Target");
-
-
-
-                string[] lines = appraisalLines.Split(new[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
-
-
-                foreach (string line in lines)
+                if (!string.IsNullOrEmpty(appraisalLines))
                 {
-                    string[] fields = line.Split(new[] { "::" }, StringSplitOptions.None);
-                    if (fields.Length >= 4 && fields[0] == "SUCCESS")
+                    string[] lineItems = appraisalLines.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    Console.WriteLine("Number of line items: " + lineItems.Length);
+
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Sub Code");
+                    dt.Columns.Add("Sub Activity");
+                    dt.Columns.Add("Performance Criteria");
+                    dt.Columns.Add("Annual Target");
+                    dt.Columns.Add("Remarks");
+
+                    foreach (string item in lineItems)
                     {
-                        DataRow row = dt.NewRow();
-                        row["Sub-Activity Code"] = fields[1];
-                        row["Sub-Activity Description"] = fields[2];
-                        row["Perfomance Target"] = fields[3];
 
+                        string[] fields = item.Split(strLimiters, StringSplitOptions.None);
 
-                        dt.Rows.Add(row);
-                    }
-                }
-
-                gvLines.DataSource = dt;
-                gvLines.DataBind();
-
-
-            }
-            else
-            {
-                Message($"No approved workplan for {department}, {unit} ");
-            }
-            foreach (GridViewRow row in gvLines.Rows)
-            {
-                string appraisalNo = Session["appraisalNo"].ToString();
-                TextBox txtCriteria = row.FindControl("txtCriteria") as TextBox;
-               // TextBox txtAnnualTarget = row.FindControl("txtAnnualTarget") as TextBox;
-                TextBox txtRemarks = row.FindControl("txtRemarks") as TextBox;
-
-                string response = webportals.GetAppraisalLines(appraisalNo);
-
-                if (!string.IsNullOrEmpty(response) && response.StartsWith("SUCCESS"))
-                {
-                    string[] records = response.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
-
-                    for (int i = 0; i < records.Length; i++)
-                    {
-                        string[] data = records[i].Split(new string[] { "::" }, StringSplitOptions.None);
-
-                        if (data.Length >= 4)
+                        if (fields.Length >= 5)
                         {
-                            string performanceCriteria = data[1];
-                            //string annualTarget = data[2];
-                            string remarks = data[3];
+                            DataRow row = dt.NewRow();
+                            row["Sub Code"] = fields[0];
+                            row["Sub Activity"] = fields[1];
+                            row["Performance Criteria"] = fields[2];
+                            row["Annual Target"] = fields[3];
+                            row["Remarks"] = fields[4];
 
-                            if (i == row.RowIndex) 
-                            {
-                                txtCriteria.Text = performanceCriteria;
-                              //  txtAnnualTarget.Text = annualTarget;
-                                txtRemarks.Text = remarks;
-                            }
+                            dt.Rows.Add(row);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Skipping invalid record: " + item);
                         }
                     }
+
+                    gvLines.DataSource = dt;
+                    gvLines.DataBind();
                 }
                 else
                 {
-                    txtCriteria.Text = "";
-                   // txtAnnualTarget.Text = "";
-                    txtRemarks.Text = "";
+                    gvLines.DataSource = null;
+                    gvLines.DataBind();
+                    Console.WriteLine("No lines returned.");
                 }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+        }
+     
+        protected void btnLine_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                //string subCode = txtSubCode.Text;
+                int currentSubCode = 1;
+                if (ViewState["SubCode"] != null)
+                {
+                    currentSubCode = (int)ViewState["SubCode"];
+                }
+                // Use currentSubCode as your subCode
+                string subCode = currentSubCode.ToString("D2");
+
+                // Then update the hidden field for the next insert
 
 
+                string subActivity = txtSubActivity.Text;
+                string performanceCriteria = txtPerformanceCriteria.Text;
+                string annualTarget = txtAnnualTarget.Text;
+                string remarks = txtRemarks.Text;
+                string selfAssessment = "0.00";
+                string appraisalNo = Session["appraisalNo"]?.ToString();
+
+
+
+                if (string.IsNullOrEmpty(subActivity))
+                {
+                    Message("Sub Activity cannot be null or empty!");
+                    txtSubActivity.Focus();
+                    return;
+                }
+                if (string.IsNullOrEmpty(performanceCriteria))
+                {
+                    Message("Performance Criteria cannot be null or empty!");
+                    txtPerformanceCriteria.Focus();
+                    return;
+                }
+                if (string.IsNullOrEmpty(annualTarget))
+                {
+                    Message("Annual Target cannot be null or empty!");
+                    txtAnnualTarget.Focus();
+                    return;
+                }
+                if (string.IsNullOrEmpty(remarks))
+                {
+                    Message("Remarks Criteria cannot be null or empty!");
+                    txtRemarks.Focus();
+                    return;
+                }
+
+                string response = webportals.InsertOrUpdateAppraisalLines(appraisalNo, subCode, subActivity, performanceCriteria,Convert.ToDecimal(annualTarget),remarks,Convert.ToDecimal(selfAssessment));
+                if (!string.IsNullOrEmpty(response))
+                {
+                    if (response == "SUCCESS")
+                    {
+                        Message("Appraisal line has been added successfully");
+                        // Increment subCode for next entry and update hidden field
+                        currentSubCode++;
+                        ViewState["SubCode"] = currentSubCode;
+
+
+                        BindGridViewData(appraisalNo);
+                    }
+                    else if (response == "FAILED")
+                    {
+                        Message($"Error adding line{response} ");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+
+            }
+        }
+        protected void gvLines_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            string appraisalNo = Session["appraisalNo"]?.ToString() ?? Request.QueryString["appraisalNo"];
+            gvLines.PageIndex = e.NewPageIndex;
+            BindGridViewData(appraisalNo);  // Rebind your data here
+        }
+        protected void lbnAddLine_Click(Object sender, EventArgs e)
+        {
+            newLines.Visible = true;
+            lbnAddLine.Visible = false;
+        }
+        protected void lbnClose_Click(object sender, EventArgs e)
+        {
+            newLines.Visible = false;
+            lbnAddLine.Visible = true;
         }
         protected void btnSendForApproval_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                string appraisalNo = Session["appraisalNo"]?.ToString() ?? Request.QueryString["appraisalNo"];
+                if (gvLines.Rows.Count < 1)
+                {
+                    Message("Please add lines before sending for approval!");
+                    return;
+                }
+               
+
+                string msg = webportals.OnSendAppraisalForApproval(appraisalNo);
+                if (msg == "SUCCESS")
+                {
+                    SuccessMessage($"Appraisal number {appraisalNo} has been sent for approval successfuly!");
+                }
+                else
+                {
+                    Message("ERROR:Approval Workflow not set");
+                }
+            }
+            catch (Exception ex)
+            {
+                Message("ERROR: " + ex.Message);
+                ex.Data.Clear();
+            }
+        }
+        protected void btnSendForApproval_Click1(object sender, EventArgs e)
         {
             
             List<string> results = new List<string>();
@@ -352,6 +459,42 @@ namespace NCIASTaff.pages
                     {
                         Message($"Error Submitting Appraisal lines   { ex.Message}");
                     }
+                }
+            }
+        }
+        protected void lbtnMidYearReport_Click(object sender, EventArgs e)
+        {
+            string appraisalNo = Session["AppraisalNo"].ToString();
+            string response = webportals.InitiateMidYearNew(appraisalNo);
+            if (!string.IsNullOrEmpty(response))
+            {
+                string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
+                string returnMsg = responseArr[0];
+                if (returnMsg == "SUCCESS")
+                {
+                    string documentNo = responseArr[1];
+                    Session["AppraisalNo"] = documentNo;
+                    SuccessMessage($"Mid Year Appraisal with number {documentNo} has been created successfully.Open it to add lines");
+
+
+                }
+                else if (returnMsg == "EXIST")
+                {
+                    string documentNo = responseArr[1];
+                    Session["AppraisalNo"] = documentNo;
+                    SuccessMessage($"Mid Year Appraisal with number {documentNo} already exist. Open it to add lines");
+
+                }
+                else if (returnMsg == "ERROR")
+                {
+                    string startDate = responseArr[1];
+                    string endDate = responseArr[2];
+                    SuccessMessage($"Mid Year reporting runs from {startDate} to {endDate}");
+                }
+
+                else if (returnMsg == "FAILED")
+                {
+                    Message($"Error initiating Mid Year Review ");
                 }
             }
         }

@@ -1,11 +1,6 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace NCIASTaff
 {
@@ -43,7 +38,8 @@ namespace NCIASTaff
             try
             {
                 string username = Session["username"].ToString();
-                string appraisalList = webportals.GetMyAppraisals(username);
+                int type = 1;
+                string appraisalList = webportals.GetMyAppraisals(username, type);
                 if (!string.IsNullOrEmpty(appraisalList))
                 {
                     int counter = 0;
@@ -100,7 +96,7 @@ namespace NCIASTaff
                           responseArr[1],
                           responseArr[2],
                           responseArr[3],
-                         
+
 
                           statusCls
                           );

@@ -1,13 +1,6 @@
-﻿using System;
-using NCIASTaff.NAVWS;
-using System.Collections.Generic;
+﻿using NCIASTaff.NAVWS;
+using System;
 using System.Data.SqlClient;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using NCIASTaff;
 namespace NCIASTaff.pages
 {
     public partial class PettyCashAccounting : System.Web.UI.Page
@@ -42,7 +35,7 @@ namespace NCIASTaff.pages
                     string[] pCashListArr = pCashList.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string petyCashlist in pCashListArr)
                     {
-                       // counter++;
+                        // counter++;
                         string[] responseArr = petyCashlist.Split(strLimiters, StringSplitOptions.None);
                         var statusCls = "default";
                         string status = responseArr[3];
@@ -51,7 +44,7 @@ namespace NCIASTaff.pages
                             case "Pending":
                                 statusCls = "warning"; break;
                             case "Pending Approval":
-                                statusCls = "primary"; break;                   
+                                statusCls = "primary"; break;
                             case "Approved":
                                 statusCls = "success"; break;
                             case "Posted":
@@ -78,7 +71,7 @@ namespace NCIASTaff.pages
                           responseArr[1],
                           responseArr[2],
                           responseArr[3],
-                          
+
 
                           statusCls
                           );
@@ -93,6 +86,6 @@ namespace NCIASTaff.pages
             return htmlStr;
         }
 
-       
+
     }
 }

@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using NCIASTaff.NAVWS;
+using System;
 using System.Data.SqlClient;
-using System.Data;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using NCIASTaff.NAVWS;
-using System.Web.Services.Description;
-using System.Xml.Linq;
 
 namespace NCIASTaff.pages
 {
@@ -54,7 +46,7 @@ namespace NCIASTaff.pages
                         string EmployeeName = responseArr[1];
                         string Date = responseArr[2];
                         string AppliedDays = responseArr[3];
-                        string StartingDate= responseArr[4];
+                        string StartingDate = responseArr[4];
                         string EndingDate = responseArr[5];
                         string Purpose = responseArr[6];
                         string LeaveType = responseArr[7];
@@ -65,7 +57,7 @@ namespace NCIASTaff.pages
                         string department = responseArr[12];
                         ddlLeaveType.SelectedValue = LeaveType;
                         txtAppliedDays.Text = AppliedDays;
-                     
+
                         //txtPurpose.Text = Purpose;
                         //lblEndDate.Text = EndingDate;
 
@@ -75,8 +67,8 @@ namespace NCIASTaff.pages
                             ListItem li = new ListItem(RelieverNo + " => " + RelieverName, RelieverNo);
                             ddlReliver.Items.Add(li);
                         }
-                       
-                        
+
+
 
                     }
 
@@ -91,7 +83,7 @@ namespace NCIASTaff.pages
                         lbtnSubmit.Visible = false;
                     }
                 }
-              
+
             }
         }
 
@@ -123,7 +115,7 @@ namespace NCIASTaff.pages
             }
         }
 
-     
+
         private void LoadResponsibilityCenter()
         {
             try
@@ -159,7 +151,7 @@ namespace NCIASTaff.pages
                 ddlReliver.Items.Clear();
                 ddlReliver.Items.Add(new ListItem("--Select Reliever--", string.Empty));
                 string Relievers = webportals.GetRelievers();
-                if(!string.IsNullOrEmpty(Relievers))
+                if (!string.IsNullOrEmpty(Relievers))
                 {
                     string[] relieverArr = Relievers.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string reliever in relieverArr)
@@ -257,8 +249,8 @@ namespace NCIASTaff.pages
                 {
                     lblBalance.Text = defaultDays;
                 }
-              
-               
+
+
             }
             catch (Exception ex)
             {
@@ -299,7 +291,7 @@ namespace NCIASTaff.pages
                     else relieverEmail = responseArr[2];
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.Data.Clear();
             }
@@ -378,8 +370,8 @@ namespace NCIASTaff.pages
                 string directorate = lblDirectorate.Text;
                 string department = lblDepartment.Text;
                 string availableDays = lblBalance.Text;
-                
-            //    string purpose = txtPurpose.Text;
+
+                //    string purpose = txtPurpose.Text;
 
                 // Validations
                 if (HasPendingApplication())
@@ -464,7 +456,7 @@ namespace NCIASTaff.pages
                     LeaveNo = Request.QueryString["leaveNo"]; // Get the leaveNo from the query string
                 }
                 // Applications
-                string response = webportals.HRMLeaveApplication1(LeaveNo ?? string.Empty, username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate,  resCenter,Convert.ToInt32(availableDays));
+                string response = webportals.HRMLeaveApplication1(LeaveNo ?? string.Empty, username, reliever, leaveType, Convert.ToDecimal(appliedDays), Convert.ToDateTime(startDate), endDate, returnDate, resCenter, Convert.ToInt32(availableDays));
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
@@ -487,7 +479,7 @@ namespace NCIASTaff.pages
                             SuccessMessage("Leave application has been sent for approval successfully.");
                             return;
                         }
-                        else 
+                        else
                         {
                             Message("No approval workflow set");
                             return;

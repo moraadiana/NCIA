@@ -99,6 +99,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="js\main.js" />
+    <Content Include="js\site.js" />
+    <Content Include="js\site.min.js" />
     <Content Include="pages\AppraisalLines.aspx" />
     <Content Include="pages\AppraisalListing.aspx" />
     <Content Include="bower_components\bootstrap-colorpicker\dist\css\bootstrap-colorpicker.css" />
@@ -6346,15 +6349,14 @@
     <Content Include="images\logo.png" />
     <Content Include="images\profile_f.png" />
     <Content Include="images\profile_m.png" />
-    <Content Include="js\main.js" />
-    <Content Include="js\site.js" />
-    <Content Include="js\site.min.js" />
     <Content Include="pages\ApprovalTracking.aspx" />
     <Content Include="pages\BackToOffice.aspx" />
     <Content Include="pages\BackToOfficeListsing.aspx" />
     <Content Include="pages\ClaimLines.aspx" />
     <Content Include="pages\ClaimListing.aspx" />
     <Content Include="pages\Dashboard.aspx" />
+    <Content Include="pages\EndYearReview.aspx" />
+    <Content Include="pages\EndYearReviewListing.aspx" />
     <Content Include="pages\ImprestAccountingLines.aspx" />
     <Content Include="pages\ImprestAccountingListing.aspx" />
     <Content Include="pages\ImprestLines.aspx" />
@@ -6365,10 +6367,14 @@
     <Content Include="pages\MemoImprestLines.aspx" />
     <Content Include="pages\MemoImprestListing.aspx" />
     <Content Include="pages\MemoReport.aspx" />
+    <Content Include="pages\MidYearReview.aspx" />
+    <Content Include="pages\MidYearReviewListing.aspx" />
     <Content Include="pages\Payslip.aspx" />
     <Content Include="pages\PettyCashAccounting.aspx" />
     <Content Include="pages\PettyCashAccountingLines.aspx" />
+    <Content Include="pages\PettyCashLines%28Reimbursement%29.aspx" />
     <Content Include="pages\PettyCashLines.aspx" />
+    <Content Include="pages\PettyCashListing%28Reimbursement%29.aspx" />
     <Content Include="pages\PettyCashListing.aspx" />
     <Content Include="pages\pnineform.aspx" />
     <Content Include="pages\PurchaseLines.aspx" />
@@ -7222,6 +7228,20 @@
     <Compile Include="pages\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\EndYearReview.aspx.cs">
+      <DependentUpon>EndYearReview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\EndYearReview.aspx.designer.cs">
+      <DependentUpon>EndYearReview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\EndYearReviewListing.aspx.cs">
+      <DependentUpon>EndYearReviewListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\EndYearReviewListing.aspx.designer.cs">
+      <DependentUpon>EndYearReviewListing.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\ImprestAccountingLines.aspx.cs">
       <DependentUpon>ImprestAccountingLines.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7292,6 +7312,20 @@
     <Compile Include="pages\MemoReport.aspx.designer.cs">
       <DependentUpon>MemoReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\MidYearReview.aspx.cs">
+      <DependentUpon>MidYearReview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\MidYearReview.aspx.designer.cs">
+      <DependentUpon>MidYearReview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\MidYearReviewListing.aspx.cs">
+      <DependentUpon>MidYearReviewListing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\MidYearReviewListing.aspx.designer.cs">
+      <DependentUpon>MidYearReviewListing.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\Payslip.aspx.cs">
       <DependentUpon>Payslip.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -7313,12 +7347,26 @@
     <Compile Include="pages\PettyCashAccountingLines.aspx.designer.cs">
       <DependentUpon>PettyCashAccountingLines.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\PettyCashLines%28Reimbursement%29.aspx.cs">
+      <DependentUpon>PettyCashLines%28Reimbursement%29.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\PettyCashLines%28Reimbursement%29.aspx.designer.cs">
+      <DependentUpon>PettyCashLines%28Reimbursement%29.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\PettyCashLines.aspx.cs">
       <DependentUpon>PettyCashLines.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\PettyCashLines.aspx.designer.cs">
       <DependentUpon>PettyCashLines.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\PettyCashListing%28Reimbursement%29.aspx.cs">
+      <DependentUpon>PettyCashListing%28Reimbursement%29.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\PettyCashListing%28Reimbursement%29.aspx.designer.cs">
+      <DependentUpon>PettyCashListing%28Reimbursement%29.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\PettyCashListing.aspx.cs">
       <DependentUpon>PettyCashListing.aspx</DependentUpon>
@@ -7476,10 +7524,10 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.1.min.map" />
-    <Content Include="Web References\NAVWS\Reference.map">
+    <None Include="Web References\NAVWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\NAVWS\Staffportall.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -7506,10 +7554,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Staffportall">
+    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/NCIA%25201/Codeunit/Staffportall">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\NAVWS\</RelPath>
-      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Staffportall</UpdateFromURL>
+      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/NCIA%25201/Codeunit/Staffportall</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

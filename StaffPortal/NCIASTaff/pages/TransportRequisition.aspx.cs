@@ -1,9 +1,6 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -102,7 +99,7 @@ namespace NCIASTaff.pages
                 string unitCode = lblUnitCode.Text;
                 string department = lblDepartment.Text;
                 //string budgetLineCode = ddlBudgetLine.SelectedValue;
-               // string projectCode = ddlProjectCode.SelectedValue;
+                // string projectCode = ddlProjectCode.SelectedValue;
                 string createdBy = empNo;
 
                 string details = Components.ObjNav.CreateTransportRequest(reqNo, description, dateOfTravel, noOfDays, expectedReturnDate, from, destination, unitCode, department, createdBy);
@@ -175,7 +172,7 @@ namespace NCIASTaff.pages
                 return false;
             }
 
-           
+
 
             return true;
         }
@@ -392,95 +389,95 @@ namespace NCIASTaff.pages
         //        }
         //    }
         //}
-/*
-        private void LoadStations()
-        {
-            string stationCodes = Components.ObjNav.GetStations();
-
-            if (!string.IsNullOrEmpty(stationCodes))
-            {
-
-                string[] stations = stationCodes.Split('|');
-
-
-                ddlStationCode.Items.Clear();
-
-                foreach (string station in stations)
+        /*
+                private void LoadStations()
                 {
+                    string stationCodes = Components.ObjNav.GetStations();
 
-                    string[] details = station.Split(new string[] { "::" }, StringSplitOptions.None);
-                    if (details.Length == 1)
+                    if (!string.IsNullOrEmpty(stationCodes))
                     {
-                        string stationName = details[0]; // Memo No
-                                                         //   string createdBy = details[1];   // Created By
 
-                        // Add new item to the dropdown list
-                        System.Web.UI.WebControls.ListItem listItem = new System.Web.UI.WebControls.ListItem($"{stationName}", stationName);
-                        ddlStationCode.Items.Add(listItem);
+                        string[] stations = stationCodes.Split('|');
+
+
+                        ddlStationCode.Items.Clear();
+
+                        foreach (string station in stations)
+                        {
+
+                            string[] details = station.Split(new string[] { "::" }, StringSplitOptions.None);
+                            if (details.Length == 1)
+                            {
+                                string stationName = details[0]; // Memo No
+                                                                 //   string createdBy = details[1];   // Created By
+
+                                // Add new item to the dropdown list
+                                System.Web.UI.WebControls.ListItem listItem = new System.Web.UI.WebControls.ListItem($"{stationName}", stationName);
+                                ddlStationCode.Items.Add(listItem);
+                            }
+                        }
                     }
+
                 }
-            }
 
-        }
-
-        private void LoadBudgetLines()
-        {
-            string budgetLineList = Components.ObjNav.GetBudgetLines();
-
-            if (!string.IsNullOrEmpty(budgetLineList))
-            {
-
-                string[] budgetLines = budgetLineList.Split('|');
-
-
-                ddlBudgetLine.Items.Clear();
-
-                foreach (string budgetLine in budgetLines)
+                private void LoadBudgetLines()
                 {
+                    string budgetLineList = Components.ObjNav.GetBudgetLines();
 
-                    string[] details = budgetLine.Split(new string[] { "::" }, StringSplitOptions.None);
-                    if (details.Length == 2)
+                    if (!string.IsNullOrEmpty(budgetLineList))
                     {
-                        string budgetLineCode = details[0];
-                        string budgetLineName = details[1];
 
-                        // Add new item to the dropdown list
-                        System.Web.UI.WebControls.ListItem listItem = new System.Web.UI.WebControls.ListItem($"{budgetLineCode} - {budgetLineName}", budgetLineCode);
-                        ddlBudgetLine.Items.Add(listItem);
+                        string[] budgetLines = budgetLineList.Split('|');
+
+
+                        ddlBudgetLine.Items.Clear();
+
+                        foreach (string budgetLine in budgetLines)
+                        {
+
+                            string[] details = budgetLine.Split(new string[] { "::" }, StringSplitOptions.None);
+                            if (details.Length == 2)
+                            {
+                                string budgetLineCode = details[0];
+                                string budgetLineName = details[1];
+
+                                // Add new item to the dropdown list
+                                System.Web.UI.WebControls.ListItem listItem = new System.Web.UI.WebControls.ListItem($"{budgetLineCode} - {budgetLineName}", budgetLineCode);
+                                ddlBudgetLine.Items.Add(listItem);
+                            }
+                        }
                     }
+
                 }
-            }
-
-        }
-        private void LoadProjects()
-        {
-            string projectList = Components.ObjNav.GetProjects();
-
-            if (!string.IsNullOrEmpty(projectList))
-            {
-
-                string[] projectsList = projectList.Split('|');
-
-
-                ddlProjectCode.Items.Clear();
-
-                foreach (string projectlist in projectsList)
+                private void LoadProjects()
                 {
+                    string projectList = Components.ObjNav.GetProjects();
 
-                    string[] details = projectlist.Split(new string[] { "::" }, StringSplitOptions.None);
-                    if (details.Length == 2)
+                    if (!string.IsNullOrEmpty(projectList))
                     {
-                        string projectCode = details[0];
-                        string projectName = details[1];
 
-                        // Add new item to the dropdown list
-                        System.Web.UI.WebControls.ListItem listItem = new System.Web.UI.WebControls.ListItem($"{projectCode} - {projectName}", projectCode);
-                        ddlProjectCode.Items.Add(listItem);
+                        string[] projectsList = projectList.Split('|');
+
+
+                        ddlProjectCode.Items.Clear();
+
+                        foreach (string projectlist in projectsList)
+                        {
+
+                            string[] details = projectlist.Split(new string[] { "::" }, StringSplitOptions.None);
+                            if (details.Length == 2)
+                            {
+                                string projectCode = details[0];
+                                string projectName = details[1];
+
+                                // Add new item to the dropdown list
+                                System.Web.UI.WebControls.ListItem listItem = new System.Web.UI.WebControls.ListItem($"{projectCode} - {projectName}", projectCode);
+                                ddlProjectCode.Items.Add(listItem);
+                            }
+                        }
                     }
-                }
-            }
 
-        }*/
+                }*/
         private void LoadPassengers()
         {
             string passengerList = Components.ObjNav.GetPassengers();

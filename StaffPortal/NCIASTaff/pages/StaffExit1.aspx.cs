@@ -1,11 +1,5 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
 {
@@ -22,12 +16,12 @@ namespace NCIASTaff.pages
                 return;
             }
             LoadStaffDepartmentDetails();
-           
+
 
 
         }
 
-       
+
 
         private void LoadStaffDepartmentDetails()
         {
@@ -35,7 +29,7 @@ namespace NCIASTaff.pages
             {
                 string username = Session["username"].ToString();
 
-               // string staffNo = Session["username"].ToString();
+                // string staffNo = Session["username"].ToString();
                 string staffName = Session["StaffName"].ToString();
                 string response = webportals.GetStaffDepartmentDetails(username);
                 if (!string.IsNullOrEmpty(response))
@@ -76,7 +70,7 @@ namespace NCIASTaff.pages
                 //string leavingDate = txtleavingDate.Text;
                 string reason = txtReason.Text;
                 DateTime leavingDate = Convert.ToDateTime(txtleavingDate.Text);
-                string response = webportals.CreateClearanceHeader(Empno, Empname, department, designation, Convert.ToInt32(natureofLeaving),Convert.ToDateTime(leavingDate), reason);
+                string response = webportals.CreateClearanceHeader(Empno, Empname, department, designation, Convert.ToInt32(natureofLeaving), Convert.ToDateTime(leavingDate), reason);
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
@@ -87,17 +81,17 @@ namespace NCIASTaff.pages
                     }
                     if (returnMsg == "FAILED")
                     {
-                       SuccessMessage("The record for " + Empno + " already exists "  );
+                        SuccessMessage("The record for " + Empno + " already exists ");
                     }
                 }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.Data.Clear();
             }
         }
-            private void Message(string message)
+        private void Message(string message)
         {
             string strScript = "<script>alert('" + message + "');</script>";
             ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());

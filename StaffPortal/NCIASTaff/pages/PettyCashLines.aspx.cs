@@ -1,12 +1,8 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
@@ -50,7 +46,7 @@ namespace NCIASTaff.pages
                     LoadAdvanceTypes();
                     BindGridViewData(pettyCashNo);
                     BindAttachedDocuments(pettyCashNo);
-                   // LoadAccountNos();
+                    // LoadAccountNos();
                 }
 
                 if (approvalStatus == "Open" || approvalStatus == "Pending")
@@ -91,7 +87,7 @@ namespace NCIASTaff.pages
                     string returnMsg = responseArr[0];
                     if (returnMsg == "SUCCESS")
                     {
-                        
+
                         lblDepartment.Text = responseArr[1];
                         lblDirectorate.Text = responseArr[2];
                     }
@@ -148,7 +144,8 @@ namespace NCIASTaff.pages
                     foreach (string account in AccountNoArr)
                     {
                         string[] responseArr = account.Split(strLimiters, StringSplitOptions.None);
-                        if (responseArr.Length >= 2) {
+                        if (responseArr.Length >= 2)
+                        {
                             //ListItem li = new ListItem(responseArr[1], responseArr[0]);
                             //ddlAccountNo.Items.Add(li);
                             string displayText = $"{responseArr[0]} - {responseArr[1]}"; // Display as "No - Name"
@@ -156,7 +153,7 @@ namespace NCIASTaff.pages
                             ListItem li = new ListItem(displayText, value);
                             ddlAccountNo.Items.Add(li);
                         }
-                       
+
                     }
                 }
             }
@@ -204,7 +201,7 @@ namespace NCIASTaff.pages
                 string directorate = lblDirectorate.Text;
                 string responsibilityCenter = ddlResponsibilityCenter.SelectedValue;
                 string purpose = txtPurpose.Text;
-               
+
 
                 if (string.IsNullOrEmpty(department))
                 {
@@ -306,14 +303,14 @@ namespace NCIASTaff.pages
             }
         }
 
-       
+
         private void BindGridViewData(string pettyCashNo)
         {
             string pettyCashLines = webportals.GetPettyCashLines(pettyCashNo);
 
             if (!string.IsNullOrEmpty(pettyCashLines))
             {
-                
+
                 DataTable dt = new DataTable();
                 dt.Columns.Add("Document No_");
                 dt.Columns.Add("Advance Type");
@@ -322,14 +319,14 @@ namespace NCIASTaff.pages
                 dt.Columns.Add("Amount");
                 dt.Columns.Add("Line No_");
 
-               
+
                 string[] lines = pettyCashLines.Split(new[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
 
-                
+
                 foreach (string line in lines)
                 {
                     string[] fields = line.Split(new[] { "::" }, StringSplitOptions.None);
-                    if (fields.Length == 6) 
+                    if (fields.Length == 6)
                     {
                         DataRow row = dt.NewRow();
                         row["Document No_"] = fields[0];
@@ -339,16 +336,16 @@ namespace NCIASTaff.pages
                         row["Amount"] = fields[4];
                         row["Line No_"] = fields[5];
 
-                        dt.Rows.Add(row); 
+                        dt.Rows.Add(row);
                     }
                 }
 
                 gvLines.DataSource = dt;
                 gvLines.DataBind();
 
-              
+
             }
-            
+
         }
 
 
@@ -391,7 +388,7 @@ namespace NCIASTaff.pages
                     return;
                 }
 
-                string response = webportals.InsertPettyCashRequisitionLine(username,pettyCashNo, accountNo, advanceType, Convert.ToDecimal(amount));
+                string response = webportals.InsertPettyCashRequisitionLine(username, pettyCashNo, accountNo, advanceType, Convert.ToDecimal(amount));
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] strLimiters = new string[] { "::" };
@@ -598,6 +595,6 @@ namespace NCIASTaff.pages
                 ex.Data.Clear();
             }
         }
-       
+
     }
 }

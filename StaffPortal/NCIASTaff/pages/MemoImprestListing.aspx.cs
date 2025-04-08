@@ -1,13 +1,7 @@
 ﻿
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using NCIASTaff.NAVWS;
+using System;
+using System.Data.SqlClient;
 
 namespace NCIASTaff.pages
 {
@@ -54,7 +48,7 @@ namespace NCIASTaff.pages
             try
             {
                 string username = Session["username"].ToString();
-               
+
                 string imprestList = webportals.GetMyImprests(username);
                 if (!string.IsNullOrEmpty(imprestList))
                 {
@@ -68,18 +62,18 @@ namespace NCIASTaff.pages
                         string status = responseArr[4];
                         switch (status)
                         {
-                                            case "Pending":
-                            statusCls = "warning"; break;
-                        case "Pending Approval":
-                            statusCls = "primary"; break;
-                        case "Approved":
-                            statusCls = "success"; break;
-                        case "Posted":
-                            statusCls = "success"; break;
-                        case "Cancelled":
-                            statusCls = "danger"; break;
-                        case "":
-                            statusCls = "info"; break;
+                            case "Pending":
+                                statusCls = "warning"; break;
+                            case "Pending Approval":
+                                statusCls = "primary"; break;
+                            case "Approved":
+                                statusCls = "success"; break;
+                            case "Posted":
+                                statusCls = "success"; break;
+                            case "Cancelled":
+                                statusCls = "danger"; break;
+                            case "":
+                                statusCls = "info"; break;
                         }
                         htmlStr += String.Format(@"
                              <tr  class='text-primary small'>
@@ -100,12 +94,12 @@ namespace NCIASTaff.pages
                                     </div>
                                 </td>
                             </tr>",
-                         
+
                           responseArr[0],
                           responseArr[1],
                           responseArr[2],
                           responseArr[3],
-                          responseArr[4],    
+                          responseArr[4],
                           statusCls
                           );
                     }
@@ -118,7 +112,7 @@ namespace NCIASTaff.pages
             }
             return htmlStr;
         }
-        
+
         private void Message(string message)
         {
             string strScript = "<script>alert('" + message + "')</script>";

@@ -1,10 +1,5 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
 {
@@ -53,7 +48,7 @@ namespace NCIASTaff.pages
                             string Reason = exitDetails[4];
                             string leavingDate = exitDetails[5];
                             string status = exitDetails[6];
-                           
+
 
 
 
@@ -69,8 +64,8 @@ namespace NCIASTaff.pages
                             htmlStr += $"<td>{status}</td>";
 
                             // htmlStr += $"<td><a href='TransportRequisition.aspx?requestNo={requestNumber}' ><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</a></td>";
-                             //< li >< a href = 'AppraisalLines.aspx?appraisalNo={1}&query=old&status={4}' >< i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></li>
-                           htmlStr += $"<td><a href='StaffExit.aspx?requestNo={EmpNo}&query=old&status={status}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></td>";
+                            //< li >< a href = 'AppraisalLines.aspx?appraisalNo={1}&query=old&status={4}' >< i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></li>
+                            htmlStr += $"<td><a href='StaffExit.aspx?requestNo={EmpNo}&query=old&status={status}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></td>";
 
 
                             htmlStr += "</tr>";

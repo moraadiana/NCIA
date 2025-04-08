@@ -1,12 +1,8 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
@@ -79,7 +75,7 @@ namespace NCIASTaff.pages
         private string[] GetMemoNo()
         {
             string[] memo = new string[3];
-            
+
             try
             {
                 connection = Components.GetconnToNAV();
@@ -162,7 +158,7 @@ namespace NCIASTaff.pages
             {
                 ex.Data.Clear();
             }
-            
+
         }
 
         private void LoadAdvanceTypes()
@@ -203,17 +199,17 @@ namespace NCIASTaff.pages
                 string directorate = lblDirectorate.Text;
                 string responsibilityCenter = ddlResponsibilityCenter.SelectedValue;
                 string purpose = txtPurpose.Text;
-/*
-                if (string.IsNullOrEmpty(department))
-                {
-                    Message("Department cannot be null!");
-                    return;
-                }
-                if (string.IsNullOrEmpty(directorate))
-                {
-                    Message("Division cannot be null!");
-                    return;
-                }*/
+                /*
+                                if (string.IsNullOrEmpty(department))
+                                {
+                                    Message("Department cannot be null!");
+                                    return;
+                                }
+                                if (string.IsNullOrEmpty(directorate))
+                                {
+                                    Message("Division cannot be null!");
+                                    return;
+                                }*/
                 if (string.IsNullOrEmpty(responsibilityCenter))
                 {
                     Message("Responsibility center cannot be null!");
@@ -305,7 +301,7 @@ namespace NCIASTaff.pages
             }
         }
 
-     
+
         private void BindGridViewData(string imprestNo)
         {
             try
@@ -445,7 +441,7 @@ namespace NCIASTaff.pages
                     string imprestNo = lblImprestNo.Text;
                     args = (sender as LinkButton).CommandArgument.ToString().Split(';');
                     string advanceType = args[0];
-                    string response = webportals.RemoveImprestRequisitionLine(imprestNo,advanceType);
+                    string response = webportals.RemoveImprestRequisitionLine(imprestNo, advanceType);
                     if (!string.IsNullOrEmpty(response))
                     {
                         if (response == "SUCCESS")
@@ -545,8 +541,8 @@ namespace NCIASTaff.pages
                             Directory.CreateDirectory(strPath);
                         }
 
-                        
-                        string pathToUpload = Path.Combine(strPath, DocumentNo.Replace("/","-") + fileName.ToUpper());
+
+                        string pathToUpload = Path.Combine(strPath, DocumentNo.Replace("/", "-") + fileName.ToUpper());
 
                         if (File.Exists(pathToUpload))
                         {

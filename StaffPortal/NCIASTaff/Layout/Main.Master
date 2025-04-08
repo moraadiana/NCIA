@@ -1,11 +1,10 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="NCIASTaff.Layout.Main" %>
-
 <!DOCTYPE html>
 <html>
 <head runat="server">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><%: Page.Title %> | NCIA Staff Portal</title>
+    <title><%: Page.Title %> - NCIA Staff Portal</title>
     <link rel="shortcut icon" href="../images/logo.png" />
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -56,17 +55,28 @@
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="LeaveListing.aspx"><i class="fa fa-hand-o-right"></i>Leave Requisition</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="BackToOfficeListsing.aspx"><i class="fa fa-hand-o-right"></i>Back To Office</a></li>
+                                        <li><a href="BackToOfficeListsing.aspx"><i class="fa fa-hand-o-right"></i>Back To Office (Leave)</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="AppraisalListing.aspx"><i class="fa fa-hand-o-right"></i>Appraisals</a></li>
-                                        <li class="divider"></li> 
+                                        <%--<li><a href="AppraisalListing.aspx"><i class="fa fa-hand-o-right"></i>Appraisals</a></li>
+                                        <li class="divider"></li> --%>
                                         <li><a href="TrainingListing.aspx"><i class="fa fa-hand-o-right"></i>Training Requisition</a></li>
                                         <li class="divider"></li>
                                         <li><a href="TransportRequisitionListing.aspx"><i class="fa fa-hand-o-right"></i>Transport Requisition</a></li>
-                                        <li class="divider"></li> 
+                                        <li class="divider"></li>
                                         <li><a href="pnineform.aspx"><i class="fa fa-hand-o-right"></i>P9 Form</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="Payslip.aspx"><i class="fa fa-hand-o-right"></i>Payslip</a></li>                                    </ul>
+                                        <li><a href="Payslip.aspx"><i class="fa fa-hand-o-right"></i>Payslip</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Appraisal <span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="AppraisalListing.aspx"><i class="fa fa-hand-o-right"></i>Appraisal Listing</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="MidYearReviewListing.aspx"><i class="fa fa-hand-o-right"></i>Mid Year Review</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="EndYearReviewListing.aspx"><i class="fa fa-hand-o-right"></i>End Year Review</a></li>
+                                    </ul>
                                 </li>
 
                                 <li class="dropdown">
@@ -81,8 +91,9 @@
                                         <li><a href="PettyCashListing.aspx"><i class="fa fa-hand-o-right"></i>Petty Cash Requisition</a></li>
                                         <li class="divider"></li>
                                         <li><a href="PettyCashAccounting.aspx"><i class="fa fa-hand-o-right"></i>Petty Cash Surrender</a></li>
-                                        
-                                          <!--
+                                        <li class="divider"></li>
+                                        <li><a href="PettyCashListing(Reimbursment).aspx"><i class="fa fa-hand-o-right"></i>Petty Cash Reimbursment</a></li>
+                                        <!--
                                               <li><a href="PurchaseReqListing.aspx"><i class="fa fa-hand-o-right"></i>Purchase Requisitions</a></li>
 <li class="divider"></li>-->
                                     </ul>
@@ -97,18 +108,17 @@
                                     </ul>
                                 </li>
 
-                                 
 
-                                <li class="dropdown">
+
+                                <%-- <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Downloads <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
-                                       <%-- <li><a href="LeaveStatement.aspx"><i class="fa fa-hand-o-right"></i>Leave Statement</a></li>
-                                        <li class="divider"></li>--%>
+                                    
                                         <li><a href="pnineform.aspx"><i class="fa fa-hand-o-right"></i>P9 Form</a></li>
                                         <li class="divider"></li>
                                         <li><a href="Payslip.aspx"><i class="fa fa-hand-o-right"></i>Payslip</a></li>
                                     </ul>
-                                </li>
+                                </li>--%>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Staff Exit <span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">

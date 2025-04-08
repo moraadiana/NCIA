@@ -280,8 +280,9 @@ namespace NCIASTaff.pages
                 }
 
                 string imprestSurrenderNo = Session["DocumentNo"].ToString();
+                string response = webportals.SubmitImprestSurrenderHeader(imprestSurrenderNo, imprestNo, responsibilityCenter);
 
-                string response = webportals.CreateImprestSurrenderHeader(imprestSurrenderNo, imprestNo, responsibilityCenter);
+                //string response = webportals.CreateImprestSurrenderHeader(imprestSurrenderNo, imprestNo, responsibilityCenter);
                 if (response != null)
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
@@ -322,11 +323,12 @@ namespace NCIASTaff.pages
                     decimal amt = totalAmount - amount;
                     string purpose = " Refund of overspent amount spent in " + documentNo;
                    // String AccNo = "BNK-0001";
-                   // string resCenter = CLAIM
+                   // string resCenter = CLAIM  
                     webportals.InsertImprestSurrenderLines(documentNo, actualAmount, cashReturned, imprestNo, accountNo);
+
                     if (totalAmount > amount)
                     {
-                        
+
                         string response1 = webportals.CreateClaimRequisitionHeader(username, "CLAIM", purpose, "BNK-0001");
                         if (!string.IsNullOrEmpty(response1))
                         {
@@ -336,27 +338,27 @@ namespace NCIASTaff.pages
                             {
                                 string claimNo = responseArr[1];
                                 // Message($"Claim number {claimNo} has been created successfully!");
-                                string claimLine = webportals.InsertClaimRequisitionLines(claimNo, "S-CLAIMS", Convert.ToDecimal(amt));
-                                if (!string.IsNullOrEmpty(claimLine))
-                                {
-                                    string[] strLimiters = new string[] { "::" };
-                                    string[] claimLinesArr = claimLine.Split(strLimiters, StringSplitOptions.None);
-                                    string returnMsg1 = claimLinesArr[0];
-                                    if (returnMsg == "SUCCESS")
-                                    {
-                                         Message($"Claim number {claimNo} has been created successfully!");
-                                        //Message("Line added successfully!");
-                                        // txtAmnt.Text = string.Empty;
-                                        // BindGridViewData(claimNo);
-                                    }
-                                }
+                                string claimLine = webportals.InsertClaimRequisitionLines(claimNo, "S-CLAIMS", Convert.ToDecimal(amt), accountNo);
+                                //if (!string.IsNullOrEmpty(claimLine))
+                                //{
+                                //    string[] strLimiters = new string[] { "::" };
+                                //    string[] claimLinesArr = claimLine.Split(strLimiters, StringSplitOptions.None);
+                                //    string returnMsg1 = claimLinesArr[0];
+                                //    if (returnMsg == "SUCCESS")
+                                //    {
+                                //        Message($"Claim number {claimNo} has been created successfully!");
+                                //        //Message("Line added successfully!");
+                                //        // txtAmnt.Text = string.Empty;
+                                //        // BindGridViewData(claimNo);
+                                //    }
+                                //}
                             }
 
                         }
-                        
+
                     }
-                  
                 }
+                
 
                 string approvalResponse = webportals.OnSendImprestSurrenderForApproval(documentNo);
                 if (approvalResponse == "SUCCESS")

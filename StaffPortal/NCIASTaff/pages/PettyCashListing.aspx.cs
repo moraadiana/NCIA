@@ -1,12 +1,6 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
 {
@@ -18,7 +12,7 @@ namespace NCIASTaff.pages
         Staffportall webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
         string[] strLimiters2 = new string[] { "[]" };
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -41,7 +35,7 @@ namespace NCIASTaff.pages
                 string pettycashlist = webportals.GetMyPettyCashApplications(username);
                 if (!string.IsNullOrEmpty(pettycashlist))
                 {
-                   // int counter = 0;
+                    // int counter = 0;
                     string[] pettyCashListArr = pettycashlist.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string pettyCashlist in pettyCashListArr)
                     {
@@ -87,13 +81,13 @@ namespace NCIASTaff.pages
                                 </td>
                             </tr>"
                         ,
-                         // counter,
+                          // counter,
                           responseArr[0],
                           responseArr[1],
                           responseArr[2],
                           responseArr[3],
-                         
-                          
+
+
 
                           statusCls
                           );

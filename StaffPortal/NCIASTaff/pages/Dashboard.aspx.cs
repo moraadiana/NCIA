@@ -1,11 +1,5 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.SessionState;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
 {
@@ -37,7 +31,7 @@ namespace NCIASTaff.pages
                 if (gender == "Female") imgPath = "profile_f";
                 ImgProfilePic.ImageUrl = $"~/images/{imgPath}.png";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.Data.Clear();
             }
@@ -49,9 +43,9 @@ namespace NCIASTaff.pages
             {
                 string username = Session["username"].ToString();
                 string response = webportals.GetStaffDetails(username);
-                if(!string.IsNullOrEmpty(response))
+                if (!string.IsNullOrEmpty(response))
                 {
-                    string[] responseArr = response.Split(strLimiters,StringSplitOptions.None);
+                    string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
                     string returnMsg = responseArr[0];
                     if (returnMsg == "SUCCESS")
                     {
@@ -81,7 +75,7 @@ namespace NCIASTaff.pages
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.Data.Clear();
             }

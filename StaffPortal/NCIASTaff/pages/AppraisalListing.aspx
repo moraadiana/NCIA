@@ -39,8 +39,8 @@
                                             <tr>
                                                  <th class="small">#</th>
                                                  <th class="small">Appraisal No</th>
-                                                 <th class="small">Date</th>
-                                                 <th class="small">Period</th>              
+                                                 <%--<th class="small">Date</th>
+                                                 <th class="small">Period</th> --%>             
                                                  <th class="small">Status</th>
                                                  <th class="small">Actions</th>
                                             </tr>

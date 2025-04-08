@@ -1,16 +1,10 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Web;
 using System.Web.Hosting;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
@@ -39,7 +33,7 @@ namespace NCIASTaff.pages
             }
         }
 
-       
+
         private void LoadYears()
         {
             try
@@ -67,12 +61,12 @@ namespace NCIASTaff.pages
             }
         }
 
-       
+
         private void LoadMonths()
         {
             try
             {
-                ddlMonth.Items.Clear(); 
+                ddlMonth.Items.Clear();
                 string year = ddlYear.SelectedValue;
                 Console.WriteLine($"Selected Year: {year}");
                 int CurrentYear = Convert.ToInt32(year);
@@ -84,27 +78,27 @@ namespace NCIASTaff.pages
                     string[] monthsArr = payslipMonths.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
                     foreach (string months in monthsArr)
                     {
-                        
+
                         string[] responseArr = months.Split(strLimiters, StringSplitOptions.None);
                         if (responseArr.Length == 2)
                         {
-                            string monthNumber = responseArr[0]; 
-                            string monthName = responseArr[1];  
+                            string monthNumber = responseArr[0];
+                            string monthName = responseArr[1];
 
-                            
+
                             ListItem li = new ListItem(monthName, monthNumber);
-                            ddlMonth.Items.Add(li); 
+                            ddlMonth.Items.Add(li);
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                ex.Data.Clear(); 
+                ex.Data.Clear();
             }
         }
-      
-      
+
+
         private void ViewPayslip()
         {
             try
@@ -179,7 +173,7 @@ namespace NCIASTaff.pages
                 LoadMonths();
                 ViewPayslip();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.Data.Clear();
             }

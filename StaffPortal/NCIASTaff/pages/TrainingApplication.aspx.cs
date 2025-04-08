@@ -1,13 +1,7 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.Remoting.Lifetime;
-using System.Web;
-using System.Web.Services.Description;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace NCIASTaff
@@ -129,15 +123,15 @@ namespace NCIASTaff
         }
 
 
-   
+
 
         private void LoadCourses()
         {
-            
+
             try
             {
                 ddlCourse.Items.Clear();
-               
+
 
                 //  int type = 1;
                 string course = webportals.GetTrainingVotes(3);
@@ -155,14 +149,14 @@ namespace NCIASTaff
                             // Create a ListItem with the month name as Text and the month number as Value
                             ListItem li = new ListItem(description, code);
                             ddlCourse.Items.Add(li); // Add the item to the dropdown
-                            
+
                         }
                     }
                 }
                 else
                 {
                     ddlCourse.Items.Clear();
-                   
+
                 }
             }
             catch (Exception ex)
@@ -217,7 +211,7 @@ namespace NCIASTaff
                 string type = ddlType.SelectedValue;
                 string applicationType = ddlApplicationType.SelectedValue;
                 string trainingClassification = ddlTrainingClassification.SelectedValue;
-               
+
                 string trainingNeed = txtTrainingNeed.Text;
                 string trainingObjective = txtTrainingObjective.Text;
                 string trainingMode = ddlModeofTraining.SelectedValue;
@@ -315,7 +309,7 @@ namespace NCIASTaff
             }
         }
 
-      
+
 
         protected void lbtnAddParticipant_Click(object sender, EventArgs e)
         {
@@ -323,26 +317,26 @@ namespace NCIASTaff
             {
                 string trainingNo = lblTrainingNo.Text;
                 string participant = ddlParticipants.SelectedValue;
-               // string staffNo = Session["username"].ToString();
+                // string staffNo = Session["username"].ToString();
                 string courseFee = txtCourseFee.Text;
                 string dsaAmount = txtDsaAmount.Text;
                 string transportCost = txtTransportCost.Text;
 
 
 
-                  if (string.IsNullOrEmpty(participant))
-                  {
-                      Message("participant cannot be null or empty!");
-                      ddlParticipants.Focus();
-                      return;
-                  }
+                if (string.IsNullOrEmpty(participant))
+                {
+                    Message("participant cannot be null or empty!");
+                    ddlParticipants.Focus();
+                    return;
+                }
 
-                  if (string.IsNullOrEmpty(courseFee))
-                  {
-                      Message("Course Fee cannot be null or empty!");
-                      txtCourseFee.Focus();
-                      return;
-                  }
+                if (string.IsNullOrEmpty(courseFee))
+                {
+                    Message("Course Fee cannot be null or empty!");
+                    txtCourseFee.Focus();
+                    return;
+                }
                 if (string.IsNullOrEmpty(dsaAmount))
                 {
                     Message("DSA Amount cannot be null or empty!");
@@ -373,7 +367,7 @@ namespace NCIASTaff
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.Data.Clear();
             }
@@ -429,7 +423,7 @@ namespace NCIASTaff
                 }
                 else
                 {
-                    Message("ERROR:Approval Workflow not set"  );
+                    Message("ERROR:Approval Workflow not set");
                 }
             }
             catch (Exception ex)
@@ -447,7 +441,7 @@ namespace NCIASTaff
 
         private void Message(string message)
         {
-            string strScript = "<script>alert('"+message+"');</script>";
+            string strScript = "<script>alert('" + message + "');</script>";
             ClientScript.RegisterStartupScript(GetType(), "Client Script", strScript.ToString());
         }
     }

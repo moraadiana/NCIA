@@ -1,11 +1,5 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Services.Description;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace NCIASTaff
 {
@@ -13,7 +7,7 @@ namespace NCIASTaff
     {
         readonly Staffportall webportals = Components.ObjNav;
         string[] strLimiters = new string[] { "::" };
-      
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -92,7 +86,7 @@ namespace NCIASTaff
             }
         }
 
-        private void LoginForUnchangedPassword(string username,string password)
+        private void LoginForUnchangedPassword(string username, string password)
         {
             try
             {

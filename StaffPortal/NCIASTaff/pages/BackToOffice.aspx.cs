@@ -1,14 +1,10 @@
 ﻿
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace NCIASTaff.pages
 
@@ -59,20 +55,20 @@ namespace NCIASTaff.pages
 
                 string[] fields = leavedata.Split(':');
 
-                    if (fields.Length >= 6)
-                    {
-                        DataRow row = dt.NewRow();
-                        row["Employee No"] = fields[0];
-                        row["Employee Name"] = fields[1];
-                        row["Date"] = fields[2];
-                        row["Applied Days"] = fields[3];
-                        row["Starting Date"] = fields[4];
-                        row["End Date"] = fields[5];
-                        row["Leave Type"] = fields[7];
+                if (fields.Length >= 6)
+                {
+                    DataRow row = dt.NewRow();
+                    row["Employee No"] = fields[0];
+                    row["Employee Name"] = fields[1];
+                    row["Date"] = fields[2];
+                    row["Applied Days"] = fields[3];
+                    row["Starting Date"] = fields[4];
+                    row["End Date"] = fields[5];
+                    row["Leave Type"] = fields[7];
 
-                        dt.Rows.Add(row);
-                    }
-                
+                    dt.Rows.Add(row);
+                }
+
 
                 gvLines.DataSource = dt;
                 gvLines.DataBind();
@@ -326,7 +322,7 @@ namespace NCIASTaff.pages
                     try
                     {
                         string submitBacktoOffice = Components.ObjNav.SubmitbacktoOffice(LeaveNo, empno, empname, Convert.ToInt32(applieddays), Convert.ToDateTime(startingdate), Convert.ToDateTime(enddate), purpose, leavetype, Convert.ToDateTime(returndate), userid, relieverno, relievername, shortcutdim3);
-                       if (!String.IsNullOrEmpty(submitBacktoOffice))
+                        if (!String.IsNullOrEmpty(submitBacktoOffice))
                         {
                             string[] strdelimiterss = new string[] { "::" };
                             string[] staffLoginInfo_arr = submitBacktoOffice.Split(strdelimiters, StringSplitOptions.None);
@@ -373,8 +369,8 @@ namespace NCIASTaff.pages
                         Message("ERROR: " + exception.Message.ToString());
                         exception.Data.Clear();
                     }
-                    
-                   
+
+
                 }
             }
             catch (Exception exception)

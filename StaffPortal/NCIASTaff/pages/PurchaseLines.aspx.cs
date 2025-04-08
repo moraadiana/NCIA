@@ -1,11 +1,7 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
@@ -140,12 +136,12 @@ namespace NCIASTaff.pages
                 string requiredDate = txtRequiredDate.Text;
                 string responsibilityCenter = ddlResponsibilityCenter.SelectedValue.ToString();
                 string description = txtDescription.Text;
-/*
-                if (string.IsNullOrEmpty(directorate) || string.IsNullOrEmpty(department))
-                {
-                    Message("Please ensure that you have the directorate and department defined.");
-                    return;
-                }*/
+                /*
+                                if (string.IsNullOrEmpty(directorate) || string.IsNullOrEmpty(department))
+                                {
+                                    Message("Please ensure that you have the directorate and department defined.");
+                                    return;
+                                }*/
                 if (string.IsNullOrEmpty(requiredDate))
                 {
                     Message("Required date cannot be empty.");
@@ -423,7 +419,7 @@ namespace NCIASTaff.pages
         {
             try
             {
-                if(gvLines.Rows.Count < 1) 
+                if (gvLines.Rows.Count < 1)
                 {
                     Message("Please add lines before sending for approval");
                     return;

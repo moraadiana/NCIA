@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using NCIASTaff.NAVWS;
+using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using NCIASTaff.NAVWS;
-using Microsoft.SqlServer.Server;
 
 namespace NCIASTaff.pages
 {
@@ -47,6 +43,7 @@ namespace NCIASTaff.pages
                     lblLNo.Text = claimNo;
                     lblClaimNo.Text = claimNo;
                     LoadAdvanceTypes();
+                    LoadGlAccounts();
                     BindGridViewData(claimNo);
                     BindAttachedDocuments(claimNo);
                 }
@@ -75,6 +72,29 @@ namespace NCIASTaff.pages
                 }
             }
         }
+        private void LoadGlAccounts()
+        {
+            try
+            {
+                ddlAccountNo.Items.Clear();
+                ddlAccountNo.Items.Add(new ListItem("--Select Account--", string.Empty));
+                string Relievers = webportals.GetGLAccounts();
+                if (!string.IsNullOrEmpty(Relievers))
+                {
+                    string[] relieverArr = Relievers.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string reliever in relieverArr)
+                    {
+                        string[] responseArr = reliever.Split(strLimiters, StringSplitOptions.None);
+                        ListItem li = new ListItem(responseArr[1], responseArr[0]);
+                        ddlAccountNo.Items.Add(li);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.Data.Clear();
+            }
+        }
 
         private void LoadStaffDetails()
         {
@@ -83,7 +103,7 @@ namespace NCIASTaff.pages
                 string staffNo = Session["username"].ToString();
                 string staffName = Session["StaffName"].ToString();
                 string response = webportals.GetStaffDepartmentDetails(staffNo);
-                if(!string.IsNullOrEmpty(response))
+                if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
                     string returnMsg = responseArr[0];
@@ -155,13 +175,13 @@ namespace NCIASTaff.pages
                 }
 
             }
-       
-            
+
+
             catch (Exception ex)
             {
                 ex.Data.Clear();
             }
-        }        
+        }
 
         protected void lbtnSubmit_Click(object sender, EventArgs e)
         {
@@ -201,7 +221,7 @@ namespace NCIASTaff.pages
                 }
                 //TODO:
 
-                string response = webportals.CreateClaimRequisitionHeader(username,responsibilityCenter, purpose, AccNo);//ClaimRequisitionCreate(department, directorate, responsibilityCenter, "", username, purpose, DateTime.Today,"");//
+                string response = webportals.CreateClaimRequisitionHeader(username, responsibilityCenter, purpose, AccNo);//ClaimRequisitionCreate(department, directorate, responsibilityCenter, "", username, purpose, DateTime.Today,"");//
                 if (!string.IsNullOrEmpty(response))
                 {
                     string[] responseArr = response.Split(strLimiters, StringSplitOptions.None);
@@ -279,7 +299,7 @@ namespace NCIASTaff.pages
         {
             try
             {
-                connection =  Components.GetconnToNAV();
+                connection = Components.GetconnToNAV();
                 command = new SqlCommand()
                 {
                     CommandText = "spClaimLines",
@@ -306,7 +326,7 @@ namespace NCIASTaff.pages
             {
                 ex.Data.Clear();
             }
-        }        
+        }
 
         private void Message(string message)
         {
@@ -329,6 +349,7 @@ namespace NCIASTaff.pages
                 string employeeNo = Session["username"].ToString();
                 string advanceType = ddlAdvancType.SelectedValue;
                 string amount = txtAmnt.Text;
+                string accountNo = ddlAccountNo.SelectedValue;
                 if (advanceType == "0")
                 {
                     Message("Advance type cannot be null!");
@@ -340,9 +361,15 @@ namespace NCIASTaff.pages
                     txtAmnt.Focus();
                     return;
                 }
+                if (accountNo == "")
+                {
+                    Message("Account cannot be null!");
+                    txtAmnt.Focus();
+                    return;
+                }
                 //TODO:
 
-                string claimLine = webportals.InsertClaimRequisitionLines(claimNo, advanceType, Convert.ToDecimal(amount));//InsertClaimRequisitionLines(claimNo, advanceType, claimNo, advanceType, Convert.ToDecimal(amount), employeeNo);//
+                string claimLine = webportals.InsertClaimRequisitionLines(claimNo, advanceType, Convert.ToDecimal(amount),accountNo);//InsertClaimRequisitionLines(claimNo, advanceType, claimNo, advanceType, Convert.ToDecimal(amount), employeeNo);//
                 if (!string.IsNullOrEmpty(claimLine))
                 {
                     string[] strLimiters = new string[] { "::" };
@@ -479,13 +506,14 @@ namespace NCIASTaff.pages
                 if (fuClaimDocs.HasFile)
                 {
                     //string documentNo = Request.QueryString["ImprestNo"];
-                    string DocumentNo = Request.QueryString["ClaimNo"];
-                        //lblLNo.Text.Replace("/", "-");
+                   // string DocumentNo = Request.QueryString["ClaimNo"];
+                    //lblLNo.Text.Replace("/", "-");
                     string username = Session["username"]?.ToString();
+                    string DocumentNo = lblClaimNo.Text;
 
                     if (string.IsNullOrEmpty(DocumentNo) || string.IsNullOrEmpty(username))
                     {
-                        Message("Imprest number or username is missing.");
+                        Message("Claim number or username is missing.");
                         return;
                     }
 
@@ -536,7 +564,7 @@ namespace NCIASTaff.pages
                 Message($"Error: {ex.Message}");
             }
         }
-       
+
         protected void lbtnRemoveAttach_Click(object sender, EventArgs e)
         {
             try

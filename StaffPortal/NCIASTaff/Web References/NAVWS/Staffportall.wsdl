@@ -196,7 +196,7 @@
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="username" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="supervisor" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="supervisorNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="period" type="string" />
           </sequence>
         </complexType>
@@ -261,20 +261,19 @@
           </sequence>
         </complexType>
       </element>
-      <element name="CreateImprestSurrenderHeader">
+      <element name="CreatePettyCashReimbursementHeader">
         <complexType>
           <sequence>
-            <element minOccurs="1" maxOccurs="1" name="surrenderNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="imprestNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="pettyCashNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bankNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="resCenter" type="string" />
           </sequence>
         </complexType>
       </element>
-      <element name="CreateImprestSurrenderHeader_Result">
+      <element name="CreatePettyCashReimbursementHeader_Result">
         <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
+          <sequence />
         </complexType>
       </element>
       <element name="CreatePettyCashRequisitionHeader">
@@ -723,6 +722,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetAppraisalHeaderDetails">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAppraisalHeaderDetails_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetAppraisalLines">
         <complexType>
           <sequence>
@@ -743,6 +756,20 @@
         </complexType>
       </element>
       <element name="GetAppraisalPeriod_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAppraisalType">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="type" type="int" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetAppraisalType_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -859,6 +886,18 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetGLAccounts">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetGLAccounts_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="GetImprestDetails">
         <complexType>
           <sequence>
@@ -898,6 +937,20 @@
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobTitle">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="jobId" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetJobTitle_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -987,6 +1040,7 @@
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="type" type="int" />
           </sequence>
         </complexType>
       </element>
@@ -1047,6 +1101,20 @@
         </complexType>
       </element>
       <element name="GetMyPettyCashApplications_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyPettyCashReimbursement">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetMyPettyCashReimbursement_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1213,6 +1281,16 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetPettyCashReimbursementLines">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
+      <element name="GetPettyCashReimbursementLines_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
       <element name="GetPettyCashSurrenderLines">
         <complexType>
           <sequence>
@@ -1221,6 +1299,20 @@
         </complexType>
       </element>
       <element name="GetPettyCashSurrenderLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCash">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPettyCash_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1419,6 +1511,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="GetValuesCompetencies">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetValuesCompetencies_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="HRMLeaveApplication1">
         <complexType>
           <sequence>
@@ -1534,6 +1640,34 @@
           </sequence>
         </complexType>
       </element>
+      <element name="InitiateEndYearNew">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InitiateEndYearNew_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InitiateMidYearNew">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InitiateMidYearNew_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="InsertAppraisalLines">
         <complexType>
           <sequence>
@@ -1559,6 +1693,7 @@
             <element minOccurs="1" maxOccurs="1" name="claimNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="claimType" type="string" />
             <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -1603,23 +1738,6 @@
           </sequence>
         </complexType>
       </element>
-      <element name="InsertImprestSurrenderLines1">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="imprestNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="receiptNo" type="string" />
-          </sequence>
-        </complexType>
-      </element>
-      <element name="InsertImprestSurrenderLines1_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
       <element name="InsertImprestSurrenderLines">
         <complexType>
           <sequence>
@@ -1632,6 +1750,26 @@
         </complexType>
       </element>
       <element name="InsertImprestSurrenderLines_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertOrUpdateAppraisalLines">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="subcode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="subActivity" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="criteria" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="annualTarget" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="remarks" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="selfAssesment" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertOrUpdateAppraisalLines_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1722,6 +1860,24 @@
         </complexType>
       </element>
       <element name="InsertTransportPassengers_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertValuesCompetencies">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="code" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="description" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="targetScore" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="finalScore" type="decimal" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertValuesCompetencies_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1957,7 +2113,7 @@
       <element name="OnSendImprestSurrenderForApproval">
         <complexType>
           <sequence>
-            <element minOccurs="1" maxOccurs="1" name="surrenderNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="documentNo" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -2233,6 +2389,22 @@
           </sequence>
         </complexType>
       </element>
+      <element name="SubmitImprestSurrenderHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="surrenderNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="imprestNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="resCenter" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="SubmitImprestSurrenderHeader_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="SubmitPurchaseQuoteLine">
         <complexType>
           <sequence>
@@ -2300,6 +2472,23 @@
         </complexType>
       </element>
       <element name="SubmitbacktoOffice_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateAppraisalHeader">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="appraisalNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="appraiseeComments" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="mitigation" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="additionalAssignments" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="UpdateAppraisalHeader_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -2494,11 +2683,11 @@
   <message name="CreateImprestRequisitionHeader_Result">
     <part name="parameters" element="tns:CreateImprestRequisitionHeader_Result" />
   </message>
-  <message name="CreateImprestSurrenderHeader">
-    <part name="parameters" element="tns:CreateImprestSurrenderHeader" />
+  <message name="CreatePettyCashReimbursementHeader">
+    <part name="parameters" element="tns:CreatePettyCashReimbursementHeader" />
   </message>
-  <message name="CreateImprestSurrenderHeader_Result">
-    <part name="parameters" element="tns:CreateImprestSurrenderHeader_Result" />
+  <message name="CreatePettyCashReimbursementHeader_Result">
+    <part name="parameters" element="tns:CreatePettyCashReimbursementHeader_Result" />
   </message>
   <message name="CreatePettyCashRequisitionHeader">
     <part name="parameters" element="tns:CreatePettyCashRequisitionHeader" />
@@ -2662,6 +2851,12 @@
   <message name="GetAllEmployees_Result">
     <part name="parameters" element="tns:GetAllEmployees_Result" />
   </message>
+  <message name="GetAppraisalHeaderDetails">
+    <part name="parameters" element="tns:GetAppraisalHeaderDetails" />
+  </message>
+  <message name="GetAppraisalHeaderDetails_Result">
+    <part name="parameters" element="tns:GetAppraisalHeaderDetails_Result" />
+  </message>
   <message name="GetAppraisalLines">
     <part name="parameters" element="tns:GetAppraisalLines" />
   </message>
@@ -2673,6 +2868,12 @@
   </message>
   <message name="GetAppraisalPeriod_Result">
     <part name="parameters" element="tns:GetAppraisalPeriod_Result" />
+  </message>
+  <message name="GetAppraisalType">
+    <part name="parameters" element="tns:GetAppraisalType" />
+  </message>
+  <message name="GetAppraisalType_Result">
+    <part name="parameters" element="tns:GetAppraisalType_Result" />
   </message>
   <message name="GetApprovedMemos">
     <part name="parameters" element="tns:GetApprovedMemos" />
@@ -2722,6 +2923,12 @@
   <message name="GetEmployeeLeaves_Result">
     <part name="parameters" element="tns:GetEmployeeLeaves_Result" />
   </message>
+  <message name="GetGLAccounts">
+    <part name="parameters" element="tns:GetGLAccounts" />
+  </message>
+  <message name="GetGLAccounts_Result">
+    <part name="parameters" element="tns:GetGLAccounts_Result" />
+  </message>
   <message name="GetImprestDetails">
     <part name="parameters" element="tns:GetImprestDetails" />
   </message>
@@ -2739,6 +2946,12 @@
   </message>
   <message name="GetItemQuantity_Result">
     <part name="parameters" element="tns:GetItemQuantity_Result" />
+  </message>
+  <message name="GetJobTitle">
+    <part name="parameters" element="tns:GetJobTitle" />
+  </message>
+  <message name="GetJobTitle_Result">
+    <part name="parameters" element="tns:GetJobTitle_Result" />
   </message>
   <message name="GetLeaveDetails">
     <part name="parameters" element="tns:GetLeaveDetails" />
@@ -2805,6 +3018,12 @@
   </message>
   <message name="GetMyPettyCashApplications_Result">
     <part name="parameters" element="tns:GetMyPettyCashApplications_Result" />
+  </message>
+  <message name="GetMyPettyCashReimbursement">
+    <part name="parameters" element="tns:GetMyPettyCashReimbursement" />
+  </message>
+  <message name="GetMyPettyCashReimbursement_Result">
+    <part name="parameters" element="tns:GetMyPettyCashReimbursement_Result" />
   </message>
   <message name="GetMyPettyCashSurrender">
     <part name="parameters" element="tns:GetMyPettyCashSurrender" />
@@ -2878,11 +3097,23 @@
   <message name="GetPettyCashLines_Result">
     <part name="parameters" element="tns:GetPettyCashLines_Result" />
   </message>
+  <message name="GetPettyCashReimbursementLines">
+    <part name="parameters" element="tns:GetPettyCashReimbursementLines" />
+  </message>
+  <message name="GetPettyCashReimbursementLines_Result">
+    <part name="parameters" element="tns:GetPettyCashReimbursementLines_Result" />
+  </message>
   <message name="GetPettyCashSurrenderLines">
     <part name="parameters" element="tns:GetPettyCashSurrenderLines" />
   </message>
   <message name="GetPettyCashSurrenderLines_Result">
     <part name="parameters" element="tns:GetPettyCashSurrenderLines_Result" />
+  </message>
+  <message name="GetPettyCash">
+    <part name="parameters" element="tns:GetPettyCash" />
+  </message>
+  <message name="GetPettyCash_Result">
+    <part name="parameters" element="tns:GetPettyCash_Result" />
   </message>
   <message name="GetReceipts">
     <part name="parameters" element="tns:GetReceipts" />
@@ -2968,6 +3199,12 @@
   <message name="GetTransportReqPassengers_Result">
     <part name="parameters" element="tns:GetTransportReqPassengers_Result" />
   </message>
+  <message name="GetValuesCompetencies">
+    <part name="parameters" element="tns:GetValuesCompetencies" />
+  </message>
+  <message name="GetValuesCompetencies_Result">
+    <part name="parameters" element="tns:GetValuesCompetencies_Result" />
+  </message>
   <message name="HRMLeaveApplication1">
     <part name="parameters" element="tns:HRMLeaveApplication1" />
   </message>
@@ -3004,6 +3241,18 @@
   <message name="ImprestRequisitionApprovalRequest_Result">
     <part name="parameters" element="tns:ImprestRequisitionApprovalRequest_Result" />
   </message>
+  <message name="InitiateEndYearNew">
+    <part name="parameters" element="tns:InitiateEndYearNew" />
+  </message>
+  <message name="InitiateEndYearNew_Result">
+    <part name="parameters" element="tns:InitiateEndYearNew_Result" />
+  </message>
+  <message name="InitiateMidYearNew">
+    <part name="parameters" element="tns:InitiateMidYearNew" />
+  </message>
+  <message name="InitiateMidYearNew_Result">
+    <part name="parameters" element="tns:InitiateMidYearNew_Result" />
+  </message>
   <message name="InsertAppraisalLines">
     <part name="parameters" element="tns:InsertAppraisalLines" />
   </message>
@@ -3028,17 +3277,17 @@
   <message name="InsertImprestRequisitonLines_Result">
     <part name="parameters" element="tns:InsertImprestRequisitonLines_Result" />
   </message>
-  <message name="InsertImprestSurrenderLines1">
-    <part name="parameters" element="tns:InsertImprestSurrenderLines1" />
-  </message>
-  <message name="InsertImprestSurrenderLines1_Result">
-    <part name="parameters" element="tns:InsertImprestSurrenderLines1_Result" />
-  </message>
   <message name="InsertImprestSurrenderLines">
     <part name="parameters" element="tns:InsertImprestSurrenderLines" />
   </message>
   <message name="InsertImprestSurrenderLines_Result">
     <part name="parameters" element="tns:InsertImprestSurrenderLines_Result" />
+  </message>
+  <message name="InsertOrUpdateAppraisalLines">
+    <part name="parameters" element="tns:InsertOrUpdateAppraisalLines" />
+  </message>
+  <message name="InsertOrUpdateAppraisalLines_Result">
+    <part name="parameters" element="tns:InsertOrUpdateAppraisalLines_Result" />
   </message>
   <message name="InsertPettyCashRequisitionLine">
     <part name="parameters" element="tns:InsertPettyCashRequisitionLine" />
@@ -3069,6 +3318,12 @@
   </message>
   <message name="InsertTransportPassengers_Result">
     <part name="parameters" element="tns:InsertTransportPassengers_Result" />
+  </message>
+  <message name="InsertValuesCompetencies">
+    <part name="parameters" element="tns:InsertValuesCompetencies" />
+  </message>
+  <message name="InsertValuesCompetencies_Result">
+    <part name="parameters" element="tns:InsertValuesCompetencies_Result" />
   </message>
   <message name="IsItemInProcurementPlan">
     <part name="parameters" element="tns:IsItemInProcurementPlan" />
@@ -3286,6 +3541,12 @@
   <message name="StaffLogin_Result">
     <part name="parameters" element="tns:StaffLogin_Result" />
   </message>
+  <message name="SubmitImprestSurrenderHeader">
+    <part name="parameters" element="tns:SubmitImprestSurrenderHeader" />
+  </message>
+  <message name="SubmitImprestSurrenderHeader_Result">
+    <part name="parameters" element="tns:SubmitImprestSurrenderHeader_Result" />
+  </message>
   <message name="SubmitPurchaseQuoteLine">
     <part name="parameters" element="tns:SubmitPurchaseQuoteLine" />
   </message>
@@ -3303,6 +3564,12 @@
   </message>
   <message name="SubmitbacktoOffice_Result">
     <part name="parameters" element="tns:SubmitbacktoOffice_Result" />
+  </message>
+  <message name="UpdateAppraisalHeader">
+    <part name="parameters" element="tns:UpdateAppraisalHeader" />
+  </message>
+  <message name="UpdateAppraisalHeader_Result">
+    <part name="parameters" element="tns:UpdateAppraisalHeader_Result" />
   </message>
   <message name="UpdateImprestHeader">
     <part name="parameters" element="tns:UpdateImprestHeader" />
@@ -3409,9 +3676,9 @@
       <input name="CreateImprestRequisitionHeader" message="tns:CreateImprestRequisitionHeader" />
       <output name="CreateImprestRequisitionHeader_Result" message="tns:CreateImprestRequisitionHeader_Result" />
     </operation>
-    <operation name="CreateImprestSurrenderHeader">
-      <input name="CreateImprestSurrenderHeader" message="tns:CreateImprestSurrenderHeader" />
-      <output name="CreateImprestSurrenderHeader_Result" message="tns:CreateImprestSurrenderHeader_Result" />
+    <operation name="CreatePettyCashReimbursementHeader">
+      <input name="CreatePettyCashReimbursementHeader" message="tns:CreatePettyCashReimbursementHeader" />
+      <output name="CreatePettyCashReimbursementHeader_Result" message="tns:CreatePettyCashReimbursementHeader_Result" />
     </operation>
     <operation name="CreatePettyCashRequisitionHeader">
       <input name="CreatePettyCashRequisitionHeader" message="tns:CreatePettyCashRequisitionHeader" />
@@ -3521,6 +3788,10 @@
       <input name="GetAllEmployees" message="tns:GetAllEmployees" />
       <output name="GetAllEmployees_Result" message="tns:GetAllEmployees_Result" />
     </operation>
+    <operation name="GetAppraisalHeaderDetails">
+      <input name="GetAppraisalHeaderDetails" message="tns:GetAppraisalHeaderDetails" />
+      <output name="GetAppraisalHeaderDetails_Result" message="tns:GetAppraisalHeaderDetails_Result" />
+    </operation>
     <operation name="GetAppraisalLines">
       <input name="GetAppraisalLines" message="tns:GetAppraisalLines" />
       <output name="GetAppraisalLines_Result" message="tns:GetAppraisalLines_Result" />
@@ -3528,6 +3799,10 @@
     <operation name="GetAppraisalPeriod">
       <input name="GetAppraisalPeriod" message="tns:GetAppraisalPeriod" />
       <output name="GetAppraisalPeriod_Result" message="tns:GetAppraisalPeriod_Result" />
+    </operation>
+    <operation name="GetAppraisalType">
+      <input name="GetAppraisalType" message="tns:GetAppraisalType" />
+      <output name="GetAppraisalType_Result" message="tns:GetAppraisalType_Result" />
     </operation>
     <operation name="GetApprovedMemos">
       <input name="GetApprovedMemos" message="tns:GetApprovedMemos" />
@@ -3561,6 +3836,10 @@
       <input name="GetEmployeeLeaves" message="tns:GetEmployeeLeaves" />
       <output name="GetEmployeeLeaves_Result" message="tns:GetEmployeeLeaves_Result" />
     </operation>
+    <operation name="GetGLAccounts">
+      <input name="GetGLAccounts" message="tns:GetGLAccounts" />
+      <output name="GetGLAccounts_Result" message="tns:GetGLAccounts_Result" />
+    </operation>
     <operation name="GetImprestDetails">
       <input name="GetImprestDetails" message="tns:GetImprestDetails" />
       <output name="GetImprestDetails_Result" message="tns:GetImprestDetails_Result" />
@@ -3572,6 +3851,10 @@
     <operation name="GetItemQuantity">
       <input name="GetItemQuantity" message="tns:GetItemQuantity" />
       <output name="GetItemQuantity_Result" message="tns:GetItemQuantity_Result" />
+    </operation>
+    <operation name="GetJobTitle">
+      <input name="GetJobTitle" message="tns:GetJobTitle" />
+      <output name="GetJobTitle_Result" message="tns:GetJobTitle_Result" />
     </operation>
     <operation name="GetLeaveDetails">
       <input name="GetLeaveDetails" message="tns:GetLeaveDetails" />
@@ -3616,6 +3899,10 @@
     <operation name="GetMyPettyCashApplications">
       <input name="GetMyPettyCashApplications" message="tns:GetMyPettyCashApplications" />
       <output name="GetMyPettyCashApplications_Result" message="tns:GetMyPettyCashApplications_Result" />
+    </operation>
+    <operation name="GetMyPettyCashReimbursement">
+      <input name="GetMyPettyCashReimbursement" message="tns:GetMyPettyCashReimbursement" />
+      <output name="GetMyPettyCashReimbursement_Result" message="tns:GetMyPettyCashReimbursement_Result" />
     </operation>
     <operation name="GetMyPettyCashSurrender">
       <input name="GetMyPettyCashSurrender" message="tns:GetMyPettyCashSurrender" />
@@ -3665,9 +3952,17 @@
       <input name="GetPettyCashLines" message="tns:GetPettyCashLines" />
       <output name="GetPettyCashLines_Result" message="tns:GetPettyCashLines_Result" />
     </operation>
+    <operation name="GetPettyCashReimbursementLines">
+      <input name="GetPettyCashReimbursementLines" message="tns:GetPettyCashReimbursementLines" />
+      <output name="GetPettyCashReimbursementLines_Result" message="tns:GetPettyCashReimbursementLines_Result" />
+    </operation>
     <operation name="GetPettyCashSurrenderLines">
       <input name="GetPettyCashSurrenderLines" message="tns:GetPettyCashSurrenderLines" />
       <output name="GetPettyCashSurrenderLines_Result" message="tns:GetPettyCashSurrenderLines_Result" />
+    </operation>
+    <operation name="GetPettyCash">
+      <input name="GetPettyCash" message="tns:GetPettyCash" />
+      <output name="GetPettyCash_Result" message="tns:GetPettyCash_Result" />
     </operation>
     <operation name="GetReceipts">
       <input name="GetReceipts" message="tns:GetReceipts" />
@@ -3725,6 +4020,10 @@
       <input name="GetTransportReqPassengers" message="tns:GetTransportReqPassengers" />
       <output name="GetTransportReqPassengers_Result" message="tns:GetTransportReqPassengers_Result" />
     </operation>
+    <operation name="GetValuesCompetencies">
+      <input name="GetValuesCompetencies" message="tns:GetValuesCompetencies" />
+      <output name="GetValuesCompetencies_Result" message="tns:GetValuesCompetencies_Result" />
+    </operation>
     <operation name="HRMLeaveApplication1">
       <input name="HRMLeaveApplication1" message="tns:HRMLeaveApplication1" />
       <output name="HRMLeaveApplication1_Result" message="tns:HRMLeaveApplication1_Result" />
@@ -3749,6 +4048,14 @@
       <input name="ImprestRequisitionApprovalRequest" message="tns:ImprestRequisitionApprovalRequest" />
       <output name="ImprestRequisitionApprovalRequest_Result" message="tns:ImprestRequisitionApprovalRequest_Result" />
     </operation>
+    <operation name="InitiateEndYearNew">
+      <input name="InitiateEndYearNew" message="tns:InitiateEndYearNew" />
+      <output name="InitiateEndYearNew_Result" message="tns:InitiateEndYearNew_Result" />
+    </operation>
+    <operation name="InitiateMidYearNew">
+      <input name="InitiateMidYearNew" message="tns:InitiateMidYearNew" />
+      <output name="InitiateMidYearNew_Result" message="tns:InitiateMidYearNew_Result" />
+    </operation>
     <operation name="InsertAppraisalLines">
       <input name="InsertAppraisalLines" message="tns:InsertAppraisalLines" />
       <output name="InsertAppraisalLines_Result" message="tns:InsertAppraisalLines_Result" />
@@ -3765,13 +4072,13 @@
       <input name="InsertImprestRequisitonLines" message="tns:InsertImprestRequisitonLines" />
       <output name="InsertImprestRequisitonLines_Result" message="tns:InsertImprestRequisitonLines_Result" />
     </operation>
-    <operation name="InsertImprestSurrenderLines1">
-      <input name="InsertImprestSurrenderLines1" message="tns:InsertImprestSurrenderLines1" />
-      <output name="InsertImprestSurrenderLines1_Result" message="tns:InsertImprestSurrenderLines1_Result" />
-    </operation>
     <operation name="InsertImprestSurrenderLines">
       <input name="InsertImprestSurrenderLines" message="tns:InsertImprestSurrenderLines" />
       <output name="InsertImprestSurrenderLines_Result" message="tns:InsertImprestSurrenderLines_Result" />
+    </operation>
+    <operation name="InsertOrUpdateAppraisalLines">
+      <input name="InsertOrUpdateAppraisalLines" message="tns:InsertOrUpdateAppraisalLines" />
+      <output name="InsertOrUpdateAppraisalLines_Result" message="tns:InsertOrUpdateAppraisalLines_Result" />
     </operation>
     <operation name="InsertPettyCashRequisitionLine">
       <input name="InsertPettyCashRequisitionLine" message="tns:InsertPettyCashRequisitionLine" />
@@ -3792,6 +4099,10 @@
     <operation name="InsertTransportPassengers">
       <input name="InsertTransportPassengers" message="tns:InsertTransportPassengers" />
       <output name="InsertTransportPassengers_Result" message="tns:InsertTransportPassengers_Result" />
+    </operation>
+    <operation name="InsertValuesCompetencies">
+      <input name="InsertValuesCompetencies" message="tns:InsertValuesCompetencies" />
+      <output name="InsertValuesCompetencies_Result" message="tns:InsertValuesCompetencies_Result" />
     </operation>
     <operation name="IsItemInProcurementPlan">
       <input name="IsItemInProcurementPlan" message="tns:IsItemInProcurementPlan" />
@@ -3937,6 +4248,10 @@
       <input name="StaffLogin" message="tns:StaffLogin" />
       <output name="StaffLogin_Result" message="tns:StaffLogin_Result" />
     </operation>
+    <operation name="SubmitImprestSurrenderHeader">
+      <input name="SubmitImprestSurrenderHeader" message="tns:SubmitImprestSurrenderHeader" />
+      <output name="SubmitImprestSurrenderHeader_Result" message="tns:SubmitImprestSurrenderHeader_Result" />
+    </operation>
     <operation name="SubmitPurchaseQuoteLine">
       <input name="SubmitPurchaseQuoteLine" message="tns:SubmitPurchaseQuoteLine" />
       <output name="SubmitPurchaseQuoteLine_Result" message="tns:SubmitPurchaseQuoteLine_Result" />
@@ -3948,6 +4263,10 @@
     <operation name="SubmitbacktoOffice">
       <input name="SubmitbacktoOffice" message="tns:SubmitbacktoOffice" />
       <output name="SubmitbacktoOffice_Result" message="tns:SubmitbacktoOffice_Result" />
+    </operation>
+    <operation name="UpdateAppraisalHeader">
+      <input name="UpdateAppraisalHeader" message="tns:UpdateAppraisalHeader" />
+      <output name="UpdateAppraisalHeader_Result" message="tns:UpdateAppraisalHeader_Result" />
     </operation>
     <operation name="UpdateImprestHeader">
       <input name="UpdateImprestHeader" message="tns:UpdateImprestHeader" />
@@ -4129,12 +4448,12 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
-    <operation name="CreateImprestSurrenderHeader">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateImprestSurrenderHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="CreateImprestSurrenderHeader">
+    <operation name="CreatePettyCashReimbursementHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreatePettyCashReimbursementHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CreatePettyCashReimbursementHeader">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
-      <output name="CreateImprestSurrenderHeader_Result">
+      <output name="CreatePettyCashReimbursementHeader_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4381,6 +4700,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetAppraisalHeaderDetails">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAppraisalHeaderDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAppraisalHeaderDetails">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAppraisalHeaderDetails_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetAppraisalLines">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAppraisalLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetAppraisalLines">
@@ -4396,6 +4724,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetAppraisalPeriod_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetAppraisalType">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAppraisalType" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetAppraisalType">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetAppraisalType_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4471,6 +4808,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetGLAccounts">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetGLAccounts" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetGLAccounts">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetGLAccounts_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetImprestDetails">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetImprestDetails" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetImprestDetails">
@@ -4495,6 +4841,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetItemQuantity_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetJobTitle">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetJobTitle" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetJobTitle">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetJobTitle_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4594,6 +4949,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetMyPettyCashApplications_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetMyPettyCashReimbursement">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetMyPettyCashReimbursement" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetMyPettyCashReimbursement">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetMyPettyCashReimbursement_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4705,12 +5069,30 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetPettyCashReimbursementLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPettyCashReimbursementLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCashReimbursementLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCashReimbursementLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="GetPettyCashSurrenderLines">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPettyCashSurrenderLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetPettyCashSurrenderLines">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetPettyCashSurrenderLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetPettyCash">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPettyCash" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPettyCash">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetPettyCash_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4840,6 +5222,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="GetValuesCompetencies">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetValuesCompetencies" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetValuesCompetencies">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetValuesCompetencies_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="HRMLeaveApplication1">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:HRMLeaveApplication1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="HRMLeaveApplication1">
@@ -4894,6 +5285,24 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="InitiateEndYearNew">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InitiateEndYearNew" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InitiateEndYearNew">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InitiateEndYearNew_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InitiateMidYearNew">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InitiateMidYearNew" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InitiateMidYearNew">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InitiateMidYearNew_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="InsertAppraisalLines">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertAppraisalLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="InsertAppraisalLines">
@@ -4930,21 +5339,21 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
-    <operation name="InsertImprestSurrenderLines1">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertImprestSurrenderLines1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="InsertImprestSurrenderLines1">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="InsertImprestSurrenderLines1_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
     <operation name="InsertImprestSurrenderLines">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertImprestSurrenderLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="InsertImprestSurrenderLines">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="InsertImprestSurrenderLines_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertOrUpdateAppraisalLines">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertOrUpdateAppraisalLines" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertOrUpdateAppraisalLines">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertOrUpdateAppraisalLines_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4990,6 +5399,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="InsertTransportPassengers_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="InsertValuesCompetencies">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertValuesCompetencies" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertValuesCompetencies">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertValuesCompetencies_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -5317,6 +5735,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="SubmitImprestSurrenderHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:SubmitImprestSurrenderHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="SubmitImprestSurrenderHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="SubmitImprestSurrenderHeader_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="SubmitPurchaseQuoteLine">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:SubmitPurchaseQuoteLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="SubmitPurchaseQuoteLine">
@@ -5341,6 +5768,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="SubmitbacktoOffice_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="UpdateAppraisalHeader">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:UpdateAppraisalHeader" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="UpdateAppraisalHeader">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="UpdateAppraisalHeader_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -5401,7 +5837,7 @@
   </binding>
   <service name="Staffportall">
     <port name="Staffportall_Port" binding="tns:Staffportall_Binding">
-      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Staffportall" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <address location="http://102.210.149.230:7047/Ncia/WS/NCIA%201/Codeunit/Staffportall" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
     </port>
   </service>
 </definitions>

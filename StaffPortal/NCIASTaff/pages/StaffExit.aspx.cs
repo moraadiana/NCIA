@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
@@ -25,7 +22,7 @@ namespace NCIASTaff.pages
             if (!IsPostBack)
             {
                 LoadStaffDepartmentDetails();
-               
+
                 string query = Request.QueryString["query"];
                 string approvalStatus = Request.QueryString["status"].Replace("%", " ");
                 if (query == "new")
@@ -49,7 +46,7 @@ namespace NCIASTaff.pages
                     }
                     else
                     {
-                       // btnSendForApproval.Visible = false;
+                        // btnSendForApproval.Visible = false;
                     }
 
                 }
@@ -109,7 +106,7 @@ namespace NCIASTaff.pages
                     string returnMsg = responseArr[0];
                     if (returnMsg == "SUCCESS")
                     {
-                       // SuccessMessage("Your application has been submitted.");
+                        // SuccessMessage("Your application has been submitted.");
                         Message($"Clearance request has been created successfully.");
                         MultiView1.SetActiveView(vwLines);
                         BindGridViewData();
@@ -214,9 +211,9 @@ namespace NCIASTaff.pages
             }
         }
 
-       
 
-       
+
+
         protected void btnSendForApproval_Click(object sender, EventArgs e)
         {
 

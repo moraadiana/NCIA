@@ -1,14 +1,7 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Web;
-using System.Web.Services.Description;
-using System.Web.SessionState;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
@@ -93,7 +86,7 @@ namespace NCIASTaff.pages
                     };
                     cmd.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
 
-                    using(SqlDataReader reader = cmd.ExecuteReader())
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.HasRows)
                         {
@@ -108,10 +101,11 @@ namespace NCIASTaff.pages
 
                 }
             }
-            catch(Exception ex) { 
+            catch (Exception ex)
+            {
                 ex.Data.Clear();
             }
-          
+
         }
 
         private void LoadStaffDetails()
@@ -129,9 +123,9 @@ namespace NCIASTaff.pages
                     {
                         lblDepartment.Text = departmentDetailsArr[1];
                         lblDirectorate.Text = departmentDetailsArr[2];
-                        
-                        
-                       
+
+
+
                         lblTitle.Text = departmentDetailsArr[3];
                     }
                 }
@@ -233,7 +227,7 @@ namespace NCIASTaff.pages
                 ex.Data.Clear();
             }
         }
-     
+
 
         private void LoadFixedassets()
         {
@@ -465,18 +459,18 @@ namespace NCIASTaff.pages
 
                 if (type == "1")
                 {
-                    if(string.IsNullOrEmpty(quantity))
+                    if (string.IsNullOrEmpty(quantity))
                     {
                         Message("Quantity requested cannot be null or empty");
                         txtQuantity.Focus();
                         return;
                     }
-                    if(Convert.ToDouble(qtyInStore) < 1)
+                    if (Convert.ToDouble(qtyInStore) < 1)
                     {
                         Message("Item is out of stock");
                         return;
                     }
-                    if(Convert.ToDouble(quantity) > Convert.ToDouble(qtyInStore))
+                    if (Convert.ToDouble(quantity) > Convert.ToDouble(qtyInStore))
                     {
                         Message("Quantity requested cannot be more than the quantity in store");
                         return;
@@ -498,10 +492,10 @@ namespace NCIASTaff.pages
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.Data.Clear();
-                Message("Requsition Line with this item already exists" );
+                Message("Requsition Line with this item already exists");
             }
         }
 
@@ -509,7 +503,7 @@ namespace NCIASTaff.pages
         {
             try
             {
-                if(gvLines.Rows.Count < 1)
+                if (gvLines.Rows.Count < 1)
                 {
                     Message("Please add line before senting for approval");
                     return;

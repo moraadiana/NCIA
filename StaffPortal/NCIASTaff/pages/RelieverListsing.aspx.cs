@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
 {
@@ -154,7 +149,7 @@ namespace NCIASTaff.pages
         }
         protected void lbtnAccept_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 string RequiNo = Request.QueryString["An"].ToString();
@@ -170,17 +165,18 @@ namespace NCIASTaff.pages
 
         protected void lbtnDecline_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
                 string RequiNo = Request.QueryString["An"].ToString();
                 Session["ReqNo"] = RequiNo;
-                Components.ObjNav.updateleave(RequiNo,2);
+                Components.ObjNav.updateleave(RequiNo, 2);
             }
             catch (Exception ex)
             {
                 ex.Data.Clear()
-;            }
+;
+            }
 
         }
     }

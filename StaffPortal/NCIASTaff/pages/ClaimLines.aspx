@@ -97,16 +97,23 @@
                                                         <tr>
                                                             <th>No:</th>
                                                             <th>Advance Type</th>
+                                                            <th>Account No</th>
                                                             <th>Amount:</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr>
                                                             <th>
-                                                                <asp:Label ID="lblLNo" runat="server" Text="Label"></asp:Label></th>
+                                                                <asp:Label ID="lblLNo" runat="server" Text="Label"></asp:Label>
+
+                                                            </th>
+                                                            <td>
+                                                                <asp:DropDownList ID="ddlAccountNo" runat="server" CssClass="form-control select2"></asp:DropDownList></td>
+    
+                                                            <td>
                                                             <td>
                                                                 <asp:DropDownList ID="ddlAdvancType" runat="server" CssClass="form-control select2"></asp:DropDownList></td>
-                                                                 <%--<asp:Label ID="lblAdvanceType" runat="server" Text="Label"></asp:Label></td>--%>
+                                                                
                                                             <td>
                                                                 <asp:TextBox ID="txtAmnt" CssClass="form-control" runat="server"></asp:TextBox>
                                                             </td>

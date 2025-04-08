@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Data.SqlClient;
 
 namespace NCIASTaff.pages
 {
@@ -15,7 +10,7 @@ namespace NCIASTaff.pages
         string[] strLimiters2 = new string[] { "[]" };
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 if (Session["username"] == null)
                 {
@@ -33,7 +28,7 @@ namespace NCIASTaff.pages
 
                 string documentNo = Request.QueryString["DocNum"].ToString();
 
-                string ApprovalList =Components.ObjNav.GetDocumentApprovalEntries(documentNo);
+                string ApprovalList = Components.ObjNav.GetDocumentApprovalEntries(documentNo);
 
                 if (!string.IsNullOrEmpty(ApprovalList))
                 {
@@ -161,7 +156,7 @@ namespace NCIASTaff.pages
             return htmlStr;
         }
 
-    
-   
+
+
     }
 }

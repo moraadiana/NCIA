@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Globalization;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
 {
@@ -37,12 +32,12 @@ namespace NCIASTaff.pages
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Connection = conn;
                     cmd.Parameters.AddWithValue("@Company_Name", Components.Company_Name);
-                    cmd.Parameters.AddWithValue("@Employee_No", "'"+Session["username"].ToString()+"'");
+                    cmd.Parameters.AddWithValue("@Employee_No", "'" + Session["username"].ToString() + "'");
                     int counter = 0;
                     using (SqlDataReader drL = cmd.ExecuteReader())
                     {
                         if (drL.HasRows)
-                        {                            
+                        {
                             while (drL.Read())
                             {
                                 //Open,Pending Approval,Released,Pending Prepayment,Cancelled,Posted

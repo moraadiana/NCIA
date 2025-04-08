@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace NCIASTaff.pages
 {
@@ -36,7 +29,7 @@ namespace NCIASTaff.pages
                                        "<br/><b style='font-family:monotype-corsiva; font-size:15px'>NDMA</b></center>" +
                                        "<hr style='height: 5px; border - width:0; color: #0c8c01; background - color:#0c8c01'>" +
                                        "Hello, " +
-                                          "<br/><br/>Please Note that your reliever has accepted the your reliever request for leave no "+LeaveNo+" <br>" +
+                                          "<br/><br/>Please Note that your reliever has accepted the your reliever request for leave no " + LeaveNo + " <br>" +
                                           "Please login to your portal and send the leave for approval<br/><br/> " +
                                            "To access your self-service portal, please use the following link: ";//link to be provided [URL link: http://portal.ndma.go.ke/] //+ mymail +
 

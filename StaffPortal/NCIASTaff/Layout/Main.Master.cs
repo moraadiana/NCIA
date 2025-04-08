@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace NCIASTaff.Layout
 {
@@ -31,7 +26,7 @@ namespace NCIASTaff.Layout
                 Session.Clear();
                 Response.Redirect("~/Default.aspx");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ex.Data.Clear();
             }

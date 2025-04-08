@@ -1,14 +1,9 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Net.Mail;
 
 namespace NCIASTaff.pages
 {
@@ -55,7 +50,7 @@ namespace NCIASTaff.pages
                         ddlResponsibilityCenter.SelectedValue = responsibilityCenter;
                     }
                 }
-                
+
                 Session["DocumentNo"] = documentNo;
                 BindAttachedDocuments(documentNo);
                 BindGridViewData();
@@ -64,11 +59,11 @@ namespace NCIASTaff.pages
             if (approvalStatus == "Open" || approvalStatus == "Pending")
             {
                 lbtnSubmit.Visible = true;
-              
+
             }
             else if (approvalStatus == "Pending Approval")
             {
-               
+
                 lbtnSubmit.Visible = false;
             }
         }
@@ -131,47 +126,47 @@ namespace NCIASTaff.pages
                 ddlResponsibilityCenter.Items.Add(new ListItem("Error loading responsibility centers"));
             }
         }
-         private void BindGridViewData()
+        private void BindGridViewData()
         {
             string pettyCashNo = ddlPostedPettyCash.SelectedValue.ToString();
             string pettyCashLines = webportals.GetPettyCashLines(pettyCashNo);
 
             if (!string.IsNullOrEmpty(pettyCashLines))
             {
-                
+
                 DataTable dt = new DataTable();
-               // dt.Columns.Add("Document No_");
+                // dt.Columns.Add("Document No_");
                 dt.Columns.Add("Advance Type");
                 dt.Columns.Add("Account No_");
                 dt.Columns.Add("Account Name");
                 dt.Columns.Add("Amount");
-              //  dt.Columns.Add("Line No_");
+                //  dt.Columns.Add("Line No_");
 
-               
+
                 string[] lines = pettyCashLines.Split(new[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
 
-                
+
                 foreach (string line in lines)
                 {
                     string[] fields = line.Split(new[] { "::" }, StringSplitOptions.None);
-                    if (fields.Length == 6) 
+                    if (fields.Length == 6)
                     {
                         DataRow row = dt.NewRow();
-                       // row["Document No_"] = fields[0];
+                        // row["Document No_"] = fields[0];
                         row["Advance Type"] = fields[1];
                         row["Account No_"] = fields[2];
                         row["Account Name"] = fields[3];
                         row["Amount"] = fields[4];
-                       // row["Line No_"] = fields[5];
+                        // row["Line No_"] = fields[5];
 
-                        dt.Rows.Add(row); 
+                        dt.Rows.Add(row);
                     }
                 }
 
                 gvLines.DataSource = dt;
                 gvLines.DataBind();
 
-              
+
             }
             foreach (GridViewRow row in gvLines.Rows)
             {
@@ -204,7 +199,7 @@ namespace NCIASTaff.pages
 
         }
 
-      
+
 
         private void BindAttachedDocuments(string documentNo)
         {
@@ -314,7 +309,7 @@ namespace NCIASTaff.pages
                         Message("The sum of Actual Amount Spent and Cash Amount Returned must ne equal to the amount.");
                         return;
                     }
-                    string response1 = webportals.InsertPettyCashSurrenderLines(documentNo,pettyCashNo,Amount,AmountSpent,cashReturned,accountNo);
+                    string response1 = webportals.InsertPettyCashSurrenderLines(documentNo, pettyCashNo, Amount, AmountSpent, cashReturned, accountNo);
                     if (response1 != null)
                     {
                         string[] responseArr = response1.Split(strLimiters, StringSplitOptions.None);

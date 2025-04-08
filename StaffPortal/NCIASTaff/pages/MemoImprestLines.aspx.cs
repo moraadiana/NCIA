@@ -1,14 +1,11 @@
-﻿using NCIASTaff;
+﻿using NCIASTaff.NAVWS;
 using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Web;
 //using System.Web.UI;
 using System.Web.UI.WebControls;
-using NCIASTaff.NAVWS;
 
 namespace NCIASTaff.pages
 {
@@ -30,7 +27,7 @@ namespace NCIASTaff.pages
                     Response.Redirect("~/Default.aspx");
                     return;
                 }
-             
+
 
                 if (Request.QueryString["ImprestNo"] != null)
                 {
@@ -62,8 +59,8 @@ namespace NCIASTaff.pages
             }
         }
 
-        
- 
+
+
         private void BindGridViewData()
         {
             string imprestNo = Request.QueryString["ImprestNo"].ToString();
@@ -109,7 +106,7 @@ namespace NCIASTaff.pages
 
                 // Calculate total amount and format each row
                 decimal totalAmount = 0;
-                
+
                 foreach (DataRow row in dt.Rows)
                 {
                     totalAmount += Convert.ToDecimal(row["Amount"]);
@@ -194,9 +191,9 @@ namespace NCIASTaff.pages
             }
         }
 
-     
 
-        
+
+
         private void LoadResponsibilityCenter()
         {
             try
@@ -447,7 +444,7 @@ namespace NCIASTaff.pages
                         Message("An error occured while deleting document. Please try again later!");
                         return;
                     }
-                    
+
                 }
                 else
                 {

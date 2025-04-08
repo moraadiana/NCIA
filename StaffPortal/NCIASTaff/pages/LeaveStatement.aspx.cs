@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Web;
 using System.Web.Hosting;
-using System.Web.Services.Description;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace NCIASTaff.pages
 {
@@ -66,7 +60,7 @@ namespace NCIASTaff.pages
                     }
                     FileStream stream = new FileStream(path, FileMode.CreateNew);
                     BinaryWriter writer = new BinaryWriter(stream);
-                    
+
                     myPDF.Attributes.Add("src", ResolveUrl("~/Download/" + String.Format("PAYSLIP{0}.pdf", filename)));
                 }
                 catch (Exception exception)
