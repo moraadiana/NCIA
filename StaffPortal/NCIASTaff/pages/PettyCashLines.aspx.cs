@@ -29,6 +29,7 @@ namespace NCIASTaff.pages
                 LoadStaffDetails();
                 LoadResponsibilityCenter();
                 LoadAccountNos();
+                
 
                 string query = Request.QueryString["query"];
                 string approvalStatus = Request.QueryString["status"].Replace("%", " ");
@@ -80,6 +81,16 @@ namespace NCIASTaff.pages
             {
                 string staffNo = Session["username"].ToString();
                 string staffName = Session["StaffName"].ToString();
+                string staffAccountNo = webportals.GetStaffPettyCashNo(staffNo);
+                if (!string.IsNullOrEmpty(staffAccountNo))
+                {
+                    lblAccountNo.Text = staffAccountNo;
+                }
+                //else
+                //{
+                //    lblAccountNo.Text = "Not Set, Contact Admin";
+                //}
+
                 string response = webportals.GetStaffDepartmentDetails(staffNo);
                 if (!string.IsNullOrEmpty(response))
                 {
@@ -137,7 +148,7 @@ namespace NCIASTaff.pages
             try
             {
                 ddlAccountNo.Items.Clear();
-                string AccountNo = webportals.GetAccountNo();
+                string AccountNo = webportals.GetGLAccounts();
                 if (!string.IsNullOrEmpty(AccountNo))
                 {
                     string[] AccountNoArr = AccountNo.Split(strLimiters2, StringSplitOptions.RemoveEmptyEntries);
@@ -201,16 +212,22 @@ namespace NCIASTaff.pages
                 string directorate = lblDirectorate.Text;
                 string responsibilityCenter = ddlResponsibilityCenter.SelectedValue;
                 string purpose = txtPurpose.Text;
+                string AccountNo = lblAccountNo.Text;
 
 
+                if (string.IsNullOrEmpty(AccountNo))
+                {
+                    Message("AccountNo cannot be null. Contact Administrator to set it");
+                    return;
+                }
                 if (string.IsNullOrEmpty(department))
                 {
-                    Message("Department cannot be null!");
+                    Message("Department cannot be null! Contact Administrator to set it");
                     return;
                 }
                 if (string.IsNullOrEmpty(directorate))
                 {
-                    Message("Unit cannot be null!");
+                    Message("Unit cannot be null! Contact Administrator to set it");
                     return;
                 }
                 if (string.IsNullOrEmpty(responsibilityCenter))
@@ -434,9 +451,11 @@ namespace NCIASTaff.pages
                 {
                     string[] args = new string[2];
                     string pettyCashNo = lblPettyCashNo.Text;
+                   
                     args = (sender as LinkButton).CommandArgument.ToString().Split(';');
-                    string advanceType = args[0];
-                    string response = webportals.RemoveImprestRequisitionLine(pettyCashNo, advanceType);
+                    string AccNo = args[0];
+                    //string response = webportals.RemovePettyCashRequisitionLine(pettyCashNo);
+                    string response = webportals.RemovePettyCashRequisitionLine(pettyCashNo, AccNo);
                     if (!string.IsNullOrEmpty(response))
                     {
                         if (response == "SUCCESS")
@@ -482,7 +501,7 @@ namespace NCIASTaff.pages
                 string msg = webportals.OnSendPettyCashRequisitionForApproval(pettyCashNo);
                 if (msg == "SUCCESS")
                 {
-                    SuccessMessage($"Imprest number {pettyCashNo} has been sent for approval successfuly!");
+                    SuccessMessage($"PettyCash number {pettyCashNo} has been sent for approval successfuly!");
                 }
                 else
                 {
@@ -500,7 +519,7 @@ namespace NCIASTaff.pages
             try
             {
                 string pettyCashNo = lblPettyCashNo.Text;
-                webportals.OnCancelImprestRequisition(pettyCashNo);
+                webportals.OnCancelPettyCashRequisition(pettyCashNo);
                 SuccessMessage($"Petty cash number {pettyCashNo} has been cancelled successfuly!");
             }
             catch (Exception ex)

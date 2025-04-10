@@ -92,7 +92,7 @@
                                         <li class="divider"></li>
                                         <li><a href="PettyCashAccounting.aspx"><i class="fa fa-hand-o-right"></i>Petty Cash Surrender</a></li>
                                         <li class="divider"></li>
-                                        <li><a href="PettyCashListing(Reimbursment).aspx"><i class="fa fa-hand-o-right"></i>Petty Cash Reimbursment</a></li>
+                                        <li><a href="PettyCashListing(Reimbursement).aspx"><i class="fa fa-hand-o-right"></i>Petty Cash Reimbursment</a></li>
                                         <!--
                                               <li><a href="PurchaseReqListing.aspx"><i class="fa fa-hand-o-right"></i>Purchase Requisitions</a></li>
 <li class="divider"></li>-->

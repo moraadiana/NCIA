@@ -178,6 +178,20 @@
           </sequence>
         </complexType>
       </element>
+      <element name="CommitPettyCashReimbursement">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="pettyCashReNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CommitPettyCashReimbursement_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="CpActivityLines">
         <complexType>
           <sequence>
@@ -266,14 +280,15 @@
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="username" type="string" />
             <element minOccurs="1" maxOccurs="1" name="pettyCashNo" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="bankNo" type="string" />
             <element minOccurs="1" maxOccurs="1" name="resCenter" type="string" />
           </sequence>
         </complexType>
       </element>
       <element name="CreatePettyCashReimbursementHeader_Result">
         <complexType>
-          <sequence />
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
         </complexType>
       </element>
       <element name="CreatePettyCashRequisitionHeader">
@@ -684,18 +699,6 @@
           </sequence>
         </complexType>
       </element>
-      <element name="GetAccountNo">
-        <complexType>
-          <sequence />
-        </complexType>
-      </element>
-      <element name="GetAccountNo_Result">
-        <complexType>
-          <sequence>
-            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
-          </sequence>
-        </complexType>
-      </element>
       <element name="GetAdvancetype">
         <complexType>
           <sequence>
@@ -837,6 +840,20 @@
         </complexType>
       </element>
       <element name="GetDefaultDays_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetDimensions">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="dimensionCode" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetDimensions_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1283,12 +1300,16 @@
       </element>
       <element name="GetPettyCashReimbursementLines">
         <complexType>
-          <sequence />
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="docNo" type="string" />
+          </sequence>
         </complexType>
       </element>
       <element name="GetPettyCashReimbursementLines_Result">
         <complexType>
-          <sequence />
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
         </complexType>
       </element>
       <element name="GetPettyCashSurrenderLines">
@@ -1305,14 +1326,14 @@
           </sequence>
         </complexType>
       </element>
-      <element name="GetPettyCash">
+      <element name="GetPostedPettyCash">
         <complexType>
           <sequence>
-            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
           </sequence>
         </complexType>
       </element>
-      <element name="GetPettyCash_Result">
+      <element name="GetPostedPettyCash_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1449,6 +1470,20 @@
         </complexType>
       </element>
       <element name="GetStaffPassword_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStaffPettyCashNo">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetStaffPettyCashNo_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -1776,6 +1811,26 @@
           </sequence>
         </complexType>
       </element>
+      <element name="InsertPettyCashReimbursementLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="pettyCashReNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="voteNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="advanceType" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="amount" type="decimal" />
+            <element minOccurs="1" maxOccurs="1" name="purpose" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="unit" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="department" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="InsertPettyCashReimbursementLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="InsertPettyCashRequisitionLine">
         <complexType>
           <sequence>
@@ -2020,6 +2075,18 @@
           </sequence>
         </complexType>
       </element>
+      <element name="OnCancelPettyCashReimbursement">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="pettyCashReNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OnCancelPettyCashReimbursement_Result">
+        <complexType>
+          <sequence />
+        </complexType>
+      </element>
       <element name="OnCancelPettyCashRequisition">
         <complexType>
           <sequence>
@@ -2118,6 +2185,34 @@
         </complexType>
       </element>
       <element name="OnSendImprestSurrenderForApproval_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OnSendPettyCashReimbursementForApproval1">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="pettyCashReNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OnSendPettyCashReimbursementForApproval1_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OnSendPettyCashReimbursementForApproval">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="pettyCashReNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="OnSendPettyCashReimbursementForApproval_Result">
         <complexType>
           <sequence>
             <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
@@ -2302,10 +2397,26 @@
           </sequence>
         </complexType>
       </element>
+      <element name="RemovePettyCashReimbursementLine">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="pettyCashReNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="voteNo" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RemovePettyCashReimbursementLine_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="return_value" type="string" />
+          </sequence>
+        </complexType>
+      </element>
       <element name="RemovePettyCashRequisitionLine">
         <complexType>
           <sequence>
-            <element minOccurs="1" maxOccurs="1" name="lineNo" type="int" />
+            <element minOccurs="1" maxOccurs="1" name="pettyCashNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="accountNo" type="string" />
           </sequence>
         </complexType>
       </element>
@@ -2653,6 +2764,12 @@
   <message name="ClearanceSetup_Result">
     <part name="parameters" element="tns:ClearanceSetup_Result" />
   </message>
+  <message name="CommitPettyCashReimbursement">
+    <part name="parameters" element="tns:CommitPettyCashReimbursement" />
+  </message>
+  <message name="CommitPettyCashReimbursement_Result">
+    <part name="parameters" element="tns:CommitPettyCashReimbursement_Result" />
+  </message>
   <message name="CpActivityLines">
     <part name="parameters" element="tns:CpActivityLines" />
   </message>
@@ -2833,12 +2950,6 @@
   <message name="Generatep9Report_Result">
     <part name="parameters" element="tns:Generatep9Report_Result" />
   </message>
-  <message name="GetAccountNo">
-    <part name="parameters" element="tns:GetAccountNo" />
-  </message>
-  <message name="GetAccountNo_Result">
-    <part name="parameters" element="tns:GetAccountNo_Result" />
-  </message>
   <message name="GetAdvancetype">
     <part name="parameters" element="tns:GetAdvancetype" />
   </message>
@@ -2904,6 +3015,12 @@
   </message>
   <message name="GetDefaultDays_Result">
     <part name="parameters" element="tns:GetDefaultDays_Result" />
+  </message>
+  <message name="GetDimensions">
+    <part name="parameters" element="tns:GetDimensions" />
+  </message>
+  <message name="GetDimensions_Result">
+    <part name="parameters" element="tns:GetDimensions_Result" />
   </message>
   <message name="GetDocResponsibilityCentres">
     <part name="parameters" element="tns:GetDocResponsibilityCentres" />
@@ -3109,11 +3226,11 @@
   <message name="GetPettyCashSurrenderLines_Result">
     <part name="parameters" element="tns:GetPettyCashSurrenderLines_Result" />
   </message>
-  <message name="GetPettyCash">
-    <part name="parameters" element="tns:GetPettyCash" />
+  <message name="GetPostedPettyCash">
+    <part name="parameters" element="tns:GetPostedPettyCash" />
   </message>
-  <message name="GetPettyCash_Result">
-    <part name="parameters" element="tns:GetPettyCash_Result" />
+  <message name="GetPostedPettyCash_Result">
+    <part name="parameters" element="tns:GetPostedPettyCash_Result" />
   </message>
   <message name="GetReceipts">
     <part name="parameters" element="tns:GetReceipts" />
@@ -3174,6 +3291,12 @@
   </message>
   <message name="GetStaffPassword_Result">
     <part name="parameters" element="tns:GetStaffPassword_Result" />
+  </message>
+  <message name="GetStaffPettyCashNo">
+    <part name="parameters" element="tns:GetStaffPettyCashNo" />
+  </message>
+  <message name="GetStaffPettyCashNo_Result">
+    <part name="parameters" element="tns:GetStaffPettyCashNo_Result" />
   </message>
   <message name="GetStoreItemQuantity">
     <part name="parameters" element="tns:GetStoreItemQuantity" />
@@ -3289,6 +3412,12 @@
   <message name="InsertOrUpdateAppraisalLines_Result">
     <part name="parameters" element="tns:InsertOrUpdateAppraisalLines_Result" />
   </message>
+  <message name="InsertPettyCashReimbursementLine">
+    <part name="parameters" element="tns:InsertPettyCashReimbursementLine" />
+  </message>
+  <message name="InsertPettyCashReimbursementLine_Result">
+    <part name="parameters" element="tns:InsertPettyCashReimbursementLine_Result" />
+  </message>
   <message name="InsertPettyCashRequisitionLine">
     <part name="parameters" element="tns:InsertPettyCashRequisitionLine" />
   </message>
@@ -3385,6 +3514,12 @@
   <message name="OnCancelLeaveApplication_Result">
     <part name="parameters" element="tns:OnCancelLeaveApplication_Result" />
   </message>
+  <message name="OnCancelPettyCashReimbursement">
+    <part name="parameters" element="tns:OnCancelPettyCashReimbursement" />
+  </message>
+  <message name="OnCancelPettyCashReimbursement_Result">
+    <part name="parameters" element="tns:OnCancelPettyCashReimbursement_Result" />
+  </message>
   <message name="OnCancelPettyCashRequisition">
     <part name="parameters" element="tns:OnCancelPettyCashRequisition" />
   </message>
@@ -3432,6 +3567,18 @@
   </message>
   <message name="OnSendImprestSurrenderForApproval_Result">
     <part name="parameters" element="tns:OnSendImprestSurrenderForApproval_Result" />
+  </message>
+  <message name="OnSendPettyCashReimbursementForApproval1">
+    <part name="parameters" element="tns:OnSendPettyCashReimbursementForApproval1" />
+  </message>
+  <message name="OnSendPettyCashReimbursementForApproval1_Result">
+    <part name="parameters" element="tns:OnSendPettyCashReimbursementForApproval1_Result" />
+  </message>
+  <message name="OnSendPettyCashReimbursementForApproval">
+    <part name="parameters" element="tns:OnSendPettyCashReimbursementForApproval" />
+  </message>
+  <message name="OnSendPettyCashReimbursementForApproval_Result">
+    <part name="parameters" element="tns:OnSendPettyCashReimbursementForApproval_Result" />
   </message>
   <message name="OnSendPettyCashRequisitionForApproval">
     <part name="parameters" element="tns:OnSendPettyCashRequisitionForApproval" />
@@ -3504,6 +3651,12 @@
   </message>
   <message name="RemoveImprestRequisitionLine_Result">
     <part name="parameters" element="tns:RemoveImprestRequisitionLine_Result" />
+  </message>
+  <message name="RemovePettyCashReimbursementLine">
+    <part name="parameters" element="tns:RemovePettyCashReimbursementLine" />
+  </message>
+  <message name="RemovePettyCashReimbursementLine_Result">
+    <part name="parameters" element="tns:RemovePettyCashReimbursementLine_Result" />
   </message>
   <message name="RemovePettyCashRequisitionLine">
     <part name="parameters" element="tns:RemovePettyCashRequisitionLine" />
@@ -3656,6 +3809,10 @@
       <input name="ClearanceSetup" message="tns:ClearanceSetup" />
       <output name="ClearanceSetup_Result" message="tns:ClearanceSetup_Result" />
     </operation>
+    <operation name="CommitPettyCashReimbursement">
+      <input name="CommitPettyCashReimbursement" message="tns:CommitPettyCashReimbursement" />
+      <output name="CommitPettyCashReimbursement_Result" message="tns:CommitPettyCashReimbursement_Result" />
+    </operation>
     <operation name="CpActivityLines">
       <input name="CpActivityLines" message="tns:CpActivityLines" />
       <output name="CpActivityLines_Result" message="tns:CpActivityLines_Result" />
@@ -3776,10 +3933,6 @@
       <input name="Generatep9Report" message="tns:Generatep9Report" />
       <output name="Generatep9Report_Result" message="tns:Generatep9Report_Result" />
     </operation>
-    <operation name="GetAccountNo">
-      <input name="GetAccountNo" message="tns:GetAccountNo" />
-      <output name="GetAccountNo_Result" message="tns:GetAccountNo_Result" />
-    </operation>
     <operation name="GetAdvancetype">
       <input name="GetAdvancetype" message="tns:GetAdvancetype" />
       <output name="GetAdvancetype_Result" message="tns:GetAdvancetype_Result" />
@@ -3823,6 +3976,10 @@
     <operation name="GetDefaultDays">
       <input name="GetDefaultDays" message="tns:GetDefaultDays" />
       <output name="GetDefaultDays_Result" message="tns:GetDefaultDays_Result" />
+    </operation>
+    <operation name="GetDimensions">
+      <input name="GetDimensions" message="tns:GetDimensions" />
+      <output name="GetDimensions_Result" message="tns:GetDimensions_Result" />
     </operation>
     <operation name="GetDocResponsibilityCentres">
       <input name="GetDocResponsibilityCentres" message="tns:GetDocResponsibilityCentres" />
@@ -3960,9 +4117,9 @@
       <input name="GetPettyCashSurrenderLines" message="tns:GetPettyCashSurrenderLines" />
       <output name="GetPettyCashSurrenderLines_Result" message="tns:GetPettyCashSurrenderLines_Result" />
     </operation>
-    <operation name="GetPettyCash">
-      <input name="GetPettyCash" message="tns:GetPettyCash" />
-      <output name="GetPettyCash_Result" message="tns:GetPettyCash_Result" />
+    <operation name="GetPostedPettyCash">
+      <input name="GetPostedPettyCash" message="tns:GetPostedPettyCash" />
+      <output name="GetPostedPettyCash_Result" message="tns:GetPostedPettyCash_Result" />
     </operation>
     <operation name="GetReceipts">
       <input name="GetReceipts" message="tns:GetReceipts" />
@@ -4003,6 +4160,10 @@
     <operation name="GetStaffPassword">
       <input name="GetStaffPassword" message="tns:GetStaffPassword" />
       <output name="GetStaffPassword_Result" message="tns:GetStaffPassword_Result" />
+    </operation>
+    <operation name="GetStaffPettyCashNo">
+      <input name="GetStaffPettyCashNo" message="tns:GetStaffPettyCashNo" />
+      <output name="GetStaffPettyCashNo_Result" message="tns:GetStaffPettyCashNo_Result" />
     </operation>
     <operation name="GetStoreItemQuantity">
       <input name="GetStoreItemQuantity" message="tns:GetStoreItemQuantity" />
@@ -4080,6 +4241,10 @@
       <input name="InsertOrUpdateAppraisalLines" message="tns:InsertOrUpdateAppraisalLines" />
       <output name="InsertOrUpdateAppraisalLines_Result" message="tns:InsertOrUpdateAppraisalLines_Result" />
     </operation>
+    <operation name="InsertPettyCashReimbursementLine">
+      <input name="InsertPettyCashReimbursementLine" message="tns:InsertPettyCashReimbursementLine" />
+      <output name="InsertPettyCashReimbursementLine_Result" message="tns:InsertPettyCashReimbursementLine_Result" />
+    </operation>
     <operation name="InsertPettyCashRequisitionLine">
       <input name="InsertPettyCashRequisitionLine" message="tns:InsertPettyCashRequisitionLine" />
       <output name="InsertPettyCashRequisitionLine_Result" message="tns:InsertPettyCashRequisitionLine_Result" />
@@ -4144,6 +4309,10 @@
       <input name="OnCancelLeaveApplication" message="tns:OnCancelLeaveApplication" />
       <output name="OnCancelLeaveApplication_Result" message="tns:OnCancelLeaveApplication_Result" />
     </operation>
+    <operation name="OnCancelPettyCashReimbursement">
+      <input name="OnCancelPettyCashReimbursement" message="tns:OnCancelPettyCashReimbursement" />
+      <output name="OnCancelPettyCashReimbursement_Result" message="tns:OnCancelPettyCashReimbursement_Result" />
+    </operation>
     <operation name="OnCancelPettyCashRequisition">
       <input name="OnCancelPettyCashRequisition" message="tns:OnCancelPettyCashRequisition" />
       <output name="OnCancelPettyCashRequisition_Result" message="tns:OnCancelPettyCashRequisition_Result" />
@@ -4175,6 +4344,14 @@
     <operation name="OnSendImprestSurrenderForApproval">
       <input name="OnSendImprestSurrenderForApproval" message="tns:OnSendImprestSurrenderForApproval" />
       <output name="OnSendImprestSurrenderForApproval_Result" message="tns:OnSendImprestSurrenderForApproval_Result" />
+    </operation>
+    <operation name="OnSendPettyCashReimbursementForApproval1">
+      <input name="OnSendPettyCashReimbursementForApproval1" message="tns:OnSendPettyCashReimbursementForApproval1" />
+      <output name="OnSendPettyCashReimbursementForApproval1_Result" message="tns:OnSendPettyCashReimbursementForApproval1_Result" />
+    </operation>
+    <operation name="OnSendPettyCashReimbursementForApproval">
+      <input name="OnSendPettyCashReimbursementForApproval" message="tns:OnSendPettyCashReimbursementForApproval" />
+      <output name="OnSendPettyCashReimbursementForApproval_Result" message="tns:OnSendPettyCashReimbursementForApproval_Result" />
     </operation>
     <operation name="OnSendPettyCashRequisitionForApproval">
       <input name="OnSendPettyCashRequisitionForApproval" message="tns:OnSendPettyCashRequisitionForApproval" />
@@ -4223,6 +4400,10 @@
     <operation name="RemoveImprestRequisitionLine">
       <input name="RemoveImprestRequisitionLine" message="tns:RemoveImprestRequisitionLine" />
       <output name="RemoveImprestRequisitionLine_Result" message="tns:RemoveImprestRequisitionLine_Result" />
+    </operation>
+    <operation name="RemovePettyCashReimbursementLine">
+      <input name="RemovePettyCashReimbursementLine" message="tns:RemovePettyCashReimbursementLine" />
+      <output name="RemovePettyCashReimbursementLine_Result" message="tns:RemovePettyCashReimbursementLine_Result" />
     </operation>
     <operation name="RemovePettyCashRequisitionLine">
       <input name="RemovePettyCashRequisitionLine" message="tns:RemovePettyCashRequisitionLine" />
@@ -4400,6 +4581,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="ClearanceSetup_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="CommitPettyCashReimbursement">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:CommitPettyCashReimbursement" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="CommitPettyCashReimbursement">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="CommitPettyCashReimbursement_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -4673,15 +4863,6 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
-    <operation name="GetAccountNo">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAccountNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="GetAccountNo">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </input>
-      <output name="GetAccountNo_Result">
-        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      </output>
-    </operation>
     <operation name="GetAdvancetype">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAdvancetype" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="GetAdvancetype">
@@ -4778,6 +4959,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetDefaultDays_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetDimensions">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetDimensions" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetDimensions">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetDimensions_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -5087,12 +5277,12 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
-    <operation name="GetPettyCash">
-      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPettyCash" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
-      <input name="GetPettyCash">
+    <operation name="GetPostedPettyCash">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPostedPettyCash" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetPostedPettyCash">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
-      <output name="GetPettyCash_Result">
+      <output name="GetPostedPettyCash_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -5183,6 +5373,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="GetStaffPassword_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="GetStaffPettyCashNo">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetStaffPettyCashNo" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="GetStaffPettyCashNo">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="GetStaffPettyCashNo_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -5357,6 +5556,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="InsertPettyCashReimbursementLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertPettyCashReimbursementLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="InsertPettyCashReimbursementLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="InsertPettyCashReimbursementLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="InsertPettyCashRequisitionLine">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertPettyCashRequisitionLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="InsertPettyCashRequisitionLine">
@@ -5501,6 +5709,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
+    <operation name="OnCancelPettyCashReimbursement">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnCancelPettyCashReimbursement" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="OnCancelPettyCashReimbursement">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="OnCancelPettyCashReimbursement_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
     <operation name="OnCancelPettyCashRequisition">
       <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnCancelPettyCashRequisition" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       <input name="OnCancelPettyCashRequisition">
@@ -5570,6 +5787,24 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="OnSendImprestSurrenderForApproval_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="OnSendPettyCashReimbursementForApproval1">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnSendPettyCashReimbursementForApproval1" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="OnSendPettyCashReimbursementForApproval1">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="OnSendPettyCashReimbursementForApproval1_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="OnSendPettyCashReimbursementForApproval">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnSendPettyCashReimbursementForApproval" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="OnSendPettyCashReimbursementForApproval">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="OnSendPettyCashReimbursementForApproval_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>
@@ -5678,6 +5913,15 @@
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </input>
       <output name="RemoveImprestRequisitionLine_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="RemovePettyCashReimbursementLine">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/Staffportall:RemovePettyCashReimbursementLine" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="RemovePettyCashReimbursementLine">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="RemovePettyCashReimbursementLine_Result">
         <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
       </output>
     </operation>

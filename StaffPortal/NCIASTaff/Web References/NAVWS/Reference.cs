@@ -53,6 +53,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback ClearanceSetupOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CommitPettyCashReimbursementOperationCompleted;
+        
         private System.Threading.SendOrPostCallback CpActivityLinesOperationCompleted;
         
         private System.Threading.SendOrPostCallback CreateAppraisalHeaderOperationCompleted;
@@ -113,8 +115,6 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback Generatep9ReportOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetAccountNoOperationCompleted;
-        
         private System.Threading.SendOrPostCallback GetAdvancetypeOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetAllEmployeesOperationCompleted;
@@ -136,6 +136,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback GetCpPeriodsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetDefaultDaysOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetDimensionsOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetDocResponsibilityCentresOperationCompleted;
         
@@ -205,7 +207,7 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback GetPettyCashSurrenderLinesOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GetPettyCashOperationCompleted;
+        private System.Threading.SendOrPostCallback GetPostedPettyCashOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetReceiptsOperationCompleted;
         
@@ -226,6 +228,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback GetStaffGenderOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetStaffPasswordOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GetStaffPettyCashNoOperationCompleted;
         
         private System.Threading.SendOrPostCallback GetStoreItemQuantityOperationCompleted;
         
@@ -265,6 +269,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback InsertOrUpdateAppraisalLinesOperationCompleted;
         
+        private System.Threading.SendOrPostCallback InsertPettyCashReimbursementLineOperationCompleted;
+        
         private System.Threading.SendOrPostCallback InsertPettyCashRequisitionLineOperationCompleted;
         
         private System.Threading.SendOrPostCallback InsertPettyCashSurrenderLinesOperationCompleted;
@@ -297,6 +303,8 @@ namespace NCIASTaff.NAVWS {
         
         private System.Threading.SendOrPostCallback OnCancelLeaveApplicationOperationCompleted;
         
+        private System.Threading.SendOrPostCallback OnCancelPettyCashReimbursementOperationCompleted;
+        
         private System.Threading.SendOrPostCallback OnCancelPettyCashRequisitionOperationCompleted;
         
         private System.Threading.SendOrPostCallback OnCancelPettyCashSurrenderOperationCompleted;
@@ -312,6 +320,10 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback OnSendImprestRequisitionForApprovalOperationCompleted;
         
         private System.Threading.SendOrPostCallback OnSendImprestSurrenderForApprovalOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback OnSendPettyCashReimbursementForApproval1OperationCompleted;
+        
+        private System.Threading.SendOrPostCallback OnSendPettyCashReimbursementForApprovalOperationCompleted;
         
         private System.Threading.SendOrPostCallback OnSendPettyCashRequisitionForApprovalOperationCompleted;
         
@@ -336,6 +348,8 @@ namespace NCIASTaff.NAVWS {
         private System.Threading.SendOrPostCallback RemoveHRMTrainingParticipantOperationCompleted;
         
         private System.Threading.SendOrPostCallback RemoveImprestRequisitionLineOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RemovePettyCashReimbursementLineOperationCompleted;
         
         private System.Threading.SendOrPostCallback RemovePettyCashRequisitionLineOperationCompleted;
         
@@ -446,6 +460,9 @@ namespace NCIASTaff.NAVWS {
         public event ClearanceSetupCompletedEventHandler ClearanceSetupCompleted;
         
         /// <remarks/>
+        public event CommitPettyCashReimbursementCompletedEventHandler CommitPettyCashReimbursementCompleted;
+        
+        /// <remarks/>
         public event CpActivityLinesCompletedEventHandler CpActivityLinesCompleted;
         
         /// <remarks/>
@@ -536,9 +553,6 @@ namespace NCIASTaff.NAVWS {
         public event Generatep9ReportCompletedEventHandler Generatep9ReportCompleted;
         
         /// <remarks/>
-        public event GetAccountNoCompletedEventHandler GetAccountNoCompleted;
-        
-        /// <remarks/>
         public event GetAdvancetypeCompletedEventHandler GetAdvancetypeCompleted;
         
         /// <remarks/>
@@ -570,6 +584,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetDefaultDaysCompletedEventHandler GetDefaultDaysCompleted;
+        
+        /// <remarks/>
+        public event GetDimensionsCompletedEventHandler GetDimensionsCompleted;
         
         /// <remarks/>
         public event GetDocResponsibilityCentresCompletedEventHandler GetDocResponsibilityCentresCompleted;
@@ -674,7 +691,7 @@ namespace NCIASTaff.NAVWS {
         public event GetPettyCashSurrenderLinesCompletedEventHandler GetPettyCashSurrenderLinesCompleted;
         
         /// <remarks/>
-        public event GetPettyCashCompletedEventHandler GetPettyCashCompleted;
+        public event GetPostedPettyCashCompletedEventHandler GetPostedPettyCashCompleted;
         
         /// <remarks/>
         public event GetReceiptsCompletedEventHandler GetReceiptsCompleted;
@@ -705,6 +722,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event GetStaffPasswordCompletedEventHandler GetStaffPasswordCompleted;
+        
+        /// <remarks/>
+        public event GetStaffPettyCashNoCompletedEventHandler GetStaffPettyCashNoCompleted;
         
         /// <remarks/>
         public event GetStoreItemQuantityCompletedEventHandler GetStoreItemQuantityCompleted;
@@ -764,6 +784,9 @@ namespace NCIASTaff.NAVWS {
         public event InsertOrUpdateAppraisalLinesCompletedEventHandler InsertOrUpdateAppraisalLinesCompleted;
         
         /// <remarks/>
+        public event InsertPettyCashReimbursementLineCompletedEventHandler InsertPettyCashReimbursementLineCompleted;
+        
+        /// <remarks/>
         public event InsertPettyCashRequisitionLineCompletedEventHandler InsertPettyCashRequisitionLineCompleted;
         
         /// <remarks/>
@@ -812,6 +835,9 @@ namespace NCIASTaff.NAVWS {
         public event OnCancelLeaveApplicationCompletedEventHandler OnCancelLeaveApplicationCompleted;
         
         /// <remarks/>
+        public event OnCancelPettyCashReimbursementCompletedEventHandler OnCancelPettyCashReimbursementCompleted;
+        
+        /// <remarks/>
         public event OnCancelPettyCashRequisitionCompletedEventHandler OnCancelPettyCashRequisitionCompleted;
         
         /// <remarks/>
@@ -834,6 +860,12 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event OnSendImprestSurrenderForApprovalCompletedEventHandler OnSendImprestSurrenderForApprovalCompleted;
+        
+        /// <remarks/>
+        public event OnSendPettyCashReimbursementForApproval1CompletedEventHandler OnSendPettyCashReimbursementForApproval1Completed;
+        
+        /// <remarks/>
+        public event OnSendPettyCashReimbursementForApprovalCompletedEventHandler OnSendPettyCashReimbursementForApprovalCompleted;
         
         /// <remarks/>
         public event OnSendPettyCashRequisitionForApprovalCompletedEventHandler OnSendPettyCashRequisitionForApprovalCompleted;
@@ -870,6 +902,9 @@ namespace NCIASTaff.NAVWS {
         
         /// <remarks/>
         public event RemoveImprestRequisitionLineCompletedEventHandler RemoveImprestRequisitionLineCompleted;
+        
+        /// <remarks/>
+        public event RemovePettyCashReimbursementLineCompletedEventHandler RemovePettyCashReimbursementLineCompleted;
         
         /// <remarks/>
         public event RemovePettyCashRequisitionLineCompletedEventHandler RemovePettyCashRequisitionLineCompleted;
@@ -1301,6 +1336,37 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:CommitPettyCashReimbursement" +
+            "", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CommitPettyCashReimbursement_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string CommitPettyCashReimbursement(string pettyCashReNo) {
+            object[] results = this.Invoke("CommitPettyCashReimbursement", new object[] {
+                        pettyCashReNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CommitPettyCashReimbursementAsync(string pettyCashReNo) {
+            this.CommitPettyCashReimbursementAsync(pettyCashReNo, null);
+        }
+        
+        /// <remarks/>
+        public void CommitPettyCashReimbursementAsync(string pettyCashReNo, object userState) {
+            if ((this.CommitPettyCashReimbursementOperationCompleted == null)) {
+                this.CommitPettyCashReimbursementOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCommitPettyCashReimbursementOperationCompleted);
+            }
+            this.InvokeAsync("CommitPettyCashReimbursement", new object[] {
+                        pettyCashReNo}, this.CommitPettyCashReimbursementOperationCompleted, userState);
+        }
+        
+        private void OnCommitPettyCashReimbursementOperationCompleted(object arg) {
+            if ((this.CommitPettyCashReimbursementCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CommitPettyCashReimbursementCompleted(this, new CommitPettyCashReimbursementCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:CpActivityLines", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CpActivityLines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string CpActivityLines(string staffNo) {
@@ -1481,35 +1547,35 @@ namespace NCIASTaff.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreatePettyCashReimbursement" +
             "Header", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CreatePettyCashReimbursementHeader_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void CreatePettyCashReimbursementHeader(string username, string pettyCashNo, string bankNo, string resCenter) {
-            this.Invoke("CreatePettyCashReimbursementHeader", new object[] {
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string CreatePettyCashReimbursementHeader(string username, string pettyCashNo, string resCenter) {
+            object[] results = this.Invoke("CreatePettyCashReimbursementHeader", new object[] {
                         username,
                         pettyCashNo,
-                        bankNo,
                         resCenter});
+            return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void CreatePettyCashReimbursementHeaderAsync(string username, string pettyCashNo, string bankNo, string resCenter) {
-            this.CreatePettyCashReimbursementHeaderAsync(username, pettyCashNo, bankNo, resCenter, null);
+        public void CreatePettyCashReimbursementHeaderAsync(string username, string pettyCashNo, string resCenter) {
+            this.CreatePettyCashReimbursementHeaderAsync(username, pettyCashNo, resCenter, null);
         }
         
         /// <remarks/>
-        public void CreatePettyCashReimbursementHeaderAsync(string username, string pettyCashNo, string bankNo, string resCenter, object userState) {
+        public void CreatePettyCashReimbursementHeaderAsync(string username, string pettyCashNo, string resCenter, object userState) {
             if ((this.CreatePettyCashReimbursementHeaderOperationCompleted == null)) {
                 this.CreatePettyCashReimbursementHeaderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreatePettyCashReimbursementHeaderOperationCompleted);
             }
             this.InvokeAsync("CreatePettyCashReimbursementHeader", new object[] {
                         username,
                         pettyCashNo,
-                        bankNo,
                         resCenter}, this.CreatePettyCashReimbursementHeaderOperationCompleted, userState);
         }
         
         private void OnCreatePettyCashReimbursementHeaderOperationCompleted(object arg) {
             if ((this.CreatePettyCashReimbursementHeaderCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CreatePettyCashReimbursementHeaderCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.CreatePettyCashReimbursementHeaderCompleted(this, new CreatePettyCashReimbursementHeaderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2381,34 +2447,6 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAccountNo", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetAccountNo_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string GetAccountNo() {
-            object[] results = this.Invoke("GetAccountNo", new object[0]);
-            return ((string)(results[0]));
-        }
-        
-        /// <remarks/>
-        public void GetAccountNoAsync() {
-            this.GetAccountNoAsync(null);
-        }
-        
-        /// <remarks/>
-        public void GetAccountNoAsync(object userState) {
-            if ((this.GetAccountNoOperationCompleted == null)) {
-                this.GetAccountNoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetAccountNoOperationCompleted);
-            }
-            this.InvokeAsync("GetAccountNo", new object[0], this.GetAccountNoOperationCompleted, userState);
-        }
-        
-        private void OnGetAccountNoOperationCompleted(object arg) {
-            if ((this.GetAccountNoCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetAccountNoCompleted(this, new GetAccountNoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetAdvancetype", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetAdvancetype_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
         public string GetAdvancetype(int type) {
@@ -2729,6 +2767,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetDefaultDaysCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetDefaultDaysCompleted(this, new GetDefaultDaysCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetDimensions", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetDimensions_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetDimensions(string dimensionCode) {
+            object[] results = this.Invoke("GetDimensions", new object[] {
+                        dimensionCode});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetDimensionsAsync(string dimensionCode) {
+            this.GetDimensionsAsync(dimensionCode, null);
+        }
+        
+        /// <remarks/>
+        public void GetDimensionsAsync(string dimensionCode, object userState) {
+            if ((this.GetDimensionsOperationCompleted == null)) {
+                this.GetDimensionsOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetDimensionsOperationCompleted);
+            }
+            this.InvokeAsync("GetDimensions", new object[] {
+                        dimensionCode}, this.GetDimensionsOperationCompleted, userState);
+        }
+        
+        private void OnGetDimensionsOperationCompleted(object arg) {
+            if ((this.GetDimensionsCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetDimensionsCompleted(this, new GetDimensionsCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3687,27 +3755,31 @@ namespace NCIASTaff.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPettyCashReimbursementLin" +
             "es", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetPettyCashReimbursementLines_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void GetPettyCashReimbursementLines() {
-            this.Invoke("GetPettyCashReimbursementLines", new object[0]);
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetPettyCashReimbursementLines(string docNo) {
+            object[] results = this.Invoke("GetPettyCashReimbursementLines", new object[] {
+                        docNo});
+            return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetPettyCashReimbursementLinesAsync() {
-            this.GetPettyCashReimbursementLinesAsync(null);
+        public void GetPettyCashReimbursementLinesAsync(string docNo) {
+            this.GetPettyCashReimbursementLinesAsync(docNo, null);
         }
         
         /// <remarks/>
-        public void GetPettyCashReimbursementLinesAsync(object userState) {
+        public void GetPettyCashReimbursementLinesAsync(string docNo, object userState) {
             if ((this.GetPettyCashReimbursementLinesOperationCompleted == null)) {
                 this.GetPettyCashReimbursementLinesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPettyCashReimbursementLinesOperationCompleted);
             }
-            this.InvokeAsync("GetPettyCashReimbursementLines", new object[0], this.GetPettyCashReimbursementLinesOperationCompleted, userState);
+            this.InvokeAsync("GetPettyCashReimbursementLines", new object[] {
+                        docNo}, this.GetPettyCashReimbursementLinesOperationCompleted, userState);
         }
         
         private void OnGetPettyCashReimbursementLinesOperationCompleted(object arg) {
             if ((this.GetPettyCashReimbursementLinesCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetPettyCashReimbursementLinesCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetPettyCashReimbursementLinesCompleted(this, new GetPettyCashReimbursementLinesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -3742,32 +3814,32 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPettyCash", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetPettyCash_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetPostedPettyCash", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetPostedPettyCash_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string GetPettyCash(string username) {
-            object[] results = this.Invoke("GetPettyCash", new object[] {
-                        username});
+        public string GetPostedPettyCash(string accountNo) {
+            object[] results = this.Invoke("GetPostedPettyCash", new object[] {
+                        accountNo});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void GetPettyCashAsync(string username) {
-            this.GetPettyCashAsync(username, null);
+        public void GetPostedPettyCashAsync(string accountNo) {
+            this.GetPostedPettyCashAsync(accountNo, null);
         }
         
         /// <remarks/>
-        public void GetPettyCashAsync(string username, object userState) {
-            if ((this.GetPettyCashOperationCompleted == null)) {
-                this.GetPettyCashOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPettyCashOperationCompleted);
+        public void GetPostedPettyCashAsync(string accountNo, object userState) {
+            if ((this.GetPostedPettyCashOperationCompleted == null)) {
+                this.GetPostedPettyCashOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetPostedPettyCashOperationCompleted);
             }
-            this.InvokeAsync("GetPettyCash", new object[] {
-                        username}, this.GetPettyCashOperationCompleted, userState);
+            this.InvokeAsync("GetPostedPettyCash", new object[] {
+                        accountNo}, this.GetPostedPettyCashOperationCompleted, userState);
         }
         
-        private void OnGetPettyCashOperationCompleted(object arg) {
-            if ((this.GetPettyCashCompleted != null)) {
+        private void OnGetPostedPettyCashOperationCompleted(object arg) {
+            if ((this.GetPostedPettyCashCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GetPettyCashCompleted(this, new GetPettyCashCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.GetPostedPettyCashCompleted(this, new GetPostedPettyCashCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4064,6 +4136,36 @@ namespace NCIASTaff.NAVWS {
             if ((this.GetStaffPasswordCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetStaffPasswordCompleted(this, new GetStaffPasswordCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:GetStaffPettyCashNo", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="GetStaffPettyCashNo_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string GetStaffPettyCashNo(string username) {
+            object[] results = this.Invoke("GetStaffPettyCashNo", new object[] {
+                        username});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetStaffPettyCashNoAsync(string username) {
+            this.GetStaffPettyCashNoAsync(username, null);
+        }
+        
+        /// <remarks/>
+        public void GetStaffPettyCashNoAsync(string username, object userState) {
+            if ((this.GetStaffPettyCashNoOperationCompleted == null)) {
+                this.GetStaffPettyCashNoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetStaffPettyCashNoOperationCompleted);
+            }
+            this.InvokeAsync("GetStaffPettyCashNo", new object[] {
+                        username}, this.GetStaffPettyCashNoOperationCompleted, userState);
+        }
+        
+        private void OnGetStaffPettyCashNoOperationCompleted(object arg) {
+            if ((this.GetStaffPettyCashNoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetStaffPettyCashNoCompleted(this, new GetStaffPettyCashNoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4753,6 +4855,49 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertPettyCashReimbursement" +
+            "Line", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="InsertPettyCashReimbursementLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string InsertPettyCashReimbursementLine(string pettyCashReNo, string voteNo, string advanceType, decimal amount, string purpose, string unit, string department) {
+            object[] results = this.Invoke("InsertPettyCashReimbursementLine", new object[] {
+                        pettyCashReNo,
+                        voteNo,
+                        advanceType,
+                        amount,
+                        purpose,
+                        unit,
+                        department});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsertPettyCashReimbursementLineAsync(string pettyCashReNo, string voteNo, string advanceType, decimal amount, string purpose, string unit, string department) {
+            this.InsertPettyCashReimbursementLineAsync(pettyCashReNo, voteNo, advanceType, amount, purpose, unit, department, null);
+        }
+        
+        /// <remarks/>
+        public void InsertPettyCashReimbursementLineAsync(string pettyCashReNo, string voteNo, string advanceType, decimal amount, string purpose, string unit, string department, object userState) {
+            if ((this.InsertPettyCashReimbursementLineOperationCompleted == null)) {
+                this.InsertPettyCashReimbursementLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsertPettyCashReimbursementLineOperationCompleted);
+            }
+            this.InvokeAsync("InsertPettyCashReimbursementLine", new object[] {
+                        pettyCashReNo,
+                        voteNo,
+                        advanceType,
+                        amount,
+                        purpose,
+                        unit,
+                        department}, this.InsertPettyCashReimbursementLineOperationCompleted, userState);
+        }
+        
+        private void OnInsertPettyCashReimbursementLineOperationCompleted(object arg) {
+            if ((this.InsertPettyCashReimbursementLineCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsertPettyCashReimbursementLineCompleted(this, new InsertPettyCashReimbursementLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:InsertPettyCashRequisitionLi" +
             "ne", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="InsertPettyCashRequisitionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
@@ -5283,6 +5428,35 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnCancelPettyCashReimburseme" +
+            "nt", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="OnCancelPettyCashReimbursement_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void OnCancelPettyCashReimbursement(string pettyCashReNo) {
+            this.Invoke("OnCancelPettyCashReimbursement", new object[] {
+                        pettyCashReNo});
+        }
+        
+        /// <remarks/>
+        public void OnCancelPettyCashReimbursementAsync(string pettyCashReNo) {
+            this.OnCancelPettyCashReimbursementAsync(pettyCashReNo, null);
+        }
+        
+        /// <remarks/>
+        public void OnCancelPettyCashReimbursementAsync(string pettyCashReNo, object userState) {
+            if ((this.OnCancelPettyCashReimbursementOperationCompleted == null)) {
+                this.OnCancelPettyCashReimbursementOperationCompleted = new System.Threading.SendOrPostCallback(this.OnOnCancelPettyCashReimbursementOperationCompleted);
+            }
+            this.InvokeAsync("OnCancelPettyCashReimbursement", new object[] {
+                        pettyCashReNo}, this.OnCancelPettyCashReimbursementOperationCompleted, userState);
+        }
+        
+        private void OnOnCancelPettyCashReimbursementOperationCompleted(object arg) {
+            if ((this.OnCancelPettyCashReimbursementCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.OnCancelPettyCashReimbursementCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnCancelPettyCashRequisition" +
             "", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="OnCancelPettyCashRequisition_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public void OnCancelPettyCashRequisition(string pettyCashNo) {
@@ -5516,6 +5690,68 @@ namespace NCIASTaff.NAVWS {
             if ((this.OnSendImprestSurrenderForApprovalCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.OnSendImprestSurrenderForApprovalCompleted(this, new OnSendImprestSurrenderForApprovalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnSendPettyCashReimbursement" +
+            "ForApproval1", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="OnSendPettyCashReimbursementForApproval1_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string OnSendPettyCashReimbursementForApproval1(string pettyCashReNo) {
+            object[] results = this.Invoke("OnSendPettyCashReimbursementForApproval1", new object[] {
+                        pettyCashReNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void OnSendPettyCashReimbursementForApproval1Async(string pettyCashReNo) {
+            this.OnSendPettyCashReimbursementForApproval1Async(pettyCashReNo, null);
+        }
+        
+        /// <remarks/>
+        public void OnSendPettyCashReimbursementForApproval1Async(string pettyCashReNo, object userState) {
+            if ((this.OnSendPettyCashReimbursementForApproval1OperationCompleted == null)) {
+                this.OnSendPettyCashReimbursementForApproval1OperationCompleted = new System.Threading.SendOrPostCallback(this.OnOnSendPettyCashReimbursementForApproval1OperationCompleted);
+            }
+            this.InvokeAsync("OnSendPettyCashReimbursementForApproval1", new object[] {
+                        pettyCashReNo}, this.OnSendPettyCashReimbursementForApproval1OperationCompleted, userState);
+        }
+        
+        private void OnOnSendPettyCashReimbursementForApproval1OperationCompleted(object arg) {
+            if ((this.OnSendPettyCashReimbursementForApproval1Completed != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.OnSendPettyCashReimbursementForApproval1Completed(this, new OnSendPettyCashReimbursementForApproval1CompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:OnSendPettyCashReimbursement" +
+            "ForApproval", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="OnSendPettyCashReimbursementForApproval_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string OnSendPettyCashReimbursementForApproval(string pettyCashReNo) {
+            object[] results = this.Invoke("OnSendPettyCashReimbursementForApproval", new object[] {
+                        pettyCashReNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void OnSendPettyCashReimbursementForApprovalAsync(string pettyCashReNo) {
+            this.OnSendPettyCashReimbursementForApprovalAsync(pettyCashReNo, null);
+        }
+        
+        /// <remarks/>
+        public void OnSendPettyCashReimbursementForApprovalAsync(string pettyCashReNo, object userState) {
+            if ((this.OnSendPettyCashReimbursementForApprovalOperationCompleted == null)) {
+                this.OnSendPettyCashReimbursementForApprovalOperationCompleted = new System.Threading.SendOrPostCallback(this.OnOnSendPettyCashReimbursementForApprovalOperationCompleted);
+            }
+            this.InvokeAsync("OnSendPettyCashReimbursementForApproval", new object[] {
+                        pettyCashReNo}, this.OnSendPettyCashReimbursementForApprovalOperationCompleted, userState);
+        }
+        
+        private void OnOnSendPettyCashReimbursementForApprovalOperationCompleted(object arg) {
+            if ((this.OnSendPettyCashReimbursementForApprovalCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.OnSendPettyCashReimbursementForApprovalCompleted(this, new OnSendPettyCashReimbursementForApprovalCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -5909,27 +6145,62 @@ namespace NCIASTaff.NAVWS {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:RemovePettyCashRequisitionLi" +
-            "ne", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="RemovePettyCashRequisitionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:RemovePettyCashReimbursement" +
+            "Line", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="RemovePettyCashReimbursementLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string RemovePettyCashRequisitionLine(int lineNo) {
-            object[] results = this.Invoke("RemovePettyCashRequisitionLine", new object[] {
-                        lineNo});
+        public string RemovePettyCashReimbursementLine(string pettyCashReNo, string voteNo) {
+            object[] results = this.Invoke("RemovePettyCashReimbursementLine", new object[] {
+                        pettyCashReNo,
+                        voteNo});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void RemovePettyCashRequisitionLineAsync(int lineNo) {
-            this.RemovePettyCashRequisitionLineAsync(lineNo, null);
+        public void RemovePettyCashReimbursementLineAsync(string pettyCashReNo, string voteNo) {
+            this.RemovePettyCashReimbursementLineAsync(pettyCashReNo, voteNo, null);
         }
         
         /// <remarks/>
-        public void RemovePettyCashRequisitionLineAsync(int lineNo, object userState) {
+        public void RemovePettyCashReimbursementLineAsync(string pettyCashReNo, string voteNo, object userState) {
+            if ((this.RemovePettyCashReimbursementLineOperationCompleted == null)) {
+                this.RemovePettyCashReimbursementLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemovePettyCashReimbursementLineOperationCompleted);
+            }
+            this.InvokeAsync("RemovePettyCashReimbursementLine", new object[] {
+                        pettyCashReNo,
+                        voteNo}, this.RemovePettyCashReimbursementLineOperationCompleted, userState);
+        }
+        
+        private void OnRemovePettyCashReimbursementLineOperationCompleted(object arg) {
+            if ((this.RemovePettyCashReimbursementLineCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RemovePettyCashReimbursementLineCompleted(this, new RemovePettyCashReimbursementLineCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:RemovePettyCashRequisitionLi" +
+            "ne", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="RemovePettyCashRequisitionLine_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
+        public string RemovePettyCashRequisitionLine(string pettyCashNo, string accountNo) {
+            object[] results = this.Invoke("RemovePettyCashRequisitionLine", new object[] {
+                        pettyCashNo,
+                        accountNo});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RemovePettyCashRequisitionLineAsync(string pettyCashNo, string accountNo) {
+            this.RemovePettyCashRequisitionLineAsync(pettyCashNo, accountNo, null);
+        }
+        
+        /// <remarks/>
+        public void RemovePettyCashRequisitionLineAsync(string pettyCashNo, string accountNo, object userState) {
             if ((this.RemovePettyCashRequisitionLineOperationCompleted == null)) {
                 this.RemovePettyCashRequisitionLineOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRemovePettyCashRequisitionLineOperationCompleted);
             }
             this.InvokeAsync("RemovePettyCashRequisitionLine", new object[] {
-                        lineNo}, this.RemovePettyCashRequisitionLineOperationCompleted, userState);
+                        pettyCashNo,
+                        accountNo}, this.RemovePettyCashRequisitionLineOperationCompleted, userState);
         }
         
         private void OnRemovePettyCashRequisitionLineOperationCompleted(object arg) {
@@ -6839,6 +7110,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void CommitPettyCashReimbursementCompletedEventHandler(object sender, CommitPettyCashReimbursementCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CommitPettyCashReimbursementCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CommitPettyCashReimbursementCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void CpActivityLinesCompletedEventHandler(object sender, CpActivityLinesCompletedEventArgs e);
     
     /// <remarks/>
@@ -6969,7 +7266,29 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void CreatePettyCashReimbursementHeaderCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void CreatePettyCashReimbursementHeaderCompletedEventHandler(object sender, CreatePettyCashReimbursementHeaderCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CreatePettyCashReimbursementHeaderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CreatePettyCashReimbursementHeaderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
@@ -7611,32 +7930,6 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void GetAccountNoCompletedEventHandler(object sender, GetAccountNoCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetAccountNoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetAccountNoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void GetAdvancetypeCompletedEventHandler(object sender, GetAdvancetypeCompletedEventArgs e);
     
     /// <remarks/>
@@ -7908,6 +8201,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetDefaultDaysCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetDimensionsCompletedEventHandler(object sender, GetDimensionsCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetDimensionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetDimensionsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -8755,7 +9074,29 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void GetPettyCashReimbursementLinesCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void GetPettyCashReimbursementLinesCompletedEventHandler(object sender, GetPettyCashReimbursementLinesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetPettyCashReimbursementLinesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetPettyCashReimbursementLinesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
@@ -8785,17 +9126,17 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-    public delegate void GetPettyCashCompletedEventHandler(object sender, GetPettyCashCompletedEventArgs e);
+    public delegate void GetPostedPettyCashCompletedEventHandler(object sender, GetPostedPettyCashCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetPettyCashCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class GetPostedPettyCashCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GetPettyCashCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal GetPostedPettyCashCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -9056,6 +9397,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal GetStaffPasswordCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void GetStaffPettyCashNoCompletedEventHandler(object sender, GetStaffPettyCashNoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetStaffPettyCashNoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetStaffPettyCashNoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -9565,6 +9932,32 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void InsertPettyCashReimbursementLineCompletedEventHandler(object sender, InsertPettyCashReimbursementLineCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsertPettyCashReimbursementLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsertPettyCashReimbursementLineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void InsertPettyCashRequisitionLineCompletedEventHandler(object sender, InsertPettyCashRequisitionLineCompletedEventArgs e);
     
     /// <remarks/>
@@ -9915,6 +10308,10 @@ namespace NCIASTaff.NAVWS {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void OnCancelPettyCashReimbursementCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
     public delegate void OnCancelPettyCashRequisitionCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
@@ -10020,6 +10417,58 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal OnSendImprestSurrenderForApprovalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void OnSendPettyCashReimbursementForApproval1CompletedEventHandler(object sender, OnSendPettyCashReimbursementForApproval1CompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class OnSendPettyCashReimbursementForApproval1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal OnSendPettyCashReimbursementForApproval1CompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void OnSendPettyCashReimbursementForApprovalCompletedEventHandler(object sender, OnSendPettyCashReimbursementForApprovalCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class OnSendPettyCashReimbursementForApprovalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal OnSendPettyCashReimbursementForApprovalCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -10332,6 +10781,32 @@ namespace NCIASTaff.NAVWS {
         private object[] results;
         
         internal RemoveImprestRequisitionLineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void RemovePettyCashReimbursementLineCompletedEventHandler(object sender, RemovePettyCashReimbursementLineCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RemovePettyCashReimbursementLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RemovePettyCashReimbursementLineCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

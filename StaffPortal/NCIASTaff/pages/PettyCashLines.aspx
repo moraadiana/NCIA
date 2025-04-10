@@ -32,12 +32,12 @@
                                             <asp:Label ID="lblPayee" runat="server" Text="" ForeColor="Blue"></asp:Label>
                                         </div>
                                     </div>
-                                   <!-- <div class="col-md-4">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label>Requester ID: </label>
-                                            <asp:Label ID="lblRequester" runat="server" Text="" ForeColor="Blue"></asp:Label>
+                                            <label>Account No: </label>
+                                            <asp:Label ID="lblAccountNo" runat="server" Text="" ForeColor="Blue"></asp:Label>
                                         </div>
-                                    </div>-->
+                                    </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Department: </label>
@@ -141,7 +141,7 @@
                                         <br />
 
                                         <h4>Petty Cash Lines</h4>
-                                        <asp:GridView ID="gvLines" AutoGenerateColumns="false" DataKeyNames="Document No_" class="table table-responsive no-padding table-bordered table-hover" runat="server"
+                                        <asp:GridView ID="gvLines" AutoGenerateColumns="false" DataKeyNames="Account No_" class="table table-responsive no-padding table-bordered table-hover" runat="server"
                                             AllowSorting="True" AllowPaging="true" ShowFooter="true" PageSize="5">
                                             <Columns>
                                                 <asp:TemplateField HeaderStyle-HorizontalAlign="Left" HeaderText="#No" SortExpression="">
@@ -158,7 +158,7 @@
                                                 <asp:TemplateField HeaderText="Action" SortExpression="" HeaderStyle-HorizontalAlign="Left">
                                                     <ItemStyle Width="110px" HorizontalAlign="Left" />
                                                     <ItemTemplate>
-                                                        <asp:LinkButton ID="lbtnRemove" CssClass="label label-danger" runat="server" ToolTip="Click to Remove line" OnClick="lbtnRemove_Click" OnClientClick="return confirm('Are you sure you want to delete this line?')" CommandArgument='<%# Eval("Line No_") %>'><i class="fa fa-remove"></i> Remove</asp:LinkButton>
+                                                        <asp:LinkButton ID="lbtnRemove" CssClass="label label-danger" runat="server" ToolTip="Click to Remove line" OnClick="lbtnRemove_Click" OnClientClick="return confirm('Are you sure you want to delete this line?')" CommandArgument='<%# Eval("Account No_") %>'><i class="fa fa-remove"></i> Remove</asp:LinkButton>
                                                     </ItemTemplate>
                                                 </asp:TemplateField>
                                             </Columns>
