@@ -105,11 +105,7 @@ C:\NCIA\StaffPortal\NCIASTaff\bin\System.Web.Optimization.xml
 C:\NCIA\StaffPortal\NCIASTaff\bin\Newtonsoft.Json.xml
 C:\NCIA\StaffPortal\NCIASTaff\bin\Antlr3.Runtime.pdb
 C:\NCIA\StaffPortal\NCIASTaff\bin\Microsoft.AspNet.FriendlyUrls.xml
-C:\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.csproj.AssemblyReference.cache
-C:\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.csproj.CoreCompileInputs.cache
 C:\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.csproj.Up2Date
 C:\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.dll
 C:\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.pdb
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.csproj.AssemblyReference.cache
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.csproj.CoreCompileInputs.cache
 >>>>>>> e660f1c976e843c582e89d9d0a483086941995b0
