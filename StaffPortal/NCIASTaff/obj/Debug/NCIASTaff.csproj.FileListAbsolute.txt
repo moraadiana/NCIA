@@ -1,57 +1,3 @@
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\NCIASTaff.dll.config
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\NCIASTaff.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\NCIASTaff.pdb
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\csc.exe
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\csc.exe.config
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\csc.rsp
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\csi.exe
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\csi.exe.config
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\csi.rsp
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\Microsoft.Managed.Core.CurrentVersions.targets
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\Microsoft.Managed.Core.targets
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\System.Buffers.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\System.Collections.Immutable.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\System.Memory.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\System.Numerics.Vectors.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\System.Reflection.Metadata.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\System.Text.Encoding.CodePages.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\System.Threading.Tasks.Extensions.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\vbc.exe
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\vbc.exe.config
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\vbc.rsp
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\VBCSCompiler.exe
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\roslyn\VBCSCompiler.exe.config
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\Antlr3.Runtime.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\Microsoft.AspNet.FriendlyUrls.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\Microsoft.ScriptManager.MSAjax.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\Microsoft.ScriptManager.WebForms.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\Microsoft.Web.Infrastructure.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\Newtonsoft.Json.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\System.Web.Optimization.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\WebGrease.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\System.Web.Optimization.xml
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\Newtonsoft.Json.xml
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\Antlr3.Runtime.pdb
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\bin\Microsoft.AspNet.FriendlyUrls.xml
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.csproj.AssemblyReference.cache
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.csproj.CoreCompileInputs.cache
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.csproj.Up2Date
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.dll
-D:\Project Portals\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.pdb
 C:\NCIA\StaffPortal\NCIASTaff\bin\NCIASTaff.dll.config
 C:\NCIA\StaffPortal\NCIASTaff\bin\NCIASTaff.dll
 C:\NCIA\StaffPortal\NCIASTaff\bin\NCIASTaff.pdb
@@ -106,3 +52,5 @@ C:\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.csproj.CoreCompileInputs.cache
 C:\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.csproj.Up2Date
 C:\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.dll
 C:\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.pdb
+D:\Project Portals\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.csproj.AssemblyReference.cache
+D:\Project Portals\NCIA\StaffPortal\NCIASTaff\obj\Debug\NCIASTaff.csproj.CoreCompileInputs.cache
