@@ -7109,13 +7109,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-
     public delegate void CommitPettyCashReimbursementCompletedEventHandler(object sender, CommitPettyCashReimbursementCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class CommitPettyCashReimbursementCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -7137,8 +7135,7 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void CpActivityLinesCompletedEventHandler(object sender, CpActivityLinesCompletedEventArgs e);
     
     /// <remarks/>
@@ -7268,14 +7265,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-    public delegate void CreatePettyCashReimbursementHeaderCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-
-   
+    public delegate void CreatePettyCashReimbursementHeaderCompletedEventHandler(object sender, CreatePettyCashReimbursementHeaderCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class CreatePettyCashReimbursementHeaderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -7295,7 +7289,6 @@ namespace NCIASTaff.NAVWS {
             }
         }
     }
-
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
@@ -7935,35 +7928,8 @@ namespace NCIASTaff.NAVWS {
         }
     }
     
-
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-    public delegate void GetAccountNoCompletedEventHandler(object sender, GetAccountNoCompletedEventArgs e);
-    
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GetAccountNoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal GetAccountNoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-
     public delegate void GetAdvancetypeCompletedEventHandler(object sender, GetAdvancetypeCompletedEventArgs e);
     
     /// <remarks/>
@@ -8249,13 +8215,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-
     public delegate void GetDimensionsCompletedEventHandler(object sender, GetDimensionsCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetDimensionsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -8277,12 +8241,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void GetDocResponsibilityCentresCompletedEventHandler(object sender, GetDocResponsibilityCentresCompletedEventArgs e);
     
     /// <remarks/>
-  
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetDocResponsibilityCentresCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9110,13 +9073,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-    public delegate void GetPettyCashReimbursementLinesCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-
+    public delegate void GetPettyCashReimbursementLinesCompletedEventHandler(object sender, GetPettyCashReimbursementLinesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetPettyCashReimbursementLinesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9136,7 +9097,6 @@ namespace NCIASTaff.NAVWS {
             }
         }
     }
-
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
@@ -9165,12 +9125,8 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-
-
     public delegate void GetPostedPettyCashCompletedEventHandler(object sender, GetPostedPettyCashCompletedEventArgs e);
-
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
@@ -9455,13 +9411,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-
     public delegate void GetStaffPettyCashNoCompletedEventHandler(object sender, GetStaffPettyCashNoCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetStaffPettyCashNoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -9483,7 +9437,7 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void GetStoreItemQuantityCompletedEventHandler(object sender, GetStoreItemQuantityCompletedEventArgs e);
     
     /// <remarks/>
@@ -9976,13 +9930,12 @@ namespace NCIASTaff.NAVWS {
         }
     }
     
-
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-
     public delegate void InsertPettyCashReimbursementLineCompletedEventHandler(object sender, InsertPettyCashReimbursementLineCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class InsertPettyCashReimbursementLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -10004,7 +9957,7 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void InsertPettyCashRequisitionLineCompletedEventHandler(object sender, InsertPettyCashRequisitionLineCompletedEventArgs e);
     
     /// <remarks/>
@@ -10354,14 +10307,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-
     public delegate void OnCancelPettyCashReimbursementCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void OnCancelPettyCashRequisitionCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
@@ -10481,14 +10431,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-
-
     public delegate void OnSendPettyCashReimbursementForApproval1CompletedEventHandler(object sender, OnSendPettyCashReimbursementForApproval1CompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class OnSendPettyCashReimbursementForApproval1CompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -10510,11 +10457,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void OnSendPettyCashReimbursementForApprovalCompletedEventHandler(object sender, OnSendPettyCashReimbursementForApprovalCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class OnSendPettyCashReimbursementForApprovalCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -10536,8 +10483,7 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void OnSendPettyCashRequisitionForApprovalCompletedEventHandler(object sender, OnSendPettyCashRequisitionForApprovalCompletedEventArgs e);
     
     /// <remarks/>
@@ -10849,13 +10795,11 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
-
     public delegate void RemovePettyCashReimbursementLineCompletedEventHandler(object sender, RemovePettyCashReimbursementLineCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class RemovePettyCashReimbursementLineCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -10877,8 +10821,7 @@ namespace NCIASTaff.NAVWS {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
-
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9037.0")]
     public delegate void RemovePettyCashRequisitionLineCompletedEventHandler(object sender, RemovePettyCashRequisitionLineCompletedEventArgs e);
     
     /// <remarks/>

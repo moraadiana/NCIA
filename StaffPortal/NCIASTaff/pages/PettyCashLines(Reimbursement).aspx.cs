@@ -33,7 +33,7 @@ namespace NCIASTaff.pages
                // LoadStaffDetails();
                 LoadResponsibilityCenter();
                 LoadAccountNos();
-                LoadPostedPettyCashLines();
+                LoadPostedPettyCash();
                 LoadDepartments();
                 LoadUnits();
                 LoadAdvanceTypes();
@@ -146,7 +146,7 @@ namespace NCIASTaff.pages
             }
 
         }
-        private void LoadPostedPettyCashLines()
+        private void LoadPostedPettyCash()
         {
             try
             {
@@ -161,7 +161,7 @@ namespace NCIASTaff.pages
                     lblAccountNo.Text = staffAccountNo;
                 }
                
-                string PostedPettyCash = webportals.GetPostedPettyCash(staffAccountNo);
+                string PostedPettyCash = webportals.GetPostedPettyCash(staffNo);
                 if (!string.IsNullOrEmpty(PostedPettyCash))
                 {
                     string[] PostedPettyCashArr = PostedPettyCash.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);
