@@ -283,8 +283,7 @@ namespace NCIASTaff.pages
                 string pettyCashNo = ddlPostedPettyCash.SelectedValue;
                 string responsibilityCenter = ddlResponsibilityCenter.SelectedValue;
                 string AccountNo = lblAccountNo.Text;
-                string BankNo = "11";
-
+               
 
                 if (string.IsNullOrEmpty(AccountNo))
                 {
