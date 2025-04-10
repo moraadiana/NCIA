@@ -13,7 +13,7 @@ namespace NCIASTaff
     public class Components
     {
         public static SqlConnection connection;
-        public static string Company_Name = "NCIA 1";
+        public static string Company_Name = "NCIA";
 
         public static string ReportsPath()
         {
