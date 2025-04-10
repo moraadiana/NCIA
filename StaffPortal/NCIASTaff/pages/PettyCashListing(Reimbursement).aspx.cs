@@ -87,8 +87,8 @@ namespace NCIASTaff.pages
                                     <div class='options btn-group' >
 					                    <a class='label label-success dropdown-toggle btn-success' data-toggle='dropdown' href='#' style='padding:4px;margin-top:3px'><i class='fa fa-gears'></i> Options</a>
 					                    <ul class='dropdown-menu'>
-                                            <li><a href='PettyCashLines(Reimbursment).aspx?pettyCashNo={1}&query=old&status={4}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></li>
-                                            <li><a href=PettyCashListing(Reimbursment).aspx?pettyCashNo={1}&status={4}'><i class='fa fa-trash text-danger'></i><span class='text-danger'>Cancel</span></a></li>
+                                            <li><a href='PettyCashLines(Reimbursement).aspx?pettyCashReNo={1}&query=old&status={4}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></li>
+                                            <li><a href=PettyCashListing(Reimbursement).aspx?pettyCashReNo={1}&status={4}'><i class='fa fa-trash text-danger'></i><span class='text-danger'>Cancel</span></a></li>
                                             <li><a href='ApprovalTracking.aspx?DocNum={1}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Approval Tracking</span></a></li>
                                         </ul>	
                                     </div>

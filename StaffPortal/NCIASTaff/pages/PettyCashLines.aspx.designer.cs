@@ -51,13 +51,13 @@ namespace NCIASTaff.pages
         protected global::System.Web.UI.WebControls.Label lblPayee;
 
         /// <summary>
-        /// lblRequester control.
+        /// lblAccountNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRequester;
+        protected global::System.Web.UI.WebControls.Label lblAccountNo;
 
         /// <summary>
         /// lblDepartment control.
