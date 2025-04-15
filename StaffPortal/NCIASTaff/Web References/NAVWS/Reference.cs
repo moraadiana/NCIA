@@ -1822,7 +1822,7 @@ namespace NCIASTaff.NAVWS {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:microsoft-dynamics-schemas/codeunit/Staffportall:CreateTransportRequest", RequestNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", ResponseElementName="CreateTransportRequest_Result", ResponseNamespace="urn:microsoft-dynamics-schemas/codeunit/Staffportall", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return_value")]
-        public string CreateTransportRequest(string requestNo, string description, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime dateofTravel, decimal noOfDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime expectedReturnDate, string from, string destination, string unitCode, string department, string createdBy) {
+        public string CreateTransportRequest(string requestNo, string description, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime dateofTravel, decimal noOfDays, [System.Xml.Serialization.XmlElementAttribute(DataType="date")] System.DateTime expectedReturnDate, string from, string destination, string unitCode, string department, string username) {
             object[] results = this.Invoke("CreateTransportRequest", new object[] {
                         requestNo,
                         description,
@@ -1833,17 +1833,17 @@ namespace NCIASTaff.NAVWS {
                         destination,
                         unitCode,
                         department,
-                        createdBy});
+                        username});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void CreateTransportRequestAsync(string requestNo, string description, System.DateTime dateofTravel, decimal noOfDays, System.DateTime expectedReturnDate, string from, string destination, string unitCode, string department, string createdBy) {
-            this.CreateTransportRequestAsync(requestNo, description, dateofTravel, noOfDays, expectedReturnDate, from, destination, unitCode, department, createdBy, null);
+        public void CreateTransportRequestAsync(string requestNo, string description, System.DateTime dateofTravel, decimal noOfDays, System.DateTime expectedReturnDate, string from, string destination, string unitCode, string department, string username) {
+            this.CreateTransportRequestAsync(requestNo, description, dateofTravel, noOfDays, expectedReturnDate, from, destination, unitCode, department, username, null);
         }
         
         /// <remarks/>
-        public void CreateTransportRequestAsync(string requestNo, string description, System.DateTime dateofTravel, decimal noOfDays, System.DateTime expectedReturnDate, string from, string destination, string unitCode, string department, string createdBy, object userState) {
+        public void CreateTransportRequestAsync(string requestNo, string description, System.DateTime dateofTravel, decimal noOfDays, System.DateTime expectedReturnDate, string from, string destination, string unitCode, string department, string username, object userState) {
             if ((this.CreateTransportRequestOperationCompleted == null)) {
                 this.CreateTransportRequestOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCreateTransportRequestOperationCompleted);
             }
@@ -1857,7 +1857,7 @@ namespace NCIASTaff.NAVWS {
                         destination,
                         unitCode,
                         department,
-                        createdBy}, this.CreateTransportRequestOperationCompleted, userState);
+                        username}, this.CreateTransportRequestOperationCompleted, userState);
         }
         
         private void OnCreateTransportRequestOperationCompleted(object arg) {

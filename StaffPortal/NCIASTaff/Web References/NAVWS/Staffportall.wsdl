@@ -414,7 +414,7 @@
             <element minOccurs="1" maxOccurs="1" name="destination" type="string" />
             <element minOccurs="1" maxOccurs="1" name="unitCode" type="string" />
             <element minOccurs="1" maxOccurs="1" name="department" type="string" />
-            <element minOccurs="1" maxOccurs="1" name="createdBy" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="username" type="string" />
           </sequence>
         </complexType>
       </element>

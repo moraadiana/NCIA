@@ -160,8 +160,14 @@ namespace NCIASTaff.pages
                 {
                     lblAccountNo.Text = staffAccountNo;
                 }
-               
-                string PostedPettyCash = webportals.GetPostedPettyCash(staffNo);
+                else
+                {
+                    lblAccountNo.Text = " ";
+                }
+                string accNo = lblAccountNo.Text;
+
+
+                string PostedPettyCash = webportals.GetPostedPettyCash(accNo);
                 if (!string.IsNullOrEmpty(PostedPettyCash))
                 {
                     string[] PostedPettyCashArr = PostedPettyCash.Split(new string[] { "[]" }, StringSplitOptions.RemoveEmptyEntries);

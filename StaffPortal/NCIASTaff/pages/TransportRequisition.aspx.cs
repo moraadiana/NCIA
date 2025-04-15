@@ -1,6 +1,7 @@
 ﻿using NCIASTaff.NAVWS;
 using System;
 using System.Data;
+using System.Net.Mail;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -23,7 +24,7 @@ namespace NCIASTaff.pages
                 LoadStaffDepartmentDetails();
 
                 string requestNo = Request.QueryString["RequestNo"];
-
+                string approvalStatus = Request.QueryString["status"].Replace("%", " ");
 
                 if (requestNo != null)
                 {
@@ -37,6 +38,17 @@ namespace NCIASTaff.pages
                     //LoadStations();
                     //LoadBudgetLines();
                     //LoadProjects();
+                }
+                if (approvalStatus == "Open" || approvalStatus == "Pending" || approvalStatus == "New")
+                {
+                    lbtnSubmit.Visible = true;
+                   
+                }
+               
+                else
+                {
+                    lbtnSubmit.Visible = false;
+                   
                 }
             }
         }
