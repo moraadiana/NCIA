@@ -215,11 +215,9 @@ namespace NCIASTaff.pages
                 //string reqNo = Session["requestNo"]?.ToString();
                 //string reqNo = Request.QueryString["RequestNo"].ToString();
                 string reqNo = Session["requestNo"]?.ToString() ?? Request.QueryString["RequestNo"];
-
-                if (string.IsNullOrEmpty(reqNo))
+                if (string.IsNullOrEmpty(passengerNo))
                 {
-                    Message("Error: No requisition selected.");
-                    return;
+                    Message("Please select a passanger before you continue");
                 }
 
                 string result = Components.ObjNav.InsertTransportPassengers(reqNo, passengerNo, passengerName, passengerPhoneNo);
