@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Net.Mail;
+using System.Runtime.Remoting.Messaging;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -23,22 +24,23 @@ namespace NCIASTaff.pages
                 }
                 LoadStaffDepartmentDetails();
 
-                string requestNo = Request.QueryString["RequestNo"];
+               
                 string approvalStatus = Request.QueryString["status"].Replace("%", " ");
-
-                if (requestNo != null)
+                string query = Request.QueryString["query"];
+                if (query == "new")
                 {
-                    MultiView1.ActiveViewIndex = 1;
+                    MultiView1.SetActiveView(vwHeader);
+                }
+                else if (query == "old")
+                {
+                    string requestNo = Request.QueryString["RequestNo"];
+                    MultiView1.SetActiveView(vwLines);
+                    lbltransportNo.Text = requestNo;
                     BindGridviewData(requestNo);
+                    //   lblClaimNo.Text = claimNo;
+                   
                 }
-                else
-                {
-                    MultiView1.ActiveViewIndex = 0;
-                    //LoadApprovedMemos();
-                    //LoadStations();
-                    //LoadBudgetLines();
-                    //LoadProjects();
-                }
+              
                 if (approvalStatus == "Open" || approvalStatus == "Pending" || approvalStatus == "New")
                 {
                     lbtnSubmit.Visible = true;
@@ -115,28 +117,41 @@ namespace NCIASTaff.pages
                 string createdBy = empNo;
 
                 string details = Components.ObjNav.CreateTransportRequest(reqNo, description, dateOfTravel, noOfDays, expectedReturnDate, from, destination, unitCode, department, createdBy);
-                Message(details);
 
-                // Extract Request No from the details message
-                if (details.StartsWith("SUCCESS"))
+                if (!string.IsNullOrEmpty(details))
                 {
-                    string[] detailsParts = details.Split(new[] { "Request No: " }, StringSplitOptions.None);
-                    if (detailsParts.Length > 1)
+                    string[] responseArr = details.Split(strLimiters, StringSplitOptions.None);
+                    string returnMsg = responseArr[0];
+                    if (returnMsg == "SUCCESS")
                     {
-                        string requestNo = detailsParts[1].Trim();
+                        string requestNo = responseArr[1];
+                        Message($"Transport Requsition number {requestNo} has been created successfully!");
                         Session["RequestNo"] = requestNo;
+                        lbltransportNo.Text = requestNo;
+                        MultiView1.ActiveViewIndex = 1;
+                        // BindGridViewData(claimNo);
+                        //NewView();
                     }
+                    else
+                    {
+                        Message($"Error + {details}");
+                    }
+                }
+                
+                else
+                {
+                    Message($"Error Creating requisition");
                 }
 
             }
             catch (Exception ex)
             {
                 // Handle exception if needed
-                ex.Data.Clear();
+               // ex.Data.Clear();
+                Message($"An error occurred: {ex.Message}");
             }
 
-            // Switch to the second view
-            MultiView1.ActiveViewIndex = 1;
+          
         }
 
         private bool ValidateFields()
@@ -212,9 +227,9 @@ namespace NCIASTaff.pages
                 string passengerPhoneNo = details.Length > 2 ? details[2] : string.Empty;
 
 
-                //string reqNo = Session["requestNo"]?.ToString();
-                //string reqNo = Request.QueryString["RequestNo"].ToString();
-                string reqNo = Session["requestNo"]?.ToString() ?? Request.QueryString["RequestNo"];
+                
+               // string reqNo = Session["requestNo"]?.ToString() ?? Request.QueryString["RequestNo"];
+                string reqNo = lbltransportNo.Text;
                 if (string.IsNullOrEmpty(passengerNo))
                 {
                     Message("Please select a passanger before you continue");
@@ -239,12 +254,16 @@ namespace NCIASTaff.pages
 
                         BindGridviewData(reqNo);
                     }
+                    else
+                    {
+                        Message("An error occurred while adding the passenger. Please try again.");
+                    }
                 }
             }
             catch (Exception ex)
             {
-                Message("An error occurred while adding the passenger. Please try again.");
-
+                //Message("An error occurred while adding the passenger. Please try again.");
+                Message($"An error occurred: {ex.Message}");
             }
         }
 
@@ -340,8 +359,8 @@ namespace NCIASTaff.pages
         protected void lbtnSubmit_Click(object sender, EventArgs e)
         {
 
-            string reqNo = Session["requestNo"]?.ToString() ?? Request.QueryString["RequestNo"];
-
+            //string reqNo = Session["requestNo"]?.ToString() ?? Request.QueryString["RequestNo"];
+            string reqNo = lbltransportNo.Text;
 
             if (!CheckPassengersAdded(reqNo))
             {

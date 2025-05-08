@@ -65,7 +65,7 @@ namespace NCIASTaff.pages
                             htmlStr += $"<td>{requestReturnDate}</td>";
                             htmlStr += $"<td>{requestStatus}</td>";
                             
-                            htmlStr += $"<td><a href='TransportRequisition.aspx?requestNo={requestNumber} & query= old&status={requestStatus}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></td>";
+                            htmlStr += $"<td><a href='TransportRequisition.aspx?requestNo={requestNumber}&query=old&status={requestStatus}'><i class='fa fa-plus-circle text-success'></i><span class='text-success'>Details</span></a></td>";
 
 
                             htmlStr += "</tr>";

@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <asp:MultiView ID="MultiView1" runat="server">
-                        <asp:View ID="View1" runat="server">
+                        <asp:View ID="vwHeader" runat="server">
                             <div class="box box-warning box-solid">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">New Transport Requisition</h3>
@@ -103,10 +103,11 @@
                                 </div>
                             </div>
                         </asp:View>
-                        <asp:View ID="View2" runat="server">
+                        <asp:View ID="vwLines" runat="server">
                             <div class="panel panel-warning">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title">Passengers</h3>
+                                    <h3 class="panel-title">Passengers
+                                     <asp:Label ID="lbltransportNo" runat="server" Text=""></asp:Label></h3>
                                 </div>
                                 <div class="panel-body">
                                     <div id="newLines" runat="server" visible="false">

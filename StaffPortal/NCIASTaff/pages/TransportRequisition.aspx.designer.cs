@@ -24,13 +24,13 @@ namespace NCIASTaff.pages
         protected global::System.Web.UI.WebControls.MultiView MultiView1;
 
         /// <summary>
-        /// View1 control.
+        /// vwHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View1;
+        protected global::System.Web.UI.WebControls.View vwHeader;
 
         /// <summary>
         /// txtDescription control.
@@ -141,13 +141,22 @@ namespace NCIASTaff.pages
         protected global::System.Web.UI.WebControls.LinkButton lbtnBack;
 
         /// <summary>
-        /// View2 control.
+        /// vwLines control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View View2;
+        protected global::System.Web.UI.WebControls.View vwLines;
+
+        /// <summary>
+        /// lbltransportNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbltransportNo;
 
         /// <summary>
         /// newLines control.
