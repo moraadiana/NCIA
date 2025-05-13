@@ -32,7 +32,7 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                        <div class="col-md-12">
-                                <p class="text-center"><a class="btn btn-pill btn-info u-posRelative" href="TransportRequisition.aspx?status=New">New Transport Requisition<span class="waves"></span></a></p>
+                                <p class="text-center"><a class="btn btn-pill btn-info u-posRelative" href="TransportRequisition.aspx?query=New&status=New">New Transport Requisition<span class="waves"></span></a></p>
                             </div>
                             <br/>
                             <br/>

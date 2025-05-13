@@ -27,7 +27,7 @@ namespace NCIASTaff.pages
                
                 string approvalStatus = Request.QueryString["status"].Replace("%", " ");
                 string query = Request.QueryString["query"];
-                if (query == "new")
+                if (query == "New")
                 {
                     MultiView1.SetActiveView(vwHeader);
                 }
