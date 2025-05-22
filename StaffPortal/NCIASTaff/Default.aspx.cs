@@ -207,9 +207,9 @@ namespace NCIASTaff
                 string email = GetStaffEmail(username);
                 string staffPassword = GetStaffPassword(username);
                 string subject = "NCIA Portal Password Reset";
-                string body = $"Use below password to log into your portal.<br/><br/>Portal password: <strong>{staffPassword}</strong><br/><br/>Do not reply to this email.";
+                string body = $"Use below password to log into your portal.<br/><br/>Portal password: <strong>{staffPassword}</strong><br/><br/>Do not reply to this email.<br/><br/>" ;
                 Components.SentEmailAlerts(email, subject, body);
-                lblError.Text = $"Portal password has been sent to your email address {email.ToUpper()}";
+                lblError.Text = $"Portal password has been sent to your email address {email}";
                 return;
             }
             catch (Exception ex)

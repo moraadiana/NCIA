@@ -46,12 +46,14 @@ namespace NCIASTaff
         {
             try
             {
-                string email = "dynamicsselfservice@gmail.com";
-                string password = "ydujienvejtdojgv";
+                //string email = "dynamicsselfservice@gmail.com";
+                //string password = "ydujienvejtdojgv";
+                string email = "support@ncia.or.ke";
+                string password = "Ncia@2024";
 
                 var loginInfo = new NetworkCredential(email, password);
                 var msg = new MailMessage();
-                var smtpClient = new SmtpClient("smtp.gmail.com", 587);
+                var smtpClient = new SmtpClient("smtp.office365.com", 587);
 
                 msg.From = new MailAddress(email);
                 msg.To.Add(new MailAddress(address));
