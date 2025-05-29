@@ -12,7 +12,7 @@ namespace NCIASupplier.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.11.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.13.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,7 +26,7 @@ namespace NCIASupplier.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://102.210.149.230:7047/Ncia/WS/NCIA%20TEST%20CO./Codeunit/Supplier")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Supplier")]
         public string NCIASupplier_NAVWS_Supplier {
             get {
                 return ((string)(this["NCIASupplier_NAVWS_Supplier"]));

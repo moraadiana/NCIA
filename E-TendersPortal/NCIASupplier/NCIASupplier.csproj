@@ -2631,10 +2631,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/NCIA%2520TEST%2520CO./Codeunit/Supplier">
+    <WebReferenceUrl Include="http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Supplier">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\NAVWS\</RelPath>
-      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/NCIA%2520TEST%2520CO./Codeunit/Supplier</UpdateFromURL>
+      <UpdateFromURL>http://102.210.149.230:7047/Ncia/WS/NCIA/Codeunit/Supplier</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

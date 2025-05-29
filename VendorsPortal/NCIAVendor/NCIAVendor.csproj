@@ -2576,10 +2576,12 @@
     <Content Include="Views\Prequalification\PrequalificationApplication.cshtml" />
     <Content Include="Views\Prequalification\PrequalificationApplications.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
-    <Content Include="Web References\NAVWS\Reference.map">
+    <None Include="Web References\NAVWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
+    <Content Include="Views\Login\ForgotPassword.cshtml" />
+    <Content Include="Views\Login\ResetPassword.cshtml" />
     <None Include="Web References\NAVWS\VendorsPortal.wsdl" />
   </ItemGroup>
   <ItemGroup>
